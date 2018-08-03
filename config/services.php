@@ -34,5 +34,11 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'corpsms' => [
+        'login'  => env('SMS_AUTH_USER'),
+        'secret' => env('SMS_AUTH_PASSWORD'),
+        'sender' => 'CorpSMS',
+        'host' => env('SMS_ENDPOINT'),
+    ]
 
 ];
