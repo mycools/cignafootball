@@ -22,7 +22,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Laravel Notification Channel for Google GCM (Android)](https://github.com/laravel-notification-channels/gcm).
 - [Web push notifications channel for Laravel](https://github.com/laravel-notification-channels/webpush).
 - [Laravel APN (Apple Push) Notification Channel](https://github.com/laravel-notification-channels/apn).
-- [Laravel SMS Notification](http://github.com/mycools/laravel-notification-sms).
+- [Laravel SMS Notification](http://github.com/mycools/laravel-notification-corp-sms).
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
 ## Learning Laravel Framework
