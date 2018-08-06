@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notifications\OneTimePassword;
+use App\Models\UserOtp;
 class HomeController extends Controller
 {
     /**
@@ -23,9 +24,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $otp = UserOtp::getOtp($request);
 
-
-        //$request->user()->notify(new OneTimePassword());
+        $request->user()->notify(new OneTimePassword($otp));
         return view('home');
     }
 }

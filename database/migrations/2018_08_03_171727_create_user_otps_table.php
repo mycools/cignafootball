@@ -16,7 +16,7 @@ class CreateUserOtpsTable extends Migration
         Schema::create('user_otps', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string("code",4)->index();
+            $table->string("refcode",4)->index();
             $table->string("otp",6)->index();
             $table->enum('status', ['unuse', 'used', 'expired'])->default('unuse');
             $table->timestamps();

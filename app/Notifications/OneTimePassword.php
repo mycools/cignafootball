@@ -12,15 +12,15 @@ use NotificationChannels\CorpSMS\CorpSMSChannel;
 class OneTimePassword extends Notification
 {
     use Queueable;
-
+    protected $otp;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($otp)
     {
-        //
+        $this->otp = $otp;
     }
 
     /**
@@ -35,7 +35,11 @@ class OneTimePassword extends Notification
     }
     public function toCorpSMS($notifiable)
     {
-        return CorpSMSMessage::create("รหัส OTP คือ 999876 (REF:ADCD) ใช้งานได้ที่ http://matchoftheweek.com/");
+        dd($this->otp);
+        $code = strtoupper(str_random(4));
+        $otp = rand(100000, 999999);
+        $sms = "รหัส OTP คือ {$otp} (REF : $code) ใช้งานได้ที่ http://matchoftheweek.com/";
+        //return CorpSMSMessage::create($sms);
     }
 
     /**
