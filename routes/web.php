@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/signin', 'UserController@getLogin')->name('user.login');
+Route::get('/register', 'UserController@getRegister')->name('user.register');
