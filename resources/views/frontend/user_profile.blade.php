@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-8 d-md-flex">
-					<div class="box bg-green pt-25">
+					<div class="box bg-green pt-25 pt-md-12">
 						<div class="row justify-content-center align-items-center">
 							<div class="col-4 col-md-2 text-center">
 								<i class="fa fa-check-circle mgr-5" aria-hidden="true"></i> ถูก
@@ -98,7 +98,7 @@
 								ทาย
 								<div class="text-large">120</div>
 							</div>
-							<div class="col-12 col-md-6 text-center mt-15">
+							<div class="col-12 col-md-6 text-center mt-sm-15">
 								<a class="btn btn-border green pt-10 pb-10" href="#">Full History</a>
 							</div>
 						</div>
@@ -129,7 +129,7 @@
 								<input type="text" class="form-control pt-10 pb-10" value="http://......">
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-10 pb-10 mt-15" href="#">Copy</a>
+								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15" href="#">Copy</a>
 							</div>
 						</div>
 					</div>
