@@ -33,7 +33,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
-    protected $redirectAfterLogout = '/signin';
+    protected $redirectAfterLogout = '/';
     protected $homePath = '/';
 
     public function getLogin()
@@ -69,7 +69,7 @@ class AuthController extends Controller
 
     }
 
-    public function getLogout()
+    public function getLogout(Request $request)
     {
         $request->session()->flush();
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : $this->homePath);

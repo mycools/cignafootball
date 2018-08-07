@@ -23,7 +23,7 @@
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">ชื่อ</label>
 									<div class="col-md-9">
 										<div class="form-control-plaintext text-center">
-											กันติภัทร์
+											{{ $result->first_name }}
 										</div>
 									</div>
 								</div>
@@ -33,7 +33,7 @@
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">นามสกุล</label>
 									<div class="col-md-9">
 										<div class="form-control-plaintext text-center">
-											จิตบุณฑ์
+											{{ $result->last_name }}
 										</div>
 									</div>
 								</div>
@@ -45,7 +45,7 @@
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">Username</label>
 									<div class="col-md-9">
 										<div class="form-control-plaintext text-center">
-											Godzilla99
+											{{ $result->username }}
 										</div>
 									</div>
 								</div>
@@ -55,7 +55,7 @@
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">ทีมที่ชอบ</label>
 									<div class="col-md-9">
 										<div class="form-control-plaintext text-center">
-											Manchester United
+										    {{ $team->team_name }}
 										</div>
 									</div>
 								</div>

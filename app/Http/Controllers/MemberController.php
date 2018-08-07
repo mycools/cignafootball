@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Teams;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +26,9 @@ class MemberController extends Controller
 
         $id   = Auth::user()->id;
         $user = User::find($id);
-
         
         $this->_data['result']    = $user;
+        $this->_data['team']     = Teams::where('id', $user->team_id)->first();
 
         return view('frontend/user_profile')->with($this->_data);
 
