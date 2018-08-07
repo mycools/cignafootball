@@ -19,5 +19,37 @@ class UserController extends Controller
 			->with($data);
 	}
 
+	public function getRegister()
+	{
+		$data = array();
+
+		return View::make('frontend/user_register_1')
+			->with($data);
+	}
+
+	public function getRegisterDetail()
+	{
+		$data = array();
+
+		return View::make('frontend/user_register_2')
+			->with($data);
+	}
+
+	public function getRegisterOtp()
+	{
+		$data = array();
+
+		return View::make('frontend/user_otp')
+			->with($data);
+	}
+
+	public function getForgot()
+	{
+		$data = array();
+
+		return View::make('frontend/user_forgot')
+			->with($data);
+	}
+
 }
 

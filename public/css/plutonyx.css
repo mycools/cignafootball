@@ -398,6 +398,7 @@ input:focus{
 .mr-5{margin-right: 5px !important;}
 .mr-10{margin-right: 10px !important;}
 .mr--15{margin-right: -15px !important;}
+.mr-15{margin-right: 15px !important;}
 .mgr-15{margin-right: 15px !important;}
 .mr-20{margin-right: 20px !important;}
 .mr-25{margin-right: 25px !important;}
@@ -684,6 +685,7 @@ input:focus{
     .mt-xs-15{margin-top: 15px !important;}
     .mt-xs-20{margin-top: 20px !important;}
     .mt-xs-30{margin-top: 30px !important;}
+    .mt-xs-45{margin-top: 45px !important;}
     /*.m-xs-0{margin: 0px !important;}*/
 
 }

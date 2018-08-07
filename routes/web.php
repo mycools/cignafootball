@@ -20,4 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/signin', 'UserController@getLogin')->name('user.login');
+Route::get('/forgot', 'UserController@getForgot')->name('user.forgot');
 Route::get('/register', 'UserController@getRegister')->name('user.register');
+Route::get('/register/detail', 'UserController@getRegisterDetail')->name('user.register_detail');
+Route::get('/register/otp', 'UserController@getRegisterOtp')->name('user.register_otp');
