@@ -19,35 +19,41 @@
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
 
-								<form>
+								<form action="{{ url('/signin') }}" method="post">
+
+									{{ csrf_field() }}
+
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Username</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" value="">
+											<input type="text" class="form-control" name="username" value="">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
 										<div class="col-md-9">
-											<input type="password" class="form-control" value="">
+											<input type="password" class="form-control" name="password" value="">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-9 ml-auto">
+											<div class="text-center mt-20 mt-sm-30 row">
+												<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdr-5">
+													<a class="btn btn-blue mb-15" href="{{ url('/register') }}">ลงทะเบียน</a>
+												</div>
+												<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdl-5">
+													<button type="submit" class="btn btn-green mb-15">
+														เข้าสู่ระบบ
+													</button>
+													<!-- <a class="btn btn-green mb-15" href="{{ url('/profile') }}">เข้าสู่ระบบ</a> -->
+												</div>
+											</div>
+											<div class="text-center">
+												<a class="btn-text" href="{{ url('/forgot') }}">ลืมรหัสผ่าน <i class="fa fa-angle-right"></i></a>
+											</div>
 										</div>
 									</div>
 								</form>
-								<div class="row">
-									<div class="col-md-9 ml-auto">
-										<div class="text-center mt-20 mt-sm-30 row">
-											<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdr-5">
-												<a class="btn btn-blue mb-15" href="{{ url('/register') }}">ลงทะเบียน</a>
-											</div>
-											<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdl-5">
-												<a class="btn btn-green mb-15" href="{{ url('/profile') }}">เข้าสู่ระบบ</a>
-											</div>
-										</div>
-										<div class="text-center">
-											<a class="btn-text" href="{{ url('/forgot') }}">ลืมรหัสผ่าน <i class="fa fa-angle-right"></i></a>
-										</div>
-									</div>
-								</div>
 
 							</div>
 						</div>
