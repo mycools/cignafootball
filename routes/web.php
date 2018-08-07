@@ -19,9 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/signin', 'UserController@getLogin')->name('user.login');
-Route::get('/forgot', 'UserController@getForgot')->name('user.forgot');
-Route::get('/register', 'UserController@getRegister')->name('user.register');
-Route::get('/register/detail', 'UserController@getRegisterDetail')->name('user.register_detail');
-Route::get('/register/otp', 'UserController@getRegisterOtp')->name('user.register_otp');
-Route::get('/profile', 'UserController@getProfile')->name('user.profile');
+Route::get('/signin', function () {
+	return view('frontend/user_login');
+})->name('signin');
+Route::get('/signout', 'Auth\AuthController@getLogout')->name('signout');
+
+// Route::get('/signin', 'AuthController@getLogin')->name('user.signin');
+
+Route::get('/forgot', 'Auth\AuthController@getForgot')->name('user.forgot');
+Route::get('/register', 'Auth\AuthController@getRegister')->name('user.register');
+
+Route::get('/register/detail', 'Auth\AuthController@getRegisterDetail')->name('user.register_detail');
+Route::get('/register/otp', 'Auth\AuthController@getRegisterOtp')->name('user.register_otp');
+
+Route::get('/profile', 'Auth\AuthController@getProfile')->name('user.profile');
