@@ -20,6 +20,14 @@
 				top: auto;
 				bottom: 0;
 			}
+			@media (max-width: 767.98px) {
+				#header, footer {
+					position: relative;
+				}
+				.fullpage-wrapper {
+				    padding: 30px 0;
+				}
+			}
 		</style>
 		
 		<script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>

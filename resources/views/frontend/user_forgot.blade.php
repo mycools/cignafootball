@@ -11,7 +11,7 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<h1 class="h-title">เข้าสู่ระบบ</h1>
+			<h1 class="h-title">ลืมรหัสผ่าน</h1>
 			<div class="row mt-20 mb-15">
 				<div class="col-12 col-sm-10 col-md-8 col-lg-7 m-auto">
 					<div class="box-wrapper">
@@ -21,30 +21,16 @@
 
 								<form>
 									<div class="form-group row">
-										<label class="col-md-3 text-md-right pr-0 col-form-label">Username</label>
+										<label class="col-md-3 text-md-right pr-0 col-form-label">E-mail</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" value="">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
-										<div class="col-md-9">
-											<input type="password" class="form-control" value="">
+											<input type="email" class="form-control" value="">
 										</div>
 									</div>
 								</form>
 								<div class="row">
 									<div class="col-md-9 ml-auto">
-										<div class="text-center mt-20 mt-sm-30 row">
-											<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdr-5">
-												<a class="btn btn-blue mb-15" href="{{ url('/register') }}">ลงทะเบียน</a>
-											</div>
-											<div class="col-12 col-sm-6 pl-xs-15 pr-xs-15 pdl-5">
-												<a class="btn btn-green mb-15" href="{{ url('/profile') }}">เข้าสู่ระบบ</a>
-											</div>
-										</div>
-										<div class="text-center">
-											<a class="btn-text" href="{{ url('/forgot') }}">ลืมรหัสผ่าน <i class="fa fa-angle-right"></i></a>
+										<div class="text-center mt-15">
+											<a class="btn btn-green" href="#">ยืนยัน</a>
 										</div>
 									</div>
 								</div>

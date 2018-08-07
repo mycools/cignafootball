@@ -17528,12 +17528,24 @@ body {
   font-family: 'db_helvethaica_x35_thin';
 }
 
+a,
+a:hover,
+a:focus {
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 .btn {
+  font-size: 24px;
+  font-family: 'db_helvethaica_x65_med';
+  min-width: 150px;
   border-radius: 0px;
   border: 0;
   background: #fff;
   color: #061445;
-  padding: 10px 15px;
+  padding: 5px 15px;
 }
 
 .btn:hover,
@@ -17554,6 +17566,16 @@ body {
 .btn.btn-green:hover,
 .btn.btn-green:focus {
   background: #006732;
+}
+
+.btn.btn-blue {
+  color: #fff;
+  background: #0c3f88;
+}
+
+.btn.btn-blue:hover,
+.btn.btn-blue:focus {
+  background: #061445;
 }
 
 .btn.btn-orange {
@@ -17599,10 +17621,6 @@ Header
 
 .navbar .navbar-brand img {
   max-height: 45px;
-}
-
-.navbar .nav-item {
-  cursor: pointer;
 }
 
 .navbar .nav-item .nav-link {
@@ -17700,6 +17718,48 @@ Register / Signin
 
 .fp-auto-height.fp-section {
   min-height: 100vh;
+}
+
+.h-title {
+  font-size: 40px;
+  color: #efd230;
+  font-family: 'db_helvethaica_x75_bd';
+  text-align: center;
+  margin: 0;
+}
+
+.col-form-label {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.form-control {
+  border: 0;
+  border-radius: 0;
+  height: calc(2.5rem);
+}
+
+.register-page .box-wrapper {
+  padding: 45px 15px;
+  border: 1px solid #6a6c6d;
+  background: #272727;
+  color: #fff;
+}
+
+.register-page .btn {
+  min-width: 100%;
+}
+
+.register-page .btn-text {
+  color: #b7b7b7;
+  font-family: 'db_helvethaica_x45_li';
+  border-bottom: 1px solid #b7b7b7;
+}
+
+.register-page .btn-text:hover {
+  text-decoration: none;
+  color: #0c3f88;
+  border-color: #0c3f88;
 }
 
 /***********************************************
@@ -17844,11 +17904,27 @@ Responsive
   .navbar .navbar-nav.w-25 {
     width: 100% !important;
   }
+
+  .fp-auto-height.fp-section {
+    min-height: calc(100vh - 180px);
+  }
 }
 
 @media (max-width: 575.98px) {
   .navbar .navbar-brand {
     padding-left: 30px;
+  }
+
+  .h-title {
+    font-size: 34px;
+  }
+
+  .register-page .box-wrapper {
+    padding: 30px 15px;
+  }
+
+  .register-page .btn {
+    min-width: 100%;
   }
 }
 

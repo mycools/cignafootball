@@ -48,12 +48,12 @@
 							</li>
 						</ul>
 						<ul class="nav navbar-nav ml-auto w-25 justify-content-end">
-							<!-- <li class="nav-item pdl-5">
+							<li class="nav-item pdl-5">
 								<a class="nav-link pr-0 special {{ Request::is('signin') ? 'active' : '' }}" href="{{ url('signin') }}"><img src="{{ url('images/icon/icon_invite_menu.png') }}" /> Sign in</a>
-							</li> -->
+							</li>
 
 							<!-- if signin -->
-							<li class="nav-item">
+							<!-- <li class="nav-item">
 								<a class="nav-link special {{ Request::is('invite') ? 'active' : '' }}" href="{{ url('invite') }}"><span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" /></a>
 							</li>
 							<li class="nav-item dropdown d-none d-md-block">
@@ -68,7 +68,7 @@
 							</li>
 							<li class="nav-item d-block d-md-none last-child">
 								<a class="nav-link special color-blue" href="{{ url('signout') }}"><span class="d-flex d-md-none">Sign Out</span></a>
-							</li>
+							</li> -->
 							<!-- end if signin -->
 
 				          </ul>
