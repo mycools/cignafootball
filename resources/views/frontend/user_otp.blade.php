@@ -32,11 +32,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="text-center mt-10 mt-sm-15">
-											<a class="btn btn-green mb-15" href="#">ยืนยันรหัส</a>
+											<a class="btn btn-green mb-15" href="{{ url('/register/detail') }}">ยืนยันรหัส</a>
 											<a class="btn btn-orange" href="#">ส่งรหัสอีกครั้ง</a>
 										</div>
 										<div class="text-center mt-15">
-											<a class="btn-text" href="{{ url('/register/detail') }}"><i class="fa fa-angle-left"></i> ย้อนกลับ</a>
+											<a class="btn-text" href="{{ url('/register') }}"><i class="fa fa-angle-left"></i> ย้อนกลับ</a>
 										</div>
 									</div>
 								</div>

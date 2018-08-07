@@ -20,7 +20,7 @@ class MemberController extends Controller
     {
         $data = array();
 
-        return View('frontend/user_register_1')
+        return View('frontend/user_register')
             ->with($data);
     }
 
@@ -28,7 +28,7 @@ class MemberController extends Controller
     {
         $data = array();
 
-        return View('frontend/user_register_2')
+        return View('frontend/user_register_1')
             ->with($data);
     }
 

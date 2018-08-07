@@ -42,7 +42,7 @@
 								<div class="row">
 									<div class="col-md-9 ml-auto">
 										<div class="text-center mt-20 mt-sm-45">
-											<a class="btn btn-green" href="{{ url('/register/detail') }}">สมัครเข้าร่วมกิจกรรม</a>
+											<a class="btn btn-green" href="#">สมัครเข้าร่วมกิจกรรม</a>
 										</div>
 									</div>
 								</div>

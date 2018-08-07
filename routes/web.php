@@ -26,10 +26,9 @@ Route::post('signin', 'Auth\AuthController@postLogin');
 Route::get('/signout', 'Auth\AuthController@getLogout')->name('signout');
 
 
-Route::get('/forgot', 'Auth\AuthController@getForgot')->name('user.forgot');
-Route::get('/register', 'Auth\AuthController@getRegister')->name('user.register');
-
-Route::get('/register/detail', 'Auth\AuthController@getRegisterDetail')->name('user.register_detail');
-Route::get('/register/otp', 'Auth\AuthController@getRegisterOtp')->name('user.register_otp');
+Route::get('/forgot', 'MemberController@getForgot')->name('user.forgot');
+Route::get('/register', 'MemberController@getRegister')->name('user.register');
+Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
+Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
