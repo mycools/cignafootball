@@ -9,6 +9,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/scss/font-awesome';
 @import '~animate.css/animate.css';
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 
 @import '~slick-carousel/slick/slick';
 @import '~slick-carousel/slick/slick-theme';
@@ -16,6 +17,7 @@
 /***********************************************
 Variable
 ***********************************************/
+$color-white: #fff;
 $color-black: #221f1f;
 $color-darkgray: #272727;
 $color-gray: #383838;
@@ -27,6 +29,7 @@ $color-lightorange: #f3943d;
 $color-yellow: #efd230;
 $color-lightyellow: #fff799;
 
+.color-white { color: $color-white !important; }
 .color-black { color: $color-black !important; }
 .color-darkgray { color: $color-darkgray !important; }
 .color-gray { color: $color-gray !important; }
@@ -218,10 +221,11 @@ footer {
 Register / Signin
 ***********************************************/
 .fullpage-wrapper {
-	padding: 70px 0;
-	&.register-page {
-		background: url(/images/bg_register.jpg) no-repeat top center / cover;
-	}
+
+}
+.register-page {
+	padding: 80px 0;
+	background: url(/images/bg_register.jpg) no-repeat top center / cover;
 }
 .fp-auto-height.fp-section {
 	min-height: 100vh;
@@ -241,6 +245,50 @@ Register / Signin
 	border: 0;
 	border-radius: 0;
 	height: calc(2.5rem);
+	font-size: 20px;
+	&.gray,
+	&.disabled {
+		background: #d7d7d7;
+	}
+	&:placeholder,
+	&:-ms-input-placeholder,
+	&:-ms-input-placeholder,
+	&:-webkit-input-placeholder,
+	&:-moz-placeholder { 
+	  color: #939598;
+	}
+}
+.input-group {
+	&.date {
+		.form-control {
+			position: relative;
+		}
+		&:before {
+			background: #00487a;
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 40px;
+			height: 100%;
+			z-index: 10;
+		}
+		&:after {
+			content: "";
+			width: 14px;
+			height: 14px;
+			position: absolute;
+			right: 13px;
+			top: 50%;
+			margin: -10px 0 0 0;
+			-webkit-transform: rotate(45deg);
+			border-left: none;
+			border-top: none;
+			border-right: 2px #fff solid;
+			border-bottom: 2px #fff solid;
+			z-index: 10;
+		}
+	}
 }
 .register-page {
 	.box-wrapper {
@@ -263,7 +311,57 @@ Register / Signin
 		}
 	}
 }
-
+.plain-select {
+	position: relative;
+	display: block;
+	width: 100%;
+	border-radius: 0px;
+	overflow: hidden;
+	border: 0;
+	&:before {
+		background: #00487a;
+		content: "";
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 40px;
+		height: 100%;
+	}
+	&:after {
+		content: "";
+		width: 14px;
+		height: 14px;
+		position: absolute;
+		right: 13px;
+		top: 50%;
+		margin: -10px 0 0 0;
+		-webkit-transform: rotate(45deg);
+		border-left: none;
+		border-top: none;
+		border-right: 2px #fff solid;
+		border-bottom: 2px #fff solid;
+		z-index: 2;
+	}
+	select {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		border: medium none;
+		border-radius: 0;
+		background: #fff;
+		color: #939598;
+		display: block;
+		height: 40px;
+		line-height: normal;
+		margin: 0;
+		padding: 6px 20px 6px 8px;
+		width: 100%;
+		cursor: pointer;
+	}
+}
+.datepicker-days {
+	padding: 5px;
+}
 
 
 /***********************************************
@@ -405,6 +503,9 @@ Responsive
 	}
 	.h-title {
 		font-size: 34px;
+	}
+	.col-form-label {
+		font-size: 20px;
 	}
 	.register-page {
 		.box-wrapper {
