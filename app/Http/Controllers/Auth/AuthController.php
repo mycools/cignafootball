@@ -80,5 +80,6 @@ class AuthController extends Controller
         $url = '/profile';
         return $url;
     }
+
     
 }

@@ -32,4 +32,4 @@ Route::get('/register', 'Auth\AuthController@getRegister')->name('user.register'
 Route::get('/register/detail', 'Auth\AuthController@getRegisterDetail')->name('user.register_detail');
 Route::get('/register/otp', 'Auth\AuthController@getRegisterOtp')->name('user.register_otp');
 
-Route::get('/profile', 'Auth\AuthController@getProfile')->name('user.profile');
+Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
