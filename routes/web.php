@@ -23,13 +23,15 @@ Route::get('signin', function () {
 	return view('frontend/user_login');
 })->name('signin');
 Route::post('signin', 'Auth\AuthController@postLogin');
+
 Route::get('/signout', 'Auth\AuthController@getLogout')->name('signout');
 
-
 Route::get('/forgot', 'MemberController@getForgot')->name('user.forgot');
-Route::get('/forgot/password', 'MemberController@getForgotChange')->name('user.forgot_change');
+Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user.change_password');
+	Route::post('/forgot_password', 'MemberController@postForgotPassword');
 Route::get('/register', 'MemberController@getRegister')->name('user.register');
 Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
 Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
+

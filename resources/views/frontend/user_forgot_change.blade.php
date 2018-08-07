@@ -16,14 +16,46 @@
 				<div class="col-12 col-sm-12 m-auto">
 					<div class="box-wrapper">
 
-						<form action="{{ url('/forgot') }}" method="post">
+						<form action="{{ url('/forgot_password') }}" method="post">
 
 							{{ csrf_field() }}
+
+							@if(Session::has('flash_messages'))
+								@php
+									$flash_messages = Session::get('flash_messages');
+								@endphp
+								<div class="alert alert-{{$flash_messages['status']}}">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									  <span aria-hidden="true">×</span>
+									</button>
+									{{$flash_messages['messages']}}
+								</div>
+							@elseif ($errors->any())
+								<div class="alert alert-danger">
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">×</span>
+								  </button>
+								  <ul style="padding-left: 20px;">
+								    @foreach ($errors->all() as $error)
+								      <li>
+								        {{ $error }}
+								      </li>
+								    @endforeach
+								  </ul>
+								</div>
+							@endif
+
 							<div class="col-12 col-lg-10 col-xl-8 m-auto">
+								<div class="form-group row">
+									<label class="col-md-3 text-md-right pr-0 col-form-label">E-mail</label>
+									<div class="col-md-9">
+										<input type="email" class="form-control" name="email" value="">
+									</div>
+								</div>
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
 									<div class="col-md-9">
-										<input type="password" class="form-control" name="username" value="">
+										<input type="password" class="form-control" name="current_password" value="">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -35,7 +67,7 @@
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">Retype New Password</label>
 									<div class="col-md-9">
-										<input type="password" class="form-control" name="password" value="">
+										<input type="password" class="form-control" name="password_confirmation" value="">
 									</div>
 								</div>
 							</div>
