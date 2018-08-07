@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
+Route::get('match', 'PageController@getMatchList')->name('match');
+Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
 
 Route::get('signin', function () {
 	return view('frontend/user_login');
