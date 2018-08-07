@@ -45,7 +45,6 @@
 													<button type="submit" class="btn btn-green mb-15">
 														เข้าสู่ระบบ
 													</button>
-													<!-- <a class="btn btn-green mb-15" href="{{ url('/profile') }}">เข้าสู่ระบบ</a> -->
 												</div>
 											</div>
 											<div class="text-center">
