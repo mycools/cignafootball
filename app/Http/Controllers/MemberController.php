@@ -66,4 +66,12 @@ class MemberController extends Controller
             ->with($data);
     }
 
+    public function getForgotChange()
+    {
+        $data = array();
+
+        return View('frontend/user_forgot_change')
+            ->with($data);
+    }
+
 }

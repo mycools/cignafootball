@@ -61,11 +61,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row justify-content-md-center mt-30">
-							<div class="col-12 col-md-4 m-auto">
-								<a class="btn btn-border-gray gray pt-10 pb-10" href="{{ url('/forgot') }}">เปลี่ยน Password</a>
-							</div>
-						</div>
 
 					</div>
 				</div>
@@ -133,6 +128,48 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mb-45">
+				<div class="col-12 mb-sm-15">
+					<div class="box-wrapper">
+
+						<form action="{{ url('/forgot') }}" method="post">
+
+							{{ csrf_field() }}
+							<div class="col-12 col-lg-10 col-xl-8 m-auto">
+								<div class="form-group row">
+									<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
+									<div class="col-md-9">
+										<input type="password" class="form-control" name="username" value="">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 text-md-right pr-0 col-form-label">New Password</label>
+									<div class="col-md-9">
+										<input type="password" class="form-control" name="password" value="">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 text-md-right pr-0 col-form-label">Retype New Password</label>
+									<div class="col-md-9">
+										<input type="password" class="form-control" name="password" value="">
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-10 col-xl-8 m-auto">
+								<div class="col-12 col-md-6 ml-auto p-0">
+									<button type="submit" class="btn btn-border gray pt-10 pb-10 mt-sm-30">
+										เปลี่ยน Password
+									</button>
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
 				</div>
 			</div>
 
