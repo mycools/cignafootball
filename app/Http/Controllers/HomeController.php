@@ -36,4 +36,5 @@ class HomeController extends Controller
         // dd($otp);
         return view('home');
     }
+
 }
