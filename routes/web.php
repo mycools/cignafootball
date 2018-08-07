@@ -31,7 +31,7 @@ Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user
 	Route::post('/forgot_password', 'MemberController@postForgotPassword');
 Route::get('/register', 'MemberController@getRegister')->name('user.register');
 Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
+  Route::post('/register/otp', 'MemberController@getRegisterOtp');
 Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
-

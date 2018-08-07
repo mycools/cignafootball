@@ -37,7 +37,7 @@ class MemberController extends Controller
     {
         $id   = Auth::user()->id;
         $user = User::find($id);
-        
+
         $this->_data['result']    = $user;
         $this->_data['team']     = Teams::where('id', $user->team_id)->first();
 
@@ -61,12 +61,19 @@ class MemberController extends Controller
             ->with($data);
     }
 
-    public function getRegisterOtp()
+    public function getRegisterOtp(Request $request)
     {
-        $data = array();
+      if($request->isMethod('post')) {
+        $rules = [
+          "otp" => "required"
+        ];
+        $validated = Validator::make($request->all(), $rules);
+      } else {
+          $data = array();
 
-        return View('frontend/user_otp')
-            ->with($data);
+          return View('frontend/user_otp')
+              ->with($data);
+      }
     }
 
     public function getForgot()
@@ -95,7 +102,7 @@ class MemberController extends Controller
           if($request->isMethod('post')) {
 
             $validator        = $this->_validatorPassword($request->all());
-            
+
             if ($validator->fails()) {
 
                 return redirect()
