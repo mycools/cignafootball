@@ -23,4 +23,14 @@ class Match extends Model implements Transformable
     protected $fillable = [];
     protected $table = "matchs";
 
+    public function TeamA()
+    {
+        return $this->belongsTo('App\Entity\Team', 'team_a', 'id');
+    }
+
+    public function TeamB()
+    {
+        return $this->belongsTo('App\Entity\Team', 'team_b', 'id');
+    }
+
 }

@@ -23,4 +23,19 @@ class Bet extends Model implements Transformable
     protected $fillable = [];
     protected $table = "bets";
 
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function Match()
+    {
+        return $this->belongsTo('App\Entity\Match', 'match_id', 'id');
+    }
+
+    public function Team()
+    {
+        return $this->belongsTo('App\Entity\Team', 'predicted_team', 'id');
+    }
+
 }
