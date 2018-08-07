@@ -1,6 +1,7 @@
 @include('frontend.includes.header')
 <link rel="stylesheet" type="text/css" href="{{ url('/vendors/fullpage-js/dist/jquery.fullpage.css') }}" />
 
+
 		@yield('content')
 
 
@@ -11,7 +12,8 @@
 		</div>
 
 		<style type="text/css">
-			#header, footer {
+			#header,
+			footer {
 				position: fixed;
 				top: 0;
 				width: 100%;
@@ -19,6 +21,12 @@
 			footer {
 				top: auto;
 				bottom: 0;
+			}
+			.register-page.non-fullpage {
+				padding-top: 100px;
+			}
+			.register-page.non-fullpage + .modal + footer {
+				position: relative;
 			}
 			@media (max-width: 767.98px) {
 				#header, footer {
@@ -29,7 +37,6 @@
 				}
 			}
 		</style>
-		
 		<script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
 
 		<script src="{{ url('/vendors/fullpage-js/vendors/jquery.easings.min.js') }}"></script>
@@ -45,7 +52,12 @@
 					navigation: false,
 					responsiveWidth: 768,
 					scrollingSpeed: 1000,
-					scrollOverflow: true
+					scrollOverflow: true,
+					// paddingBottom: 80
+				});
+
+				$('.datepicker').datepicker({
+					autoclose: 'true',
 				});
 				
 			});
