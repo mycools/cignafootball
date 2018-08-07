@@ -23,4 +23,9 @@ class Rank extends Model implements Transformable
     protected $fillable = [];
     protected $table = "ranks";
 
+    public function User()
+    {
+        return $this->belongsTo('App\Entity\User', 'user_id', 'id');
+    }
+
 }

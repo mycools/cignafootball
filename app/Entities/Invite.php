@@ -23,4 +23,14 @@ class Invite extends Model implements Transformable
     protected $fillable = [];
     protected $table = "invites";
 
+    public function Inviter()
+    {
+        return $this->belongsTo('App\Entity\User', 'inviter_id', 'id');
+    }
+
+    public function Invitee()
+    {
+        return $this->belongsTo('App\Entity\User', 'invitee_id', 'id');
+    }
+
 }

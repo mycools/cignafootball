@@ -23,4 +23,9 @@ class PointLog extends Model implements Transformable
     protected $fillable = [];
     protected $table = "pointLogs";
 
+    public function User()
+    {
+        return $this->belongsTo('App\Entity\User', 'user_id', 'id');
+    }
+
 }
