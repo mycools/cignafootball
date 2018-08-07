@@ -31,15 +31,19 @@ class OneTimePassword extends Notification
      */
     public function via($notifiable)
     {
-        return [CorpSMSChannel::class];
+
+        if($this->otp['sendsms']==true){
+            return [CorpSMSChannel::class];
+        }else{
+            return [];
+        }
+
     }
     public function toCorpSMS($notifiable)
     {
-        dd($this->otp);
-        $code = strtoupper(str_random(4));
-        $otp = rand(100000, 999999);
-        $sms = "รหัส OTP คือ {$otp} (REF : $code) ใช้งานได้ที่ http://matchoftheweek.com/";
-        //return CorpSMSMessage::create($sms);
+        $sms = "รหัส OTP คือ ".$this->otp['otp']." (REF : ".$this->otp['refcode'].") ใช้งานได้ที่ http://matchoftheweek.com/";
+        return CorpSMSMessage::create($sms);
+
     }
 
     /**

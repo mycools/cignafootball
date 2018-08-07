@@ -24,9 +24,16 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $otp = UserOtp::getOtp($request);
 
-        $request->user()->notify(new OneTimePassword($otp));
+        //Request OTP
+        // $otp = UserOtp::getOtp($request);
+        // $request->user()->notify(new OneTimePassword($otp));
+        //Check Valid OTP
+        // $otp = UserOtp::checkValidOtp($request,'AYR9','854316');
+        // dd($otp);
+        //Use OTP
+        // $otp = UserOtp::useOtp($request,'AYR9','854316');
+        // dd($otp);
         return view('home');
     }
 }
