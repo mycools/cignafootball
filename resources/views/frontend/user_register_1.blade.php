@@ -11,14 +11,14 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<h1 class="h-title">SIGN IN</h1>
+			<h1 class="h-title">ลงทะเบียน</h1>
 			<div class="row mt-20 mb-15">
-				<div class="col-12 col-sm-10 col-md-8 col-lg-7 m-auto">
+				<div class="col-12 col-sm-10 col-md-10 col-lg-8 m-auto">
 					<div class="box-wrapper">
 
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
-
+								<div class="text-center text-large font-light mb-30">กรุณากำหนดชื่อผู้ใช้และรหัสผ่าน</div>
 								<form>
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Username</label>
@@ -32,14 +32,17 @@
 											<input type="password" class="form-control" value="">
 										</div>
 									</div>
+									<div class="form-group row">
+										<label class="col-md-3 text-md-right pr-0 col-form-label">Re-Password</label>
+										<div class="col-md-9">
+											<input type="password" class="form-control" value="">
+										</div>
+									</div>
 								</form>
 								<div class="row">
 									<div class="col-md-9 ml-auto">
 										<div class="text-center mt-20 mt-sm-45">
-												<a class="btn btn-green" href="#">เข้าสู่ระบบ</a>
-										</div>
-										<div class="text-center mt-15">
-											<a class="btn-text" href="#">ลืมบัญชี และรหัสผ่าน <i class="fa fa-angle-right"></i></a>
+											<a class="btn btn-green" href="{{ url('/register/detail') }}">สมัครเข้าร่วมกิจกรรม</a>
 										</div>
 									</div>
 								</div>

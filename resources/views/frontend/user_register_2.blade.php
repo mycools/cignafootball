@@ -11,9 +11,9 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<h1 class="h-title">SIGN IN</h1>
+			<h1 class="h-title">ลงทะเบียน</h1>
 			<div class="row mt-20 mb-15">
-				<div class="col-12 col-sm-10 col-md-8 col-lg-7 m-auto">
+				<div class="col-12 col-sm-10 col-md-10 col-lg-8 m-auto">
 					<div class="box-wrapper">
 
 						<div class="row">

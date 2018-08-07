@@ -241,6 +241,18 @@ Register / Signin
 	border: 0;
 	border-radius: 0;
 	height: calc(2.5rem);
+	font-size: 20px;
+	&.gray,
+	&.disabled {
+		background: #d7d7d7;
+	}
+	&:placeholder,
+	&:-ms-input-placeholder,
+	&:-ms-input-placeholder,
+	&:-webkit-input-placeholder,
+	&:-moz-placeholder { 
+	  color: #939598;
+	}
 }
 .register-page {
 	.box-wrapper {
@@ -405,6 +417,9 @@ Responsive
 	}
 	.h-title {
 		font-size: 34px;
+	}
+	.col-form-label {
+		font-size: 20px;
 	}
 	.register-page {
 		.box-wrapper {
