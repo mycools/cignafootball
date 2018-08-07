@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'db_helvethaica_x85_blk';
+    src: url('db_helvethaica_x_blk_v3.2-webfont-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_blk_v3.2-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'db_helvethaica_x75_bd';
+    src: url('db_helvethaica_x_bd_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_bd_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_bd_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_bd_v3.2-webfont.woff') format('woff'),
+         url('db_helvethaica_x_bd_v3.2-webfont.ttf') format('truetype'),
+         url('db_helvethaica_x_bd_v3.2-webfont.svg#db_helvethaica_x75_bd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'db_helvethaica_x65_med';
+    src: url('db_helvethaica_x_med_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_med_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_med_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_med_v3.2-webfont.woff') format('woff'),
+         url('db_helvethaica_x_med_v3.2-webfont.ttf') format('truetype'),
+         url('db_helvethaica_x_med_v3.2-webfont.svg#db_helvethaica_x65_med') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'db_helvethaica_x45_li';
+    src: url('db_helvethaica_x_li_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_li_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_li_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_li_v3.2-webfont.woff') format('woff'),
+         url('db_helvethaica_x_li_v3.2-webfont.ttf') format('truetype'),
+         url('db_helvethaica_x_li_v3.2-webfont.svg#db_helvethaica_x45_li') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'db_helvethaica_x35_thin';
+    src: url('db_helvethaica_x_thin_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_thin_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_thin_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_thin_v3.2-webfont.woff') format('woff'),
+         url('db_helvethaica_x_thin_v3.2-webfont.ttf') format('truetype'),
+         url('db_helvethaica_x_thin_v3.2-webfont.svg#db_helvethaica_x35_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'db_helvethaica_x55_regular';
+    src: url('db_helvethaica_x_v3.2-webfont.eot');
+    src: url('db_helvethaica_x_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('db_helvethaica_x_v3.2-webfont.woff2') format('woff2'),
+         url('db_helvethaica_x_v3.2-webfont.woff') format('woff'),
+         url('db_helvethaica_x_v3.2-webfont.ttf') format('truetype'),
+         url('db_helvethaica_x_v3.2-webfont.svg#db_helvethaica_x55_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

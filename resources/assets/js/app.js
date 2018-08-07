@@ -6,6 +6,11 @@
  */
 
 require('./bootstrap');
+require('./javascript');
+require('../../../node_modules/bootstrap/dist/js/bootstrap.min.js');
+require('../../../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
+
+require('../../../node_modules/slick-carousel/slick/slick.min.js');
 
 window.Vue = require('vue');
 
