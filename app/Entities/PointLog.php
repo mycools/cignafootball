@@ -21,5 +21,6 @@ class PointLog extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+    protected $table = "pointLogs";
 
 }

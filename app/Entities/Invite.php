@@ -21,5 +21,6 @@ class Invite extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+    protected $table = "invites";
 
 }

@@ -21,5 +21,6 @@ class Team extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+    protected $table = "teams";
 
 }

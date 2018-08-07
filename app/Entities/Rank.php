@@ -21,5 +21,6 @@ class Rank extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+    protected $table = "ranks";
 
 }
