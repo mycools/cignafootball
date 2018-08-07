@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class MemberController.
@@ -15,7 +14,25 @@ use Prettus\Validator\Exceptions\ValidatorException;
  */
 class MemberController extends Controller
 {
-    
+    private $_data = [];
+
+    public function getProfile(Request $request)
+    {
+        // $data = array();
+
+        // return View('frontend/user_profile')
+        //     ->with($data);
+
+        $id   = Auth::user()->id;
+        $user = User::find($id);
+
+        
+        $this->_data['result']    = $user;
+
+        return view('frontend/user_profile')->with($this->_data);
+
+    }
+
     public function getRegister()
     {
         $data = array();
@@ -48,11 +65,4 @@ class MemberController extends Controller
             ->with($data);
     }
 
-    public function getProfile()
-    {
-        $data = array();
-
-        return View('frontend/user_profile')
-            ->with($data);
-    }
 }
