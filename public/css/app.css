@@ -17889,6 +17889,10 @@ Variable
   color: #383838 !important;
 }
 
+.color-midgray {
+  color: #919191 !important;
+}
+
 .color-blue {
   color: #0c3f88 !important;
 }
@@ -17905,6 +17909,10 @@ Variable
   color: #f26222 !important;
 }
 
+.color-darkorange {
+  color: #d5561e !important;
+}
+
 .color-lightorange {
   color: #f3943d !important;
 }
@@ -17915,6 +17923,70 @@ Variable
 
 .color-lightyellow {
   color: #fff799 !important;
+}
+
+.color-green {
+  color: #00b557 !important;
+}
+
+.bg-white {
+  background: #fff !important;
+}
+
+.bg-black {
+  background: #221f1f !important;
+}
+
+.bg-darkgray {
+  background: #272727 !important;
+}
+
+.bg-gray {
+  background: #383838 !important;
+}
+
+.bg-midgray {
+  background: #919191 !important;
+}
+
+.bg-lightgray {
+  background: #d7d7d7 !important;
+}
+
+.bg-blue {
+  background: #0c3f88 !important;
+}
+
+.bg-red {
+  background: #ff3f35 !important;
+}
+
+.bg-darkred {
+  background: #bb2525 !important;
+}
+
+.bg-orange {
+  background: #f26222 !important;
+}
+
+.bg-darkorange {
+  background: #d5561e !important;
+}
+
+.bg-lightorange {
+  background: #f3943d !important;
+}
+
+.bg-yellow {
+  background: #efd230 !important;
+}
+
+.bg-lightyellow {
+  background: #fff799 !important;
+}
+
+.bg-green {
+  background: #00b557 !important;
 }
 
 /***********************************************
@@ -18194,6 +18266,13 @@ Register / Signin
   color: #939598;
 }
 
+.form-control-plaintext {
+  background: #a1a1a1;
+  border: 1px solid #898989;
+  color: #252525;
+  font-size: 20px;
+}
+
 .input-group.date .form-control {
   position: relative;
 }
@@ -18302,6 +18381,12 @@ Register / Signin
 
 .datepicker-days {
   padding: 5px;
+}
+
+.box {
+  padding: 5px 15px;
+  width: 100%;
+  color: #fff;
 }
 
 /***********************************************

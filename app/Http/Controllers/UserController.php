@@ -51,5 +51,13 @@ class UserController extends Controller
 			->with($data);
 	}
 
+	public function getProfile()
+	{
+		$data = array();
+
+		return View::make('frontend/user_profile')
+			->with($data);
+	}
+
 }
 

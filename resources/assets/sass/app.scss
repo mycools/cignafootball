@@ -21,25 +21,48 @@ $color-white: #fff;
 $color-black: #221f1f;
 $color-darkgray: #272727;
 $color-gray: #383838;
+$color-midgray: #919191;
+$color-lightgray: #d7d7d7;
 $color-blue: #0c3f88;
 $color-red: #ff3f35;
 $color-darkred: #bb2525;
 $color-orange: #f26222;
+$color-darkorange: #d5561e;
 $color-lightorange: #f3943d;
 $color-yellow: #efd230;
 $color-lightyellow: #fff799;
+$color-green: #00b557;
 
 .color-white { color: $color-white !important; }
 .color-black { color: $color-black !important; }
 .color-darkgray { color: $color-darkgray !important; }
 .color-gray { color: $color-gray !important; }
+.color-midgray { color: $color-midgray !important; }
 .color-blue { color: $color-blue !important; }
 .color-red { color: $color-red !important; }
 .color-darkred { color: $color-darkred !important; }
 .color-orange { color: $color-orange !important; }
+.color-darkorange { color: $color-darkorange !important; }
 .color-lightorange { color: $color-lightorange !important; }
 .color-yellow { color: $color-yellow !important; }
 .color-lightyellow { color: $color-lightyellow !important; }
+.color-green { color: $color-green !important; }
+
+.bg-white { background: $color-white !important; }
+.bg-black { background: $color-black !important; }
+.bg-darkgray { background: $color-darkgray !important; }
+.bg-gray { background: $color-gray !important; }
+.bg-midgray { background: $color-midgray !important; }
+.bg-lightgray { background: $color-lightgray !important; }
+.bg-blue { background: $color-blue !important; }
+.bg-red { background: $color-red !important; }
+.bg-darkred { background: $color-darkred !important; }
+.bg-orange { background: $color-orange !important; }
+.bg-darkorange { background: $color-darkorange !important; }
+.bg-lightorange { background: $color-lightorange !important; }
+.bg-yellow { background: $color-yellow !important; }
+.bg-lightyellow { background: $color-lightyellow !important; }
+.bg-green { background: $color-green !important; }
 
 /***********************************************
 Utility
@@ -258,6 +281,12 @@ Register / Signin
 	  color: #939598;
 	}
 }
+.form-control-plaintext {
+	background: #a1a1a1;
+	border: 1px solid #898989;
+	color: #252525;
+	font-size: 20px;
+}
 .input-group {
 	&.date {
 		.form-control {
@@ -362,7 +391,11 @@ Register / Signin
 .datepicker-days {
 	padding: 5px;
 }
-
+.box {
+	padding: 5px 15px;
+	width: 100%;
+	color: #fff;
+}
 
 /***********************************************
 Page

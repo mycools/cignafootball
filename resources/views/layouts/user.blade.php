@@ -35,6 +35,10 @@
 				.fullpage-wrapper {
 				    padding: 30px 0;
 				}
+				.register-page.non-fullpage {
+					padding-top: 60px;
+					padding-bottom: 60px;
+				}
 			}
 		</style>
 		<script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
