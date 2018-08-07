@@ -40,6 +40,12 @@
 					padding-bottom: 60px;
 				}
 			}
+			@media (max-width: 575.98px) {
+				.register-page.non-fullpage {
+					padding-top: 30px;
+					padding-bottom: 30px;
+				}
+			}
 		</style>
 		<script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
 

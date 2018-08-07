@@ -88,6 +88,9 @@ body {
 .font-light { font-family: 'db_helvethaica_x45_li'; }
 .font-lighter { font-family: 'db_helvethaica_x35_thin'; }
 
+.bdl-1 { border-left: 1px solid #fff; }
+.bdr-1 { border-right: 1px solid #fff; }
+
 a,
 a:hover,
 a:focus {
@@ -97,6 +100,7 @@ a:focus {
 }
 .btn {
 	font-size: 24px;
+	line-height: 24px;
 	font-family: 'db_helvethaica_x65_med';
 	min-width: 150px;
 	border-radius: 0px;
@@ -141,7 +145,28 @@ a:focus {
 		&:hover,
 		&:focus {
 			background: #fff;
-			color: transparent;
+		}
+		&.green {
+			&:hover,
+			&:focus {
+				color: $color-green;
+			}
+		}
+		&.gray {
+			&:hover,
+			&:focus {
+				color: $color-midgray;
+			}
+		}
+	}
+	&.btn-border-gray {
+		border: 2px solid $color-darkgray;
+		color: $color-darkgray;
+		background: transparent;
+		&:hover,
+		&:focus {
+			background: $color-darkgray;
+			color: #fff;
 		}
 	}
 }
@@ -392,9 +417,13 @@ Register / Signin
 	padding: 5px;
 }
 .box {
-	padding: 5px 15px;
+	padding: 10px 15px;
 	width: 100%;
 	color: #fff;
+	line-height: 1.2;
+	.text-large {
+		font-size: 200%;
+	}
 }
 
 /***********************************************
@@ -434,6 +463,11 @@ Responsive
 					height: 35px;
 				}
 			}
+		}
+	}
+	.box {
+		.text-large {
+			font-size: 150%;
 		}
 	}
 
@@ -523,6 +557,14 @@ Responsive
 	.fp-auto-height.fp-section {
 		min-height: calc(100vh - 180px);
 	}
+	.box {
+		img {
+			max-width: 50px;
+		}
+		.text-large {
+			font-size: 180%;
+		}
+	}
 
 
 }
@@ -553,7 +595,12 @@ Responsive
 
 
 @media (max-width: 320px) {
-
+	.col-form-label {
+		font-size: 18px;
+	}
+	.box {
+		font-size: 16px;
+	}
 }
 
 

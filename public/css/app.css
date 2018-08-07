@@ -18044,6 +18044,14 @@ body {
   font-family: 'db_helvethaica_x35_thin';
 }
 
+.bdl-1 {
+  border-left: 1px solid #fff;
+}
+
+.bdr-1 {
+  border-right: 1px solid #fff;
+}
+
 a,
 a:hover,
 a:focus {
@@ -18055,6 +18063,7 @@ a:focus {
 
 .btn {
   font-size: 24px;
+  line-height: 24px;
   font-family: 'db_helvethaica_x65_med';
   min-width: 150px;
   border-radius: 0px;
@@ -18113,7 +18122,28 @@ a:focus {
 .btn.btn-border:hover,
 .btn.btn-border:focus {
   background: #fff;
-  color: transparent;
+}
+
+.btn.btn-border.green:hover,
+.btn.btn-border.green:focus {
+  color: #00b557;
+}
+
+.btn.btn-border.gray:hover,
+.btn.btn-border.gray:focus {
+  color: #919191;
+}
+
+.btn.btn-border-gray {
+  border: 2px solid #272727;
+  color: #272727;
+  background: transparent;
+}
+
+.btn.btn-border-gray:hover,
+.btn.btn-border-gray:focus {
+  background: #272727;
+  color: #fff;
 }
 
 /***********************************************
@@ -18384,9 +18414,14 @@ Register / Signin
 }
 
 .box {
-  padding: 5px 15px;
+  padding: 10px 15px;
   width: 100%;
   color: #fff;
+  line-height: 1.2;
+}
+
+.box .text-large {
+  font-size: 200%;
 }
 
 /***********************************************
@@ -18424,6 +18459,10 @@ Responsive
 
   .navbar .nav-item .nav-link img {
     height: 35px;
+  }
+
+  .box .text-large {
+    font-size: 150%;
   }
 }
 
@@ -18535,6 +18574,14 @@ Responsive
   .fp-auto-height.fp-section {
     min-height: calc(100vh - 180px);
   }
+
+  .box img {
+    max-width: 50px;
+  }
+
+  .box .text-large {
+    font-size: 180%;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -18556,6 +18603,16 @@ Responsive
 
   .register-page .btn {
     min-width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .col-form-label {
+    font-size: 18px;
+  }
+
+  .box {
+    font-size: 16px;
   }
 }
 
