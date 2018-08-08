@@ -42,7 +42,7 @@
 				</div>
 			</div>
 
-			<div class="row justify-content-center mt-45 mt-sm-30 pb-45 pb-sm-15">
+			<div class="row justify-content-center mt-45 mt-sm-30 pb-45 pb-sm-30">
 				<div class="col-12 mb-30 mb-sm-15 p-sm-0 d-none d-sm-block">
 					<div class="box-bg-img">
 						<div class="content color-white">
@@ -63,6 +63,22 @@
 
 		</div>
 	</div>
+
+	<div class="home-ranking">
+		<div class="btn btn-blue open-list">
+			<img src="{{ url('images/icon/icon_trophy.png') }}" />
+		</div>
+		<div class="ranking-head">
+			USER TOP 10 RANKING
+		</div>
+		<div class="ranking-list">
+			@for ($i = 1; $i < 11; $i++)
+			<div class="row-item">
+				<div class="number">{{ $i }}</div>
+				Helter Bbbbbbb
+			</div>
+			@endfor
+		</div>
 
 </div>
 @endsection

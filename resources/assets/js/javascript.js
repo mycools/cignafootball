@@ -18,5 +18,9 @@ $(document).ready(function() {
 		]
 	});
 
+	$('.home-ranking .open-list').on('click', function (e) {
+		$(this).parent('.home-ranking').toggleClass('active');
+	});
+
  
 });
