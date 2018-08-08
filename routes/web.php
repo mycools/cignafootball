@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/', 'PageController@index')->name('home');
 Route::get('home', 'PageController@index')->name('home');
-Route::get('ranking', 'PageController@getRanking')->name('ranking');
+Route::get('ranking', 'RanksController@index')->name('ranking');
 Route::get('match', 'PageController@getMatchList')->name('match');
 Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
 

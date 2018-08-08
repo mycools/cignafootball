@@ -11,7 +11,7 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<h1 class="h-title mt-30 mb-15 mb-xs-0 text-left">USER RANKING</h1>
+			<h1 class="h-title mt-sm-30 mb-15 mb-xs-0 text-left">USER RANKING</h1>
 
 			<div class="row justify-content-center mb-45 mb-sm-30">
 				<div class="col-12 col-md-8 mr-auto">
@@ -25,18 +25,29 @@
 						<div class="col-2 p-0">สิทธิ์จับฉลาก</div>
 					</div>
 					<div class="ranking-list">
-						@for ($i = 1; $i < 101; $i++)
-						<div class="row-item row ml-0 mr-0">
-							<div class="number">{{ $i }}</div>
-							
-							<div class="col-4 p-0">ชื่อ นามสกุล</div>
-							<div class="col-2 text-center p-0">10</div>
-							<div class="col-1 text-center p-0">5</div>
-							<div class="col-1 text-center p-0">5</div>
-							<div class="col-2 text-center p-0">30</div>
-							<div class="col-2 text-center p-0">999</div>
-						</div>
-						@endfor
+						@if (isset($result))
+	                        @php
+	                          $i=1;
+	                        @endphp
+                        	@foreach ($result as $row)
+							<div class="row-item row ml-0 mr-0">
+								<div class="number">{{ $i }}</div>
+								
+								<div class="col-4 p-0">
+									{{ ($row->getUser ? $row->getUser->first_name : '' ) }} 
+									{{ ($row->getUser ? $row->getUser->last_name : '' ) }}
+								</div>
+								<div class="col-2 text-center p-0">{{ ($row ? $row->predict_count : '' ) }}</div>
+								<div class="col-1 text-center p-0">{{ ($row ? $row->win_count : '' ) }}</div>
+								<div class="col-1 text-center p-0">{{ ($row ? $row->lose_count : '' ) }}</div>
+								<div class="col-2 text-center p-0">{{ ($row ? $row->invitee_count : '' ) }}</div>
+								<div class="col-2 text-center p-0">{{ ($row ? $row->point : '' ) }}</div>
+							</div>
+							@php
+								$i++;
+							@endphp
+							@endforeach
+						@endif
 					</div>
 				</div>
 			</div>
