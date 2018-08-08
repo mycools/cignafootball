@@ -13,7 +13,6 @@
 			<div class="row">
 				<div class="col-12">
 					<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">23 Aug - 2 Sep</span></h3>
-
 				</div>
 
 				<div class="col-12 dispay-match mb-4">
@@ -65,10 +64,10 @@
 						<div class="col-5 col-md-4 col-sm-5 ">
 							<div class="warper-team-kits">
 								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_Leicester_city.png') }}" />
-								<label for="" class="float-right f-6 lh-9 mt-4 name">Leicester City</label>
+								<label for="" class="float-right text-right f-6 lh-9 mt-4 name">Leicester City</label>
 							</div>
 						</div>
-						<div class="col-2 col-sm-2 text-center score mt-3">
+						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
 						<div class="col-5 col-md-4 col-sm-5">
@@ -110,10 +109,10 @@
 						<div class="col-5 col-md-4 col-sm-5 ">
 							<div class="warper-team-kits">
 								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_brighton.png') }}" />
-								<label for="" class="float-right f-6 lh-9 mt-4 name">Brighton And Hove Albion</label>
+								<label for="" class="float-right text-right f-6 lh-9 mt-4 name">Brighton And Hove Albion</label>
 							</div>
 						</div>
-						<div class="col-2 col-sm-2 text-center score mt-3">
+						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
 						<div class="col-5 col-md-4 col-sm-5">
@@ -157,7 +156,7 @@
 								<label for="" class="float-right f-6 lh-9 mt-4 name">Arsenal</label>
 							</div>
 						</div>
-						<div class="col-2 col-sm-2 text-center score mt-3">
+						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
 						<div class="col-5 col-md-4 col-sm-5">

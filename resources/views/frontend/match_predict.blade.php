@@ -59,7 +59,7 @@
 				</div>
 
 				<div class="col-12">
-					<button type="button" id="onVote" class="btn btn-green mt-4 btn-predict rounded">ทายผล<br><span>(22,112)</span></button>
+					<button type="button" id="onVote" class="btn btn-green mt-4 btn-predict">ทายผล<br><span>(22,112)</span></button>
 				</div>
 
 			</div>

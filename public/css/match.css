@@ -41,25 +41,25 @@
     line-height: 0.9;
 }
 
-
-body {
-    background: url(/images/bg_match_list.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.match-page {
+    padding: 80px 0;
+    background: url(/images/bg_match_list.jpg) no-repeat top center/cover;
+    height: 100%;
     position: relative;
     touch-action: none;
-    line-height: 1 !important;
-    letter-spacing: 0.1rem !important;
-
+    transform: translate3d(0px, -20px, 0px);
+    padding-top: 120px;
+    color: #fff;
 }
 
-.match-page {
-    margin-top: 110px;
-    font-size: 22px;
+.match-page .match-predict {
+    /* padding: 80px 0; */
+    background: url(/images/bg_match_predict.jpg) no-repeat top center/cover;
+    height: 100%;
+    position: relative;
+    touch-action: none;
+    transform: translate3d(0px, -20px, 0px);
     color: #fff;
-    padding-bottom: 90px;
 }
 
 .match-page-title {
@@ -143,9 +143,6 @@ body {
     width: 130px !important;
     margin: auto !important;
 } */
-.match-predict {
-    margin-top: 110px;
-}
 
 .match-predict .times-remaining{
     font-size: 1.5rem;
@@ -243,7 +240,7 @@ body {
     .warper-team-kits .kits {
         width: 50%;
         order: 1;
-        text-align: center;
+        text-align: center !important;
         margin: auto;
 
         /* float: left !important; */
@@ -252,7 +249,7 @@ body {
         order: 2;
         width: 100%;
         margin: auto;
-        text-align: center;
+        text-align: center !important;
     }
 
     .card-match-lastweek .team-away {
