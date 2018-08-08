@@ -35978,6 +35978,15 @@ $(document).ready(function () {
 	$('.home-ranking .open-list').on('click', function (e) {
 		$(this).parent('.home-ranking').toggleClass('active');
 	});
+
+	$(window).scroll(function () {
+		var scroll = $(window).scrollTop();
+		if (scroll >= 300) {
+			$('.home-ranking').removeClass('active');
+		} else {
+			$('.home-ranking').addClass('active');
+		}
+	});
 });
 
 /***/ }),

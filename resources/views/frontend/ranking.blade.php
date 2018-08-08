@@ -31,7 +31,7 @@
 	                        @endphp
                         	@foreach ($result as $row)
 							<div class="row-item row ml-0 mr-0">
-								<div class="number">{{ $i }}</div>
+								<div class="number">{{ ($row ? $row->ranking_no : '' ) }}</div>
 								
 								<div class="col-4 p-0">
 									{{ ($row->getUser ? $row->getUser->first_name : '' ) }} 
