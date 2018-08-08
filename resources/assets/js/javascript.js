@@ -22,5 +22,15 @@ $(document).ready(function() {
 		$(this).parent('.home-ranking').toggleClass('active');
 	});
 
+
+	$(window).scroll(function() {    
+	    var scroll = $(window).scrollTop();
+	    if (scroll >= 300) {
+	        $('.home-ranking').removeClass('active');
+	    } else {
+	    	$('.home-ranking').addClass('active');
+	    }
+	});
+
  
 });

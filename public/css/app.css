@@ -18479,9 +18479,17 @@ Page
   background: url(/images/bg_profile.jpg) no-repeat top center fixed/cover;
 }
 
+.bg_ranking {
+  background: url(/images/bg_ranking.jpg) no-repeat bottom center/cover;
+}
+
+.ranking-list {
+  max-height: 360px;
+  overflow: auto;
+}
+
 .ranking-list .row-item {
   position: relative;
-  display: block;
   padding: 7px 5px 7px 45px;
   width: 100%;
   line-height: 16px;
@@ -18494,6 +18502,10 @@ Page
 
 .ranking-list .row-item:nth-child(2n) {
   background: #272727;
+}
+
+.ranking-list .row-item:hover {
+  background: #00b557;
 }
 
 .ranking-list .row-item .number {
@@ -18532,7 +18544,7 @@ Page
   margin-top: -15%;
 }
 
-.home-page .box-bg-img {
+.box-bg-img {
   background: url(/images/home/bg_btn_share.jpg) no-repeat bottom center/cover;
   padding: 30px;
   text-align: center;
@@ -18545,6 +18557,28 @@ Page
 
 .home-slider img {
   width: 100%;
+}
+
+.ranking-head {
+  background: #bb2525;
+  color: #fff;
+  padding: 5px 0 0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  position: relative;
+}
+
+.ranking-head .number {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 25px;
+  color: #fff;
 }
 
 .home-ranking {
@@ -18584,11 +18618,6 @@ Page
 }
 
 .home-ranking .ranking-head {
-  background: #bb2525;
-  color: #fff;
-  padding: 5px 0 0;
-  text-align: center;
-  font-weight: bold;
   opacity: 0;
   width: 0;
 }
@@ -18598,6 +18627,10 @@ Page
   width: 0;
   -webkit-transition: none;
   transition: none;
+}
+
+.home-ranking .ranking-list .row-item {
+  display: block;
 }
 
 .home-ranking.active {
@@ -18828,8 +18861,20 @@ Responsive
     background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed/cover;
   }
 
+  .bg_ranking {
+    background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom -6.5% center/100% auto;
+  }
+
   .home-page .fp-auto-height {
     margin-top: -20%;
+  }
+
+  .ranking-list {
+    max-height: unset;
+  }
+
+  .ranking-page .padding-mobile {
+    padding-top: 300px;
   }
 }
 
