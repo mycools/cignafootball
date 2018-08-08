@@ -465,11 +465,16 @@ Page
 .bg_profile {
 	background: url(/images/bg_profile.jpg) no-repeat top center fixed / cover;
 }
+.bg_ranking {
+	background: url(/images/bg_ranking.jpg) no-repeat bottom center / cover;
+}
 
 .ranking-list {
+	max-height: 360px;
+	overflow: auto;
 	.row-item {
 		position: relative;
-		display: block;
+		// display: block;
 		padding: 7px 5px 7px 45px;
 		width: 100%;
 		line-height: 16px;
@@ -480,6 +485,9 @@ Page
 		text-overflow: ellipsis;
 		&:nth-child(2n) {
 			background: $color-darkgray;
+		}
+		&:hover {
+			background: $color-green;
 		}
 		.number {
 			display: block;
@@ -512,17 +520,37 @@ Page
 	.fp-auto-height {
 		margin-top: -15%;
 	}
-	.box-bg-img {
-		background: url(/images/home/bg_btn_share.jpg) no-repeat bottom center / cover;
-		padding: 30px;
-		text-align: center;
-		font-size: 30px;
-	}
+}
+.box-bg-img {
+	background: url(/images/home/bg_btn_share.jpg) no-repeat bottom center / cover;
+	padding: 30px;
+	text-align: center;
+	font-size: 30px;
 }
 .home-slider {
 	width: 100%;
 	img {
 		width: 100%;
+	}
+}
+.ranking-head {
+	background: #bb2525;
+	color: #fff;
+	padding: 5px 0 0;
+	text-align: center;
+	font-weight: bold;
+	width: 100%;
+	position: relative;
+	.number {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 25px;
+		color: #fff;
 	}
 }
 .home-ranking {
@@ -556,11 +584,6 @@ Page
 		}
 	}
 	.ranking-head {
-		background: #bb2525;
-		color: #fff;
-		padding: 5px 0 0;
-		text-align: center;
-		font-weight: bold;
 		opacity: 0;
 		width: 0;
 	}
@@ -568,6 +591,7 @@ Page
 		opacity: 0;
 		width: 0;
 		transition: none;
+		.row-item { display: block; }
 	}
 	&.active {
 		width: 200px;
@@ -759,9 +783,20 @@ Responsive
 	.bg_profile {
 		background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed / cover;
 	}
+	.bg_ranking {
+		background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom -6.5% center / 100% auto;
+	}
 	.home-page {
 		.fp-auto-height {
 			margin-top: -20%;
+		}
+	}
+	.ranking-list {
+		max-height: unset;
+	}
+	.ranking-page {
+		.padding-mobile {
+			padding-top: 300px;
 		}
 	}
 

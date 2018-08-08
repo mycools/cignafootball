@@ -13,6 +13,12 @@ class PageController extends Controller
         return view('frontend.home');
     }
 
+    public function getRanking()
+    {
+
+        return view('frontend.ranking');
+    }
+
     public function getRulesPage()
     {
 
