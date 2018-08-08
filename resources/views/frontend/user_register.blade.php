@@ -30,7 +30,7 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name ="title_id">
-                                                    <option value="1" disabled selected>เลือกคำนำหน้า</option>
+                                                    <option value="1">เลือกคำนำหน้า</option>
                                                     @foreach($titles as $title)
                                                         <option value={{$title->id}}>{{$title->title_name_th}}</option>
                                                     @endforeach
@@ -66,7 +66,7 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="occupation_id" >
-                                                    <option value="1" disabled selected>เลือกอาชีพ</option>
+                                                    <option value="1" >เลือกอาชีพ</option>
                                                     @foreach($occupations as $occupation)
                                                         <option value={{$occupation->id}}>{{$occupation->occupation_name}}</option>
                                                     @endforeach
@@ -79,7 +79,7 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="salary_id" >
-                                                    <option value="1" disabled selected>เลือกระดับเงินเดือน</option>
+                                                    <option value="1" >เลือกระดับเงินเดือน</option>
                                                     @foreach($salaries as $salary)
                                                         <option value={{$salary->id}}>{{$salary->salary_name}}</option>
                                                     @endforeach
@@ -90,7 +90,7 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name ="team_id" placeholder="ทีมที่เชียร์">
-                                                    <option value="1" disabled selected>เลือกทีมที่ชอบ</option>
+                                                    <option value="1" >เลือกทีมที่ชอบ</option>
                                                     @foreach($teams as $team)
                                                         <option value={{$team->id}}>{{$team->team_name}}</option>
                                                     @endforeach

@@ -12,16 +12,15 @@
 		<div class="card-match mt-4 p-2 pb-4">
 			<div class="row">
 				<div class="col-12">
-					<h3 class="match-page-title text-uppercase">match of the weeks</h3>
-					<span>23 Aug - 2 Sep</span>
+					<h3 class="match-page-title text-uppercase">match of the weeks<br><span class="f-5 text-white">23 Aug - 2 Sep</span></h3>
 				</div>
 				<div class="col-12">
 					<div class="d-flex justify-content-around block-vote">
 						<div class="home">
 							<img class="kits" src="{{ url('images/kits/sh_manchester_united.png') }}" />
-							<h1>Manchester united</h1>
+							<h1 class="pb-4 pt-3">Manchester united</h1>
 						</div>
-						<div class="time mb-auto">
+						<div class="time mt-3 mb-auto">
 							<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
 							<div class="time-box rounded border">
 								<span>33:20:01</span>
@@ -29,7 +28,7 @@
 						</div>
 						<div class="away">
 							<img class="kits" src="{{ url('images/kits/sh_tottenhem.png') }}" />
-							<h1>Tottemham Hotspur</h1>
+							<h1 class="pb-4 pt-3">Tottemham Hotspur</h1>
 						</div>
 					</div>
 				</div>
@@ -39,22 +38,28 @@
 
 				</div> -->
 				<div class="col-12">
-					<div class="d-flex justify-content-center vote-box">
-						<div class="predict-home w-100 bg-danger">
-							ชนะ
+					<div class="btn-group w-100" role="group">
+					  <button type="button" id="voteHome" class="btn bg-danger w-100 py-4 text-white">ชนะ</button>
+					  <button type="button" id="voteDraw" class="btn bg-white w-100 text-dark">เสมอ</button>
+					  <button type="button" id="voteAway" class="btn bg-primary w-100 text-white">ชนะ</button>
+					</div>
+					<div class="d-flex justify-content-center vote-box w-100">
+
+						<!-- <div class="predict-home w-100 bg-danger">
+
 						</div>
 						<div class="predict-draw w-100 bg-white text-dark">
-							เสมอ
+
 						</div>
 						<div class="predict-away w-100 bg-primary">
 							ชนะ
-						</div>
+						</div> -->
 					</div>
 
 				</div>
 
 				<div class="col-12">
-					<button type="submit" class="btn btn-green mt-4 btn-predict rounded">ทายผล<br>(22,112)</button>
+					<button type="button" id="onVote" class="btn btn-green mt-4 btn-predict rounded">ทายผล<br><span>(22,112)</span></button>
 				</div>
 
 			</div>
