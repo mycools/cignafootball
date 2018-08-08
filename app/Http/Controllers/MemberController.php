@@ -182,7 +182,7 @@ class MemberController extends Controller
     }
 
     public function postForgotPassword(Request $request)
-      {
+    {
         $id   = Auth::user()->id;
         $user = User::find($id);
 
@@ -226,6 +226,10 @@ class MemberController extends Controller
 
           return redirect()->route('user.change_password');
         }
-      }
 
+    public function getHistory()
+    {
+
+        return view('frontend.user_history');
+    }
 }

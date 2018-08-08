@@ -21,6 +21,9 @@ Route::get('home', 'HomeController@index')->name('home');
 Route::get('match', 'PageController@getMatchList')->name('match');
 Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
 
+Route::get('prize', 'PageController@getPrizePage')->name('prize');
+Route::get('rules', 'PageController@getRulesPage')->name('rules');
+
 Route::get('signin', function () {
 	return view('frontend/user_login');
 })->name('signin');
@@ -38,3 +41,5 @@ Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.regis
 Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
+Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');
+

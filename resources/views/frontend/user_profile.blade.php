@@ -94,7 +94,7 @@
 								<div class="text-large">120</div>
 							</div>
 							<div class="col-12 col-md-6 text-center mt-sm-15">
-								<a class="btn btn-border green pt-10 pb-10" href="#">Full History</a>
+								<a class="btn btn-border green pt-10 pb-10" href="{{ url('/profile/history') }}">Full History</a>
 							</div>
 						</div>
 					</div>
@@ -154,7 +154,7 @@
 									  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									    <span aria-hidden="true">×</span>
 									  </button>
-									  <ul style="padding-left: 20px;">
+									  <ul style="padding-left: 20px; margin-bottom: 0;">
 									    @foreach ($errors->all() as $error)
 									      <li>
 									        {{ $error }}
@@ -200,30 +200,5 @@
 		</div>
 	</div>
 
-</div>
-<div class="modal fade" id="popup" tabindex="-1">
-    <div class="modal-dialog centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body p-4 pl-30 pr-30">
-                <!-- <span aria-hidden="true" class="close" data-dismiss="modal">&times;</span> -->
-                <div class="head-title">
-                    <span>เงื่อนไข</span>
-                </div>
-                <div class="detail">
-                    1.<br />
-                    2.<br />
-                    3.<br />
-                    4.<br />
-                    5.<br />
-                    6.<br />
-                    7.<br />
-                    8.<br />
-                </div>
-                <div class="footer text-center">
-                    <a class="btn btn-blue color-white" data-dismiss="modal">ปิด</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection
