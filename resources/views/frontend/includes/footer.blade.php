@@ -30,18 +30,17 @@
 			});
 
 			$("#onVote").click(function() {
-				console.log(value);
-				if (value) {
+				if (value === 1) {
 					$("#voteHome").prop('disabled', false);
 					$("#voteDraw").prop('disabled', true);
 					$("#voteAway").prop('disabled', true);
 					value = 4;
-				} else if (value) {
+				} else if (value === 2) {
 					$("#voteHome").prop('disabled', true);
 					$("#voteDraw").prop('disabled', false);
 					$("#voteAway").prop('disabled', true);
 					value = 4;
-				} else if (value) {
+				} else if (value === 3) {
 					$("#voteHome").prop('disabled', true);
 					$("#voteDraw").prop('disabled', true);
 					$("#voteAway").prop('disabled', false);
