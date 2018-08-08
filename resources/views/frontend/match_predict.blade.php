@@ -7,7 +7,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
 
-<div class="match-page">
+<div class="match-page" id="match-predict">
 	<div class="container match-predict">
 		<div class="card-match mt-4 p-2 pb-4">
 			<div class="row">
