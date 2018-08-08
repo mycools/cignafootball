@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="rules-page non-fullpage">
+<div class="wrapper-page bg_rules non-fullpage">
 
 	<div class="section fp-auto-height active">
 		<div class="container">
