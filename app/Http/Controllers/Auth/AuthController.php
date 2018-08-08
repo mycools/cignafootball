@@ -63,7 +63,7 @@ class AuthController extends Controller
             $user = Auth::user();
             return $this->sendLoginResponse($request);
         } else {
-
+            
             return $this->sendFailedLoginResponse($request);
         }
 

@@ -23,6 +23,31 @@
 
 									{{ csrf_field() }}
 
+									@if(Session::has('flash_messages'))
+										@php
+											$flash_messages = Session::get('flash_messages');
+										@endphp
+										<div class="alert alert-{{$flash_messages['status']}}">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											  <span aria-hidden="true">×</span>
+											</button>
+											{{$flash_messages['messages']}}
+										</div>
+									@elseif ($errors->any())
+										<div class="alert alert-danger">
+										  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										    <span aria-hidden="true">×</span>
+										  </button>
+										  <ul style="padding-left: 20px; margin-bottom: 0;">
+										    @foreach ($errors->all() as $error)
+										      <li>
+										        {{ $error }}
+										      </li>
+										    @endforeach
+										  </ul>
+										</div>
+									@endif
+
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Username</label>
 										<div class="col-md-9">
