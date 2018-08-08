@@ -19,27 +19,30 @@
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
 								<div class="text-center text-large font-light mgb-5">รหัสยืนยัน (OTP)</div>
-								<form>
+								<form role="form" name="formOtp" id="formOtp" method="post">
+									{{ csrf_field() }}
 									<div class="form-group row">
 										<div class="col-md-12">
-											<input type="text" class="form-control gray text-center" placeholder="กรอกรหัสยืนยัน" value="">
+											<input type="text" class="form-control gray text-center" name="otp" id="otp" placeholder="กรอกรหัสยืนยัน" value="">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-md-12 text-center col-form-label">กรอกตัวเลขที่ได้รับทาง SMS ตามเบอร์ที่แจ้งไว้ให้ถูกต้อง</label>
 									</div>
-								</form>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="text-center mt-10 mt-sm-15">
-											<a class="btn btn-green mb-15" href="{{ url('/register/detail') }}">ยืนยันรหัส</a>
-											<a class="btn btn-orange" href="#">ส่งรหัสอีกครั้ง</a>
-										</div>
-										<div class="text-center mt-15">
-											<a class="btn-text" href="{{ url('/register') }}"><i class="fa fa-angle-left"></i> ย้อนกลับ</a>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="text-center mt-10 mt-sm-15">
+												<button type="submit" class="btn btn-green mb-15">ยืนยันรหัส</button>
+												{{-- <a class="btn btn-green mb-15" href="{{ url('/register/otp') }}">ยืนยันรหัส</a> --}}
+												<a class="btn btn-orange" href="#">ส่งรหัสอีกครั้ง</a>
+											</div>
+											<div class="text-center mt-15">
+												<a class="btn-text" href="{{ url('/register') }}"><i class="fa fa-angle-left"></i> ย้อนกลับ</a>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
+
 
 							</div>
 						</div>

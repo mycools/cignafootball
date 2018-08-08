@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Prettus\Validator\Exceptions\ValidatorException;
+use App\Roles\CurrentPassword;
 
 /**
  * Class MemberController.
@@ -24,16 +25,25 @@ class MemberController extends Controller
 {
     private $_data = [];
 
+    private function _validatorPassword(array $data)
+    {
+        return Validator::make($data, [
+          'current_password' => ['required', new CurrentPassword()],
+          'password' => 'required|min:8|max:16|confirmed'
+        ]);
+    }
+
+    private function flash_messages($request, $status, $messages)
+    {
+        $request->session()->flash('flash_messages', ['status' => $status, 'messages' => $messages]);
+    }
+
+
     public function getProfile(Request $request)
     {
-        // $data = array();
-
-        // return View('frontend/user_profile')
-        //     ->with($data);
-
         $id   = Auth::user()->id;
         $user = User::find($id);
-        
+
         $this->_data['result']    = $user;
         $this->_data['team']     = Teams::where('id', $user->team_id)->first();
 
@@ -60,12 +70,19 @@ class MemberController extends Controller
             ->with($data);
     }
 
-    public function getRegisterOtp()
+    public function getRegisterOtp(Request $request)
     {
-        $data = array();
+      if($request->isMethod('post')) {
+        $rules = [
+          "otp" => "required"
+        ];
+        $validated = Validator::make($request->all(), $rules);
+      } else {
+          $data = array();
 
-        return View('frontend/user_otp')
-            ->with($data);
+          return View('frontend/user_otp')
+              ->with($data);
+      }
     }
 
     public function getForgot()
@@ -73,6 +90,14 @@ class MemberController extends Controller
         $data = array();
 
         return View('frontend/user_forgot')
+            ->with($data);
+    }
+
+    public function getForgotPassword()
+    {
+        $data = array();
+
+        return View('frontend/user_forgot_change')
             ->with($data);
     }
 
@@ -128,4 +153,52 @@ class MemberController extends Controller
             'phoneno'  => 'required|string|max:10|exists:users,phoneno'
         ]);
     }
+
+    public function postForgotPassword(Request $request)
+      {
+        $id   = Auth::user()->id;
+        $user = User::find($id);
+
+        if($user) {
+
+          if($request->isMethod('post')) {
+
+            $validator        = $this->_validatorPassword($request->all());
+
+            if ($validator->fails()) {
+
+                return redirect()
+                            ->route('user.profile')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+            if($request->password) {
+              $user->password  = bcrypt($request->password);
+            }
+
+            $user->save();
+
+            if($request->password) {
+
+              $validator->errors()->add('change_password', 'Change your password success!');
+
+              $request->session()->flush();
+              return redirect()->route('user.signin');
+            }
+
+            $this->flash_messages($request, 'success', 'Success!');
+
+            return redirect()->route('user.profile');
+          } else {
+
+            return redirect()->route('user.profile');
+
+          }
+        } else {
+
+          return redirect()->route('user.change_password');
+        }
+      }
+      
 }

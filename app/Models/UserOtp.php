@@ -15,9 +15,9 @@ class UserOtp extends Model
     protected $date = [
         'created_at'
     ];
-    static function useOtp(Request $request,$refcode,$otp)
+    static function useOtp($user,$refcode,$otp)
     {
-        $old = self::where("user_id",$request->user()->id)
+        $old = self::where("user_id",$user->id)
                 ->where("status","unuse")
                 ->where("refcode",$refcode)
                 ->where("otp",$otp);
@@ -29,17 +29,18 @@ class UserOtp extends Model
         return $res->save();
 
     }
-    static function checkValidOtp(Request $request,$otp,$refcode)
+    static function checkValidOtp($user,$otp,$refcode)
     {
-        return self::where("user_id",$request->user()->id)
+        return self::where("user_id",$user->id)
                 ->where("status","unuse")
                 ->where("refcode",$refcode)
                 ->where("otp",$otp)
                 ->where('created_at','>',now()->subMinutes(15))->count();
     }
-    static function getOtp(Request $request)
+
+    static function getOtp($user)
     {
-        $old = self::where("user_id",$request->user()->id)
+        $old = self::where("user_id",$user->id)
                 ->where("status","unuse")
                 ->where('created_at','>',now()->subMinutes(15));
 
@@ -48,7 +49,7 @@ class UserOtp extends Model
             $code = strtoupper(str_random(4));
             $otp = rand(100000, 999999);
             $o = self::create([
-                'user_id' => $request->user()->id,
+                'user_id' => $user->id,
                 'refcode' => $code,
                 'otp' => $otp,
             ]);
@@ -58,7 +59,7 @@ class UserOtp extends Model
             $sendsms = false;
         }
         return [
-            'user_id' => $request->user()->id,
+            'user_id' => $user->id,
             'refcode' => $o->refcode,
             'otp' => $o->otp,
             'sendsms' => $sendsms,
