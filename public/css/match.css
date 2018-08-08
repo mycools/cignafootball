@@ -3,6 +3,13 @@
     /* background: url(/images/bg_match_list.jpg) no-repeat top center/cover; */
 }
 
+.font-bolder { font-family: 'db_helvethaica_x85_blk'; }
+.font-bold { font-family: 'db_helvethaica_x75_bd'; }
+.font-med { font-family: 'db_helvethaica_x65_med'; }
+.font-normal { font-family: 'db_helvethaica_x55_regular'; }
+.font-light { font-family: 'db_helvethaica_x45_li'; }
+.font-lighter { font-family: 'db_helvethaica_x35_thin'; }
+
 .f-1 {
     font-size: 2.25rem !important;
 }
