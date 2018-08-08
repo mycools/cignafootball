@@ -19,48 +19,57 @@
 						<div class="row">
 							<div class="col-12 col-md-11 m-auto">
 								<div class="text-center font-light mb-30">
-									กรุณากรอกข้อมูลให้ครบและถูกต้อง<br />
+									กรุณากรอกข้อมูลให้ครบและถูกต้อง<br/>
 									ในกรณีข้อมูลผิด ผู้จัดกิจกรรมมีสิทธิ์ยกเลิกรางวัล
 								</div>
-								<form>
+                                {{--FIXME edit from and post value to route--}}
+                                <form method="post" enctype="multipart/form-data" action="{{ route('user.submit_registration') }}">
+                                    {{ csrf_field() }}
 									<div class="form-group row">
 										<div class="col-12 col-md-3 mb-sm-15">
 											<div class="plain-select">
-                                                <select>
-                                                    <option value="0">คำนำหน้าชื่อ</option>
-                                                    <option value="1">นาย</option>
+                                                {{--FIXME edit value from db--}}
+                                                <select name ="title_id">
+                                                    <option value="1" disabled selected>เลือกคำนำหน้า</option>
+                                                    @foreach($titles as $title)
+                                                        <option value={{$title->id}}>{{$title->title_name_th}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 										</div>
 										<div class="col-12 col-md-9">
 											<div class="row">
 												<div class="col-12 col-md-6 mb-sm-15">
-													<input type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="">
+													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="">
 												</div>
 												<div class="col-12 col-md-6">
-													<input type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="">
+													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="">
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<input type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="">
+											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="">
 										</div>
 										<div class="col-12 col-md-6">
-											<input type="email" class="form-control" placeholder="อีเมล์" value="">
+											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="">
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
 											<div class="input-group date">
-												<input type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" >
+												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" >
 											</div>
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="plain-select">
-                                                <select>
-                                                    <option value="0">อาชีพ</option>
+                                                {{--FIXME edit value from db--}}
+                                                <select name="occupation_id" >
+                                                    <option value="1" disabled selected>เลือกอาชีพ</option>
+                                                    @foreach($occupations as $occupation)
+                                                        <option value={{$occupation->id}}>{{$occupation->occupation_name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 										</div>
@@ -68,20 +77,27 @@
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
 											<div class="plain-select">
-                                                <select>
-                                                    <option value="0">รายได้ต่อเดือน</option>
+                                                {{--FIXME edit value from db--}}
+                                                <select name="salary_id" >
+                                                    <option value="1" disabled selected>เลือกระดับเงินเดือน</option>
+                                                    @foreach($salaries as $salary)
+                                                        <option value={{$salary->id}}>{{$salary->salary_name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="plain-select">
-                                                <select>
-                                                    <option value="0">เป็นแฟนทีม</option>
+                                                {{--FIXME edit value from db--}}
+                                                <select name ="team_id" placeholder="ทีมที่เชียร์">
+                                                    <option value="1" disabled selected>เลือกทีมที่ชอบ</option>
+                                                    @foreach($teams as $team)
+                                                        <option value={{$team->id}}>{{$team->team_name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 										</div>
 									</div>
-								</form>
 								<div class="row">
 									<div class="col-md-8 m-auto">
 										<div class="text-center">
@@ -89,18 +105,19 @@
 										</div>
 										<div class="text-center mt-30">
 											<div class="form-check form-check-inline mb-15">
-												<input class="form-check-input mr-10" type="checkbox" value="" id="checkCondition">
+												<input class="form-check-input mr-10" type="checkbox" value="1" id="checkCondition">
 												<label class="form-check-label" for="checkCondition">
 												ข้อมูลถูกต้องและยินยอมตามเงื่อนไข <a class="color-lightyellow" href="#"  data-toggle="modal" data-target="#popup">(คลิกเพื่ออ่านเงื่อนไข)</a>
 												</label>
 											</div>
 										</div>
 									</div>
+                                    {{--FIXME add button in form--}}
 									<div class="col-md-6 m-auto">
-										<a class="btn btn-green" href="{{ url('/register/otp') }}">สมัครเข้าร่วมกิจกรรม</a>
+										<button class="btn btn-green" href="{{ url('/register/otp') }}">สมัครเข้าร่วมกิจกรรม</button>
 									</div>
 								</div>
-
+                                </form>
 							</div>
 						</div>
 
