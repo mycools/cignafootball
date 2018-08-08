@@ -35,7 +35,7 @@
 								  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								    <span aria-hidden="true">×</span>
 								  </button>
-								  <ul style="padding-left: 20px;">
+								  <ul style="padding-left: 20px; margin-bottom: 0;">
 								    @foreach ($errors->all() as $error)
 								      <li>
 								        {{ $error }}
