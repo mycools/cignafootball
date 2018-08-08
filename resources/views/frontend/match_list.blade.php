@@ -61,7 +61,7 @@
 						</div>
 
 
-						<div class="col-5 col-md-4 col-sm-5 ">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_Leicester_city.png') }}" />
 								<label for="" class="float-right text-right f-6 lh-9 mt-4 name">Leicester City</label>
@@ -70,7 +70,7 @@
 						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
-						<div class="col-5 col-md-4 col-sm-5">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<label for="" class="float-left f-6 lh-9 mt-4 name">Wolverhampton Wanderers</label>
 								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_wolverhampton.png') }}" />
@@ -78,7 +78,7 @@
 
 						</div>
 
-						<div class="col-md-2 col-sm-12 p-0 text-center">
+						<div class="col-md-2 col-sm-12 p-0 text-center c-12">
 							<div class="total-predict">
 								<div class="bg-secondary">
 									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>
@@ -106,7 +106,7 @@
 							</h3>
 						</div>
 
-						<div class="col-5 col-md-4 col-sm-5 ">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_brighton.png') }}" />
 								<label for="" class="float-right text-right f-6 lh-9 mt-4 name">Brighton And Hove Albion</label>
@@ -115,7 +115,7 @@
 						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
-						<div class="col-5 col-md-4 col-sm-5">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<label for="" class="float-left f-6 lh-9 mt-4 name">Newcastle United</label>
 								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_newcastle.png') }}" />
@@ -123,7 +123,7 @@
 
 						</div>
 
-						<div class="col-md-2 col-sm-12 p-0 text-center">
+						<div class="col-md-2 col-sm-12 p-0 text-center c-12">
 							<div class="total-predict">
 								<div class="bg-secondary">
 									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>
@@ -150,7 +150,7 @@
 
 
 
-						<div class="col-5 col-md-4 col-sm-5 ">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_arsenal.png') }}" />
 								<label for="" class="float-right f-6 lh-9 mt-4 name">Arsenal</label>
@@ -159,7 +159,7 @@
 						<div class="col-2 col-sm-2 text-center score">
 							3 - 2
 						</div>
-						<div class="col-5 col-md-4 col-sm-5">
+						<div class="col-5 col-md-4 col-sm-5 c-5">
 							<div class="warper-team-kits">
 								<label for="" class="float-left f-6 lh-9 mt-4 name">Manchester City</label>
 								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_manchester_city.png') }}" />
@@ -167,7 +167,7 @@
 
 						</div>
 
-						<div class="col-md-2 col-sm-12 p-0 text-center">
+						<div class="col-md-2 col-sm-12 p-0 text-center c-12">
 							<div class="total-predict">
 								<div class="bg-secondary">
 									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>

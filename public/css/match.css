@@ -195,6 +195,8 @@
     font-size: 2.25rem;
 }
 
+
+/* start responsive */
 @media (max-width: 576px) {
     .home-kits-label {
         width: 100%;
@@ -211,7 +213,7 @@
     ;
     }
     .card-match-lastweek .score {
-        font-size: 1.25rem;
+        font-size: 1.5rem !important;
         margin-top: 34px !important;
         letter-spacing: 5px;
         padding: 0 !important;
@@ -223,7 +225,7 @@
     }
 
     .card-match-lastweek label {
-        font-size: 1rem !important;
+        font-size: 1.25rem !important;
     }
 
     .total-predict {
@@ -286,6 +288,206 @@
         width: 130px;
     }
 }
+
+@media (max-width: 768px) {
+    .home-kits-label {
+        width: 100%;
+        margin-top: 0 !important;
+    }
+
+    .match-page .btn-predict {
+        width: 100% !important;
+    }
+    .card-match-lastweek {
+        flex-wrap: wrap;
+        font-size: 18px;
+        padding: 10px 10px !important;
+    ;
+    }
+    .card-match-lastweek .score {
+        font-size: 2.25rem;
+        margin-top: 38px !important;
+        letter-spacing: 5px;
+        padding: 0 !important;
+    }
+
+    .card-match-lastweek .kits {
+        text-align: center !important;
+        padding-left: 0 !important;
+    }
+
+    .card-match-lastweek label {
+        font-size: 1rem;
+    }
+
+    .total-predict {
+        padding: 20px;
+        margin-bottom: 31px;
+    }
+
+    .warper-team-kits {
+        /* flex-wrap: wrap !important; */
+        display: flex !important;
+        flex-direction: column;
+
+    }
+    .warper-team-kits .kits {
+        width: 50%;
+        order: 1;
+        text-align: center !important;
+        margin: auto;
+        /* float: left !important; */
+    }
+    .warper-team-kits .name {
+        order: 2;
+        width: 100%;
+        margin: auto;
+        font-size: 1.25rem;
+
+        text-align: center !important;
+    }
+
+    .card-match-lastweek .team-away {
+        flex-wrap: wrap;
+    }
+    .card-match-lastweek .team-away div {
+        order: 1;
+    }
+
+    .card-match-lastweek .team-away label {
+        order: 3;
+        width: 100%;
+    }
+
+    .match-predict .block-vote {
+        margin-bottom: 360px;
+        flex-wrap: wrap;
+        height: 100px;
+    }
+
+    .match-predict .block-vote .home {
+        width: 50%;
+    }
+    .match-predict .block-vote .time {
+        width: 100%;
+        order: 3;
+    }
+    .match-predict .block-vote .away {
+        width: 50%;
+        order: 2;
+    }
+
+    .match-predict .block-vote .kits {
+        width: 130px;
+    }
+}
+
+
+@media (max-width: 812px) {
+
+    .warper-team-kits {
+        /* flex-wrap: wrap !important; */
+        display: flex !important;
+        flex-direction: column;
+
+    }
+    .warper-team-kits .kits {
+        width: 50%;
+        order: 1;
+        text-align: center !important;
+        margin: auto;
+        /* float: left !important; */
+    }
+    .warper-team-kits .name {
+        order: 2;
+        width: 100%;
+        margin: auto;
+        font-size: 1.25rem;
+
+        text-align: center !important;
+    }
+    .c-5 {
+        flex: 0 0 41.66666667%;
+        max-width: 41.66666667%;
+    }
+    .c-12 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .total-predict {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+
+}
+
+@media (max-width: 992px) {
+    .total-predict {
+        margin-top: 35px;
+    }
+    .warper-team-kits {
+        /* flex-wrap: wrap !important; */
+        display: flex !important;
+        flex-direction: column;
+
+    }
+    .warper-team-kits .kits {
+        width: 50%;
+        order: 1;
+        text-align: center !important;
+        margin: auto;
+    }
+    .warper-team-kits .name {
+        order: 2;
+        width: 100%;
+        margin: auto;
+        text-align: center !important;
+    }
+    .card-match-lastweek .score {
+        margin-top: 38px !important;
+        letter-spacing: 5px;
+        padding: 0 !important;
+
+    }
+}
+
+@media (max-width: 780px) {
+    .warper-team-kits {
+        display: flex;
+        flex-direction: column;
+
+    }
+    .warper-team-kits .kits {
+        width: 50%;
+        order: 1;
+        text-align: center;
+        margin: auto;
+    }
+    .warper-team-kits .name {
+        order: 2;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1064px) {
+    .card-match-lastweek label {
+        max-width: 180px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .card-match-lastweek label {
+        max-width: 200px;
+    }
+}
+/* end responsive */
+
 
 footer {
 	position: fixed;
