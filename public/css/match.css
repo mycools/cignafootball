@@ -371,6 +371,7 @@
     .match-predict .block-vote .time {
         width: 100%;
         order: 3;
+        padding-right: 0;
     }
     .match-predict .block-vote .away {
         width: 50%;
