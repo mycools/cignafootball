@@ -116,7 +116,7 @@ a:focus {
 	padding: 5px 15px;
 	&:hover,
 	&:focus {
-		color: #fff;
+		color: #fff !important;
 		background: #061445;
 	}
 	&.disable { background: #898989; }

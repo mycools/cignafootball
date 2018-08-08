@@ -18090,7 +18090,7 @@ a:focus {
 
 .btn:hover,
 .btn:focus {
-  color: #fff;
+  color: #fff !important;
   background: #061445;
 }
 

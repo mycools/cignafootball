@@ -6,13 +6,15 @@
 				ทายผลฟุตบอลอังกฤษ <span class="color-yellow font-italic">ลุ้นรับรางวัลมูลค่า 30 ล้านบาท</span>
 				<div class="row mt-15">
 					<div class="col-8 col-sm-6 col-md-4 m-auto">
-						<a class="btn btn-white color-blue w-100 pt-10 pb-10"><i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม</a>
+						<a class="btn btn-white color-blue w-100 pt-10 pb-10 btnShare" id="sharefb" href="javascript:;"><i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-8 col-sm-3 m-auto d-block d-sm-none">
-		<a class="btn btn-blue color-white w-100 pt-10 pb-10"><i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม</a>
+		<a class="btn btn-blue color-white w-100 pt-10 pb-10 btnShare" id="sharefb" href="javascript:;">
+			<i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม
+		</a>
 	</div>
 </div>
