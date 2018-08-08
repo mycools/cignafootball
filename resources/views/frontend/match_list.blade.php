@@ -12,11 +12,11 @@
 		<div class="card-match border mt-4 p-2 pb-4">
 			<div class="row">
 				<div class="col-12">
-					<h3 class="match-page-title text-uppercase f-1">match of the weeks<br><span class="f-5 text-white">23 Aug - 2 Sep</span></h3>
+					<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">23 Aug - 2 Sep</span></h3>
 
 				</div>
 
-				<div class="col-12 dispay-match font-weight-bold mb-4">
+				<div class="col-12 dispay-match mb-4">
 					<div class="d-flex justify-content-center">
 						<div class="align-self-start">
 							<img id="home-kits" class="kits px-4" src="{{ url('images/kits/sh_manchester_united.png') }}" />
@@ -24,7 +24,7 @@
 
 						</div>
 
-						<div class="align-self-center">
+						<div class="align-self-center font-weight-bold f-1">
 							-
 						</div>
 						<div class="align-self-start">
@@ -38,11 +38,11 @@
 				<div class="col-12">
 					<div class="d-flex justify-content-center">
 						<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
-						<div class="time-box rounded f-1">38:20:01</div>
+						<div class="time-box rounded f-1 border">38:20:01</div>
 					</div>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span class="f-5">(22,112)</span></button>
+					<button type="submit" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>(22,112)</span></button>
 				</div>
 
 			</div>
@@ -53,41 +53,46 @@
 				<h1 class="match-page-title-lastweek">MATCH <span>ของสัปดาห์ก่อน</span></h1>
 			</div>
 			<div class="col-12">
-				<div class="card-match-lastweek border pt-2 px-4 mb-4">
+				<div class="card-match-lastweek border p-4 mb-4">
 					<div class="row">
 						<div class="col-12">
-							<h3>
+							<h3 class="mb-3">
 								week 20 Aug - 26 Aug
 							</h3>
 						</div>
-						<div class="col-md-4 col-sm-4">
-							<img class="kits float-left" src="{{ url('images/kits/sh_Leicester_city.png') }}" />
-							<label for="" class="float-right f-3">Leicester City</label>
+
+
+						<div class="col-5 col-md-4 col-sm-5 ">
+							<div class="warper-team-kits">
+								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_Leicester_city.png') }}" />
+								<label for="" class="float-right f-6 lh-9 mt-4 name">Leicester City</label>
+							</div>
 						</div>
-						<div class="col-md-2 col-sm-2 text-center score">
+						<div class="col-2 col-sm-2 text-center score mt-3">
 							3 - 2
 						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="w-100" >
-								<label for="" class="float-left f-3">Wolverhampton Wanderers</label>
+						<div class="col-5 col-md-4 col-sm-5">
+							<div class="warper-team-kits">
+								<label for="" class="float-left f-6 lh-9 mt-4 name">Wolverhampton Wanderers</label>
+								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_wolverhampton.png') }}" />
 							</div>
-							<img class="kits float-right" src="{{ url('images/kits/sh_wolverhampton.png') }}" />
+
 						</div>
 
-						<div class="col-md-2 col-sm-12  text-center">
+						<div class="col-md-2 col-sm-12 p-0 text-center">
 							<div class="total-predict">
 								<div class="bg-secondary">
-									<h4 class="mb-0  pt-1">ทายผลทั้งหมด</h4>
-									<h3 class="mb-0">77,126</h3>
+									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>
 								</div>
-								<div class="float-left bg-success w-50">
-									ถูก 73,126
+								<div class="float-left bg-success w-50 py-2">
+									ถูก 786
 								</div>
-								<div class="float-right bg-danger  w-50">
-									ผิด 4,000
+								<div class="float-right bg-danger w-50 py-2">
+									ผิด 40,000
 								</div>
 							</div>
 						</div>
+
 
 					</div>
 
@@ -102,33 +107,32 @@
 							</h3>
 						</div>
 
-						<div class="d-flex justify-content-between m-auto">
-							<div class="col-md-4 col-sm-4 text-center font-weight-bold mt-3">
-								<img class="kits" src="{{ url('images/kits/sh_brighton.png') }}" />
-								<label for="" class="float-left w-100 away-team-home">Brighton And Hove Albion</label>
-							</div>
-
-							<div class="col-md-3 col-sm-2 text-center score font-weight-bold mt-3">
-								3 - 2
-							</div>
-
-							<div class="col-md-4 col-sm-4 text-center font-weight-bold mt-3">
-								<img class="kits" src="{{ url('images/kits/sh_newcastle.png') }}" />
-								<label for="" class="float-left w-100 away-team-name">Newcastle United</label>
+						<div class="col-5 col-md-4 col-sm-5 ">
+							<div class="warper-team-kits">
+								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_brighton.png') }}" />
+								<label for="" class="float-right f-6 lh-9 mt-4 name">Brighton And Hove Albion</label>
 							</div>
 						</div>
+						<div class="col-2 col-sm-2 text-center score mt-3">
+							3 - 2
+						</div>
+						<div class="col-5 col-md-4 col-sm-5">
+							<div class="warper-team-kits">
+								<label for="" class="float-left f-6 lh-9 mt-4 name">Newcastle United</label>
+								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_newcastle.png') }}" />
+							</div>
 
-						<div class="col-md-3 col-sm-12  text-center">
+						</div>
+
+						<div class="col-md-2 col-sm-12 p-0 text-center">
 							<div class="total-predict">
 								<div class="bg-secondary">
-									<h4 class="mb-0  pt-1">ทายผลทั้งหมด</h4>
-									<h3 class="mb-0">44,786</h3>
+									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>
 								</div>
-								<div class="float-left bg-success w-50">
+								<div class="float-left bg-success w-50 py-2">
 									ถูก 786
 								</div>
-
-								<div class="float-right bg-danger  w-50">
+								<div class="float-right bg-danger w-50 py-2">
 									ผิด 40,000
 								</div>
 							</div>
@@ -145,37 +149,42 @@
 							</h3>
 						</div>
 
-						<div class="d-flex justify-content-between m-auto">
-							<div class="col-md-4 col-sm-4 text-center mt-3">
-								<img class="kits" src="{{ url('images/kits/sh_arsenal.png') }}" />
-								<label for="" class="float-left w-100 away-team-home f-4">Arsenal</label>
-							</div>
 
-							<div class="col-md-3 col-sm-2 text-center score font-weight-bold mt-3">
-								9 - 0
-							</div>
 
-							<div class="col-md-4 col-sm-4 text-center mt-3">
-								<img class="kits" src="{{ url('images/kits/sh_manchester_city.png') }}" />
-								<label for="" class="float-left w-100 away-team-name">Manchester City</label>
+						<div class="col-5 col-md-4 col-sm-5 ">
+							<div class="warper-team-kits">
+								<img class="kits float-left mt-2" src="{{ url('images/kits/sh_arsenal.png') }}" />
+								<label for="" class="float-right f-6 lh-9 mt-4 name">Arsenal</label>
 							</div>
 						</div>
+						<div class="col-2 col-sm-2 text-center score mt-3">
+							3 - 2
+						</div>
+						<div class="col-5 col-md-4 col-sm-5">
+							<div class="warper-team-kits">
+								<label for="" class="float-left f-6 lh-9 mt-4 name">Manchester City</label>
+								<img class="kits float-right mt-2" src="{{ url('images/kits/sh_manchester_city.png') }}" />
+							</div>
 
+						</div>
 
-						<div class="col-md-3 col-sm-12  text-center">
-							<div class="total-predict rounded">
+						<div class="col-md-2 col-sm-12 p-0 text-center">
+							<div class="total-predict">
 								<div class="bg-secondary">
-									<h4 class="mb-0  pt-1">ทายผลทั้งหมด</h4>
-									<h3 class="mb-0">34,786</h3>
+									<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">44,786</span></h4>
 								</div>
-									<div class="float-left bg-success w-50">
-										ถูก 786
-									</div>
-									<div class="float-right bg-danger  w-50">
-										ผิด 30,000
-									</div>
+								<div class="float-left bg-success w-50 py-2">
+									ถูก 786
+								</div>
+								<div class="float-right bg-danger w-50 py-2">
+									ผิด 40,000
+								</div>
 							</div>
 						</div>
+
+
+
+
 
 					</div>
 				</div>
