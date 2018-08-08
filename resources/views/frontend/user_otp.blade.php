@@ -10,7 +10,6 @@
 
 	<div class="section fp-auto-height active">
 		<div class="container">
-
 			<h1 class="h-title">ลงทะเบียน</h1>
 			<div class="row mt-20 mb-15">
 				<div class="col-12 col-sm-10 col-md-8 col-lg-7 m-auto">
@@ -18,9 +17,24 @@
 
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
-								<div class="text-center text-large font-light mgb-5">รหัสยืนยัน (OTP)</div>
+								@if(Session::has('flash_messages'))
+									@php
+										$flash_messages = Session::get('flash_messages');
+									@endphp
+									<div class="alert alert-{{$flash_messages['status']}}">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										{{$flash_messages['messages']}}
+									</div>
+								@endif
+								<div class="text-center text-large font-light">รหัสยืนยัน (OTP)</div>
+								<div class="text-center font-light mgb-5">
+									รหัสอ้างอิง: {{ $refcode }}
+								</div>
 								<form role="form" name="formOtp" id="formOtp" method="post">
 									{{ csrf_field() }}
+									<input type="hidden" name="refcode" value="{{ $refcode }}">
 									<div class="form-group row">
 										<div class="col-md-12">
 											<input type="text" class="form-control gray text-center" name="otp" id="otp" placeholder="กรอกรหัสยืนยัน" value="">
