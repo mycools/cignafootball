@@ -43,7 +43,7 @@
 
 .match-page {
     padding: 80px 0;
-    background: url(/images/bg_match_list.jpg) no-repeat top center/cover;
+    background: url(/images/bg_match_list.jpg) no-repeat center center fixed;
     height: 100%;
     position: relative;
     touch-action: none;
@@ -54,7 +54,7 @@
 
 #match-predict {
     /* padding: 80px 0; */
-    background: url(/images/bg_match_predict.jpg) no-repeat top center/cover;
+    background: url(/images/bg_match_predict.jpg) no-repeat center center fixed;
     height: 100%;
     position: relative;
     touch-action: none;
@@ -382,6 +382,12 @@
     }
 }
 
+@media (max-width: 844px) {
+    .home-kits-label {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+}
 
 @media (max-width: 812px) {
 
