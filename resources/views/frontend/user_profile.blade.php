@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="register-page non-fullpage">
+<div class="wrapper-page bg_profile non-fullpage">
 
 	<div class="section fp-auto-height active">
 		<div class="container">
@@ -94,7 +94,7 @@
 								<div class="text-large">120</div>
 							</div>
 							<div class="col-12 col-md-6 text-center mt-sm-15">
-								<a class="btn btn-border green pt-10 pb-10" href="{{ url('/profile/history') }}">Full History</a>
+								<a class="btn btn-border green pt-10 pb-10 d-block" href="{{ url('/profile/history') }}">Full History</a>
 							</div>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 								<input type="text" class="form-control pt-10 pb-10" value="http://......">
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15" href="#">Copy</a>
+								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15 d-block" href="#">Copy</a>
 							</div>
 						</div>
 					</div>
@@ -184,7 +184,7 @@
 							</div>
 							<div class="col-12 col-lg-10 col-xl-8 m-auto">
 								<div class="col-12 col-md-6 ml-auto p-0">
-									<button type="submit" class="btn btn-border gray pt-10 pb-10 mt-sm-30">
+									<button type="submit" class="btn btn-border gray pt-10 pb-10 mt-sm-30 d-block w-100">
 										เปลี่ยน Password
 									</button>
 								</div>

@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index')->name('home');
+Route::get('home', 'PageController@index')->name('home');
 Route::get('match', 'PageController@getMatchList')->name('match');
 Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
 
