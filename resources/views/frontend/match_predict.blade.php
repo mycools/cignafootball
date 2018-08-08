@@ -39,22 +39,28 @@
 
 				</div> -->
 				<div class="col-12">
-					<div class="d-flex justify-content-center vote-box">
-						<div class="predict-home w-100 bg-danger">
-							ชนะ
+					<div class="btn-group w-100" role="group">
+					  <button type="button" id="voteHome" class="btn bg-danger w-100 py-4 text-white">ชนะ</button>
+					  <button type="button" id="voteDraw" class="btn bg-white w-100 text-dark">เสมอ</button>
+					  <button type="button" id="voteAway" class="btn bg-primary w-100 text-white">ชนะ</button>
+					</div>
+					<div class="d-flex justify-content-center vote-box w-100">
+
+						<!-- <div class="predict-home w-100 bg-danger">
+
 						</div>
 						<div class="predict-draw w-100 bg-white text-dark">
-							เสมอ
+
 						</div>
 						<div class="predict-away w-100 bg-primary">
 							ชนะ
-						</div>
+						</div> -->
 					</div>
 
 				</div>
 
 				<div class="col-12">
-					<button type="submit" class="btn btn-green mt-4 btn-predict rounded">ทายผล<br>(22,112)</button>
+					<button type="button" id="onVote" class="btn btn-green mt-4 btn-predict rounded">ทายผล<br>(22,112)</button>
 				</div>
 
 			</div>
