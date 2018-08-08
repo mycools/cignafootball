@@ -142,7 +142,7 @@ class MemberController extends Controller
                 $user->ref_code = $ref_code;
                 $user->save();
                 if($user){
-                    return $user;
+                    $_SESSION['user_id'] = $user->id;
                 }else{
                     //FIXME return or redirect
                     return 'error';
