@@ -13897,7 +13897,6 @@ __webpack_require__(13);
 __webpack_require__(36);
 __webpack_require__(37);
 __webpack_require__(38);
-
 __webpack_require__(39);
 
 window.Vue = __webpack_require__(40);
@@ -35958,7 +35957,24 @@ module.exports = function spread(callback) {
 /* 36 */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {});
+$(document).ready(function () {
+
+	var slideWrapper = $(".home-slider");
+	slideWrapper.slick({
+		dots: true,
+		autoplay: true,
+		autoplaySpeed: 7000,
+		speed: 500,
+		fade: true,
+		infinite: false,
+		responsive: [{
+			breakpoint: 767.98,
+			settings: {
+				adaptiveHeight: true
+			}
+		}]
+	});
+});
 
 /***/ }),
 /* 37 */

@@ -18056,6 +18056,10 @@ body {
   font-family: 'db_helvethaica_x35_thin';
 }
 
+.font-italic {
+  font-style: italic;
+}
+
 .bdl-1 {
   border-left: 1px solid #fff;
 }
@@ -18445,6 +18449,10 @@ p,
   font-size: 22px;
 }
 
+.btn-img {
+  display: block;
+}
+
 /***********************************************
 Page
 ***********************************************/
@@ -18459,12 +18467,39 @@ Page
   padding: 80px 0;
 }
 
+.bg_home {
+  background: #030712;
+}
+
 .bg_rules {
   background: url(/images/bg_rules.jpg) no-repeat top center fixed/cover;
 }
 
 .bg_profile {
   background: url(/images/bg_profile.jpg) no-repeat top center fixed/cover;
+}
+
+.home-page {
+  margin-top: -110px;
+}
+
+.home-page .fp-auto-height {
+  margin-top: -25%;
+}
+
+.home-page .box-bg-img {
+  background: url(/images/home/bg_btn_share.jpg) no-repeat bottom center/cover;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.home-slider {
+  width: 100%;
+}
+
+.home-slider img {
+  width: 100%;
 }
 
 .non-fullpage {
@@ -18481,6 +18516,10 @@ Page
     padding-top: 40px;
     padding-bottom: 40px;
   }
+
+  .home-page {
+    margin-top: 0px;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -18488,6 +18527,10 @@ Page
     padding-top: 30px;
     padding-bottom: 30px;
     min-height: calc(100vh - 50px);
+  }
+
+  .home-page {
+    margin-top: 0px;
   }
 }
 
@@ -18662,12 +18705,20 @@ Responsive
     font-size: 220%;
   }
 
+  .bg_home {
+    background: #000;
+  }
+
   .bg_rules {
     background: url(/images/bg_rules_mobile.jpg) no-repeat top center fixed/cover;
   }
 
   .bg_profile {
     background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed/cover;
+  }
+
+  .home-page .fp-auto-height {
+    margin-top: -17.5%;
   }
 }
 

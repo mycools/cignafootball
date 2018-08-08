@@ -1,86 +1,68 @@
 @extends('layouts.master')
 
 @section('og_title', "Cigna : Match of The Weeks")
-@section('og_description', "")
+@section('og_description', "ทายผลบอลอังกฤษ ลุ้นรางวัลต่อที่ 1 ดูบอลที่อังกฤษทุกเดือน ต่อที่ 2 ลุ้นรับรางวัลมูลค่า 30 ล้าน")
 @section('og_image', "/images/share/share.jpg")
 
 @section('content')
 
-<!-- @include('frontend.components.home-slide') -->
+<div class="wrappage-page bg_home non-fullpage home-page">
 
-<div class="home-feature">
-	<div class="container">
+	<div class="home-slider">
+		<div class="item slider-video">
+			<a href="{{ url('/') }}">
+  				<img class="d-none d-sm-block" src="{{ url('images/home/banner.jpg') }}" />
+  				<img class="d-block d-sm-none" src="{{ url('images/home/banner_mobile.jpg') }}" />
+	  		</a>
+		</div>
+	</div>
 
-		@php
+	<div class="section fp-auto-height active">
+		<div class="container">
 
-		$spec = [
-					1 => "features-more",
-					2 => "features-more",
-					3 => "Dig!C-8",
-					4 => "auto-transfering",
-					5 => "4K-video",
-					6 => "Vari-angle-LCD",
-					7 => "Dual-Pixel",
-					8 => "features-detail"
-				];
-
-		@endphp
-
-		<!-- Display only desktop -->
-		<div class="d-none d-md-block">
-			<div class="row">
-				<div class="col-8 p-0">
-					@for ($i = 1; $i < 9; $i++)
-					<div class="item-feature sr-up">
-						<a href="{{ url('features#'.@$spec[$i]) }}">
-							<img src="images/home-page/feature-{{ $i }}.png" />
-						</a>
-					</div>
-					@endfor
-				</div>
-				<div class="col-4 pl-30 pl-md-15 pt-15 sr">
-					<img src="images/home-page/Camera.png" />
+			<div class="row justify-content-center mb-30 mb-sm-15">
+				<div class="col-12">
+					<a class="btn-img" href="#">
+						<img class="d-none d-sm-block w-100" src="{{ url('images/home/predict_banner_desktop.jpg') }}" />
+						<img class="d-block d-sm-none w-100" src="{{ url('images/home/predict_banner_mobile.jpg') }}" />
+					</a>
 				</div>
 			</div>
-		</div>
 
-		<!-- Display only mobile -->
-		<div class="d-block d-md-none">
 			<div class="row justify-content-center">
-				<div class="col-8">
-					<div class="mobile-slider">
-						@for ($i = 1; $i < 9; $i++)
-						<div class="item-feature">
-							<a href="{{ url('features/#'.@$spec[$i]) }}">
-								<img src="images/home-page/feature-{{ $i }}.png" />
-							</a>
-						</div>
-						@endfor
-					</div>
-					<div class="mt-45">
-						<img src="images/home-page/Camera.png" />
-					</div>
+				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
+					<a class="btn-img" href="#">
+						<img class="w-100" src="{{ url('images/home/user_ranking.jpg') }}" />
+					</a>
+				</div>
+				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
+					<a class="btn-img" href="#">
+						<img class="w-100" src="{{ url('images/home/rules_fun.jpg') }}" />
+					</a>
 				</div>
 			</div>
-		</div>
 
-	</div>
-</div>
-
-
-<div class="home-focuson">
-	<div class="container">
-
-		<div class="row justify-content-between align-items-center mb-60 mb-sm-45 mb-xs-30">
-			<div class="col-auto">
-				<h1 class="h-title text-white">FOCUS ON</h1>
+			<div class="row justify-content-center mt-45 mt-sm-30 pb-45 pb-sm-15">
+				<div class="col-12 mb-30 mb-sm-15 p-sm-0 d-none d-sm-block">
+					<div class="box-bg-img">
+						<div class="content color-white">
+							แชร์กิจกรรม <span class="text-large">Match Of The Weeks</span><br />
+							ทายผลฟุตบอลอังกฤษ <span class="color-yellow font-italic">ลุ้นรับรางวัลมูลค่า 30 ล้านบาท</span>
+							<div class="row mt-15">
+								<div class="col-8 col-sm-6 col-md-4 m-auto">
+									<a class="btn btn-white color-blue w-100 pt-10 pb-10"><i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-8 col-sm-3 m-auto d-block d-sm-none">
+					<a class="btn btn-blue color-white w-100 pt-10 pb-10"><i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม</a>
+				</div>
 			</div>
-			<div class="col-auto text-right">
-				<a class="btn btn-border-white" href="{{ url('focuson') }}">VIEW ALL</a>
-			</div>
+
 		</div>
-
 	</div>
-</div>
 
+</div>
 @endsection
