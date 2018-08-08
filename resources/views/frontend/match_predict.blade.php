@@ -20,7 +20,7 @@
 							<img class="kits" src="{{ url('images/kits/sh_manchester_united.png') }}" />
 							<h1 class="pb-4 pt-3">Manchester united</h1>
 						</div>
-						<div class="time mt-3 mb-auto">
+						<div class="time mt-3 mb-auto pl-3">
 							<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
 							<div class="time-box rounded border">
 								<span>33:20:01</span>
