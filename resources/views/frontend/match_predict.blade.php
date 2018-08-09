@@ -15,13 +15,13 @@
 			<div class="card-match mt-4 p-2 pb-4">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="match-page-title text-uppercase">match of the weeks<br><span class="f-5 text-white">23 Aug - 2 Sep</span></h3>
+						<h3 class="match-page-title text-uppercase">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
 					</div>
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
 							<div class="home">
-								<img class="kits" src="{{ url('images/kits/sh_manchester_united.png') }}" />
-								<h1 class="pb-4 pt-3">Manchester united</h1>
+								<img class="kits" src="url({{ $matchInfo->teamA->shirt_img_url }})" />
+								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
 							<div class="time mt-3 mb-auto pl-3">
 								<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
@@ -30,8 +30,8 @@
 								</div>
 							</div>
 							<div class="away">
-								<img class="kits" src="{{ url('images/kits/sh_tottenhem.png') }}" />
-								<h1 class="pb-4 pt-3">Tottemham Hotspur</h1>
+								<img class="kits" src="url({{ $matchInfo->teamB->shirt_img_url }})" />
+								<h1 class="pb-4 pt-3">{{ $matchInfo->teamB->team_name }}</h1>
 							</div>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict">ทายผล<br><span>(22,112)</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></button>
 					</div>
 
 				</div>
@@ -77,7 +77,7 @@
 @section('scripts')
 
 	<script>
-		
+
 	  $(function () {
 
 	  		$('.vote_match').click(function() {

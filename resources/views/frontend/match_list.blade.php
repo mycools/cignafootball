@@ -9,43 +9,45 @@
 
 <div class="match-page">
 	<div class="container">
-		<div class="card-match border mt-4 p-2 pb-4">
-			<div class="row">
-				<div class="col-12">
-					<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
-				</div>
+		@if ($matchInfo)
+			<div class="card-match border mt-4 p-2 pb-4">
+				<div class="row">
+					<div class="col-12">
+						<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
+					</div>
 
-				<div class="col-12 dispay-match mb-4">
-					<div class="d-flex justify-content-center">
-						<div class="align-self-start">
-							<img id="home-kits" class="kits px-4" src="{{ $matchInfo->teamA->shirt_img_url }}" />
-							<label class="home-kits-label f-1 float-left" for="home-kits">{{ $matchInfo->teamA->team_name }}</label>
+					<div class="col-12 dispay-match mb-4">
+						<div class="d-flex justify-content-center">
+							<div class="align-self-start">
+								<img id="home-kits" class="kits px-4" src="url({{ $matchInfo->teamA->shirt_img_url }})" />
+								<label class="home-kits-label f-1 float-left" for="home-kits">{{ $matchInfo->teamA->team_name }}</label>
 
-						</div>
+							</div>
 
-						<div class="align-self-center font-weight-bold f-1">
-							-
-						</div>
-						<div class="align-self-start">
-							<img id="away-kits" class="kits px-4" src="{{ $matchInfo->teamB->shirt_img_url }}" />
-							<label class="f-1" for="away-kits">{{ $matchInfo->teamB->team_name }}</label>
+							<div class="align-self-center font-weight-bold f-1">
+								-
+							</div>
+							<div class="align-self-start">
+								<img id="away-kits" class="kits px-4" src="url({{ $matchInfo->teamB->shirt_img_url }})" />
+								<label class="f-1" for="away-kits">{{ $matchInfo->teamB->team_name }}</label>
+							</div>
+
 						</div>
 
 					</div>
-
-				</div>
-				<div class="col-12">
-					<div class="d-flex justify-content-center">
-						<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
-						<div class="time-box rounded f-1 border">38:20:01</div>
+					<div class="col-12">
+						<div class="d-flex justify-content-center">
+							<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
+							<div class="time-box rounded f-1 border">38:20:01</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-12">
-					<a href="{{ url('match/predict/1') }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>(22,112)</span></a>
-				</div>
+					<div class="col-12">
+						<a href="{{ url('match/predict/'.$matchInfo->id ) }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></a>
+					</div>
 
+				</div>
 			</div>
-		</div>
+		@endif
 
 		<div class="row">
 			<div class="col-12">
@@ -62,7 +64,7 @@
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">
 								<div class="warper-team-kits">
-									<img class="kits float-left mt-2" src="{{ $match->teamA->shirt_img_url }}" />
+									<img class="kits float-left mt-2" src="url({{ $match->teamA->shirt_img_url }})" />
 									<label for="" class="float-right text-right f-6 lh-9 mt-4 name">{{ $match->teamA->team_name }}</label>
 								</div>
 							</div>
@@ -72,7 +74,7 @@
 							<div class="col-5 col-md-4 col-sm-5 c-5">
 								<div class="warper-team-kits">
 									<label for="" class="float-left f-6 lh-9 mt-4 name">{{ $match->teamB->team_name }}</label>
-									<img class="kits float-right mt-2" src="{{ $match->teamB->shirt_img_url }}" />
+									<img class="kits float-right mt-2" src="url({{ $match->teamB->shirt_img_url }})" />
 								</div>
 
 							</div>
