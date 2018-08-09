@@ -9,6 +9,15 @@
 
 <div class="match-page">
 	<div class="container">
+
+		@if(Session::has('flash_messages'))
+			@php
+				$flash_messages = Session::get('flash_messages');
+				echo "<body onload=\"window.alert('ระบบได้บันทึกข้อมูลการทายผลเรียบร้อยแล้วค่ะ');\">";
+			@endphp
+
+		@endif
+
 		@if ($matchInfo)
 			<div class="card-match border mt-4 p-2 pb-4">
 				<div class="row">
