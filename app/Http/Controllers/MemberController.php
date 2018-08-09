@@ -57,7 +57,7 @@ class MemberController extends Controller
             $result = User::with([
                                 'getRank'
                             ])->find($id);
-
+            $this->_data['allrank'] = Ranks::all()->count();
             $this->_data['result']    = $result;
 
             $this->_data['team']     = Teams::where('id', $user->team_id)->first();

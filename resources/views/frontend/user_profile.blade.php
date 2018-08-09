@@ -83,7 +83,7 @@
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_trophy.png') }}" /></div>
 							<div class="col-9 col-sm-10 col-md-9 text-center pdt-5">
 								Ranking
-								<div class="text-large">{{ ($result->getRank ? $result->getRank->ranking_no : '' ) }} / 23,953</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->ranking_no : '' ) }}{{' / '}}{{$allrank}}</div>
 							</div>
 						</div>
 					</div>

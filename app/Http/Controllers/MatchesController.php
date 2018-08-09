@@ -24,6 +24,11 @@ class MatchesController extends Controller
 {
     private $_data = [];
 
+    private function flash_messages($request, $status, $messages)
+    {
+        $request->session()->flash('flash_messages', ['status' => $status, 'messages' => $messages]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,9 +96,9 @@ class MatchesController extends Controller
                     $betLogs->predicted_team = $request->vote_team;
                     $betLogs->save();
 
-                    echo"<body onload=\"window.alert('ระบบได้เพิ่มข้อมูลให้แล้วค่ะ');\">";
-
-                    return redirect()->route('match');
+                    $this->flash_messages($request, 'danger', 'บันทึกผลการทายผลเรียบร้อยแล้ว!');
+                    return redirect('match')
+                        ->withInput();
 
                 } else {
                     // where match by id
