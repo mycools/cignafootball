@@ -47,6 +47,7 @@ class MemberController extends Controller
 
         $this->_data['result']    = $user;
         $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+        $this->_data['inviteUrl'] = $user->ref_code;
 
         return view('frontend/user_profile')->with($this->_data);
 
@@ -62,6 +63,21 @@ class MemberController extends Controller
 
         return View('frontend/user_register')
             ->with($this->_data);
+    }
+
+    public function registerHasRefcode(Request $request, $ref)
+    {
+      if ($ref) {
+        $request->session()->put('refCode', $ref);
+      }
+
+      $this->_data['salaries'] = Salary::all();
+      $this->_data['occupations'] = Occupation::all();
+      $this->_data['titles'] = Title::all();
+      $this->_data['teams'] = Teams::all();
+
+      return View('frontend/user_register')
+          ->with($this->_data);
     }
 
     public function getRegisterDetail(Request $request)
