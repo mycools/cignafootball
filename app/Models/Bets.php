@@ -19,4 +19,12 @@ class Bets extends Model
     {
       return $this->morphTo();
     }
+
+    public function match(){
+        return $this->hasOne('App\Models\Match','id','match_id');
+    }
+    public function team(){
+        return $this->hasOne('App\Models\Teams','id','predicted_team');
+    }
+
 }

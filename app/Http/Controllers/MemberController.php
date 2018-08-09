@@ -70,15 +70,12 @@ class MemberController extends Controller
         $id   = Auth::user()->id;
         $user = User::find($id);
 
-        $result = Bets::where('user_id', $user->id)
-                            ->limit(38)
-                            ->get();
-
-        $this->_data['result']    = $result;
-        // dd($result);
-
-        // $this->_data['team']     = Teams::where('id', $user->team_id)->first();
-
+        $query = Bets::with(['team','match'])->where('user_id', $user->id)->orderBy('created_at','ASC')
+                            ->limit(38);
+        $this->_data['bets'] = $query->get();
+        $this->_data['win'] = $query->where('bet','win')->count();
+        $this->_data['lose'] = $query->where('bet','lose')->count();
+//        return $this->_data['bets'];
         return view('frontend/user_history')->with($this->_data);
 
     }
