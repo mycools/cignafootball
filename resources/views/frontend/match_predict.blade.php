@@ -20,7 +20,7 @@
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
 							<div class="home">
-								<img class="kits" src="url({{ $matchInfo->teamA->shirt_img_url }})" />
+								<img class="kits" src="{{ $matchInfo->teamA->shirt_img_url }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
 							<div class="time mt-3 mb-auto pl-3">
@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="away">
-								<img class="kits" src="url({{ $matchInfo->teamB->shirt_img_url }})" />
+								<img class="kits" src="{{ $matchInfo->teamB->shirt_img_url }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamB->team_name }}</h1>
 							</div>
 						</div>
