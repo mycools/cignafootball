@@ -91,11 +91,6 @@ class MatchesController extends Controller
                     $betLogs->predicted_team = $request->vote_team;
                     $betLogs->save();
 
-                    $this->flash_messages($request, 'danger', 'Invalid OTP!');
-                    return redirect('register/otp')
-                        ->withErrors($validated)
-                        ->withInput();
-
                     echo"<body onload=\"window.alert('ระบบได้เพิ่มข้อมูลให้แล้วค่ะ');\">";
 
                     return redirect()->route('match');
