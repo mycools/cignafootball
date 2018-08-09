@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgetPassword;
 use App\Models\Occupation;
 use App\Models\Salary;
 use App\Models\Title;
@@ -14,6 +15,7 @@ use App\Notifications\OneTimePassword;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Roles\CurrentPassword;
@@ -347,5 +349,65 @@ class MemberController extends Controller
     {
 
         return view('frontend.user_history');
+    }
+
+    public function sentEmailForgotPassword(Request $request){
+        try{
+            if($request->isMethod('post')) {
+                $user = User::where('email',$request->email);
+                if($user->count()>0){
+                    $user = $user->first();
+                    $user->remember_token = $this->_generateRandomString(30);
+                    $user->save();
+//                    return $user;
+                    if($user){
+                        $sendMail = Mail::to($request->email)->send(new ForgetPassword($user));
+                    }else{
+                        return 'error insert';
+                    }
+                }else{
+                    //FIXME email uncorrect
+                    return 'email uncorrect';
+                }
+            }else{ return 'error method post';}
+        }catch (\Exception $e){
+            $e->getMessage();
+        }
+    }
+
+    public function forgotPassword(Request $request){
+//        return $request;
+        try{
+            $rules = [
+                'email' => 'required|email',
+                'password' => 'required|min:8|max:16|confirmed',
+                'remember_token'=> 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                //FIXME redirect if validator fail
+                return redirect()
+                    ->route('user.change_password'.'/'.$request->remember_token)
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            $user = User::where([
+                'email'=>$request->email,
+                'remember_token'=>$request->remember_token
+            ]);
+            if($user->count()>0){
+                $user = $user->first();
+                $user->password  = bcrypt($request->password);
+                $user->remember_token = null;
+                $user->save();
+                return redirect()->route('signin');
+            }else{
+                //FIXME email uncorrect
+                return redirect()->route('user.change_password'.'/'.$request->remember_token);
+
+            }
+        }catch(\Exception $e){
+            $e->getMessage();
+        }
     }
 }
