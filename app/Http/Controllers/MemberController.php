@@ -276,15 +276,15 @@ class MemberController extends Controller
     //FIXME validator email,phone in table user
     private function _validator(array $data){
         return Validator::make($data, [
-            'title_id'  => 'required',
-            'first_name'  => 'required|max:150',
-            'last_name'  => 'required|max:150',
-            'email'  => 'required|email',
-            'birthdate'  => 'required',
+            'title_id'  => 'required|integer',
+            'first_name'  => 'required|String|max:150',
+            'last_name'  => 'required|String|max:150',
+            'email'  => 'required|email|unique:users,email',
+            'birthdate'  => 'required|date',
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|string|max:10'
+            'phoneno'  => 'required|string|max:10|unique:users,phoneno'
         ]);
     }
 
