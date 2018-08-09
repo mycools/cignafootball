@@ -78,7 +78,7 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $matchInfo->bet_total_count }})</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $total_count }})</span></button>
 					</div>
 
 				</div>
