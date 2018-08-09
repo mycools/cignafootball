@@ -19,7 +19,7 @@
 					<div class="col-12 dispay-match mb-4">
 						<div class="d-flex justify-content-center">
 							<div class="align-self-start">
-								<img id="home-kits" class="kits px-4" src="{{ $matchInfo->teamA->shirt_img_url }}" />
+								<img id="home-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamA->shirt_img_url) }}" />
 								<label class="home-kits-label f-1 float-left" for="home-kits">{{ $matchInfo->teamA->team_name }}</label>
 
 							</div>
@@ -28,7 +28,7 @@
 								-
 							</div>
 							<div class="align-self-start">
-								<img id="away-kits" class="kits px-4" src="{{ $matchInfo->teamB->shirt_img_url }}" />
+								<img id="away-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
 								<label class="f-1" for="away-kits">{{ $matchInfo->teamB->team_name }}</label>
 							</div>
 
