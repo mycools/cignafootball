@@ -72,7 +72,7 @@ class MemberController extends Controller
         $result = Bets::where('user_id', $user->id)
                             ->limit(38)
                             ->get();
-                            
+
         $this->_data['result']    = $result;
         // dd($result);
 
@@ -238,8 +238,8 @@ class MemberController extends Controller
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
                     $this->flash_messages($request, 'danger', 'Please check value on input');
-                    return redirect()
-                        ->route('user.register')
+                    return redirect('register')
+                        // ->route('user.register')
                         ->withErrors($validator)
                         ->withInput();
                 }
