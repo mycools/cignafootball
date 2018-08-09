@@ -64,7 +64,7 @@
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">
 								<div class="warper-team-kits">
-									<img class="kits float-left mt-2" src="{{ $match->teamA->shirt_img_url }}" />
+									<img class="kits float-left mt-2" src="{{ \Storage::url($match->teamA->shirt_img_url) }}" />
 									<label for="" class="float-right text-right f-6 lh-9 mt-4 name">{{ $match->teamA->team_name }}</label>
 								</div>
 							</div>
@@ -74,7 +74,7 @@
 							<div class="col-5 col-md-4 col-sm-5 c-5">
 								<div class="warper-team-kits">
 									<label for="" class="float-left f-6 lh-9 mt-4 name">{{ $match->teamB->team_name }}</label>
-									<img class="kits float-right mt-2" src="{{ $match->teamB->shirt_img_url }}" />
+									<img class="kits float-right mt-2" src="{{ \Storage::url($match->teamB->shirt_img_url) }}" />
 								</div>
 
 							</div>
