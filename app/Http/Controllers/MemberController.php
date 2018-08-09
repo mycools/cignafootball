@@ -147,13 +147,16 @@ class MemberController extends Controller
         $user->save();
 
         // Save Log
-            $inInvite = Invite::where('invitee_id',$user->id)->first();
-            $invite = $inInvite->toArray();
-            $invite['point_type'] = 'inv';
-            $invite['point_score'] = 1;
+            $inInvite = Invite::where('invitee_id',$user->id)->get();
+            if(!empty($inInvite)) {
+              $inInvite = $inInvite->first();
+              $invite = $inInvite->toArray();
+              $invite['point_type'] = 'inv';
+              $invite['point_score'] = 1;
 
-            $user = User::find($inInvite->invitee_id);
-            $user->pointlogs()->create($invite);
+              $user = User::find($inInvite->invitee_id);
+              $user->pointlogs()->create($invite);
+            }
 
         // FIXME redirect to where?
         return redirect()->route('home');
