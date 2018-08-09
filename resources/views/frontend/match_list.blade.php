@@ -42,7 +42,7 @@
 						</div>
 					</div>
 					<div class="col-12">
-						<a href="{{ 'match/predict/'.$matchInfo->id ) }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></a>
+						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></a>
 					</div>
 
 				</div>
