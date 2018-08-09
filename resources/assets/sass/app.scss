@@ -145,6 +145,14 @@ a:focus {
 			background: #d5561f;
 		}
 	}
+	&.btn-white {
+		color: #061445;
+		background: #fff;
+		&:hover,
+		&:focus {
+			color: #061445 !important;
+		}
+	}
 	&.btn-border {
 		border: 2px solid #fff;
 		color: #fff;
@@ -269,6 +277,14 @@ footer {
 		margin-top: -10px;
 		margin-left: 5px;
 	}
+}
+
+input#myInputCopy {
+	// position: absolute;
+	// left: 0;
+	opacity: 0;
+	// visibility: hidden;
+	// width: 0;
 }
 
 
@@ -469,6 +485,9 @@ Page
 .bg_ranking {
 	background: url(/images/bg_ranking.jpg) no-repeat bottom center / cover;
 }
+.bg_prize {
+	background: url(/images/bg_prize.jpg) no-repeat bottom center / cover;
+}
 
 .ranking-list {
 	max-height: 360px;
@@ -484,6 +503,7 @@ Page
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		min-height: 30px;
 		&:nth-child(2n) {
 			background: $color-darkgray;
 		}
@@ -786,6 +806,9 @@ Responsive
 	}
 	.bg_ranking {
 		background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom -6.5% center / 100% auto;
+	}
+	.bg_prize {
+		background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed / cover;
 	}
 	.home-page {
 		.fp-auto-height {

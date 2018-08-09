@@ -53,6 +53,14 @@
 		<script src="{{ url('/vendors/fullpage-js/vendors/jquery.slimscroll.min.js') }}"></script>
 		<script src="{{ url('/vendors/fullpage-js/dist/jquery.fullpage.min.js') }}"></script>
 
+		<script>
+			function copyToCliboardProfile() {
+			  var copyUrl = document.getElementById("myInvite");
+			  copyUrl.select();
+			  document.execCommand("copy");
+			  alert("Copied the text: " + copyUrl.value);
+			}
+		</script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 
