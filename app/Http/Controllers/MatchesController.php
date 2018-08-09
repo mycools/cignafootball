@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Entities\Match as Matchs;
 use App\Models\Match;
 use App\Models\Bets;
 use App\Models\PointLogs;
 use App\Models\User;
+use Carbon\Carbon;
 
 /**
  * Class MatchesController.
@@ -27,7 +29,10 @@ class MatchesController extends Controller
      */
     public function index()
     {
-
+      $now = Carbon::now();
+      $now = $now->toDateTimeString();
+      $match = Matchs::with(['TeamA', 'TeamB'])->where('match_start', '<', $now)->where('match_end', '>', $now)->first();
+      $this->_data['matchInfo'] = $match;
 
         return view('frontend.match_list')->with($this->_data);
     }
