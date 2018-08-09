@@ -56,6 +56,7 @@ class MatchesController extends Controller
 
     public function predict(Request $request, $id)
     {
+
         $auth   = Auth::user();
         $match  = Match::find($id);
 
@@ -77,6 +78,7 @@ class MatchesController extends Controller
                       $bets = new Bets;
                       $rank = Ranks::where('user_id', $auth->id)->first();
                       $rank->predict_count = (int)$rank->predict_count + 1;
+                      $rank->save();
                     }
                     $bets->user_id = $user->id;
                     $bets->match_id = $id;
@@ -89,12 +91,27 @@ class MatchesController extends Controller
                     $betLogs->predicted_team = $request->vote_team;
                     $betLogs->save();
 
+                    $this->flash_messages($request, 'danger', 'Invalid OTP!');
+                    return redirect('register/otp')
+                        ->withErrors($validated)
+                        ->withInput();
+
+                    echo"<body onload=\"window.alert('ระบบได้เพิ่มข้อมูลให้แล้วค่ะ');\">";
+
                     return redirect()->route('match');
 
                 } else {
                     // where match by id
                     $matchInfo = Matchs::with(['TeamA', 'TeamB'])->where('id', $id)->first();
                     $this->_data['matchInfo'] = $matchInfo;
+
+                    // check has bet
+                    $historyBet = Bets::where('user_id', $auth->id)
+                                      ->where('match_id', $id);
+                    if ($historyBet->count() > 0) {
+                      $lastBet = $historyBet->first();
+                      $this->_data['lastBet'] = $lastBet;
+                    }
 
                     return view('frontend.match_predict')->with($this->_data);
                 }
