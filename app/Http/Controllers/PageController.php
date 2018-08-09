@@ -7,6 +7,7 @@ use App\Notifications\OneTimePassword;
 use App\Models\UserOtp;
 class PageController extends Controller
 {
+
     public function getRulesPage()
     {
 

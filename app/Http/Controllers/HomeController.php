@@ -2,39 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ranks;
+use App\Models\Users;
+
 use Illuminate\Http\Request;
 use App\Notifications\OneTimePassword;
 use App\Models\UserOtp;
+
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+   
+    public function index()
     {
-        $this->middleware('auth');
-    }
+        $result = Ranks::with([
+                            'getUser'
+                        ])
+                        ->orderBy('ranking_no', 'asc')
+                        ->take(10)
+                        ->get();
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
+        $this->_data['result']    = $result;
 
-        //Request OTP
-        // $otp = UserOtp::getOtp($request);
-        // $request->user()->notify(new OneTimePassword($otp));
-        //Check Valid OTP
-        // $otp = UserOtp::checkValidOtp($request,'AYR9','854316');
-        // dd($otp);
-        //Use OTP
-        // $otp = UserOtp::useOtp($request,'AYR9','854316');
-        // dd($otp);
-        return view('home');
+        return view('frontend.home')->with($this->_data);
     }
 
 }
