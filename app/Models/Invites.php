@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invites extends Model
 {
-    protected $fillable = [];
+    protected $fillable = [
+    	'user_id',
+    	'invitee_id'
+    ];
 
     protected $table = "invites";
 
