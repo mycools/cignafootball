@@ -165,6 +165,18 @@ class MemberController extends Controller
                         'point' => DB::raw('point+1')
                       ]
                     );
+
+                // Re Ranks
+                    $getRanks = Ranks::orderBy('point', 'desc')
+                                ->take(30)
+                                ->pluck('id')->toArray();
+
+                    foreach ($getRanks as $key => $value) {
+                      
+                      $ranks = Ranks::find($value);
+                      $ranks->ranking_no = ($key+1);
+                      $ranks->save();
+                    }
             }
 
         // FIXME redirect to where?
