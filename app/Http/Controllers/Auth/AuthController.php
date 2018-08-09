@@ -32,7 +32,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/profile';
     protected $redirectAfterLogout = '/';
     protected $homePath = '/';
 
@@ -61,6 +61,13 @@ class AuthController extends Controller
         if(Auth::attempt($user)) {
 
             $user = Auth::user();
+
+            if($request->action) {
+                $this->redirectTo = $request->action;
+            } else {
+                $this->redirectTo = "profile";
+            }
+
             return $this->sendLoginResponse($request);
         } else {
             
@@ -75,10 +82,15 @@ class AuthController extends Controller
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : $this->homePath);
     }
 
-    public function redirectTo()
-    {
-        $url = '/profile';
-        return $url;
-    }
+    // public function redirectTo($action=null)
+    // {
+    //     if($action) {
+    //         $url = '/'.$action;
+    //     } else {
+    //         $url = '/profile';
+    //     }
+
+    //     return $url;
+    // }
 
 }

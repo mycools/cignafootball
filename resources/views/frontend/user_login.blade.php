@@ -21,6 +21,8 @@
 
 								<form action="{{ url('/signin') }}" method="post">
 
+									<input type="hidden" name="action" value="{{ $action }}">
+
 									{{ csrf_field() }}
 
 									@if(Session::has('flash_messages'))

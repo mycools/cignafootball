@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>(22,112)</span></button>
+					<a href="{{ url('match/predict/1') }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>(22,112)</span></a>
 				</div>
 
 			</div>

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +18,16 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('ranking', 'RanksController@index')->name('ranking');
-Route::get('match', 'PageController@getMatchList')->name('match');
-Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
+Route::get('match', 'MatchesController@index')->name('match');
+Route::get('match/predict/{id}', 'MatchesController@predict')->where('id', '[0-9]+')->name('match.predict');
+	Route::post('match/predict/{id}', 'MatchesController@predict')->where('id', '[0-9]+')->name('match.predict');
 
 Route::get('prize', 'PageController@getPrizePage')->name('prize');
 Route::get('rules', 'PageController@getRulesPage')->name('rules');
 
-Route::get('signin', function () {
-	return view('frontend/user_login');
+Route::get('signin', function (Request $request) {
+	$_data['action'] = $request->action;
+	return view('frontend/user_login', $_data);
 })->name('signin');
 Route::post('signin', 'Auth\AuthController@postLogin');
 
