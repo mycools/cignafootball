@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class PointLogs extends Model
 {
-    protected $fillable = [];
+    protected $fillable = [
+    	'id',
+    	'point_type',
+    	'user_id',
+    	'point_score',
+    	'taggable_type',
+    	'taggable_id'
+    ];
 
     protected $table = "point_logs";
 

@@ -47,8 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Ranks', 'user_id', 'id');
     }
-    public function getBets()
+
+    public function pointlogs()
     {
-        return $this->hasOne('App\Models\Bets', 'user_id', 'id');
+        return $this->morphMany('App\Models\PointLogs', 'taggable');
     }
 }
