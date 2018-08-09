@@ -121,7 +121,8 @@
 								เพื่อเพิ่มสิทธิ์
 							</div>
 							<div class="col-9 col-md-6 col-lg-8 text-center">
-								<input type="text" class="form-control pt-10 pb-10" value="http://......">
+								<input type="text" class="form-control pt-10 pb-10" value="http://127.0.0.1:8000/register/{{ $inviteUrl }}">
+								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
 								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15 d-block" href="#">Copy</a>

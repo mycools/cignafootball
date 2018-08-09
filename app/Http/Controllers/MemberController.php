@@ -8,6 +8,7 @@ use App\Models\Salary;
 use App\Models\Title;
 use App\Models\User;
 use App\Models\Teams;
+use App\Entities\Invite;
 
 use App\Models\UserOtp;
 use App\Notifications\OneTimePassword;
@@ -49,6 +50,7 @@ class MemberController extends Controller
 
         $this->_data['result']    = $user;
         $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+        $this->_data['inviteUrl'] = $user->ref_code;
 
         return view('frontend/user_profile')->with($this->_data);
 
@@ -66,69 +68,110 @@ class MemberController extends Controller
             ->with($this->_data);
     }
 
+    public function registerHasRefcode(Request $request, $ref)
+    {
+      if ($ref) {
+        $request->session()->put('refCode', $ref);
+      }
+
+      $this->_data['salaries'] = Salary::all();
+      $this->_data['occupations'] = Occupation::all();
+      $this->_data['titles'] = Title::all();
+      $this->_data['teams'] = Teams::all();
+
+      return View('frontend/user_register')
+          ->with($this->_data);
+    }
+
     public function getRegisterDetail(Request $request)
     {
       if ($request->isMethod('post')) {
+        // in case of submit form
+
+        // validate username and password
+        $validated = Validator::make($request->all(), [
+          'username' => 'required',
+          'password' => 'required|min:8|max:16|confirmed'
+        ]);
+
+        if ($validated->fails()) {
+            $this->flash_messages($request, 'danger', 'Please check username and password again!');
+            return redirect('register/detail')
+                ->withErrors($validated)
+                ->withInput();
+        }
+
+        // get user from session and find by user_id
         $userId = $request->session()->get('user_id');
         $user = User::find($userId);
 
+        // check duplicate username
+        $dupUsername = User::where('username', $request->username)->count();
+        if ($dupUsername > 0) {
+          // in case of duplicate
+          $this->flash_messages($request, 'danger', 'Duplicate username!');
+          return redirect('register/detail')
+              ->withErrors($validated)
+              ->withInput();
+        }
+
+        // update username and password
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->save();
 
+        // FIXME redirect to where?
         return redirect()->route('home');
 
       } else {
+        // in case of first call page
         $data = array();
         return View('frontend/user_register_1')
             ->with($data);
       }
     }
 
-    public function getRegisterOtp(Request $request)
+    public function getRegisterOtp(Request $request, $otp)
     {
       if($request->isMethod('post')) {
+        // in case of submit form
+
+        // validate request
         $rules = [
-          "otp" => "required"
+          "otp" => "required|min:6|max:6"
         ];
+        $validated = Validator::make($request->all(), $rules);
 
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
+        if ($validated->fails()) {
             //FIXME redirect if validator fail
-            return redirect()
-                ->route('user.register_otp')
-                ->withErrors($validator)
+            $this->flash_messages($request, 'danger', 'Invalid OTP!');
+            return redirect('register/otp')
+                ->withErrors($validated)
                 ->withInput();
         }
 
-        // Check Valid OTP
-        //FIXME force user_id
-
+        //get user_id from session
         $userId = $request->session()->get('user_id');
 
+        // Check Valid OTP
         $user = User::find($userId);
         $otp = UserOtp::checkValidOtp($user,$request->otp,$request->refcode);
 
         if ($otp > 0) {
-          // Use OTP
+          // in case of matched OTP
           $otp = UserOtp::useOtp($user,$request->refcode,$request->otp);
-
-          //Next view
-          // $this->flash_messages($request, 'success', 'Success!');
-          return redirect()->route('user.register_detail');
+          return redirect('register/detail');
         } else {
-
+          // in case of don't matched OTP
           $this->flash_messages($request, 'danger', 'Invalid OTP');
-          return redirect()->route('user.register_otp')
-          ->withInput();
+          return redirect('register/otp')->withInput();
         }
 
       } else {
+        // in case of first call page
 
-        //FIXME force user_id
+        // get user_id form session
         $userId = $request->session()->get('user_id');
-
         $user = User::find($userId);
 
         // Generate OTP
@@ -141,7 +184,6 @@ class MemberController extends Controller
         $user->notify(new OneTimePassword($otp));
 
         $data = array();
-
         return View('frontend/user_otp')
             ->with($this->_data);
       }
@@ -201,17 +243,30 @@ class MemberController extends Controller
                 $user->password = bcrypt($ref_code); // password not null
                 $user->ref_code = $ref_code;
                 $user->save();
-                if($user){
-                    $request->session()->put('user_id', $user->id);
-                    // $_SESSION['user_id'] = $user->id;
-                    return redirect()->route('user.register_otp');
-                }else{
-                    //FIXME return or redirect
-                    return 'error';
+
+                // check has refCode(invite case)
+                if ($request->session()->get('refCode')) {
+                  // in case of invite
+                  $refCode = $request->session()->get('refCode');
+                  $userInviter = User::where('ref_code', $refCode)->first();
+
+                  // set inviter_id and invitee_id for insert
+                  $obj = [
+                    'inviter_id' => $userInviter->id,
+                    'invitee_id' => $user->id
+                  ];
+                  Invite::insert($obj);
+
                 }
 
-                // FIXME go next step register
-//                return redirect()->route('user.register_otp');
+                // set user_id session
+                if($user){
+                    $request->session()->put('user_id', $user->id);
+                    return redirect('register/otp');
+                }else{
+                  $this->flash_messages($request, 'danger', 'registration process has failed!');
+                  return redirect('register')->withInput();
+                }
             }
         }catch (ValidatorException $e){
             return $e->getMessageBag();

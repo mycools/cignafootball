@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +18,16 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('ranking', 'RanksController@index')->name('ranking');
-Route::get('match', 'PageController@getMatchList')->name('match');
-Route::get('match/predict', 'PageController@getMatchPredict')->name('match.predict');
+Route::get('match', 'MatchesController@index')->name('match');
+Route::get('match/predict/{id}', 'MatchesController@predict')->where('id', '[0-9]+')->name('match.predict');
+	Route::post('match/predict/{id}', 'MatchesController@predict')->where('id', '[0-9]+')->name('match.predict');
 
 Route::get('prize', 'PageController@getPrizePage')->name('prize');
 Route::get('rules', 'PageController@getRulesPage')->name('rules');
 
-Route::get('signin', function () {
-	return view('frontend/user_login');
+Route::get('signin', function (Request $request) {
+	$_data['action'] = $request->action;
+	return view('frontend/user_login', $_data);
 })->name('signin');
 Route::post('signin', 'Auth\AuthController@postLogin');
 
@@ -36,10 +40,11 @@ Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user
 //	Route::post('/forgot_password', 'MemberController@postForgotPassword');
 Route::get('/register', 'MemberController@getRegister')->name('user.register');
 Route::post('/submit_registration', 'MemberController@registration')->name('user.submit_registration');
-Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
-  Route::post('/register/otp', 'MemberController@getRegisterOtp');
-Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
-	Route::post('/register/detail', 'MemberController@getRegisterDetail');
+Route::get('/register/{otp}', 'MemberController@getRegisterOtp')->where('otp', 'otp')->name('user.register_otp');
+  Route::post('/register/{otp}', 'MemberController@getRegisterOtp')->where('otp', 'otp');
+Route::get('/register/{detail}', 'MemberController@getRegisterDetail')->where('detail', 'detail')->name('user.register_detail');
+	Route::post('/register/{detail}', 'MemberController@getRegisterDetail')->where('detail', 'detail');
+Route::get('/register/{ref}', 'MemberController@registerHasRefcode')->name('user.register');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
 Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');

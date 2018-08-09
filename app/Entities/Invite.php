@@ -33,4 +33,9 @@ class Invite extends Model implements Transformable
         return $this->belongsTo('App\Entity\User', 'invitee_id', 'id');
     }
 
+    public function invites()
+    {
+      return $this->morphTo();
+    }
+
 }
