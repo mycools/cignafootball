@@ -131,7 +131,7 @@
 										</div>
 										<div class="text-center mt-30">
 											<div class="form-check form-check-inline mb-15">
-												<input class="form-check-input mr-10" type="checkbox" value="1" id="checkCondition">
+												<input class="form-check-input mr-10" type="checkbox" value="1" id="checkCondition" onchange="isChecked(this, 'sub')">
 												<label class="form-check-label" for="checkCondition">
 												ข้อมูลถูกต้องและยินยอมตามเงื่อนไข <a class="color-lightyellow" href="#"  data-toggle="modal" data-target="#popup">(คลิกเพื่ออ่านเงื่อนไข)</a>
 												</label>
@@ -140,7 +140,7 @@
 									</div>
                                     {{--FIXME add button in form--}}
 									<div class="col-md-6 m-auto">
-										<button class="btn btn-green" href="{{ url('/register/otp') }}">สมัครเข้าร่วมกิจกรรม</button>
+										<button class="btn btn-green" href="{{ url('/register/otp') }}" id="sub" disabled>สมัครเข้าร่วมกิจกรรม</button>
 									</div>
 								</div>
                                 </form>
@@ -180,4 +180,16 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+	function isChecked(checkbox, sub) {
+	    var button = document.getElementById(sub);
+
+	    if (checkbox.checked === true) {
+	        button.disabled = "";
+	    } else {
+	        button.disabled = "disabled";
+	    }
+	}
+</script>
 @endsection
