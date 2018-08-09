@@ -42,9 +42,9 @@
 					</div> -->
 					<div class="col-12">
 						<div class="btn-group w-100" role="group">
-						  <button type="button" id="voteHome" data-vote="1" class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
+						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}" class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
 						  <button type="button" id="voteDraw" data-vote="0" class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
-						  <button type="button" id="voteAway" data-vote="2" class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
+						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
 						</div>
 						<div class="d-flex justify-content-center vote-box w-100">
 
