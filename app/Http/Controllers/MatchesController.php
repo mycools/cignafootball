@@ -11,6 +11,7 @@ use App\Models\Bets;
 use App\Models\PointLogs;
 use App\Models\User;
 use App\Models\BetLogs;
+use App\Models\Ranks;
 use Carbon\Carbon;
 
 /**
@@ -69,11 +70,13 @@ class MatchesController extends Controller
                     // check duplicate bet
                     $dupBet = Bets::where('match_id', $id)->where('user_id', $auth->id);
                     if ($dupBet->count() > 0) {
-                      // in case of duplicate
+                      // in case of duplicate(update)
                       $bets = $dupBet->first();
                     } else {
-                      // in case of not duplicate
+                      // in case of not duplicate(insert)
                       $bets = new Bets;
+                      $rank = Ranks::where('user_id', $auth->id)->first();
+                      $rank->predict_count = (int)$rank->predict_count + 1;
                     }
                     $bets->user_id = $user->id;
                     $bets->match_id = $id;
