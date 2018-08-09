@@ -153,7 +153,7 @@ class MemberController extends Controller
         $user->save();
 
         // Save Log
-            $inInvite = Invite::where('invitee_id',$user->id);
+            $inInvite = Invite::where('invitee_id',$user->id)->get();
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
@@ -161,7 +161,7 @@ class MemberController extends Controller
               $invite['point_score'] = 1;
 
               $user = User::find($inInvite->invitee_id);
-              $user->pointlogs()->create($invite);
+              dd($user->pointlogs()->create($invite));
 
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
@@ -172,12 +172,10 @@ class MemberController extends Controller
             }
 
         // FIXME redirect to where?
-            $user_data = [
-              'username' => $user->username,
-              'password' => $user->password
-            ]; 
-            // dd(Auth::attempt($user_data));
-            if(Auth::attempt($user_data)) {
+            $usr = User::find($user->id);
+            Auth::login($usr,true);
+
+            if(Auth::check($usr)) {
 
                 return redirect()->route('user.profile');
             } else {
