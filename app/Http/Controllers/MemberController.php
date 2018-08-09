@@ -370,13 +370,14 @@ class MemberController extends Controller
                     if($user){
                         $sendMail = Mail::to($request->email)->send(new ForgetPassword($user));
                     }else{
-                        return 'error insert';
+                        $this->flash_messages($request, 'danger', 'Process Error');
+                        return redirect()->route('user.forgot');
                     }
                 }else{
-                    //FIXME email uncorrect
-                    return 'email uncorrect';
+                    $this->flash_messages($request, 'danger', 'Email Not match');
+                    return redirect()->route('user.forgot');
                 }
-            }else{ return 'error method post';}
+            }else{ return redirect()->route('user.forgot'); }
         }catch (\Exception $e){
             $e->getMessage();
         }
@@ -392,7 +393,7 @@ class MemberController extends Controller
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                //FIXME redirect if validator fail
+                $this->flash_messages($request, 'danger', 'Error input');
                 return redirect()
                     ->route('user.change_password'.'/'.$request->remember_token)
                     ->withErrors($validator)
@@ -409,7 +410,7 @@ class MemberController extends Controller
                 $user->save();
                 return redirect()->route('signin');
             }else{
-                //FIXME email uncorrect
+                $this->flash_messages($request, 'danger', 'Email Not match');
                 return redirect()->route('user.change_password'.'/'.$request->remember_token);
 
             }
