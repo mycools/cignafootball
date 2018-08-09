@@ -6,7 +6,18 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
+@php
+if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 
+	$time = $matchInfo['bet_end'];
+} else if(strtotime($matchInfo['bet_end']) >= strtotime('now')) {
+
+	$time = $matchInfo['bet_end'];
+} else {
+
+	$time = "";
+}
+@endphp
 <div class="match-page">
 	<div class="container">
 		@if ($matchInfo)
@@ -37,8 +48,13 @@
 					</div>
 					<div class="col-12">
 						<div class="d-flex justify-content-center">
-							<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
-							<div class="time-box rounded f-1 border">38:20:01</div>
+							@if($time)
+								<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
+								<div class="time-box rounded f-1 border" id="getting-started" data-time="{{ $time }}"></div>
+							@else
+								<div class="time-box rounded f-1 border" id="getting-started">ยังไม่เริ่มกิจกรรม</div>
+							@endif
+							{{-- <div></div> --}}
 						</div>
 					</div>
 					<div class="col-12">
@@ -102,3 +118,23 @@
 </div>
 
 @endsection
+
+@section('scripts')
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+<script type="text/javascript">
+	@if($time)
+		$(function() {
+		  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
+		    $(this).text(
+		      event.strftime('%H:%M:%S')
+		    );
+		  });
+		});
+	@endif
+</script>
+
+@stop

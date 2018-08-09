@@ -5,6 +5,20 @@
 @section('og_image', "/images/share/share.jpg")
 
 @section('content')
+
+@php
+if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
+
+	$time = $matchInfo['bet_end'];
+} else if(strtotime($matchInfo['bet_end']) >= strtotime('now')) {
+
+	$time = $matchInfo['bet_end'];
+} else {
+
+	$time = "";
+}
+@endphp
+
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
 
 <form name="match_select" id="match_select" method="post">
@@ -24,10 +38,13 @@
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
 							<div class="time mt-3 mb-auto pl-3">
-								<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
-								<div class="time-box rounded border">
-									<span>33:20:01</span>
-								</div>
+								@if($time)
+									<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
+									<div class="time-box rounded border">
+										<span id="getting-started" data-time="{{ $time }}"></span>
+									</div>
+								@endif
+
 							</div>
 							<div class="away">
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
@@ -87,6 +104,22 @@
 
 	  });
 
+	</script>
+
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+	<script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+	<script type="text/javascript">
+		@if($time)
+			$(function() {
+			  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
+			    $(this).text(
+			      event.strftime('%H:%M:%S')
+			    );
+			  });
+			});
+		@endif
 	</script>
 
 @stop
