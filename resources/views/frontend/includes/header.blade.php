@@ -54,8 +54,8 @@
 								<a class="nav-link pr-0 special {{ Request::is('signin') ? 'active' : '' }}" href="{{ url('signin') }}"><img src="{{ url('images/icon/icon_invite_menu.png') }}" /> Sign in</a>
 							</li>
 							@endif
-							@if(Auth::user())
 
+							@if(Auth::user())
 							<li class="nav-item">
 								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copyToCliboard()">
 									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
@@ -80,7 +80,9 @@
 	                </div>
 	            </div>
 	        </nav>
+	        @if(Auth::user())
 	        <div class="container text-right" style="height: 0;">
 	        	<input id="myInputCopy" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
 	        </div>
+	        @endif
 	        <!-- End Fixed navbar -->
