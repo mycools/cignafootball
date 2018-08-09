@@ -132,48 +132,44 @@ class MemberController extends Controller
     public function getRegisterOtp(Request $request, $otp)
     {
       if($request->isMethod('post')) {
+        // in case of submit form
+
+        // validate request
         $rules = [
-          "otp" => "required"
+          "otp" => "required|min:6|max:6"
         ];
+        $validated = Validator::make($request->all(), $rules);
 
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
+        if ($validated->fails()) {
             //FIXME redirect if validator fail
+            $this->flash_messages($request, 'danger', 'Invalid OTP!');
             return redirect('register/otp')
-                ->withErrors($validator)
+                ->withErrors($validated)
                 ->withInput();
         }
 
-        // Check Valid OTP
-        //FIXME force user_id
-
+        //get user_id from session
         $userId = $request->session()->get('user_id');
 
+        // Check Valid OTP
         $user = User::find($userId);
         $otp = UserOtp::checkValidOtp($user,$request->otp,$request->refcode);
 
         if ($otp > 0) {
-          // Use OTP
+          // in case of matched OTP
           $otp = UserOtp::useOtp($user,$request->refcode,$request->otp);
-
-          //Next view
-          // $this->flash_messages($request, 'success', 'Success!');
-          // return redirect()->route('user.register_detail');
           return redirect('register/detail');
         } else {
-
+          // in case of don't matched OTP
           $this->flash_messages($request, 'danger', 'Invalid OTP');
           return redirect('register/otp')->withInput();
-          // return redirect()
-          // ->withInput();
         }
 
       } else {
+        // in case of first call page
 
-        //FIXME force user_id
+        // get user_id form session
         $userId = $request->session()->get('user_id');
-
         $user = User::find($userId);
 
         // Generate OTP
@@ -186,7 +182,6 @@ class MemberController extends Controller
         $user->notify(new OneTimePassword($otp));
 
         $data = array();
-
         return View('frontend/user_otp')
             ->with($this->_data);
       }
@@ -247,27 +242,19 @@ class MemberController extends Controller
                 $user->ref_code = $ref_code;
                 $user->save();
 
-                // check has refCode for insert in ivite
+                // check has refCode(invite case)
                 if ($request->session()->get('refCode')) {
+                  // in case of invite
                   $refCode = $request->session()->get('refCode');
                   $userInviter = User::where('ref_code', $refCode)->first();
 
+                  // set inviter_id and invitee_id for insert
                   $obj = [
                     'inviter_id' => $userInviter->id,
                     'invitee_id' => $user->id
                   ];
-
                   Invite::insert($obj);
 
-                  // // check dupplicate invites
-                  // $dupInvite = Invite::where('inviter_id', $userInviter->id)->where('invitee_id', $user->id)->count();
-                  // if ($dupInvite == 0) {
-                  //
-                  //
-                  //   Invite::insert($obj);
-                  // } else {
-                  //   //FIXME handle Error: Dupplicate invites
-                  // }
                 }
 
                 // set user_id session
@@ -275,12 +262,9 @@ class MemberController extends Controller
                     $request->session()->put('user_id', $user->id);
                     return redirect('register/otp');
                 }else{
-                    //FIXME return or redirect
-                    return 'error';
+                  $this->flash_messages($request, 'danger', 'registration process has failed!');
+                  return redirect('register')->withInput();
                 }
-
-                // FIXME go next step register
-//                return redirect()->route('user.register_otp');
             }
         }catch (ValidatorException $e){
             return $e->getMessageBag();
