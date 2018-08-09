@@ -7,16 +7,17 @@
 @section('content')
 
 @php
-if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
+$now = Carbon\Carbon::now();
+$now = $now->toDateTimeString();
 
-	$time = $matchInfo['bet_end'];
-} else if(strtotime($matchInfo['bet_end']) >= strtotime('now')) {
+if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
 
-	$time = $matchInfo['bet_end'];
+	$time = $matchInfo['match_end'];
 } else {
 
 	$time = "";
 }
+
 @endphp
 
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
