@@ -16,7 +16,6 @@
 	  		</a>
 		</div>
 	</div>
-
 	<div class="section fp-auto-height active">
 		<div class="container">
 
