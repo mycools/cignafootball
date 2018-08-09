@@ -31,8 +31,20 @@ class MatchesController extends Controller
     {
       $now = Carbon::now();
       $now = $now->toDateTimeString();
-      $match = Matchs::with(['TeamA', 'TeamB'])->where('match_start', '<', $now)->where('match_end', '>', $now)->first();
+      $match = Matchs::with(['TeamA', 'TeamB'])
+                            ->where('match_start', '<', $now)
+                            ->where('match_end', '>', $now)
+                            ->first();
+
+      $previousMatch = Matchs::with(['TeamA', 'TeamB'])
+                            ->where('match_end', '<', $now)
+                            ->orderBy('match_end', 'desc')
+                            ->limit(3)
+                            ->offset(0)
+                            ->get();
+
       $this->_data['matchInfo'] = $match;
+      $this->_data['previousMatch'] = $previousMatch;
 
         return view('frontend.match_list')->with($this->_data);
     }
