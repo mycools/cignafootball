@@ -64,12 +64,23 @@ class MemberController extends Controller
             ->with($this->_data);
     }
 
-    public function getRegisterDetail()
+    public function getRegisterDetail(Request $request)
     {
-        $data = array();
+      if ($request->isMethod('post')) {
+        $userId = $request->session()->get('user_id');
+        $user = User::find($userId);
 
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('home');
+
+      } else {
+        $data = array();
         return View('frontend/user_register_1')
             ->with($data);
+      }
     }
 
     public function getRegisterOtp(Request $request)
@@ -91,10 +102,11 @@ class MemberController extends Controller
 
         // Check Valid OTP
         //FIXME force user_id
-        // $userId = $_SESSION['user_id'];
-        $userId = 6;
+
+        $userId = $request->session()->get('user_id');
+
         $user = User::find($userId);
-        $otp = UserOtp::checkValidOtp($user,$request->refcode,$request->otp);
+        $otp = UserOtp::checkValidOtp($user,$request->otp,$request->refcode);
 
         if ($otp > 0) {
           // Use OTP
@@ -113,8 +125,8 @@ class MemberController extends Controller
       } else {
 
         //FIXME force user_id
-        // $userId = $_SESSION['user_id'];
-        $userId = 6;
+        $userId = $request->session()->get('user_id');
+
         $user = User::find($userId);
 
         // Generate OTP
@@ -188,7 +200,9 @@ class MemberController extends Controller
                 $user->ref_code = $ref_code;
                 $user->save();
                 if($user){
-                    $_SESSION['user_id'] = $user->id;
+                    $request->session()->put('user_id', $user->id);
+                    // $_SESSION['user_id'] = $user->id;
+                    return redirect()->route('user.register_otp');
                 }else{
                     //FIXME return or redirect
                     return 'error';

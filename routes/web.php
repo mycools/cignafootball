@@ -37,7 +37,7 @@ Route::post('/submit_registration', 'MemberController@registration')->name('user
 Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
   Route::post('/register/otp', 'MemberController@getRegisterOtp');
 Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
+	Route::post('/register/detail', 'MemberController@getRegisterDetail');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
 Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');
-
