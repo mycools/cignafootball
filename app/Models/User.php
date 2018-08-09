@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Ranks', 'user_id', 'id');
     }
+
+    public function pointlogs()
+    {
+        return $this->morphMany('App\Models\PointLogs', 'taggable');
+    }
 }

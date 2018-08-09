@@ -127,6 +127,15 @@ class MemberController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
+        // Save Log
+            $inInvite = Invite::where('invitee_id',$user->id)->first();
+            $invite = $inInvite->toArray();
+            $invite['point_type'] = 'inv';
+            $invite['point_score'] = 1;
+
+            $user = User::find($inInvite->invitee_id);
+            $user->pointlogs()->create($invite);
+
         // FIXME redirect to where?
         return redirect()->route('home');
 
@@ -263,13 +272,23 @@ class MemberController extends Controller
                   $refCode = $request->session()->get('refCode');
                   $userInviter = User::where('ref_code', $refCode)->first();
 
-                  // set inviter_id and invitee_id for insert
-                  $obj = [
-                    'inviter_id' => $userInviter->id,
-                    'invitee_id' => $user->id
-                  ];
-                  Invite::insert($obj);
+                  // set user_id and invitee_id for insert
+                  // $obj = [
+                  //   'user_id' => $userInviter->id,
+                  //   'invitee_id' => $user->id
+                  // ];
 
+                    $inInvite = new Invite;
+                    $inInvite->user_id = $userInviter->id;
+                    $inInvite->invitee_id = $user->id;
+                    $inInvite->save();
+
+                    // $invite = $inInvite->toArray();
+                    // $invite['point_type'] = 'inv';
+                    // $invite['point_score'] = 1;
+
+                    // $user = User::find($user->id);
+                    // $user->pointlogs()->create($invite);
                 }
 
                 // set user_id session
