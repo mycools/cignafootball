@@ -75,7 +75,7 @@ class MatchesController extends Controller
                     } else {
                       // in case of not duplicate(insert)
                       $bets = new Bets;
-                      $rank = Rank::where('user_id', $auth->id)->first();
+                      $rank = Ranks::where('user_id', $auth->id)->first();
                       $rank->predict_count = (int)$rank->predict_count + 1;
                     }
                     $bets->user_id = $user->id;
