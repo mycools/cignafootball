@@ -18444,7 +18444,7 @@ Register / Signin
 }
 
 h1.text-large {
-  font-size: 200%;
+  font-size: 200% !important;
 }
 
 p,
@@ -18720,7 +18720,7 @@ Responsive
   }
 
   h1.text-large {
-    font-size: 150%;
+    font-size: 150% !important;
   }
 
   .text-extra-large {
@@ -18846,7 +18846,7 @@ Responsive
   }
 
   h1.text-large {
-    font-size: 180%;
+    font-size: 180% !important;
   }
 
   .text-extra-large {

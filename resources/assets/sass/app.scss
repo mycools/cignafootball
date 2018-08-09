@@ -433,7 +433,7 @@ Register / Signin
 	}
 }
 h1.text-large {
-	font-size: 200%;
+	font-size: 200% !important;
 }
 p,
 .p {
@@ -673,7 +673,7 @@ Responsive
 		}
 	}
 	h1.text-large {
-		font-size: 150%;
+		font-size: 150% !important;
 	}
 	.text-extra-large { font-size: 250%; }
 
@@ -772,7 +772,7 @@ Responsive
 		}
 	}
 	h1.text-large {
-		font-size: 180%;
+		font-size: 180% !important;
 	}
 	.text-extra-large { font-size: 220%; }
 	.bg_home {

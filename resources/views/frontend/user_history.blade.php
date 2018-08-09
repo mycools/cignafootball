@@ -13,8 +13,13 @@
 
 			<div class="row justify-content-center mb-45 mb-sm-15">
 				<div class="col-12 col-md-10 m-auto">
+					<div class="col-12 col-lg-10 col-xl-8 pl-0">
+						<a href="{{ url('profile') }}" class="btn btn-border green pt-10 pb-10 mt-sm-30 mb-30">
+							<i class="fa fa-angle-left mr-10"></i> BACK TO PROFILE
+						</a>
+					</div>
 					<div class="box-wrapper pl-45 pr-45 p-0">
-
+						
 						<div class="header-row-1 bg-green p-15 pdt-5 pdb-5 text-center">
 							<h1 class="text-large font-med mb-0">FULL HISTORY</h1>
 						</div>
@@ -62,8 +67,13 @@
 						</div>
 						@endfor
 						
-
 					</div>
+					<div class="col-12 col-lg-10 col-xl-8 pl-0">
+						<a href="{{ url('profile') }}" class="btn btn-border green pt-10 pb-10 mt-sm-30 mt-30">
+							<i class="fa fa-angle-left mr-10"></i> BACK TO PROFILE
+						</a>
+					</div>
+
 				</div>
 			</div>
 
