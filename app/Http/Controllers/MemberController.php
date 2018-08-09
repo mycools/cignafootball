@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Teams;
 use App\Entities\Invite;
 use App\Models\Bets;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\UserOtp;
 use App\Notifications\OneTimePassword;
@@ -154,6 +155,13 @@ class MemberController extends Controller
 
             $user = User::find($inInvite->invitee_id);
             $user->pointlogs()->create($invite);
+
+            Ranks::where('user_id', $inInvite->user_id)
+                ->update(
+                  [
+                    'point' => DB::raw('point+1')
+                  ]
+                );
 
         // FIXME redirect to where?
         return redirect()->route('home');
