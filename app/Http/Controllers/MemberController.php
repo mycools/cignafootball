@@ -78,12 +78,58 @@ class MemberController extends Controller
         $rules = [
           "otp" => "required"
         ];
-        $validated = Validator::make($request->all(), $rules);
-      } else {
-          $data = array();
 
-          return View('frontend/user_otp')
-              ->with($data);
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            //FIXME redirect if validator fail
+            return redirect()
+                ->route('user.register_otp')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Check Valid OTP
+        //FIXME force user_id
+        // $userId = $_SESSION['user_id'];
+        $userId = 6;
+        $user = User::find($userId);
+        $otp = UserOtp::checkValidOtp($user,$request->refcode,$request->otp);
+
+        if ($otp > 0) {
+          // Use OTP
+          $otp = UserOtp::useOtp($user,$request->refcode,$request->otp);
+
+          //Next view
+          // $this->flash_messages($request, 'success', 'Success!');
+          return redirect()->route('user.register_detail');
+        } else {
+
+          $this->flash_messages($request, 'danger', 'Invalid OTP');
+          return redirect()->route('user.register_otp')
+          ->withInput();
+        }
+
+      } else {
+
+        //FIXME force user_id
+        // $userId = $_SESSION['user_id'];
+        $userId = 6;
+        $user = User::find($userId);
+
+        // Generate OTP
+        $otp = UserOtp::getOtp($user);
+
+        // set refcode for display in frontend
+        $this->_data['refcode'] = $otp['refcode'];
+
+        // Sent OTP
+        $user->notify(new OneTimePassword($otp));
+
+        $data = array();
+
+        return View('frontend/user_otp')
+            ->with($this->_data);
       }
     }
 
@@ -226,6 +272,7 @@ class MemberController extends Controller
 
           return redirect()->route('user.change_password');
         }
+      }
 
     public function getHistory()
     {
