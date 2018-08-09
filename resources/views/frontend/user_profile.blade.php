@@ -73,7 +73,7 @@
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_trophy.png') }}" /></div>
 							<div class="col-9 col-sm-10 col-md-9 text-center pdt-5">
 								Ranking
-								<div class="text-large">123 / 23,953</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->ranking_no : '' ) }} / 23,953</div>
 							</div>
 						</div>
 					</div>
@@ -83,15 +83,15 @@
 						<div class="row justify-content-center align-items-center">
 							<div class="col-4 col-md-2 text-center">
 								<i class="fa fa-check-circle mgr-5" aria-hidden="true"></i> ถูก
-								<div class="text-large">120</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->win_count : '' ) }}</div>
 							</div>
 							<div class="col-4 col-md-2 bdl-1 bdr-1 text-center">
 								<i class="fa fa-times-circle mgr-5" aria-hidden="true"></i> ผิด
-								<div class="text-large">120</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->lose_count : '' ) }}</div>
 							</div>
 							<div class="col-4 col-md-2 text-center">
 								ทาย
-								<div class="text-large">120</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->predict_count : '' ) }}</div>
 							</div>
 							<div class="col-12 col-md-6 text-center mt-sm-15">
 								<a class="btn btn-border green pt-10 pb-10 d-block" href="{{ url('/profile/history') }}">Full History</a>
@@ -108,7 +108,7 @@
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_lot.png') }}" /></div>
 							<div class="col-9 col-sm-10 col-md-9 text-center pdt-5">
 								สิทธิ์จับสลาก
-								<div class="text-large">120</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->point : '' ) }}</div>
 							</div>
 						</div>
 					</div>
@@ -121,11 +121,11 @@
 								เพื่อเพิ่มสิทธิ์
 							</div>
 							<div class="col-9 col-md-6 col-lg-8 text-center">
-								<input type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
+								<input id="forCopy" type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
 								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15 d-block" href="#">Copy</a>
+								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15 d-block btn-copy" href="javascript:;">Copy</a>
 							</div>
 						</div>
 					</div>

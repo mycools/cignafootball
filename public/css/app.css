@@ -18145,12 +18145,12 @@ a:focus {
 
 .btn.btn-border.green:hover,
 .btn.btn-border.green:focus {
-  color: #00b557;
+  color: #00b557 !important;
 }
 
 .btn.btn-border.gray:hover,
 .btn.btn-border.gray:focus {
-  color: #919191;
+  color: #919191 !important;
 }
 
 .btn.btn-border-gray {

@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->phoneno;
     }
+
+    public function getRank()
+    {
+        return $this->hasOne('App\Models\Ranks', 'user_id', 'id');
+    }
 }

@@ -49,7 +49,13 @@ class MemberController extends Controller
         $id   = Auth::user()->id;
         $user = User::find($id);
 
-        $this->_data['result']    = $user;
+        // $this->_data['result']    = $user;
+        $result = User::with([
+                            'getRank'
+                        ])->find($id);
+
+        $this->_data['result']    = $result;
+
         $this->_data['team']     = Teams::where('id', $user->team_id)->first();
         $this->_data['inviteUrl'] = $user->ref_code;
 

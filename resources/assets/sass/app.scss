@@ -156,13 +156,13 @@ a:focus {
 		&.green {
 			&:hover,
 			&:focus {
-				color: $color-green;
+				color: $color-green !important;
 			}
 		}
 		&.gray {
 			&:hover,
 			&:focus {
-				color: $color-midgray;
+				color: $color-midgray !important;
 			}
 		}
 	}

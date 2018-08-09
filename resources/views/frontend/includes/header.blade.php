@@ -56,7 +56,10 @@
 							@endif
 							@if(Auth::user())
 							<li class="nav-item">
-								<a class="nav-link special {{ Request::is('invite') ? 'active' : '' }}" href="{{ url('invite') }}"><span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" /></a>
+								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" alt="Copy Invite URL">
+									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
+									<input id="forCopy" type="text" value="{{ url('invite') }}" hidden />
+								</a>
 							</li>
 							<li class="nav-item dropdown d-none d-md-block">
 								<a class="nav-link pr-0 special dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url('images/icon/icon_profile_menu.png') }}" /></a>
