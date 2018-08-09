@@ -48,21 +48,26 @@ class MemberController extends Controller
 
     public function getProfile(Request $request)
     {
-        $id   = Auth::user()->id;
-        $user = User::find($id);
+        $id   = Auth::user();
+        if($id) {
+            $id = $id->id;
+            $user = User::find($id);
 
-        // $this->_data['result']    = $user;
-        $result = User::with([
-                            'getRank'
-                        ])->find($id);
+            // $this->_data['result']    = $user;
+            $result = User::with([
+                                'getRank'
+                            ])->find($id);
 
-        $this->_data['result']    = $result;
+            $this->_data['result']    = $result;
 
-        $this->_data['team']     = Teams::where('id', $user->team_id)->first();
-        $this->_data['inviteUrl'] = $user->ref_code;
+            $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+            $this->_data['inviteUrl'] = $user->ref_code;
 
-        return view('frontend/user_profile')->with($this->_data);
+            return view('frontend/user_profile')->with($this->_data);
+        } else {
 
+            return redirect()->route('home');
+        }
     }
 
     public function getHistory(Request $request)
@@ -157,17 +162,28 @@ class MemberController extends Controller
 
               $user = User::find($inInvite->invitee_id);
               $user->pointlogs()->create($invite);
+
+                Ranks::where('user_id', $inInvite->user_id)
+                    ->update(
+                      [
+                        'point' => DB::raw('point+1')
+                      ]
+                    );
             }
 
-            Ranks::where('user_id', $inInvite->user_id)
-                ->update(
-                  [
-                    'point' => DB::raw('point+1')
-                  ]
-                );
-
         // FIXME redirect to where?
-        return redirect()->route('home');
+            $user_data = [
+              'username' => $user->username,
+              'password' => $user->password
+            ]; 
+            // dd(Auth::attempt($user_data));
+            if(Auth::attempt($user_data)) {
+
+                return redirect()->route('user.profile');
+            } else {
+
+                return redirect()->route('home');
+            }
 
       } else {
         // in case of first call page
