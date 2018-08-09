@@ -153,7 +153,7 @@ class MemberController extends Controller
         $user->save();
 
         // Save Log
-            $inInvite = Invite::where('invitee_id',$user->id)->get();
+            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$user->id)->get();
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
@@ -161,7 +161,6 @@ class MemberController extends Controller
               $invite['point_score'] = 1;
 
               $user = User::find($inInvite->invitee_id);
-              dd($user->pointlogs()->create($invite));
 
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
