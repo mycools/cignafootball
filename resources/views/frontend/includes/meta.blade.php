@@ -19,7 +19,7 @@
 
 <meta property="og:title" content="@yield('og_title')" />
 <meta property="og:description" content="@yield('og_description')" />
-<meta property="og:image" content="@yield('og_image')" />
+<meta property="og:image" content="{{ url('/') }}@yield('og_image')" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56634723-27"></script>
