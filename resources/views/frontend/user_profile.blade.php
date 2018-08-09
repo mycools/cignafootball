@@ -15,9 +15,9 @@
 
 			<div class="row mt-20 mb-15">
 				<div class="col-12 m-auto">
-					<div class="box-wrapper bg-lightgray color-gray pt-sm-20">
+					<div class="box-wrapper bg-lightgray color-gray pt-20 pb-20">
 
-						<div class="row justify-content-md-center">
+						<!-- <div class="row justify-content-md-center">
 							<div class="col-12 col-md-5">
 								<div class="form-group row mb-sm-10">
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">ชื่อ</label>
@@ -38,22 +38,32 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row justify-content-md-center">
-							<div class="col-12 col-md-5">
+						</div> -->
+						<div class="row justify-content-md-center pl-15 pr-15">
+							<div class="col-12 col-md-4">
 								<div class="form-group row mb-sm-10">
-									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">Username</label>
-									<div class="col-md-9">
+									<label class="col-md-12 pr-0 col-form-label font-med">ชื่อ</label>
+									<div class="col-md-12">
+										<div class="form-control-plaintext text-center">
+											{{ $result->first_name }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-4">
+								<div class="form-group row mb-sm-10">
+									<label class="col-md-12 pr-0 col-form-label font-med">Username</label>
+									<div class="col-md-12">
 										<div class="form-control-plaintext text-center">
 											{{ $result->username }}
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-12 col-md-5">
+							<div class="col-12 col-md-4">
 								<div class="form-group row mb-sm-10">
-									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">ทีมที่ชอบ</label>
-									<div class="col-md-9">
+									<label class="col-md-12 pr-0 col-form-label font-med">ทีมที่ชอบ</label>
+									<div class="col-md-12">
 										<div class="form-control-plaintext text-center">
 										    {{ (!empty($team->team_name) ? $team->team_name : '-') }}
 										</div>

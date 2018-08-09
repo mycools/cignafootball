@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use GuzzleHttp\Exception\RequestException;
+if (env('REDIRECT_HTTPS') == 'true' || env('REDIRECT_HTTPS') == true) {
+    \URL::forceScheme('https');
+}else{
+    \URL::forceScheme('http');
+}
 /*
 |--------------------------------------------------------------------------
 | Web Routes

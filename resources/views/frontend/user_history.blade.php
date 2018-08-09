@@ -42,30 +42,38 @@
 							</div>
 						</div>
 
-						@for ($i = 1; $i < 5; $i++)
-						<div class="row text-center align-items-center bg-gray ml-0 mr-0 pt-0 pb-0 color-white">
-							<div class="col-6 p">
-								Week 20 Aug - 26 Aug
+						@if (isset($result))
+	                        @php
+	                          $i=1;
+	                        @endphp
+                        	@foreach ($result as $row)
+							<div class="row text-center align-items-center bg-gray ml-0 mr-0 pt-0 pb-0 color-white">
+								<div class="col-6 p">
+									Week 20 Aug - 26 Aug  ({{ ($row ? $row->match_id : '' ) }})
+								</div>
+								<div class="col-3 pdt-5 text-large color-green">
+									<i class="fa fa-check" aria-hidden="true"></i>
+								</div>
+								<div class="col-3 pdt-5 text-large color-red">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
 							</div>
-							<div class="col-3 pdt-5 text-large color-green">
-								<i class="fa fa-check" aria-hidden="true"></i>
-							</div>
-							<div class="col-3 pdt-5 text-large color-red">
-								<i class="fa fa-times" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="row text-center align-items-center bg-darkgray ml-0 mr-0 pt-0 pb-0 color-white">
-							<div class="col-6 p">
-								Week 20 Aug - 26 Aug
-							</div>
-							<div class="col-3 pdt-5 text-large color-green">
-								<i class="fa fa-check" aria-hidden="true"></i>
-							</div>
-							<div class="col-3 pdt-5 text-large color-red">
-								<i class="fa fa-times" aria-hidden="true"></i>
-							</div>
-						</div>
-						@endfor
+							<!-- <div class="row text-center align-items-center bg-darkgray ml-0 mr-0 pt-0 pb-0 color-white">
+								<div class="col-6 p">
+									Week 20 Aug - 26 Aug
+								</div>
+								<div class="col-3 pdt-5 text-large color-green">
+									<i class="fa fa-check" aria-hidden="true"></i>
+								</div>
+								<div class="col-3 pdt-5 text-large color-red">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div> -->
+							@php
+								$i++;
+							@endphp
+							@endforeach
+						@endif
 						
 					</div>
 					<div class="col-12 col-lg-10 col-xl-8 pl-0">

@@ -49,7 +49,7 @@
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">E-mail</label>
 									<div class="col-md-9">
-										<input type="email" class="form-control" name="email" value="">
+										<input type="email" class="form-control" name="email" value="" required>
 									</div>
 								</div>
 								{{--<div class="form-group row">--}}
@@ -62,13 +62,13 @@
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">New Password</label>
 									<div class="col-md-9">
-										<input type="password" class="form-control" name="password" value="">
+										<input type="password" class="form-control" name="password" value="" required>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">Retype New Password</label>
 									<div class="col-md-9">
-										<input type="password" class="form-control" name="password_confirmation" value="">
+										<input type="password" class="form-control" name="password_confirmation" value="" required>
 									</div>
 								</div>
 							</div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ForgetPassword;
+use App\Mail\ForgotPassword;
 use App\Models\Occupation;
 use App\Models\Ranks;
 use App\Models\Salary;
@@ -10,6 +10,7 @@ use App\Models\Title;
 use App\Models\User;
 use App\Models\Teams;
 use App\Entities\Invite;
+use App\Models\Bets;
 
 use App\Models\UserOtp;
 use App\Notifications\OneTimePassword;
@@ -60,6 +61,24 @@ class MemberController extends Controller
         $this->_data['inviteUrl'] = $user->ref_code;
 
         return view('frontend/user_profile')->with($this->_data);
+
+    }
+
+    public function getHistory(Request $request)
+    {
+        $id   = Auth::user()->id;
+        $user = User::find($id);
+
+        $result = Bets::where('user_id', $user->id)
+                            ->limit(38)
+                            ->get();
+
+        $this->_data['result']    = $result;
+        // dd($result);
+
+        // $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+
+        return view('frontend/user_history')->with($this->_data);
 
     }
 
@@ -228,8 +247,8 @@ class MemberController extends Controller
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
                     $this->flash_messages($request, 'danger', 'Please check value on input');
-                    return redirect()
-                        ->route('user.register')
+                    return redirect('register')
+                        // ->route('user.register')
                         ->withErrors($validator)
                         ->withInput();
                 }
@@ -375,13 +394,8 @@ class MemberController extends Controller
 
           return redirect()->route('user.change_password');
         }
-      }
-
-    public function getHistory()
-    {
-
-        return view('frontend.user_history');
     }
+
 
     public function sentEmailForgotPassword(Request $request){
         try{
@@ -391,9 +405,10 @@ class MemberController extends Controller
                     $user = $user->first();
                     $user->remember_token = $this->_generateRandomString(30);
                     $user->save();
-//                    return $user;
+                    $url = url('/forgot_password?remember_token='.$user->remember_token);
                     if($user){
-                        $sendMail = Mail::to($request->email)->send(new ForgetPassword($user));
+                        $sendMail = Mail::to($request->email)->send(new ForgotPassword($url));
+                        return redirect()->route('home');
                     }else{
                         $this->flash_messages($request, 'danger', 'Process Error');
                         return redirect()->route('user.forgot');
@@ -420,7 +435,7 @@ class MemberController extends Controller
             if ($validator->fails()) {
                 $this->flash_messages($request, 'danger', 'Error input');
                 return redirect()
-                    ->route('user.change_password'.'/'.$request->remember_token)
+                    ->route('user.change_password?remember_token='.$request->remember_token)
                     ->withErrors($validator)
                     ->withInput();
             }
@@ -436,7 +451,7 @@ class MemberController extends Controller
                 return redirect()->route('signin');
             }else{
                 $this->flash_messages($request, 'danger', 'Email Not match');
-                return redirect()->route('user.change_password'.'/'.$request->remember_token);
+                return redirect()->route('user.change_password?remember_token='.$request->remember_token);
 
             }
         }catch(\Exception $e){
