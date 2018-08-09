@@ -10,6 +10,7 @@ use App\Models\Match;
 use App\Models\Bets;
 use App\Models\PointLogs;
 use App\Models\User;
+use App\Models\BetLogs;
 use Carbon\Carbon;
 
 /**
@@ -78,6 +79,12 @@ class MatchesController extends Controller
                     $bets->match_id = $id;
                     $bets->predicted_team = $request->vote_team;
                     $bets->save();
+
+                    $betLogs = new BetLogs;
+                    $betLogs->user_id = $user->id;
+                    $betLogs->match_id = $id;
+                    $betLogs->predicted_team = $request->vote_team;
+                    $betLogs->save();
 
                     return redirect()->route('match');
 

@@ -20,7 +20,7 @@
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
 							<div class="home">
-								<img class="kits" src="url({{ $matchInfo->teamA->shirt_img_url }})" />
+								<img class="kits" src="{{ $matchInfo->teamA->shirt_img_url }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
 							<div class="time mt-3 mb-auto pl-3">
@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="away">
-								<img class="kits" src="url({{ $matchInfo->teamB->shirt_img_url }})" />
+								<img class="kits" src="{{ $matchInfo->teamB->shirt_img_url }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamB->team_name }}</h1>
 							</div>
 						</div>
@@ -42,9 +42,9 @@
 					</div> -->
 					<div class="col-12">
 						<div class="btn-group w-100" role="group">
-						  <button type="button" id="voteHome" data-vote="1" class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
+						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}" class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
 						  <button type="button" id="voteDraw" data-vote="0" class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
-						  <button type="button" id="voteAway" data-vote="2" class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
+						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
 						</div>
 						<div class="d-flex justify-content-center vote-box w-100">
 
