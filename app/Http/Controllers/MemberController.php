@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ForgetPassword;
 use App\Models\Occupation;
+use App\Models\Ranks;
 use App\Models\Salary;
 use App\Models\Title;
 use App\Models\User;
@@ -211,6 +212,7 @@ class MemberController extends Controller
                 $validator = $this->_validator($request->all());
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
+                    $this->flash_messages($request, 'danger', 'Please check value on input');
                     return redirect()
                         ->route('user.register')
                         ->withErrors($validator)
@@ -244,6 +246,11 @@ class MemberController extends Controller
                 $user->ref_code = $ref_code;
                 $user->save();
 
+                $rank = new Ranks;
+                $rank->user_id = $user->id;
+                $rank->save();
+
+
                 // check has refCode(invite case)
                 if ($request->session()->get('refCode')) {
                   // in case of invite
@@ -273,7 +280,7 @@ class MemberController extends Controller
         }
     }
 
-    //FIXME validator email,phone in table user
+    //TODO validator email,phone in table user
     private function _validator(array $data){
         return Validator::make($data, [
             'title_id'  => 'required|integer',
