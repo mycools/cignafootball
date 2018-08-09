@@ -147,8 +147,8 @@ class MemberController extends Controller
         $user->save();
 
         // Save Log
-            $inInvite = Invite::where('invitee_id',$user->id)->get();
-            if(!empty($inInvite)) {
+            $inInvite = Invite::where('invitee_id',$user->id);
+            if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
               $invite['point_type'] = 'inv';
