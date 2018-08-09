@@ -8,18 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ForgetPassword extends Mailable
+class ForgotPassword extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
+    public $url;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($url)
     {
-        $this->user = $user;
+        $this->url = $url;
     }
 
     /**
@@ -28,7 +28,8 @@ class ForgetPassword extends Mailable
      * @return $this
      */
     public function build(){
+        $this->_data['url'] = $this->url;
         return $this->subject('Cigna-Football : Forgotten Password')
-            ->view('emails.ForgetPassword');
+            ->view('emails.ForgotPassword')->with($this->_data);
     }
 }

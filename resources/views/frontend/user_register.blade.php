@@ -55,7 +55,7 @@
 										<div class="col-12 col-md-3 mb-sm-15">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name ="title_id">
+                                                <select name ="title_id" required>
                                                     <option value="1">เลือกคำนำหน้า</option>
                                                     @foreach($titles as $title)
                                                         <option value={{$title->id}}>{{$title->title_name_th}}</option>
@@ -66,32 +66,32 @@
 										<div class="col-12 col-md-9">
 											<div class="row">
 												<div class="col-12 col-md-6 mb-sm-15">
-													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="">
+													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="" required>
 												</div>
 												<div class="col-12 col-md-6">
-													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="">
+													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="" required>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="">
+											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="" required>
 										</div>
 										<div class="col-12 col-md-6">
-											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="">
+											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
 											<div class="input-group date">
-												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" >
+												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required>
 											</div>
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name="occupation_id" >
+                                                <select name="occupation_id" required>
                                                     <option value="1" >เลือกอาชีพ</option>
                                                     @foreach($occupations as $occupation)
                                                         <option value={{$occupation->id}}>{{$occupation->occupation_name}}</option>
@@ -104,7 +104,7 @@
 										<div class="col-12 col-md-6 mb-sm-15">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name="salary_id" >
+                                                <select name="salary_id" required>
                                                     <option value="1" >เลือกระดับเงินเดือน</option>
                                                     @foreach($salaries as $salary)
                                                         <option value={{$salary->id}}>{{$salary->salary_name}}</option>
@@ -115,7 +115,7 @@
 										<div class="col-12 col-md-6">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name ="team_id" placeholder="ทีมที่เชียร์">
+                                                <select name ="team_id" required>
                                                     <option value="1" >เลือกทีมที่ชอบ</option>
                                                     @foreach($teams as $team)
                                                         <option value={{$team->id}}>{{$team->team_name}}</option>
