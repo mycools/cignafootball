@@ -55,7 +55,7 @@
 									<label class="col-md-3 text-md-right pr-0 col-form-label font-med">ทีมที่ชอบ</label>
 									<div class="col-md-9">
 										<div class="form-control-plaintext text-center">
-										    {{ $team->team_name }}
+										    {{ (!empty($team->team_name) ? $team->team_name : '-') }}
 										</div>
 									</div>
 								</div>
@@ -121,7 +121,7 @@
 								เพื่อเพิ่มสิทธิ์
 							</div>
 							<div class="col-9 col-md-6 col-lg-8 text-center">
-								<input type="text" class="form-control pt-10 pb-10" value="http://127.0.0.1:8000/register/{{ $inviteUrl }}">
+								<input type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
 								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
