@@ -18025,11 +18025,15 @@ body {
 }
 
 .text-large {
-  font-size: 150%;
+  font-size: 150% !important;
+}
+
+.text-normal {
+  font-size: 100% !important;
 }
 
 .text-small {
-  font-size: 80%;
+  font-size: 80% !important;
 }
 
 .font-bolder {

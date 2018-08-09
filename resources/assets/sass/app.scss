@@ -83,8 +83,9 @@ body {
 .text-blue { color: $color-blue; }
 
 .text-extra-large { font-size: 300%; }
-.text-large { font-size: 150%; }
-.text-small { font-size: 80%; }
+.text-large { font-size: 150% !important; }
+.text-normal { font-size: 100% !important; }
+.text-small { font-size: 80% !important; }
 
 .font-bolder { font-family: 'db_helvethaica_x85_blk'; }
 .font-bold { font-family: 'db_helvethaica_x75_bd'; }
