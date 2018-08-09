@@ -65,7 +65,15 @@ class MatchesController extends Controller
 
                 if ($request->isMethod('post')) {
 
-                    $bets = new Bets;
+                    // check duplicate bet
+                    $dupBet = Bets::where('match_id', $id)->where('user_id', $auth->id);
+                    if ($dupBet->count() > 0) {
+                      // in case of duplicate
+                      $bets = $dupBet->first();
+                    } else {
+                      // in case of not duplicate
+                      $bets = new Bets;
+                    }
                     $bets->user_id = $user->id;
                     $bets->match_id = $id;
                     $bets->predicted_team = $request->vote_team;
