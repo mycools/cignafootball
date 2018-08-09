@@ -106,11 +106,12 @@ class MatchesController extends Controller
                     $this->_data['matchInfo'] = $matchInfo;
 
                     // check has bet
+                    $this->_data['lastBet'] = null;
                     $historyBet = Bets::where('user_id', $auth->id)
                                       ->where('match_id', $id);
                     if ($historyBet->count() > 0) {
                       $lastBet = $historyBet->first();
-                      $this->_data['lastBet'] = $lastBet;
+                      $this->_data['lastBet'] = $lastBet['predicted_team'];
                     }
 
                     return view('frontend.match_predict')->with($this->_data);

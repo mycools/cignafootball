@@ -38,13 +38,12 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
 							<div class="time mt-3 mb-auto pl-3">
-								@if($time)
-									<h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
-									<div class="time-box rounded border">
-										<span id="getting-started" data-time="{{ $time }}"></span>
-									</div>
-								@endif
-
+                @if($time)
+                  <h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
+                  <div class="time-box rounded border">
+                    <span id="getting-started" data-time="{{ $time }}"></span>
+                  </div>
+                @endif
 							</div>
 							<div class="away">
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
@@ -59,9 +58,9 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 					</div> -->
 					<div class="col-12">
 						<div class="btn-group w-100" role="group">
-						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}" class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
-						  <button type="button" id="voteDraw" data-vote="0" class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
-						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
+						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}"@if($lastBet) @if($lastBet==$matchInfo->team_a) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
+						  <button type="button" id="voteDraw" data-vote="0" @if($lastBet) @if($lastBet==0) style="opacity: 1; color:#000 !important;" @else style="opacity: 0.3; !important;" @endif @endif class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
+						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
 						</div>
 						<div class="d-flex justify-content-center vote-box w-100">
 
@@ -79,7 +78,7 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $matchInfo->bet_total_count }})</span></button>
 					</div>
 
 				</div>
@@ -93,6 +92,15 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 
 @section('scripts')
 
+	<style>
+	.text-dark {
+		color: #000 !important;
+	}
+	.text-dark:hover, .text-dark:focus {
+		color: #000 !important;
+	}
+	</style>
+
 	<script>
 
 	  $(function () {
@@ -100,13 +108,31 @@ if(strtotime($matchInfo['bet_start']) <= strtotime('now')) {
 	  		$('.vote_match').click(function() {
 
 	  			$('#vote_team').val($(this).data('vote'));
+
+					$('#onVote').prop('disabled', false);
 	  		});
+
+				$('#voteHome').click(function() {
+					$('#voteDraw').fadeTo("slow" , 0.3);
+					$('#voteAway').fadeTo("slow" , 0.3);
+				});
+
+				$('#voteDraw').click(function() {
+					$('#voteHome').fadeTo("slow" , 0.3);
+					$('#voteAway').fadeTo("slow" , 0.3);
+				});
+
+				$('#voteAway').click(function() {
+					$('#voteDraw').fadeTo("slow" , 0.3);
+					$('#voteHome').fadeTo("slow" , 0.3);
+				});
+
 
 	  });
 
 	</script>
 
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
 
