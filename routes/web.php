@@ -36,12 +36,15 @@ Route::get('/signout', 'Auth\AuthController@getLogout')->name('signout');
 Route::get('/forgot', 'MemberController@getForgot')->name('user.forgot');
 Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user.change_password');
 	Route::post('/forgot_password', 'MemberController@postForgotPassword');
+
+
 Route::get('/register', 'MemberController@getRegister')->name('user.register');
 Route::post('/submit_registration', 'MemberController@registration')->name('user.submit_registration');
-Route::get('/register/otp', 'MemberController@getRegisterOtp')->name('user.register_otp');
-  Route::post('/register/otp', 'MemberController@getRegisterOtp');
-Route::get('/register/detail', 'MemberController@getRegisterDetail')->name('user.register_detail');
+Route::get('/register/{otp}', 'MemberController@getRegisterOtp')->where('otp', 'otp')->name('user.register_otp');
+  Route::post('/register/{otp}', 'MemberController@getRegisterOtp')->where('otp', 'otp');
+Route::get('/register/{detail}', 'MemberController@getRegisterDetail')->where('detail', 'detail')->name('user.register_detail');
+	Route::post('/register/{detail}', 'MemberController@getRegisterDetail')->where('detail', 'detail');
+Route::get('/register/{ref}', 'MemberController@registerHasRefcode')->name('user.register');
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
 Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');
-

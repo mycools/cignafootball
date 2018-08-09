@@ -19,17 +19,18 @@
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
 								<div class="text-center text-large font-light mb-30">กรุณากำหนดชื่อผู้ใช้และรหัสผ่าน</div>
-								<form>
+								<form role="form" name="formUser" id="formUser" method="post">
+									{{ csrf_field() }}
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Username</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" value="">
+											<input type="text" class="form-control" name="username" value="">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
 										<div class="col-md-9">
-											<input type="password" class="form-control" value="">
+											<input type="password" class="form-control" name="password" value="">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -38,14 +39,15 @@
 											<input type="password" class="form-control" value="">
 										</div>
 									</div>
-								</form>
-								<div class="row">
-									<div class="col-md-9 ml-auto">
-										<div class="text-center mt-20 mt-sm-45">
-											<a class="btn btn-green" href="#">สมัครเข้าร่วมกิจกรรม</a>
+									<div class="row">
+										<div class="col-md-9 ml-auto">
+											<div class="text-center mt-20 mt-sm-45">
+												<button type="submit" class="btn btn-green">สมัครเข้าร่วมกิจกรรม</button>
+												{{-- <a class="btn btn-green" href="#">สมัครเข้าร่วมกิจกรรม</a> --}}
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 
 							</div>
 						</div>

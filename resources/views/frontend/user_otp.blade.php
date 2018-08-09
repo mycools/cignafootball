@@ -8,6 +8,13 @@
 
 <div class="fullpage-wrapper register-page">
 
+@php
+if (Session::has('user_id')) {
+	Session::get('user_id');
+}
+
+@endphp
+
 	<div class="section fp-auto-height active">
 		<div class="container">
 			<h1 class="h-title">ลงทะเบียน</h1>
