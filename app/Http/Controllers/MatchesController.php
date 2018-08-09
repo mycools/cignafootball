@@ -31,11 +31,14 @@ class MatchesController extends Controller
     {
       $now = Carbon::now();
       $now = $now->toDateTimeString();
+
+      // get team now
       $match = Matchs::with(['TeamA', 'TeamB'])
                             ->where('match_start', '<', $now)
                             ->where('match_end', '>', $now)
                             ->first();
 
+      // get previous Match
       $previousMatch = Matchs::with(['TeamA', 'TeamB'])
                             ->where('match_end', '<', $now)
                             ->orderBy('match_end', 'desc')
@@ -71,7 +74,9 @@ class MatchesController extends Controller
                     return redirect()->route('match');
 
                 } else {
-
+                    // where match by id
+                    $matchInfo = Matchs::with(['TeamA', 'TeamB'])->where('id', $id)->first();
+                    $this->_data['matchInfo'] = $matchInfo;
 
                     return view('frontend.match_predict')->with($this->_data);
                 }

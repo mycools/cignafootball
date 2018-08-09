@@ -19,22 +19,23 @@
 						<div class="row">
 							<div class="col-11 col-md-10 col-lg-8 m-auto">
 
-								<form>
+                                <form method="post" enctype="multipart/form-data" action="{{ route('user.sentEmailForgotPassword') }}">
+                                    {{ csrf_field() }}
 									<div class="form-group row">
 										<label class="col-md-3 text-md-right pr-0 col-form-label">E-mail</label>
 										<div class="col-md-9">
-											<input type="email" class="form-control" value="">
+											<input name="email" type="email" class="form-control" value="" required>
 										</div>
 									</div>
-								</form>
+
 								<div class="row">
 									<div class="col-md-9 ml-auto">
 										<div class="text-center mt-15">
-											<a class="btn btn-green" href="#">ยืนยัน</a>
+											<button class="btn btn-green" type ="submit">ยืนยัน</button>
 										</div>
 									</div>
 								</div>
-
+                                </form>
 							</div>
 						</div>
 
