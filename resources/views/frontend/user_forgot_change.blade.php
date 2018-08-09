@@ -16,7 +16,7 @@
 				<div class="col-12 col-sm-12 m-auto">
 					<div class="box-wrapper">
 
-						<form action="{{ url('/forgot_password') }}" method="post">
+						<form action="{{ url('/submit_forgot_password') }}" method="post">
 
 							{{ csrf_field() }}
 
@@ -52,12 +52,13 @@
 										<input type="email" class="form-control" name="email" value="">
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>
-									<div class="col-md-9">
-										<input type="password" class="form-control" name="current_password" value="">
-									</div>
-								</div>
+								{{--<div class="form-group row">--}}
+									{{--<label class="col-md-3 text-md-right pr-0 col-form-label">Password</label>--}}
+									{{--<div class="col-md-9">--}}
+										{{--<input type="password" class="form-control" name="current_password" value="">--}}
+									{{--</div>--}}
+								{{--</div>--}}
+                                <input name="remember_token" type="hidden" value="{{$_GET['remember_token']}}">
 								<div class="form-group row">
 									<label class="col-md-3 text-md-right pr-0 col-form-label">New Password</label>
 									<div class="col-md-9">
