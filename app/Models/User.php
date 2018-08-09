@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Ranks', 'user_id', 'id');
     }
+    public function getBets()
+    {
+        return $this->hasOne('App\Models\Bets', 'user_id', 'id');
+    }
 }

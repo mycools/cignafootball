@@ -10,6 +10,7 @@ use App\Models\Title;
 use App\Models\User;
 use App\Models\Teams;
 use App\Entities\Invite;
+use App\Models\Bets;
 
 use App\Models\UserOtp;
 use App\Notifications\OneTimePassword;
@@ -60,6 +61,24 @@ class MemberController extends Controller
         $this->_data['inviteUrl'] = $user->ref_code;
 
         return view('frontend/user_profile')->with($this->_data);
+
+    }
+
+    public function getHistory(Request $request)
+    {
+        $id   = Auth::user()->id;
+        $user = User::find($id);
+
+        $result = Bets::where('user_id', $user->id)
+                            ->limit(38)
+                            ->get();
+                            
+        $this->_data['result']    = $result;
+        // dd($result);
+
+        // $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+
+        return view('frontend/user_history')->with($this->_data);
 
     }
 
@@ -356,13 +375,8 @@ class MemberController extends Controller
 
           return redirect()->route('user.change_password');
         }
-      }
-
-    public function getHistory()
-    {
-
-        return view('frontend.user_history');
     }
+
 
     public function sentEmailForgotPassword(Request $request){
         try{
