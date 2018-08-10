@@ -283,6 +283,7 @@ class MemberController extends Controller
     }
 
     public function registration(Request $request){
+//        return $request;
         try{
             if($request->isMethod('post')) {
                 $validator = $this->_validator($request->all());
@@ -390,7 +391,7 @@ class MemberController extends Controller
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno'
+            'phoneno'  => 'required|regax:/[0-9]{10}|unique:users,phoneno'
         ]);
     }
 
