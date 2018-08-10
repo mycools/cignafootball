@@ -394,8 +394,8 @@ class MemberController extends Controller
 
         $rules = [
             'title_id'  => 'required|integer',
-            'first_name'  => 'required|String|max:150',
-            'last_name'  => 'required|String|max:150',
+            'first_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
+            'last_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'email'  => 'required|email|unique:users,email',
             'birthdate'  => 'required|date|olderThan:20',
             'salary_id'  => 'required|integer',
@@ -409,9 +409,9 @@ class MemberController extends Controller
             'phoneno.min' => 'กรอกข้อมูลเบอร์โทรศัพท์อย่างน้อย 10 อักษร',
             'phoneno.max' => 'กรอกข้อมูลเบอร์โทรศัพท์ไม่เกิน 10 อักษร',
             // 'phoneno.numeric' => 'กรอกข้อมูลเบอร์โทรศัพท์เฉพาะตัวเลข',
-            'olderThan' => 'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์'
-            // 'first_name.regex' => 'กรุณากรอกชื่อจริงเฉพาะภาษาไทย',
-            // 'last_name.regex' => 'กรุณากรอกนามสกุลเฉพาะภาษาไทย'
+            'olderThan' => 'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์',
+            'first_name.regex' => 'กรุณากรอกชื่อจริงเฉพาะภาษาไทย',
+            'last_name.regex' => 'กรุณากรอกนามสกุลเฉพาะภาษาไทย'
         ];
 
         return Validator::make($data, $rules, $messages);
