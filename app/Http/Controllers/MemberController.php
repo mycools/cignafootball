@@ -78,8 +78,8 @@ class MemberController extends Controller
         $query = Bets::with(['team','match'])->where('user_id', $user->id)->orderBy('created_at','ASC')
                             ->limit(38);
         $this->_data['bets'] = $query->get();
-        $this->_data['win'] = $query->where('bet','win')->count();
-        $this->_data['lose'] = $query->where('bet','lose')->count();
+        $this->_data['win'] = $this->_data['bets']->where('bet','win')->count();
+        $this->_data['lose'] = $this->_data['bets']->where('bet','lose')->count();
 //        return $this->_data['bets'];
         return view('frontend/user_history')->with($this->_data);
 
