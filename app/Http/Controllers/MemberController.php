@@ -452,9 +452,12 @@ class MemberController extends Controller
                     $user->remember_token = $this->_generateRandomString(30);
                     $user->save();
                     $url = url('/forgot_password?remember_token='.$user->remember_token);
+                    $name = $user->first_name;
+                    $username = $user->username;
                     if($user){
-                        $sendMail = Mail::to($request->email)->send(new ForgotPassword($url));
-                        return redirect()->route('home');
+                        $sendMail = Mail::to($request->email)->send(new ForgotPassword($url,$name,$username));
+                        $this->flash_messages($request, 'success', 'Successful Please Check Your Email.');
+//                        return redirect()->route('home');
                     }else{
                         $this->flash_messages($request, 'danger', 'Process Error');
                         return redirect()->route('user.forgot');

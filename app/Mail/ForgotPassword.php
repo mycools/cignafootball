@@ -12,14 +12,18 @@ class ForgotPassword extends Mailable
 {
     use Queueable, SerializesModels;
     public $url;
+    public $name;
+    public $username;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($url)
+    public function __construct($url,$name,$username)
     {
         $this->url = $url;
+        $this->name = $name;
+        $this->username = $username;
     }
 
     /**
@@ -29,6 +33,8 @@ class ForgotPassword extends Mailable
      */
     public function build(){
         $this->_data['url'] = $this->url;
+        $this->_data['name'] = $this->name;
+        $this->_data['username'] = $this->username;
         return $this->subject('Cigna-Football : Forgotten Password')
             ->view('emails.ForgotPassword')->with($this->_data);
     }
