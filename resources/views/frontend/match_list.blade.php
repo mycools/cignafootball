@@ -40,7 +40,7 @@ if ($matchInfo != []) {
 				<div class="row">
 					<div class="col-12">
 						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">match of the weeks</h1>
-						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
+						<div class="p text-large font-bold text-white mb-10">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
 					</div>
 
 					<div class="col-12 dispay-match mb-4">
