@@ -172,7 +172,7 @@ class MemberController extends Controller
                                 ->pluck('id')->toArray();
 
                     foreach ($getRanks as $key => $value) {
-                      
+
                       $ranks = Ranks::find($value);
                       $ranks->ranking_no = ($key+1);
                       $ranks->save();
@@ -278,9 +278,21 @@ class MemberController extends Controller
             if($request->isMethod('post')) {
                 $validator = $this->_validator($request->all());
 
+                $dupUser = User::where('first_name', $request->first_name)
+                                ->where('last_name', $request->last_name)
+                                ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
+
+                if ($dupUser->count() > 0) {
+                  $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
+                  return redirect('register')
+                      // ->route('user.register')
+                      ->withErrors($validator)
+                      ->withInput();
+                }
+
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
-                    // $this->flash_messages($request, 'danger', 'Please check value on input');
+                    $this->flash_messages($request, 'danger', 'Please check value on input');
                     return redirect('register')
                         // ->route('user.register')
                         ->withErrors($validator)
