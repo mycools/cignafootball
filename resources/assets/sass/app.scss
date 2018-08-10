@@ -120,6 +120,8 @@ a:focus {
 		color: #fff !important;
 		background: #061445;
 	}
+	&.disabled,
+	&:disabled,
 	&.disable { background: #898989; }
 	&.btn-green {
 		color: #fff;

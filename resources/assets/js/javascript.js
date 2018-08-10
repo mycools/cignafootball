@@ -33,8 +33,6 @@ $(document).ready(function() {
 	});
 
 	$('#sharefb').on('click',share_facebook);
-	// $('.btn-copy').on('click',copyClipboard);
-	// new ClipboardJS('.btn-copy');
 
 
 });
@@ -44,11 +42,3 @@ function share_facebook() {
 	window.open('http://www.facebook.com/sharer.php?u=' + base_url, '_fb','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=600');
 }
 
-// function copyClipboard() {
-
-//   var copyText = document.getElementById("forCopy");
-//   copyText.select();
-//   document.execCommand("copy");
-
-//   alert("Copied URL Invite : " + copyText.value);
-// }
