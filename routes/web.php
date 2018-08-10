@@ -36,7 +36,7 @@ Route::get('signin', function (Request $request) {
 })->name('signin');
 Route::post('signin', 'Auth\AuthController@postLogin');
 
-Route::get('/signout', 'Auth\AuthController@getLogout')->name('signout');
+Route::get('/signout', 'MemberController@getLogout')->name('signout');
 
 Route::get('/forgot', 'MemberController@getForgot')->name('user.forgot');
 Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user.change_password');
