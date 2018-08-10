@@ -35,7 +35,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 				<div class="row">
 					<div class="col-12">
 						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">match of the weeks</h1>
-						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</div>
+						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
 					</div>
 
 					<div class="col-12 dispay-match mb-4">
@@ -86,7 +86,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 						<div class="row">
 							<div class="col-12">
 								<h3 class="mb-3">
-									{{ Carbon\Carbon::parse($match->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d-M') }}
+									{{ Carbon\Carbon::parse($match->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d M') }}
 								</h3>
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">

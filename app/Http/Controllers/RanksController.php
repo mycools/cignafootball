@@ -29,7 +29,8 @@ class RanksController extends Controller
         					'getUser'
 						])
         				->orderBy('ranking_no', 'asc')
-        				->take(100)
+                        ->where('ranking_no', '!=', '0')
+        				->take(30)
 						->get();
 
         $this->_data['result']    = $result;
