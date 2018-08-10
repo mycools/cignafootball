@@ -390,7 +390,7 @@ class MemberController extends Controller
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|numeric|size:10|unique:users,phoneno'
+            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno'
         ]);
     }
 
