@@ -42,7 +42,7 @@ Route::get('/forgot', 'MemberController@getForgot')->name('user.forgot');
 Route::get('/forgot_password', 'MemberController@getForgotPassword')->name('user.change_password');
     Route::post('/sentEmailForgotPassword','MemberController@sentEmailForgotPassword')->name('user.sentEmailForgotPassword');
     Route::post('/submit_forgot_password', 'MemberController@forgotPassword');
-//	Route::post('/forgot_password', 'MemberController@postForgotPassword');
+	Route::post('/change_password', 'MemberController@postChangePassword');
 Route::get('/register', 'MemberController@getRegister')->name('user.register');
 Route::post('/submit_registration', 'MemberController@registration')->name('user.submit_registration');
 Route::get('/register/{otp}', 'MemberController@getRegisterOtp')->where('otp', 'otp')->name('user.register_otp');
@@ -53,3 +53,6 @@ Route::get('/register/{ref}', 'MemberController@registerHasRefcode')->name('user
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
 Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');
+
+Route::get('/tips', 'PageController@getTipsPage')->name('tips');
+Route::get('/tips/detail', 'PageController@getTipsDetailPage')->name('tips.detail');

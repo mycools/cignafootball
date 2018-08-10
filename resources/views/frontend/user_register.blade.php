@@ -55,10 +55,10 @@
 										<div class="col-12 col-md-3 mb-sm-15">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name ="title_id" required>
-                                                    <option value="1">เลือกคำนำหน้า</option>
+                                                <select name="title_id" id="title_id" required>
+                                                    <option value="0">เลือกคำนำหน้า</option>
                                                     @foreach($titles as $title)
-                                                        <option value={{$title->id}}>{{$title->title_name_th}}</option>
+                                                        <option value={{ $title->id }}>{{ $title->title_name_th }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -66,20 +66,20 @@
 										<div class="col-12 col-md-9">
 											<div class="row">
 												<div class="col-12 col-md-6 mb-sm-15">
-													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="" required>
+													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="{{ old('first_name') }}" required>
 												</div>
 												<div class="col-12 col-md-6">
-													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="" required>
+													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="{{ old('last_name') }}" required>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="" required>
+											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="{{ old('phoneno') }}" required>
 										</div>
 										<div class="col-12 col-md-6">
-											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="" required>
+											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="{{ old('email') }}" required>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -92,9 +92,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="occupation_id" required>
-                                                    <option value="1" >เลือกอาชีพ</option>
+                                                    <option value="0" >เลือกอาชีพ</option>
                                                     @foreach($occupations as $occupation)
-                                                        <option value={{$occupation->id}}>{{$occupation->occupation_name}}</option>
+                                                        <option value={{ $occupation->id }}>{{ $occupation->occupation_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -131,7 +131,7 @@
 										</div>
 										<div class="text-center mt-30">
 											<div class="form-check form-check-inline mb-15">
-												<input class="form-check-input mr-10" type="checkbox" value="1" id="checkCondition">
+												<input class="form-check-input mr-10" type="checkbox" value="1" id="checkCondition" onchange="isChecked(this, 'sub')">
 												<label class="form-check-label" for="checkCondition">
 												ข้อมูลถูกต้องและยินยอมตามเงื่อนไข <a class="color-lightyellow" href="#"  data-toggle="modal" data-target="#popup">(คลิกเพื่ออ่านเงื่อนไข)</a>
 												</label>
@@ -140,7 +140,7 @@
 									</div>
                                     {{--FIXME add button in form--}}
 									<div class="col-md-6 m-auto">
-										<button class="btn btn-green" href="{{ url('/register/otp') }}">สมัครเข้าร่วมกิจกรรม</button>
+										<button class="btn btn-green" href="{{ url('/register/otp') }}" id="sub" disabled>สมัครเข้าร่วมกิจกรรม</button>
 									</div>
 								</div>
                                 </form>
@@ -156,22 +156,17 @@
 
 </div>
 <div class="modal fade" id="popup" tabindex="-1">
-    <div class="modal-dialog centered" role="document">
+    <div class="modal-dialog modal-lg centered" role="document">
         <div class="modal-content">
             <div class="modal-body p-4 pl-30 pr-30">
                 <!-- <span aria-hidden="true" class="close" data-dismiss="modal">&times;</span> -->
                 <div class="head-title">
-                    <span>เงื่อนไข</span>
+                    <h3 class="color-darkgray">เงื่อนไข เกณฑ์การตัดสิน และการแจกจ่ายสิ่งของรางวัลอย่างไร ?</h3>
                 </div>
                 <div class="detail">
-                    1.<br />
-                    2.<br />
-                    3.<br />
-                    4.<br />
-                    5.<br />
-                    6.<br />
-                    7.<br />
-                    8.<br />
+					<div class="p mb-30 text-small">
+						@include('frontend.components.condition')
+					</div>
                 </div>
                 <div class="footer text-center">
                     <a class="btn btn-blue color-white" data-dismiss="modal">ปิด</a>
@@ -180,4 +175,16 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+	function isChecked(checkbox, sub) {
+	    var button = document.getElementById(sub);
+
+	    if (checkbox.checked === true) {
+	        button.disabled = "";
+	    } else {
+	        button.disabled = "disabled";
+	    }
+	}
+</script>
 @endsection

@@ -10,8 +10,16 @@
 		@include('frontend.includes.stylesheet')
 
 		@include('frontend.includes.header_script')
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-KBKPVL2');</script>
+		<!-- End Google Tag Manager -->
 	</head>
 	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBKPVL2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
 		<div id="app">
 
 			<!-- Fixed navbar -->
@@ -54,11 +62,11 @@
 								<a class="nav-link pr-0 special {{ Request::is('signin') ? 'active' : '' }}" href="{{ url('signin') }}"><img src="{{ url('images/icon/icon_invite_menu.png') }}" /> Sign in</a>
 							</li>
 							@endif
+
 							@if(Auth::user())
 							<li class="nav-item">
-								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" alt="Copy Invite URL">
+								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copyToCliboard()">
 									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
-									<input id="forCopy" type="text" value="{{ url('invite') }}" hidden />
 								</a>
 							</li>
 							<li class="nav-item dropdown d-none d-md-block">
@@ -80,4 +88,9 @@
 	                </div>
 	            </div>
 	        </nav>
+	        @if(Auth::user())
+	        <div class="container text-right" style="height: 0;">
+	        	<input id="myInviteUrl" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
+	        </div>
+	        @endif
 	        <!-- End Fixed navbar -->

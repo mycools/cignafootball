@@ -11,6 +11,7 @@ use App\Models\Bets;
 use App\Models\PointLogs;
 use App\Models\User;
 use App\Models\BetLogs;
+use App\Models\Ranks;
 use Carbon\Carbon;
 
 /**
@@ -22,6 +23,11 @@ use Carbon\Carbon;
 class MatchesController extends Controller
 {
     private $_data = [];
+
+    private function flash_messages($request, $status, $messages)
+    {
+        $request->session()->flash('flash_messages', ['status' => $status, 'messages' => $messages]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -39,12 +45,14 @@ class MatchesController extends Controller
                             ->where('match_end', '>', $now)
                             ->first();
 
+                            $this->_data['total_count'] = Bets::where('match_id', $match->id)->count();
+
       // get previous Match
       $previousMatch = Matchs::with(['TeamA', 'TeamB'])
                             ->where('match_end', '<', $now)
                             ->orderBy('match_end', 'desc')
-                            ->limit(3)
-                            ->offset(0)
+                            // ->limit(3)
+                            // ->offset(0)
                             ->get();
 
       $this->_data['matchInfo'] = $match;
@@ -55,8 +63,11 @@ class MatchesController extends Controller
 
     public function predict(Request $request, $id)
     {
+
         $auth   = Auth::user();
         $match  = Match::find($id);
+
+        $this->_data['total_count'] = Bets::where('match_id', $id)->count();
 
         if($match) {
 
@@ -69,11 +80,14 @@ class MatchesController extends Controller
                     // check duplicate bet
                     $dupBet = Bets::where('match_id', $id)->where('user_id', $auth->id);
                     if ($dupBet->count() > 0) {
-                      // in case of duplicate
+                      // in case of duplicate(update)
                       $bets = $dupBet->first();
                     } else {
-                      // in case of not duplicate
+                      // in case of not duplicate(insert)
                       $bets = new Bets;
+                      $rank = Ranks::where('user_id', $auth->id)->first();
+                      $rank->predict_count = (int)$rank->predict_count + 1;
+                      $rank->save();
                     }
                     $bets->user_id = $user->id;
                     $bets->match_id = $id;
@@ -86,12 +100,23 @@ class MatchesController extends Controller
                     $betLogs->predicted_team = $request->vote_team;
                     $betLogs->save();
 
-                    return redirect()->route('match');
+                    $this->flash_messages($request, 'danger', 'บันทึกผลการทายผลเรียบร้อยแล้ว!');
+                    return redirect('match')
+                        ->withInput();
 
                 } else {
                     // where match by id
                     $matchInfo = Matchs::with(['TeamA', 'TeamB'])->where('id', $id)->first();
                     $this->_data['matchInfo'] = $matchInfo;
+
+                    // check has bet
+                    $this->_data['lastBet'] = null;
+                    $historyBet = Bets::where('user_id', $auth->id)
+                                      ->where('match_id', $id);
+                    if ($historyBet->count() > 0) {
+                      $lastBet = $historyBet->first();
+                      $this->_data['lastBet'] = $lastBet['predicted_team'];
+                    }
 
                     return view('frontend.match_predict')->with($this->_data);
                 }

@@ -20,15 +20,15 @@ class PageController extends Controller
         return view('frontend.prize');
     }
    
-    public function getMatchList()
+    public function getTipsPage()
     {
 
-        return view('frontend.match_list');
+        return view('frontend.tips');
     }
 
-    public function getMatchPredict()
+    public function getTipsDetailPage()
     {
 
-        return view('frontend.match_predict');
+        return view('frontend.tips_detail');
     }
 }

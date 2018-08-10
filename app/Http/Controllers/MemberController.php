@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Teams;
 use App\Entities\Invite;
 use App\Models\Bets;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\UserOtp;
 use App\Notifications\OneTimePassword;
@@ -47,21 +48,26 @@ class MemberController extends Controller
 
     public function getProfile(Request $request)
     {
-        $id   = Auth::user()->id;
-        $user = User::find($id);
+        $id   = Auth::user();
+        if($id) {
+            $id = $id->id;
+            $user = User::find($id);
 
-        // $this->_data['result']    = $user;
-        $result = User::with([
-                            'getRank'
-                        ])->find($id);
+            // $this->_data['result']    = $user;
+            $result = User::with([
+                                'getRank'
+                            ])->find($id);
+            $this->_data['allrank'] = Ranks::all()->count();
+            $this->_data['result']    = $result;
 
-        $this->_data['result']    = $result;
+            $this->_data['team']     = Teams::where('id', $user->team_id)->first();
+            $this->_data['inviteUrl'] = $user->ref_code;
 
-        $this->_data['team']     = Teams::where('id', $user->team_id)->first();
-        $this->_data['inviteUrl'] = $user->ref_code;
+            return view('frontend/user_profile')->with($this->_data);
+        } else {
 
-        return view('frontend/user_profile')->with($this->_data);
-
+            return redirect()->route('home');
+        }
     }
 
     public function getHistory(Request $request)
@@ -69,15 +75,12 @@ class MemberController extends Controller
         $id   = Auth::user()->id;
         $user = User::find($id);
 
-        $result = Bets::where('user_id', $user->id)
-                            ->limit(38)
-                            ->get();
-
-        $this->_data['result']    = $result;
-        // dd($result);
-
-        // $this->_data['team']     = Teams::where('id', $user->team_id)->first();
-
+        $query = Bets::with(['team','match'])->where('user_id', $user->id)->orderBy('created_at','ASC')
+                            ->limit(38);
+        $this->_data['bets'] = $query->get();
+        $this->_data['win'] = $this->_data['bets']->where('bet','win')->count();
+        $this->_data['lose'] = $this->_data['bets']->where('bet','lose')->count();
+//        return $this->_data['bets'];
         return view('frontend/user_history')->with($this->_data);
 
     }
@@ -147,7 +150,7 @@ class MemberController extends Controller
         $user->save();
 
         // Save Log
-            $inInvite = Invite::where('invitee_id',$user->id);
+            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$user->id)->get();
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
@@ -155,11 +158,38 @@ class MemberController extends Controller
               $invite['point_score'] = 1;
 
               $user = User::find($inInvite->invitee_id);
-              $user->pointlogs()->create($invite);
+
+                Ranks::where('user_id', $inInvite->user_id)
+                    ->update(
+                      [
+                        'point' => DB::raw('point+1')
+                      ]
+                    );
+
+                // Re Ranks
+                    $getRanks = Ranks::orderBy('point', 'desc')
+                                ->take(30)
+                                ->pluck('id')->toArray();
+
+                    foreach ($getRanks as $key => $value) {
+
+                      $ranks = Ranks::find($value);
+                      $ranks->ranking_no = ($key+1);
+                      $ranks->save();
+                    }
             }
 
         // FIXME redirect to where?
-        return redirect()->route('home');
+            $usr = User::find($user->id);
+            Auth::login($usr,true);
+
+            if(Auth::check($usr)) {
+
+                return redirect()->route('user.profile');
+            } else {
+
+                return redirect()->route('home');
+            }
 
       } else {
         // in case of first call page
@@ -247,6 +277,19 @@ class MemberController extends Controller
         try{
             if($request->isMethod('post')) {
                 $validator = $this->_validator($request->all());
+
+                $dupUser = User::where('first_name', $request->first_name)
+                                ->where('last_name', $request->last_name)
+                                ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
+
+                if ($dupUser->count() > 0) {
+                  $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
+                  return redirect('register')
+                      // ->route('user.register')
+                      ->withErrors($validator)
+                      ->withInput();
+                }
+
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
                     $this->flash_messages($request, 'danger', 'Please check value on input');
@@ -352,7 +395,7 @@ class MemberController extends Controller
         return $randomString;
     }
 
-    public function postForgotPassword(Request $request)
+    public function postChangePassword(Request $request)
     {
         $id   = Auth::user()->id;
         $user = User::find($id);
@@ -382,7 +425,7 @@ class MemberController extends Controller
               $validator->errors()->add('change_password', 'Change your password success!');
 
               $request->session()->flush();
-              return redirect()->route('user.signin');
+              return redirect()->route('signin');
             }
 
             $this->flash_messages($request, 'success', 'Success!');
@@ -409,9 +452,12 @@ class MemberController extends Controller
                     $user->remember_token = $this->_generateRandomString(30);
                     $user->save();
                     $url = url('/forgot_password?remember_token='.$user->remember_token);
+                    $name = $user->first_name;
+                    $username = $user->username;
                     if($user){
-                        $sendMail = Mail::to($request->email)->send(new ForgotPassword($url));
-                        return redirect()->route('home');
+                        $sendMail = Mail::to($request->email)->send(new ForgotPassword($url,$name,$username));
+                        $this->flash_messages($request, 'success', 'Successful Please Check Your Email.');
+//                        return redirect()->route('home');
                     }else{
                         $this->flash_messages($request, 'danger', 'Process Error');
                         return redirect()->route('user.forgot');
@@ -461,4 +507,6 @@ class MemberController extends Controller
             $e->getMessage();
         }
     }
+
+    
 }

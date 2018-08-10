@@ -17893,6 +17893,10 @@ Variable
   color: #919191 !important;
 }
 
+.color-lightblue {
+  color: #0083cb !important;
+}
+
 .color-blue {
   color: #0c3f88 !important;
 }
@@ -17951,6 +17955,10 @@ Variable
 
 .bg-lightgray {
   background: #d7d7d7 !important;
+}
+
+.bg-lightblue {
+  background: #0083cb !important;
 }
 
 .bg-blue {
@@ -18083,7 +18091,6 @@ a:focus {
 
 .btn {
   font-size: 24px;
-  line-height: 24px;
   font-family: 'db_helvethaica_x65_med';
   border-radius: 0px;
   border: 0;
@@ -18098,6 +18105,8 @@ a:focus {
   background: #061445;
 }
 
+.btn.disabled,
+.btn:disabled,
 .btn.disable {
   background: #898989;
 }
@@ -18122,6 +18131,17 @@ a:focus {
   background: #061445;
 }
 
+.btn.btn-lightblue {
+  color: #fff;
+  background: #0083cb;
+}
+
+.btn.btn-lightblue:hover,
+.btn.btn-lightblue:focus {
+  background: #0083cb;
+  color: #fff;
+}
+
 .btn.btn-orange {
   color: #fff;
   background: #f6861f;
@@ -18130,6 +18150,16 @@ a:focus {
 .btn.btn-orange:hover,
 .btn.btn-orange:focus {
   background: #d5561f;
+}
+
+.btn.btn-white {
+  color: #061445;
+  background: #fff;
+}
+
+.btn.btn-white:hover,
+.btn.btn-white:focus {
+  color: #061445 !important;
 }
 
 .btn.btn-border {
@@ -18163,6 +18193,10 @@ a:focus {
 .btn.btn-border-gray:focus {
   background: #272727;
   color: #fff;
+}
+
+.match-page .btn {
+  line-height: 24px;
 }
 
 /***********************************************
@@ -18267,6 +18301,10 @@ footer img {
   height: 35px;
   margin-top: -10px;
   margin-left: 5px;
+}
+
+input#myInputCopy {
+  opacity: 0;
 }
 
 /***********************************************
@@ -18487,6 +18525,10 @@ Page
   background: url(/images/bg_ranking.jpg) no-repeat bottom center/cover;
 }
 
+.bg_prize {
+  background: url(/images/bg_prize.jpg) no-repeat bottom center/cover;
+}
+
 .ranking-list {
   max-height: 360px;
   overflow: auto;
@@ -18502,13 +18544,15 @@ Page
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-height: 30px;
 }
 
 .ranking-list .row-item:nth-child(2n) {
   background: #272727;
 }
 
-.ranking-list .row-item:hover {
+.ranking-list .row-item:hover,
+.ranking-list .row-item.active {
   background: #00b557;
 }
 
@@ -18650,6 +18694,54 @@ Page
 .home-ranking.active .btn:after {
   left: 1px;
   -webkit-transform: rotate(-45deg);
+}
+
+.tips-list {
+  width: 100%;
+}
+
+.tips-item {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.tips-item .detail {
+  padding: 15px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tips-item .detail .title {
+  font-weight: bold;
+  font-size: 120%;
+  line-height: 1.2;
+  color: #0083cb;
+  width: 100%;
+  height: 56px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.tips-item .detail .excerpt {
+  line-height: 1.2;
+  overflow: hidden;
+  margin-bottom: 15px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.tips-item.pin .detail {
+  height: auto;
+}
+
+.tips-item.content .title,
+.tips-item.content .excerpt,
+.tips-item.content .detail {
+  height: auto;
+}
+
+.tips-item a.detail:hover .title {
+  color: #383838;
 }
 
 .non-fullpage {
@@ -18866,7 +18958,11 @@ Responsive
   }
 
   .bg_ranking {
-    background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom -6.5% center/100% auto;
+    background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom 6.5% center/100% auto;
+  }
+
+  .bg_prize {
+    background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed/cover;
   }
 
   .home-page .fp-auto-height {
@@ -18879,6 +18975,19 @@ Responsive
 
   .ranking-page .padding-mobile {
     padding-top: 300px;
+  }
+
+  .tips-item .detail .title,
+  .tips-item .detail .excerpt {
+    height: auto;
+  }
+
+  .match-page {
+    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover !important;
+  }
+
+  .match-page.match-predict-page {
+    background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed/cover !important;
   }
 }
 
@@ -18951,11 +19060,19 @@ Responsive
   }
 
   .text-extra-large {
-    font-size: 180%;
+    font-size: 170%;
   }
 
   .text-large {
     font-size: 115%;
+  }
+
+  .f-1 {
+    font-size: 2rem !important;
+  }
+
+  .f-3 {
+    font-size: 2.5rem;
   }
 }
 

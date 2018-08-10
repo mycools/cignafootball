@@ -6,14 +6,36 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
+@php
+$now = Carbon\Carbon::now();
+$now = $now->toDateTimeString();
 
+if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
+
+	$time = $matchInfo['match_end'];
+} else {
+
+	$time = "";
+}
+
+@endphp
 <div class="match-page">
 	<div class="container">
+
+		@if(Session::has('flash_messages'))
+			@php
+				$flash_messages = Session::get('flash_messages');
+				echo "<body onload=\"window.alert('ระบบได้บันทึกข้อมูลการทายผลเรียบร้อยแล้วค่ะ');\">";
+			@endphp
+
+		@endif
+
 		@if ($matchInfo)
-			<div class="card-match border mt-4 p-2 pb-4">
+			<div class="card-match border mt-md-4 p-2 pb-4 mt-xs-0">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">match of the weeks</h1>
+						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
 					</div>
 
 					<div class="col-12 dispay-match mb-4">
@@ -36,13 +58,18 @@
 
 					</div>
 					<div class="col-12">
-						<div class="d-flex justify-content-center">
-							<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
-							<div class="time-box rounded f-1 border">38:20:01</div>
+						<div class="d-flex justify-content-center align-items-center">
+							@if($time)
+								<span class="times-remaining f-4">เหลือเวลาอีก</span>
+								<div class="time-box rounded f-3 border pl-25 pr-25 pl-xs-10 pr-xs-10" id="getting-started" data-time="{{ $time }}"></div>
+							@else
+								<div class="time-box rounded f-1 border" id="getting-started">ยังไม่เริ่มกิจกรรม</div>
+							@endif
+							{{-- <div></div> --}}
 						</div>
 					</div>
-					<div class="col-12">
-						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $matchInfo->bet_total_count }})</span></a>
+					<div class="col-12 mb-10">
+						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $total_count }})</span></a>
 					</div>
 
 				</div>
@@ -51,7 +78,7 @@
 
 		<div class="row">
 			<div class="col-12">
-				<h1 class="match-page-title-lastweek">MATCH <span>ของสัปดาห์ก่อน</span></h1>
+				<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
 			</div>
 			<div class="col-12">
 				@foreach ($previousMatch as $match)
@@ -59,7 +86,7 @@
 						<div class="row">
 							<div class="col-12">
 								<h3 class="mb-3">
-									{{ Carbon\Carbon::parse($match->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d-M') }}
+									{{ Carbon\Carbon::parse($match->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d M') }}
 								</h3>
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">
@@ -102,3 +129,23 @@
 </div>
 
 @endsection
+
+@section('scripts')
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+<script type="text/javascript">
+	@if($time)
+		$(function() {
+		  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
+		    $(this).text(
+		      event.strftime('%H:%M:%S')
+		    );
+		  });
+		});
+	@endif
+</script>
+
+@stop

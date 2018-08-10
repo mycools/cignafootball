@@ -83,7 +83,7 @@
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_trophy.png') }}" /></div>
 							<div class="col-9 col-sm-10 col-md-9 text-center pdt-5">
 								Ranking
-								<div class="text-large">{{ ($result->getRank ? $result->getRank->ranking_no : '' ) }} / 23,953</div>
+								<div class="text-large">{{ ($result->getRank ? $result->getRank->ranking_no : '' ) }}{{' / '}}{{$allrank}}</div>
 							</div>
 						</div>
 					</div>
@@ -131,11 +131,11 @@
 								เพื่อเพิ่มสิทธิ์
 							</div>
 							<div class="col-9 col-md-6 col-lg-8 text-center">
-								<input id="forCopy" type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
+								<input id="myInvite" type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
 								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-10 pb-10 mt-sm-15 d-block btn-copy" href="javascript:;">Copy</a>
+								<a class="btn btn-border gray pt-0 pb-0 mt-sm-15 d-block btn-copy" onclick="copyToCliboardProfile()" href="javascript:;">Copy</a>
 							</div>
 						</div>
 					</div>
@@ -146,7 +146,7 @@
 				<div class="col-12 mb-sm-15">
 					<div class="box-wrapper">
 
-						<form action="{{ url('/forgot_password') }}" method="post">
+						<form action="{{ url('/change_password') }}" method="post">
 
 							{{ csrf_field() }}
 							<div class="col-12 col-lg-10 col-xl-8 m-auto">
