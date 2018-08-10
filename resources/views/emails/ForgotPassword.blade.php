@@ -5,7 +5,7 @@
 <table style="max-width: 600px!important; font-family: ArialMT; color: #333;" border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background-color: #222222; height: 51px; text-align: center;"><img src="http://atfirstbyte.net/header_mail.jpg" alt="GoPro" data-imagetype="External" /></td>
+<td style="background-color: #222222; height: 51px; text-align: center;"><img src="http://atfirstbyte.net/header_mail.jpg" alt="Cigna" data-imagetype="External" /></td>
 </tr>
 <tr>
 <td class="x_bodytable" style="background-color: #fff; padding: 26px 10% 0px 10%;">
@@ -19,7 +19,9 @@
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="height: 36px; width: 414px; font-size: 14px; padding: 13px 0px 0px 0px; line-height: 1.4;">It looks like you forgot your password. Just click the link below to create a new one:</td>
+<td style="height: 36px; width: 414px; font-size: 14px; padding: 13px 0px 0px 0px; line-height: 1.4;">It looks like you forgot your password. <br />
+Username : {{$username}} <br />
+Just click the link below to create a new one:</td>
 </tr>
 </tbody>
 </table>
