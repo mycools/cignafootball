@@ -18958,7 +18958,7 @@ Responsive
   }
 
   .bg_ranking {
-    background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom -6.5% center/100% auto;
+    background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom 6.5% center/100% auto;
   }
 
   .bg_prize {
@@ -18980,6 +18980,14 @@ Responsive
   .tips-item .detail .title,
   .tips-item .detail .excerpt {
     height: auto;
+  }
+
+  .match-page {
+    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover !important;
+  }
+
+  .match-page.match-predict-page {
+    background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed/cover !important;
   }
 }
 
@@ -19052,11 +19060,19 @@ Responsive
   }
 
   .text-extra-large {
-    font-size: 180%;
+    font-size: 170%;
   }
 
   .text-large {
     font-size: 115%;
+  }
+
+  .f-1 {
+    font-size: 2rem !important;
+  }
+
+  .f-3 {
+    font-size: 2.5rem;
   }
 }
 

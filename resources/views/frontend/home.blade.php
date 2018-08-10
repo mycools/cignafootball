@@ -46,7 +46,7 @@
 		</div>
 	</div>
 
-	<div class="home-ranking active">
+	<div class="home-ranking">
 		<div class="btn btn-blue open-list">
 			<img src="{{ url('images/icon/icon_trophy.png') }}" />
 		</div>
