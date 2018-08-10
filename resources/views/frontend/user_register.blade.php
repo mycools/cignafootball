@@ -57,8 +57,8 @@
                                                 {{--FIXME edit value from db--}}
                                                 <select name="title_id" id="title_id" required>
                                                     <option value="0">เลือกคำนำหน้า</option>
-                                                    @foreach($titles as $key => $title)
-                                                        <option @if(old('title_id') === $key) selected @endif value={{$title->id}}>{{$title->title_name_th}}</option>
+                                                    @foreach($titles as $title)
+                                                        <option value={{ $title->id }}>{{ $title->title_name_th }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -92,9 +92,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="occupation_id" required>
-                                                    <option value="1" >เลือกอาชีพ</option>
+                                                    <option value="0" >เลือกอาชีพ</option>
                                                     @foreach($occupations as $occupation)
-                                                        <option value={{$occupation->id}}>{{$occupation->occupation_name}}</option>
+                                                        <option value={{ $occupation->id }}>{{ $occupation->occupation_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

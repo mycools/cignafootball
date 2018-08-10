@@ -34,7 +34,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 			<div class="card-match border mt-4 p-2 pb-4">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="match-page-title text-uppercase f-1 mb-4">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">match of the weeks</h1>
+						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</div>
 					</div>
 
 					<div class="col-12 dispay-match mb-4">
@@ -57,17 +58,17 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 					</div>
 					<div class="col-12">
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center align-items-center">
 							@if($time)
-								<span class="times-remaining mt-2 f-4">เหลือเวลาอีก</span>
-								<div class="time-box rounded f-1 border" id="getting-started" data-time="{{ $time }}"></div>
+								<span class="times-remaining f-4">เหลือเวลาอีก</span>
+								<div class="time-box rounded f-3 border pl-25 pr-25" id="getting-started" data-time="{{ $time }}"></div>
 							@else
 								<div class="time-box rounded f-1 border" id="getting-started">ยังไม่เริ่มกิจกรรม</div>
 							@endif
 							{{-- <div></div> --}}
 						</div>
 					</div>
-					<div class="col-12">
+					<div class="col-12 mb-10">
 						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $total_count }})</span></a>
 					</div>
 
@@ -77,7 +78,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 		<div class="row">
 			<div class="col-12">
-				<h1 class="match-page-title-lastweek">MATCH <span>ของสัปดาห์ก่อน</span></h1>
+				<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
 			</div>
 			<div class="col-12">
 				@foreach ($previousMatch as $match)

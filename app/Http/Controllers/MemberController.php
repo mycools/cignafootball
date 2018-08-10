@@ -276,13 +276,30 @@ class MemberController extends Controller
     public function registration(Request $request){
         try{
             if($request->isMethod('post')) {
-                $validator = $this->_validator($request->all());
-                if ($validator->fails()) {
+                // $validator = $this->_validator($request->all());
+
+                $validated = Validator::make($request->all(), [
+                  'title_id' => 'required',
+                  'first_name' => 'required',
+                  'last_name' => 'required',
+                  'email' => 'required|email',
+                  'birthdate' => 'required|date_format:Y-m-d',
+                  'salary_id' => 'required',
+                  'occupation_id' => 'required',
+                  'team_id' => 'required',
+                  'phoneno' => 'required',
+                  'username' => 'required',
+                  'password' => 'required',
+                  'ref_code' => 'required'
+                ]);
+                $validated = $this->_validator($request->all());
+                
+                if ($validated->fails()) {
                     //FIXME redirect if validator fail
-                    $this->flash_messages($request, 'danger', 'Please check value on input');
+                    // $this->flash_messages($request, 'danger', 'Please check value on input');
                     return redirect('register')
                         // ->route('user.register')
-                        ->withErrors($validator)
+                        ->withErrors($validated)
                         ->withInput();
                 }
 

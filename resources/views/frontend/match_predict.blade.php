@@ -30,7 +30,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 			<div class="card-match mt-4 p-2 pb-4">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="match-page-title text-uppercase">match of the weeks<br><span class="f-5 text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d-M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d-M') }}</span></h3>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">match of the weeks</h1>
+						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
 					</div>
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
@@ -58,7 +59,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 					</div> -->
 					<div class="col-12">
-						<div class="btn-group w-100" role="group">
+						<div class="btn-group w-100 mt-30" role="group">
 						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}"@if($lastBet) @if($lastBet==$matchInfo->team_a) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
 						  <button type="button" id="voteDraw" data-vote="0" @if($lastBet) @if($lastBet==0) style="opacity: 1; color:#000 !important;" @else style="opacity: 0.3; !important;" @endif @endif class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
 						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
