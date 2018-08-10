@@ -147,7 +147,7 @@ if ($matchInfo != []) {
 		$(function() {
 		  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
 		    $(this).text(
-		      event.strftime('%H:%M:%S')
+		      event.strftime('%D วัน %H:%M:%S')
 		    );
 		  });
 		});
