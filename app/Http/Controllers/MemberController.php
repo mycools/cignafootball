@@ -383,7 +383,7 @@ class MemberController extends Controller
         return $randomString;
     }
 
-    public function postForgotPassword(Request $request)
+    public function postChangePassword(Request $request)
     {
         $id   = Auth::user()->id;
         $user = User::find($id);
@@ -413,7 +413,7 @@ class MemberController extends Controller
               $validator->errors()->add('change_password', 'Change your password success!');
 
               $request->session()->flush();
-              return redirect()->route('user.signin');
+              return redirect()->route('signin');
             }
 
             $this->flash_messages($request, 'success', 'Success!');
@@ -492,4 +492,6 @@ class MemberController extends Controller
             $e->getMessage();
         }
     }
+
+    
 }

@@ -146,7 +146,7 @@
 				<div class="col-12 mb-sm-15">
 					<div class="box-wrapper">
 
-						<form action="{{ url('/forgot_password') }}" method="post">
+						<form action="{{ url('/change_password') }}" method="post">
 
 							{{ csrf_field() }}
 							<div class="col-12 col-lg-10 col-xl-8 m-auto">
