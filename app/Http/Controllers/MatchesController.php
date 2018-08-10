@@ -41,11 +41,15 @@ class MatchesController extends Controller
 
       // get team now
       $match = Matchs::with(['TeamA', 'TeamB'])
-                            ->where('match_start', '<', $now)
-                            ->where('match_end', '>', $now)
-                            ->first();
+                            ->where('match_start', '<=', $now)
+                            ->where('match_end', '>=', $now);
 
-                            $this->_data['total_count'] = Bets::where('match_id', $match->id)->count();
+      if ($match->count() > 0) {
+        $match = $match->first();
+        $this->_data['total_count'] = Bets::where('match_id', $match->id)->count();
+      } else {
+        $match = [];
+      }
 
       // get previous Match
       $previousMatch = Matchs::with(['TeamA', 'TeamB'])
