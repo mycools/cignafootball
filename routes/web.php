@@ -53,3 +53,6 @@ Route::get('/register/{ref}', 'MemberController@registerHasRefcode')->name('user
 
 Route::get('/profile', 'MemberController@getProfile')->name('user.profile');
 Route::get('/profile/history', 'MemberController@getHistory')->name('user.history');
+
+Route::get('/tips', 'PageController@getTipsPage')->name('tips');
+Route::get('/tips/detail', 'PageController@getTipsDetailPage')->name('tips.detail');

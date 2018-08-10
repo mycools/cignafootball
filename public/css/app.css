@@ -17893,6 +17893,10 @@ Variable
   color: #919191 !important;
 }
 
+.color-lightblue {
+  color: #0083cb !important;
+}
+
 .color-blue {
   color: #0c3f88 !important;
 }
@@ -17951,6 +17955,10 @@ Variable
 
 .bg-lightgray {
   background: #d7d7d7 !important;
+}
+
+.bg-lightblue {
+  background: #0083cb !important;
 }
 
 .bg-blue {
@@ -18121,6 +18129,17 @@ a:focus {
 .btn.btn-blue:hover,
 .btn.btn-blue:focus {
   background: #061445;
+}
+
+.btn.btn-lightblue {
+  color: #fff;
+  background: #0083cb;
+}
+
+.btn.btn-lightblue:hover,
+.btn.btn-lightblue:focus {
+  background: #0083cb;
+  color: #fff;
 }
 
 .btn.btn-orange {
@@ -18672,6 +18691,54 @@ Page
   -webkit-transform: rotate(-45deg);
 }
 
+.tips-list {
+  width: 100%;
+}
+
+.tips-item {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.tips-item .detail {
+  padding: 15px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tips-item .detail .title {
+  font-weight: bold;
+  font-size: 120%;
+  line-height: 1.2;
+  color: #0083cb;
+  width: 100%;
+  height: 56px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.tips-item .detail .excerpt {
+  line-height: 1.2;
+  overflow: hidden;
+  margin-bottom: 15px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.tips-item.pin .detail {
+  height: auto;
+}
+
+.tips-item.content .title,
+.tips-item.content .excerpt,
+.tips-item.content .detail {
+  height: auto;
+}
+
+.tips-item a.detail:hover .title {
+  color: #383838;
+}
+
 .non-fullpage {
   padding-top: 110px;
   min-height: calc(100vh - 70px);
@@ -18903,6 +18970,11 @@ Responsive
 
   .ranking-page .padding-mobile {
     padding-top: 300px;
+  }
+
+  .tips-item .detail .title,
+  .tips-item .detail .excerpt {
+    height: auto;
   }
 }
 

@@ -24,6 +24,7 @@ $color-gray: #383838;
 $color-midgray: #919191;
 $color-lightgray: #d7d7d7;
 $color-blue: #0c3f88;
+$color-lightblue: #0083cb;
 $color-red: #ff3f35;
 $color-darkred: #bb2525;
 $color-orange: #f26222;
@@ -40,6 +41,7 @@ $color-darkgreen: #005128;
 .color-darkgray { color: $color-darkgray !important; }
 .color-gray { color: $color-gray !important; }
 .color-midgray { color: $color-midgray !important; }
+.color-lightblue { color: $color-lightblue !important; }
 .color-blue { color: $color-blue !important; }
 .color-red { color: $color-red !important; }
 .color-darkred { color: $color-darkred !important; }
@@ -56,6 +58,7 @@ $color-darkgreen: #005128;
 .bg-gray { background: $color-gray !important; }
 .bg-midgray { background: $color-midgray !important; }
 .bg-lightgray { background: $color-lightgray !important; }
+.bg-lightblue { background: $color-lightblue !important; }
 .bg-blue { background: $color-blue !important; }
 .bg-red { background: $color-red !important; }
 .bg-darkred { background: $color-darkred !important; }
@@ -137,6 +140,15 @@ a:focus {
 		&:hover,
 		&:focus {
 			background: #061445;
+		}
+	}
+	&.btn-lightblue {
+		color: #fff;
+		background: $color-lightblue;
+		&:hover,
+		&:focus {
+			background: $color-lightblue;
+			color: #fff;
 		}
 	}
 	&.btn-orange {
@@ -631,7 +643,53 @@ Page
 		}
 	}
 }
-
+.tips-list {
+	width: 100%;
+}
+.tips-item {
+	// width: 100%;
+	transition: all 0.5s;
+	.detail {
+		padding: 15px;
+		background: #fff;
+		overflow: hidden;
+		.title {
+			font-weight: bold;
+			font-size: 120%;
+			line-height: 1.2;
+			color: $color-lightblue;
+			width: 100%;
+			height: 56px;
+			overflow: hidden;
+			// white-space: nowrap;
+			// overflow: hidden;
+			// text-overflow: ellipsis;
+			margin-bottom: 5px;
+		}
+		.excerpt {
+			line-height: 1.2;
+			overflow: hidden;
+			margin-bottom: 15px;
+			height: 48px;
+			overflow: hidden;
+		}
+	}
+	&.pin {
+		.detail {
+			height: auto;
+		}
+	}
+	&.content {
+		.title,
+		.excerpt,
+		.detail {
+			height: auto;
+		}
+	}
+}
+.tips-item a.detail:hover .title {
+	color: $color-gray;
+}
 
 
 .non-fullpage {
@@ -823,6 +881,14 @@ Responsive
 	.ranking-page {
 		.padding-mobile {
 			padding-top: 300px;
+		}
+	}
+	.tips-item {
+		.detail {
+			.title,
+			.excerpt {
+				height: auto;
+			}
 		}
 	}
 
