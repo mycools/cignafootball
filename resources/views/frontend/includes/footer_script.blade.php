@@ -5,7 +5,7 @@
 	  var copyText = document.getElementById("myInputCopy");
 	  copyText.select();
 	  document.execCommand("copy");
-	  alert("\tก็อปปี้ URL ชวนเพื่อนแล้ว\n\t" + copyText.value + "\n\tคุณสามารถ paste url ในการชวนเพื่อนในช่องทางต่างๆ เช่น Line, Facebook หรืออื่น ๆ");
+	  alert("\tก็อปปี้ URL ชวนเพื่อนแล้ว คุณสามารถ paste url ในการชวนเพื่อนในช่องทางต่างๆ เช่น Line, Facebook หรืออื่น ๆ \n\n\t" + copyText.value);
 	}
 </script>
 
