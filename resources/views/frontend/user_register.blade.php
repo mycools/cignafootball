@@ -80,7 +80,7 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="{{ old('phoneno') }}" required>
+											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="{{ old('phoneno') }}" maxlength="10" required>
 										</div>
 										<div class="col-12 col-md-6">
 											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="{{ old('email') }}" required>
