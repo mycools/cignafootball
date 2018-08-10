@@ -43,26 +43,31 @@ class MatchesController extends Controller
       $match = Matchs::with(['TeamA', 'TeamB'])
                             ->where('match_start', '<=', $now)
                             ->where('match_end', '>=', $now);
+      if($match->count()) {
 
-      if ($match->count() > 0) {
-        $match = $match->first();
-        $this->_data['total_count'] = Bets::where('match_id', $match->id)->count();
+        if ($match->count() > 0) {
+          $match = $match->first();
+          $this->_data['total_count'] = Bets::where('match_id', $match->id)->count();
+        } else {
+          $match = [];
+        }
+
+        // get previous Match
+        $previousMatch = Matchs::with(['TeamA', 'TeamB'])
+                              ->where('match_end', '<', $now)
+                              ->orderBy('match_end', 'desc')
+                              // ->limit(3)
+                              // ->offset(0)
+                              ->get();
+
+        $this->_data['matchInfo'] = $match;
+        $this->_data['previousMatch'] = $previousMatch;
+
+          return view('frontend.match_list')->with($this->_data);
       } else {
-        $match = [];
+
+        return redirect()->route('home');
       }
-
-      // get previous Match
-      $previousMatch = Matchs::with(['TeamA', 'TeamB'])
-                            ->where('match_end', '<', $now)
-                            ->orderBy('match_end', 'desc')
-                            // ->limit(3)
-                            // ->offset(0)
-                            ->get();
-
-      $this->_data['matchInfo'] = $match;
-      $this->_data['previousMatch'] = $previousMatch;
-
-        return view('frontend.match_list')->with($this->_data);
     }
 
     public function predict(Request $request, $id)
