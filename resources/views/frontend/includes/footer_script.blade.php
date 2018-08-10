@@ -2,7 +2,7 @@
 
 <script>
 	function copyToCliboard() {
-	  var copyText = document.getElementById("myInputCopy");
+	  var copyText = document.getElementById("myInviteUrl");
 	  copyText.select();
 	  document.execCommand("copy");
 	  alert("\tก็อปปี้ URL ชวนเพื่อนแล้ว คุณสามารถ paste url ในการชวนเพื่อนในช่องทางต่างๆ เช่น Line, Facebook หรืออื่น ๆ \n\n\t" + copyText.value);

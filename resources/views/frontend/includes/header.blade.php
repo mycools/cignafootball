@@ -90,7 +90,7 @@
 	        </nav>
 	        @if(Auth::user())
 	        <div class="container text-right" style="height: 0;">
-	        	<input id="myInputCopy" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
+	        	<input id="myInviteUrl" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
 	        </div>
 	        @endif
 	        <!-- End Fixed navbar -->

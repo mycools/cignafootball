@@ -43,3 +43,4 @@ function share_facebook() {
 	window.open('http://www.facebook.com/sharer.php?u=' + base_url, '_fb','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=600');
 }
 
+
