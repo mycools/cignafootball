@@ -968,7 +968,25 @@ Responsive
 	.f-1 { font-size: 2rem !important; }
 	.f-3 { font-size: 2.5rem; }
 
+	.match-page {
+		padding: 40px 0;
+	}
+	.card-match {
+		.kits {
+			width: 140px;
+		}
+		.home-kits-label.f-1 {
+			font-size: 1.7rem !important;
+		}
+		.f-3 {
+		    font-size: 2rem;
+		}
 
+
+	}
+	#getting-started {
+		padding: 0 10px !important;
+	}
 
 }
 
