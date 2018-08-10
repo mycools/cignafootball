@@ -51,8 +51,8 @@ class MatchesController extends Controller
       $previousMatch = Matchs::with(['TeamA', 'TeamB'])
                             ->where('match_end', '<', $now)
                             ->orderBy('match_end', 'desc')
-                            ->limit(3)
-                            ->offset(0)
+                            // ->limit(3)
+                            // ->offset(0)
                             ->get();
 
       $this->_data['matchInfo'] = $match;
