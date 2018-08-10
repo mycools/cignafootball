@@ -18551,7 +18551,8 @@ Page
   background: #272727;
 }
 
-.ranking-list .row-item:hover {
+.ranking-list .row-item:hover,
+.ranking-list .row-item.active {
   background: #00b557;
 }
 

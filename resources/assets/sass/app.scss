@@ -526,7 +526,8 @@ Page
 		&:nth-child(2n) {
 			background: $color-darkgray;
 		}
-		&:hover {
+		&:hover,
+		&.active {
 			background: $color-green;
 		}
 		.number {

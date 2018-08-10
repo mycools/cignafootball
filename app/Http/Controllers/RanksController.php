@@ -25,6 +25,9 @@ class RanksController extends Controller
 {
     public function index()
     {
+        $user   = Auth::user();
+        $this->_data['user'] = $user;
+        // dd($user->id);
         $result = Ranks::with([
         					'getUser'
 						])

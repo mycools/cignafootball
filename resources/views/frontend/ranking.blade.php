@@ -31,7 +31,7 @@
 		                          $i=1;
 		                        @endphp
 	                        	@foreach ($result as $row)
-								<div class="row-item row ml-0 mr-0">
+								<div class="row-item row ml-0 mr-0 @if($user->id === $row->user_id) active @endif">
 									<div class="number">{{ ($row ? $row->ranking_no : '' ) }}</div>
 									
 									<div class="col-4 p-0">
