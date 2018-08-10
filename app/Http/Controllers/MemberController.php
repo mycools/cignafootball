@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Roles\CurrentPassword;
+use DateTime;
 
 /**
  * Class MemberController.
@@ -292,7 +293,7 @@ class MemberController extends Controller
                                 ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
 
                 if ($dupUser->count() > 0) {
-                  $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
+                  // $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
                   return redirect('register')
                       // ->route('user.register')
                       ->withErrors($validator)
@@ -301,7 +302,7 @@ class MemberController extends Controller
 
                 if ($validator->fails()) {
                     //FIXME redirect if validator fail
-                    $this->flash_messages($request, 'danger', 'Please check value on input');
+                    // $this->flash_messages($request, 'danger', 'Please check value on input');
                     return redirect('register')
                         // ->route('user.register')
                         ->withErrors($validator)
@@ -381,17 +382,35 @@ class MemberController extends Controller
 
     //TODO validator email,phone in table user
     private function _validator(array $data){
-        return Validator::make($data, [
+
+        Validator::extend('olderThan', function($attribute, $value, $parameters)
+        {
+            $minAge = ( ! empty($parameters)) ? (int) $parameters[0] : 18;
+            return (new DateTime)->diff(new DateTime($value))->y >= $minAge;
+
+            // or the same using Carbon:
+            return Carbon\Carbon::now()->diff(new Carbon\Carbon($value))->y >= $minAge;
+        },'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์');
+
+        $rules = [
             'title_id'  => 'required|integer',
             'first_name'  => 'required|String|max:150',
             'last_name'  => 'required|String|max:150',
             'email'  => 'required|email|unique:users,email',
-            'birthdate'  => 'required|date',
+            'birthdate'  => 'required|date|olderThan:20',
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno'
-        ]);
+            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno|regex:/(01)[0-9]{9}/'
+        ];
+
+        $messages = [
+            'regex' => 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง',
+            'min' => 'กรอกข้อมูล :attribute อย่างน้อย 10 อักษร',
+            'olderThan' => 'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์'
+        ];
+
+        return Validator::make($data, $rules, $messages);
     }
 
     private function _generateRandomString($length = 8) {
@@ -466,7 +485,7 @@ class MemberController extends Controller
                     if($user){
                         $sendMail = Mail::to($request->email)->send(new ForgotPassword($url,$name,$username));
                         $this->flash_messages($request, 'success', 'Successful Please Check Your Email.');
-                        return redirect()->route('home');
+                       return redirect()->route('home');
                     }else{
                         $this->flash_messages($request, 'danger', 'Process Error');
                         return redirect()->route('user.forgot');
