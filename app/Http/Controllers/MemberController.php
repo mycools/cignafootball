@@ -390,7 +390,7 @@ class MemberController extends Controller
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|string|max:10|unique:users,phoneno'
+            'phoneno'  => 'required|string|min:10|max:10|unique:users,phoneno'
         ]);
     }
 
@@ -466,7 +466,7 @@ class MemberController extends Controller
                     if($user){
                         $sendMail = Mail::to($request->email)->send(new ForgotPassword($url,$name,$username));
                         $this->flash_messages($request, 'success', 'Successful Please Check Your Email.');
-                       return redirect()->route('home');
+                        return redirect()->route('home');
                     }else{
                         $this->flash_messages($request, 'danger', 'Process Error');
                         return redirect()->route('user.forgot');
