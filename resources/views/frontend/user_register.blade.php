@@ -55,10 +55,10 @@
 										<div class="col-12 col-md-3 mb-sm-15">
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
-                                                <select name ="title_id" required>
-                                                    <option value="1">เลือกคำนำหน้า</option>
-                                                    @foreach($titles as $title)
-                                                        <option value={{$title->id}}>{{$title->title_name_th}}</option>
+                                                <select name="title_id" id="title_id" required>
+                                                    <option value="0">เลือกคำนำหน้า</option>
+                                                    @foreach($titles as $key => $title)
+                                                        <option @if(old('title_id') === $key) selected @endif value={{$title->id}}>{{$title->title_name_th}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -66,20 +66,20 @@
 										<div class="col-12 col-md-9">
 											<div class="row">
 												<div class="col-12 col-md-6 mb-sm-15">
-													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="" required>
+													<input name ="first_name" type="text" class="form-control" placeholder="ชื่อ (ภาษาไทย)" value="{{ old('first_name') }}" required>
 												</div>
 												<div class="col-12 col-md-6">
-													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="" required>
+													<input name ="last_name" type="text" class="form-control" placeholder="นามสกุล (ภาษาไทย)" value="{{ old('last_name') }}" required>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="" required>
+											<input name="phoneno" type="text" class="form-control" placeholder="เบอร์โทรศัพท์มือถือ (เพื่อรับรหัสยืนยัน)" value="{{ old('phoneno') }}" required>
 										</div>
 										<div class="col-12 col-md-6">
-											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="" required>
+											<input name="email" type="email" class="form-control" placeholder="อีเมล์" value="{{ old('email') }}" required>
 										</div>
 									</div>
 									<div class="form-group row">
