@@ -20,6 +20,7 @@ class HomeController extends Controller
                             'getUser'
                         ])
                         ->orderBy('ranking_no', 'asc')
+                        ->where('ranking_no', '!=', '0')
                         ->take(10)
                         ->get();
 

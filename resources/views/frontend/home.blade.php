@@ -46,7 +46,7 @@
 		</div>
 	</div>
 
-	<div class="home-ranking active">
+	<div class="home-ranking">
 		<div class="btn btn-blue open-list">
 			<img src="{{ url('images/icon/icon_trophy.png') }}" />
 		</div>
@@ -61,8 +61,7 @@
             	@foreach ($result as $row)
             	<div class="row-item">
 					<div class="number">{{ ($row ? $row->ranking_no : '' ) }}</div>
-					{{ ($row->getUser ? $row->getUser->first_name : '' ) }} 
-					{{ ($row->getUser ? $row->getUser->last_name : '' ) }}
+					{{ ($row->getUser ? $row->getUser->username : '' ) }} 
 				</div>
 				@php
 					$i++;

@@ -25,11 +25,15 @@ class RanksController extends Controller
 {
     public function index()
     {
+        $user   = Auth::user();
+        $this->_data['user'] = $user;
+        // dd($user->id);
         $result = Ranks::with([
         					'getUser'
 						])
         				->orderBy('ranking_no', 'asc')
-        				->take(100)
+                        ->where('ranking_no', '!=', '0')
+        				->take(30)
 						->get();
 
         $this->_data['result']    = $result;

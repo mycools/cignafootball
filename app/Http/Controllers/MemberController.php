@@ -172,7 +172,7 @@ class MemberController extends Controller
                                 ->pluck('id')->toArray();
 
                     foreach ($getRanks as $key => $value) {
-                      
+
                       $ranks = Ranks::find($value);
                       $ranks->ranking_no = ($key+1);
                       $ranks->save();
@@ -276,30 +276,26 @@ class MemberController extends Controller
     public function registration(Request $request){
         try{
             if($request->isMethod('post')) {
-                // $validator = $this->_validator($request->all());
+                $validator = $this->_validator($request->all());
 
-                $validated = Validator::make($request->all(), [
-                  'title_id' => 'required',
-                  'first_name' => 'required',
-                  'last_name' => 'required',
-                  'email' => 'required|email',
-                  'birthdate' => 'required|date_format:Y-m-d',
-                  'salary_id' => 'required',
-                  'occupation_id' => 'required',
-                  'team_id' => 'required',
-                  'phoneno' => 'required',
-                  'username' => 'required',
-                  'password' => 'required',
-                  'ref_code' => 'required'
-                ]);
-                $validated = $this->_validator($request->all());
-                
-                if ($validated->fails()) {
+                $dupUser = User::where('first_name', $request->first_name)
+                                ->where('last_name', $request->last_name)
+                                ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
+
+                if ($dupUser->count() > 0) {
+                  $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
+                  return redirect('register')
+                      // ->route('user.register')
+                      ->withErrors($validator)
+                      ->withInput();
+                }
+
+                if ($validator->fails()) {
                     //FIXME redirect if validator fail
-                    // $this->flash_messages($request, 'danger', 'Please check value on input');
+                    $this->flash_messages($request, 'danger', 'Please check value on input');
                     return redirect('register')
                         // ->route('user.register')
-                        ->withErrors($validated)
+                        ->withErrors($validator)
                         ->withInput();
                 }
 

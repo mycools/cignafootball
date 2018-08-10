@@ -25,9 +25,9 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 <form name="match_select" id="match_select" method="post">
 	{{ csrf_field() }}
 	<input type="hidden" name="vote_team" id="vote_team">
-	<div class="match-page" id="match-predict">
+	<div class="match-page match-predict-page" id="match-predict">
 		<div class="container match-predict">
-			<div class="card-match mt-4 p-2 pb-4">
+			<div class="card-match mt-md-4 p-2 pb-4 mt-xs-0">
 				<div class="row">
 					<div class="col-12">
 						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">match of the weeks</h1>

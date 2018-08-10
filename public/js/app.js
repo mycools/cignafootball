@@ -35979,16 +35979,17 @@ $(document).ready(function () {
 		$(this).parent('.home-ranking').toggleClass('active');
 	});
 
-	$(window).scroll(function () {
-		var scroll = $(window).scrollTop();
-		if (scroll >= 300) {
-			$('.home-ranking').removeClass('active');
-		} else {
-			$('.home-ranking').addClass('active');
-		}
-	});
+	// $(window).scroll(function() {    
+	//     var scroll = $(window).scrollTop();
+	//     if (scroll >= 300) {
+	//         $('.home-ranking').removeClass('active');
+	//     } else {
+	//     	$('.home-ranking').addClass('active');
+	//     }
+	// });
 
 	$('#sharefb').on('click', share_facebook);
+	$('#sharefbmb').on('click', share_facebook);
 });
 function share_facebook() {
 	var base_url = window.location.href;
