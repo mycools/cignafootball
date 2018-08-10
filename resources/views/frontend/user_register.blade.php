@@ -42,6 +42,10 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                             <ul style="padding-left: 20px; margin-bottom: 0;">
+                                            	@php
+
+// dd($errors->all());
+                                            	@endphp
                                                 @foreach ($errors->all() as $error)
                                                     <li>
                                                         {{ $error }}
@@ -56,9 +60,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="title_id" id="title_id" required>
-                                                    <option value="0">เลือกคำนำหน้า</option>
+                                                    <option value="">เลือกคำนำหน้า</option>
                                                     @foreach($titles as $title)
-                                                        <option value={{ $title->id }}>{{ $title->title_name_th }}</option>
+                                                        <option value={{ $title->id }} {{ (old("title_id") == $title->id ? "selected":"") }}>{{ $title->title_name_th }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -92,9 +96,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="occupation_id" required>
-                                                    <option value="0" >เลือกอาชีพ</option>
+                                                    <option value="" >เลือกอาชีพ</option>
                                                     @foreach($occupations as $occupation)
-                                                        <option value={{ $occupation->id }}>{{ $occupation->occupation_name }}</option>
+                                                        <option value={{ $occupation->id }} {{ (old("occupation_id") == $occupation->id ? "selected":"") }}>{{ $occupation->occupation_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -105,9 +109,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="salary_id" required>
-                                                    <option value="1" >เลือกระดับเงินเดือน</option>
+                                                    <option value="" >เลือกระดับเงินเดือน</option>
                                                     @foreach($salaries as $salary)
-                                                        <option value={{$salary->id}}>{{$salary->salary_name}}</option>
+                                                        <option value={{$salary->id}} {{ (old("salary_id") == $salary->id ? "selected":"") }}>{{$salary->salary_name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -116,9 +120,9 @@
 											<div class="plain-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name ="team_id" required>
-                                                    <option value="1" >เลือกทีมที่ชอบ</option>
+                                                    <option value="" >เลือกทีมที่ชอบ</option>
                                                     @foreach($teams as $team)
-                                                        <option value={{$team->id}}>{{$team->team_name}}</option>
+                                                        <option value={{$team->id}} {{ (old("team_id") == $team->id ? "selected":"") }}>{{$team->team_name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
