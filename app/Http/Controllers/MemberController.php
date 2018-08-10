@@ -247,6 +247,12 @@ class MemberController extends Controller
 
         // Generate OTP
         $otp = UserOtp::getOtp($user);
+        if(!$otp['sendsms']) {
+
+            User::find($userId)->delete();
+            Ranks::where('user_id', $userId)->delete();
+            return redirect()->route('home');
+        }
 
         // set refcode for display in frontend
         $this->_data['refcode'] = $otp['refcode'];
@@ -509,6 +515,13 @@ class MemberController extends Controller
         }catch(\Exception $e){
             $e->getMessage();
         }
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect()->route('home');
     }
 
     
