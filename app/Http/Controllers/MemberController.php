@@ -401,13 +401,17 @@ class MemberController extends Controller
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
-            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno|regex:/(01)[0-9]{9}/'
+            'phoneno'  => 'required|min:10|max:10|unique:users,phoneno'
         ];
 
         $messages = [
-            'regex' => 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง',
-            'min' => 'กรอกข้อมูล :attribute อย่างน้อย 10 อักษร',
+            // 'regex' => 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง',
+            'phoneno.min' => 'กรอกข้อมูลเบอร์โทรศัพท์อย่างน้อย 10 อักษร',
+            'phoneno.max' => 'กรอกข้อมูลเบอร์โทรศัพท์ไม่เกิน 10 อักษร',
+            // 'phoneno.numeric' => 'กรอกข้อมูลเบอร์โทรศัพท์เฉพาะตัวเลข',
             'olderThan' => 'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์'
+            // 'first_name.regex' => 'กรุณากรอกชื่อจริงเฉพาะภาษาไทย',
+            // 'last_name.regex' => 'กรุณากรอกนามสกุลเฉพาะภาษาไทย'
         ];
 
         return Validator::make($data, $rules, $messages);
