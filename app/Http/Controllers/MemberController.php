@@ -159,10 +159,13 @@ class MemberController extends Controller
 
               $user = User::find($inInvite->invitee_id);
 
+              $user->pointlogs()->create($invite);
+
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
                       [
-                        'point' => DB::raw('point+1')
+                        'point' => DB::raw('point+1'),
+                        'invitee_count' => DB::raw('invitee_count+1')
                       ]
                     );
 

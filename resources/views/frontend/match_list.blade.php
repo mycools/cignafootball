@@ -10,13 +10,18 @@
 $now = Carbon\Carbon::now();
 $now = $now->toDateTimeString();
 
-if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
+if ($matchInfo != []) {
+	if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
 
-	$time = $matchInfo['match_end'];
+		$time = $matchInfo['match_end'];
+	} else {
+
+		$time = "";
+	}
 } else {
-
 	$time = "";
 }
+
 
 @endphp
 <div class="match-page">
@@ -77,11 +82,12 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 		@endif
 
 		<div class="row">
-			<div class="col-12">
-				<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
-			</div>
-			<div class="col-12">
-				@foreach ($previousMatch as $match)
+
+			@foreach ($previousMatch as $match)
+				<div class="col-12">
+					<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
+				</div>
+				<div class="col-12">
 					<div class="card-match-lastweek border p-4 mb-4">
 						<div class="row">
 							<div class="col-12">
@@ -121,8 +127,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 							</div>
 						</div>
 					</div>
-				@endforeach
-			</div>
+				</div>
+			@endforeach
 		</div>
 
 	</div>
