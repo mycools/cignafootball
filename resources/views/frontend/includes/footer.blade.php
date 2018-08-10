@@ -1,5 +1,5 @@
 		<footer>
-			Sponsored by <img src="{{ url('images/logo/logo_cigna_footer.png') }}" />
+			Copyright © 2018 Match Of The Weeks
 		</footer>
 
 		</div>

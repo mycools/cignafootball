@@ -5,7 +5,7 @@
 <table style="max-width: 600px!important; font-family: ArialMT; color: #333;" border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background-color: #222222; height: 51px; text-align: center;"><img src="http://atfirstbyte.net/header_mail.jpg" alt="Cigna" data-imagetype="External" /></td>
+<td style="background-color: #222222; height: 51px; text-align: center;"><img src="http://atfirstbyte.net/header_mail.jpg" alt="" data-imagetype="External" /></td>
 </tr>
 <tr>
 <td class="x_bodytable" style="background-color: #fff; padding: 26px 10% 0px 10%;">
@@ -38,7 +38,7 @@ Just click the link below to create a new one:</td>
 <tbody>
 <tr>
 <td style="height: 16px; width: 414px; font-size: 14px; padding: 28px 0px 58px 0px; line-height: 1.7;">If clicking the link does not work, copy and paste it in a new browser window.<br>
-	If you don't want to reset your password, you can ignore this message - someone probably typed in your email address by mistake. <br /> <br /> - Cigna Team</td>
+	If you don't want to reset your password, you can ignore this message - someone probably typed in your email address by mistake. <br /> <br /></td>
 </tr>
 </tbody>
 </table>
