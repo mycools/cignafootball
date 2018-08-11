@@ -18018,7 +18018,10 @@ body {
 
 html,
 body {
+  min-height: 100%;
   height: 100%;
+  overflow-x: hidden;
+  display: block;
 }
 
 .text-white {
@@ -18994,6 +18997,10 @@ Responsive
   .match-page.match-predict-page {
     background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed/cover !important;
   }
+
+  .card-match .kits {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -19043,6 +19050,14 @@ Responsive
   .text-large {
     font-size: 125%;
   }
+
+  .card-match .home-kits-label.f-1 {
+    font-size: 2rem !important;
+  }
+
+  .card-match .f-3 {
+    font-size: 2.15rem;
+  }
 }
 
 @media (max-width: 320px) {
@@ -19082,10 +19097,6 @@ Responsive
 
   .match-page {
     padding: 40px 0;
-  }
-
-  .card-match .kits {
-    width: 140px;
   }
 
   .card-match .home-kits-label.f-1 {

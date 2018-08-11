@@ -81,7 +81,10 @@ body {
 	font-size: 20px;
 }
 html, body {
-    height: 100%;
+    min-height:100%; 
+    height:100%; 
+    overflow-x:hidden; 
+    display:block;
 }
 
 .text-white { color: #fff; }
@@ -906,6 +909,11 @@ Responsive
 			background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed / cover !important;
 		}
 	}
+	.card-match {
+		.kits {
+			width: 100% !important;
+		}
+	}
 
 
 }
@@ -948,6 +956,16 @@ Responsive
 	.text-extra-large { font-size: 200%; }
 	.text-large { font-size: 125%; }
 
+	.card-match {
+		.home-kits-label.f-1 {
+			font-size: 2rem !important;
+		}
+		.f-3 {
+		    font-size: 2.15rem;
+		}
+
+
+	}
 
 }
 
@@ -975,9 +993,9 @@ Responsive
 		padding: 40px 0;
 	}
 	.card-match {
-		.kits {
-			width: 140px;
-		}
+		// .kits {
+		// 	width: 140px;
+		// }
 		.home-kits-label.f-1 {
 			font-size: 1.7rem !important;
 		}
