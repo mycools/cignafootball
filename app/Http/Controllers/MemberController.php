@@ -148,6 +148,7 @@ class MemberController extends Controller
         // update username and password
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
+        $user->active=1;
         $user->save();
 
         // Save Log
