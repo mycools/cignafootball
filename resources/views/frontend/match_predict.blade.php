@@ -12,7 +12,7 @@ $now = $now->toDateTimeString();
 
 if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
 
-	$time = $matchInfo['match_end'];
+	$time = $matchInfo['bet_end'];
 } else {
 
 	$time = "";
