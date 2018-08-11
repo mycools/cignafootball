@@ -283,87 +283,114 @@ class MemberController extends Controller
             ->with($data);
     }
 
+    public function _firstValidator(array $data){
+        Validator::extend('olderThan', function($attribute, $value, $parameters)
+        {
+            $minAge = ( ! empty($parameters)) ? (int) $parameters[0] : 18;
+            return (new DateTime)->diff(new DateTime($value))->y >= $minAge;
+
+            // or the same using Carbon:
+            return Carbon\Carbon::now()->diff(new Carbon\Carbon($value))->y >= $minAge;
+        },'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์');
+
+        $rules = [
+            'title_id'  => 'required|integer',
+            'first_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
+            'last_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
+            'email'  => 'required|email',
+            'birthdate'  => 'required|date|olderThan:20',
+            'salary_id'  => 'required|integer',
+            'occupation_id'  => 'required|integer',
+            'team_id'  => 'required|integer',
+            'phoneno'  => 'required|min:10'
+        ];
+
+        $messages = [
+            // 'regex' => 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง',
+            'phoneno.min' => 'กรอกข้อมูลเบอร์โทรศัพท์อย่างน้อย 10 อักษร',
+            // 'phoneno.max' => 'กรอกข้อมูลเบอร์โทรศัพท์ไม่เกิน 10 อักษร',
+            'phoneno.numeric' => 'กรอกข้อมูลเบอร์โทรศัพท์เฉพาะตัวเลข',
+            'olderThan' => 'ผู้สมัครเข้าร่วมกิจกรรมต้องมีอายุ 20 ปีบริบูรณ์',
+            'first_name.regex' => 'กรุณากรอกชื่อจริงเฉพาะภาษาไทย',
+            'last_name.regex' => 'กรุณากรอกนามสกุลเฉพาะภาษาไทย'
+        ];
+
+        return Validator::make($data, $rules, $messages);
+    }
+
     public function registration(Request $request){
         try{
             if($request->isMethod('post')) {
-                $validator = $this->_validator($request->all());
-
+                $validator = $this->_firstValidator($request->all());
                 $dupUser = User::where('first_name', $request->first_name)
-                                ->where('last_name', $request->last_name)
-                                ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
+                    ->where('last_name', $request->last_name)
+                    ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
 
-                if ($dupUser->count() > 0) {
-                  // $this->flash_messages($request, 'danger', 'ข้อมูลผู้สมัครนี้มีอยู่ในระบบแล้ว');
-                  return redirect('register')
-                      // ->route('user.register')
-                      ->withErrors($validator)
-                      ->withInput();
-                }
+                $check_with_email = $dupUser->where('username',$request->email);
+                $check_no_email = $dupUser->where('username','!=',$request->email);
 
-                if ($validator->fails()) {
-                    //FIXME redirect if validator fail
-                    // $this->flash_messages($request, 'danger', 'Please check value on input');
+                if ($check_no_email->count() > 0) {
                     return redirect('register')
-                        // ->route('user.register')
                         ->withErrors($validator)
                         ->withInput();
                 }
-
-                /*gen ref code*/
-                for ($i=0; $i<1;){
-                    $ref_code = $this->_generateRandomString();
-                    $query = User::where('ref_code',$ref_code);
-                    if($query->count()==0){
-                        $i++;
-                    }else{
-                        $i=0;
+                /*case old registration un success*/
+                if($check_with_email->count() > 0){
+                    $user = $check_with_email->first();
+                }else{
+                    /* case new registration*/
+                    $validator = $this->_validator($request->all());
+                    if ($validator->fails()) {
+                        //FIXME redirect if validator fail
+                        // $this->flash_messages($request, 'danger', 'Please check value on input');
+                        return redirect('register')
+                            // ->route('user.register')
+                            ->withErrors($validator)
+                            ->withInput();
                     }
+
+                    /*gen ref code*/
+                    for ($i=0; $i<1;){
+                        $ref_code = $this->_generateRandomString();
+                        $query = User::where('ref_code',$ref_code);
+                        if($query->count()==0){
+                            $i++;
+                        }else{
+                            $i=0;
+                        }
+                    }
+                    /*insert user*/
+                    $user = new User;
+                    $user->title_id = $request->title_id;
+                    $user->first_name = $request->first_name;
+                    $user->last_name = $request->last_name;
+                    $user->email = $request->email;
+                    $user->birthdate = date("Y-m-d", strtotime($request->birthdate));
+                    $user->salary_id = $request->salary_id;
+                    $user->occupation_id = $request->occupation_id;
+                    $user->team_id = $request->team_id;
+                    $user->phoneno = $request->phoneno;
+                    //FIXME default username, password
+                    $user->username = $request->email;
+                    $user->password = bcrypt($ref_code); // password not null
+                    $user->ref_code = $ref_code;
+                    $user->save();
+
+                    $rank = new Ranks;
+                    $rank->user_id = $user->id;
+                    $rank->save();
                 }
-                /*insert user*/
-                $user = new User;
-                $user->title_id = $request->title_id;
-                $user->first_name = $request->first_name;
-                $user->last_name = $request->last_name;
-                $user->email = $request->email;
-                $user->birthdate = date("Y-m-d", strtotime($request->birthdate));
-                $user->salary_id = $request->salary_id;
-                $user->occupation_id = $request->occupation_id;
-                $user->team_id = $request->team_id;
-                $user->phoneno = $request->phoneno;
-                //FIXME default username, password
-                $user->username = $request->email;
-                $user->password = bcrypt($ref_code); // password not null
-                $user->ref_code = $ref_code;
-                $user->save();
-
-                $rank = new Ranks;
-                $rank->user_id = $user->id;
-                $rank->save();
-
 
                 // check has refCode(invite case)
                 if ($request->session()->get('refCode')) {
-                  // in case of invite
-                  $refCode = $request->session()->get('refCode');
-                  $userInviter = User::where('ref_code', $refCode)->first();
-
-                  // set user_id and invitee_id for insert
-                  // $obj = [
-                  //   'user_id' => $userInviter->id,
-                  //   'invitee_id' => $user->id
-                  // ];
+                    // in case of invite
+                    $refCode = $request->session()->get('refCode');
+                    $userInviter = User::where('ref_code', $refCode)->first();
 
                     $inInvite = new Invite;
                     $inInvite->user_id = $userInviter->id;
                     $inInvite->invitee_id = $user->id;
                     $inInvite->save();
-
-                    // $invite = $inInvite->toArray();
-                    // $invite['point_type'] = 'inv';
-                    // $invite['point_score'] = 1;
-
-                    // $user = User::find($user->id);
-                    // $user->pointlogs()->create($invite);
                 }
 
                 // set user_id session
@@ -371,8 +398,8 @@ class MemberController extends Controller
                     $request->session()->put('user_id', $user->id);
                     return redirect('register/otp');
                 }else{
-                  $this->flash_messages($request, 'danger', 'registration process has failed!');
-                  return redirect('register')->withInput();
+                    $this->flash_messages($request, 'danger', 'registration process has failed!');
+                    return redirect('register')->withInput();
                 }
             }
         }catch (ValidatorException $e){
@@ -547,5 +574,5 @@ class MemberController extends Controller
         return redirect()->route('home');
     }
 
-    
+
 }
