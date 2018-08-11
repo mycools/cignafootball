@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('og_title', "Cigna : Match of The Weeks")
+@section('og_title', "Match of The Weeks")
 @section('og_description', "ลุ้นรางวัล ดูบอลที่อังกฤษทุกเดือน")
 @section('og_image', "/images/share/share.jpg")
 
