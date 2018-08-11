@@ -18016,6 +18016,11 @@ body {
   font-size: 20px;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 .text-white {
   color: #fff;
 }
