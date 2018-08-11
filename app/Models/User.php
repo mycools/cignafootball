@@ -26,7 +26,8 @@ class User extends Authenticatable
         'birthdate',
         'salary_id',
         'occupation_id',
-        'team_id'
+        'team_id',
+        'active'
     ];
 
     /**

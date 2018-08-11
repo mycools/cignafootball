@@ -148,6 +148,7 @@ class MemberController extends Controller
         // update username and password
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
+        $user->active=1;
         $user->save();
 
         // Save Log
@@ -248,12 +249,12 @@ class MemberController extends Controller
 
         // Generate OTP
         $otp = UserOtp::getOtp($user);
-        if(!$otp['sendsms']) {
+        // if(!$otp['sendsms']) {
 
-            User::find($userId)->delete();
-            Ranks::where('user_id', $userId)->delete();
-            return redirect()->route('home');
-        }
+        //     User::find($userId)->delete();
+        //     Ranks::where('user_id', $userId)->delete();
+        //     return redirect()->route('home');
+        // }
 
         // set refcode for display in frontend
         $this->_data['refcode'] = $otp['refcode'];
@@ -321,6 +322,12 @@ class MemberController extends Controller
     public function registration(Request $request){
         try{
             if($request->isMethod('post')) {
+                $notFinishData = User::where('phoneno', $request->phoneno)
+                    ->where('email', $request->email)
+                    ->where('active',0);
+                if($notFinishData->count() == 1){
+                    $notFinishData->delete();
+                }
                 $validator = $this->_firstValidator($request->all());
                 $dupUser = User::where('first_name', $request->first_name)
                     ->where('last_name', $request->last_name)
@@ -374,6 +381,7 @@ class MemberController extends Controller
                     $user->username = $request->email;
                     $user->password = bcrypt($ref_code); // password not null
                     $user->ref_code = $ref_code;
+                    $user->active=0;
                     $user->save();
 
                     $rank = new Ranks;
