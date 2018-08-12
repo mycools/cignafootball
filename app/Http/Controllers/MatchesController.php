@@ -41,8 +41,8 @@ class MatchesController extends Controller
 
       // get team now
       $match = Matchs::with(['TeamA', 'TeamB'])
-                            ->where('match_start', '<=', $now)
-                            ->where('match_end', '>=', $now);
+                            ->where('bet_start', '<=', $now)
+                            ->where('bet_end', '>=', $now);
       if($match->count()) {
 
         if ($match->count() > 0) {
@@ -54,8 +54,8 @@ class MatchesController extends Controller
 
         // get previous Match
         $previousMatch = Matchs::with(['TeamA', 'TeamB'])
-                              ->where('match_end', '<', $now)
-                              ->orderBy('match_end', 'desc')
+                              ->where('bet_end', '<', $now)
+                              ->orderBy('bet_end', 'desc')
                               // ->limit(3)
                               // ->offset(0)
                               ->get();
