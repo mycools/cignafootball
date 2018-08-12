@@ -10,7 +10,7 @@
 $now = Carbon\Carbon::now();
 $now = $now->toDateTimeString();
 
-if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['match_end']) >= strtotime($now)) {
+if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchInfo['bet_end']) >= strtotime($now)) {
 
 	$time = $matchInfo['bet_end'];
 } else {
