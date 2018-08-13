@@ -26,13 +26,12 @@ class RanksController extends Controller
     public function index()
     {
         $user   = Auth::user();
-        $this->_data['user'] = $user;
+        $this->_data['user_id'] = ( $user ? $user->id : '' );
         // dd($user->id);
-        $result = Ranks::with([
-        					'getUser'
-						])
-        				->orderBy('ranking_no', 'asc')
-                        ->where('ranking_no', '!=', '0')
+        $result = Ranks::leftJoin('users', 'ranks.user_id', '=', 'users.id')
+                        ->where('ranks.ranking_no', '!=', '0')
+                        ->where('users.username', '!=', '')
+        				->orderBy('ranks.ranking_no', 'asc')
         				->take(30)
 						->get();
 

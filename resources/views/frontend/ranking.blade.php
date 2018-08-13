@@ -31,11 +31,11 @@
 		                          $i=1;
 		                        @endphp
 	                        	@foreach ($result as $row)
-								<div class="row-item row ml-0 mr-0 @if($user->id === $row->user_id) active @endif">
+								<div class="row-item row ml-0 mr-0 @if($user_id === $row->user_id) active @endif">
 									<div class="number">{{ ($row ? $row->ranking_no : '' ) }}</div>
 									
 									<div class="col-4 p-0">
-										{{ ($row->getUser ? $row->getUser->username : '' ) }} 
+										{{ ($row->username ? $row->username : '' ) }} 
 									</div>
 									<div class="col-2 text-center p-0">{{ ($row ? $row->predict_count : '' ) }}</div>
 									<div class="col-1 text-center p-0">{{ ($row ? $row->win_count : '' ) }}</div>
