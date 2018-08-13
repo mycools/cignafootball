@@ -46,7 +46,12 @@ if ($matchInfo != []) {
 
 					<div class="col-12 dispay-match mb-4">
 						<div class="d-flex justify-content-center">
-							<div class="align-self-start">
+							<div class="align-self-start d-none d-md-block">
+								<img id="home-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamA->shirt_img_url) }}" />
+								<label class="home-kits-label f-1 float-left" for="home-kits">{{ $matchInfo->teamA->team_name }}</label>
+
+							</div>
+							<div class="align-self-start d-block d-md-none col-6 p-0">
 								<img id="home-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamA->shirt_img_url) }}" />
 								<label class="home-kits-label f-1 float-left" for="home-kits">{{ $matchInfo->teamA->team_name }}</label>
 
@@ -55,7 +60,11 @@ if ($matchInfo != []) {
 							<div class="align-self-center font-weight-bold f-1">
 								-
 							</div>
-							<div class="align-self-start">
+							<div class="align-self-start d-none d-md-block">
+								<img id="away-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
+								<label class="f-1" for="away-kits">{{ $matchInfo->teamB->team_name }}</label>
+							</div>
+							<div class="align-self-start d-block d-md-none col-6 p-0">
 								<img id="away-kits" class="kits px-4" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
 								<label class="f-1" for="away-kits">{{ $matchInfo->teamB->team_name }}</label>
 							</div>
