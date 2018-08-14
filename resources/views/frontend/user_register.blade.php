@@ -57,7 +57,7 @@
 
                                     <div class="form-group row">
 										<div class="col-12 col-md-3 mb-sm-15">
-											<div class="plain-select">
+											<div class="custom-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="title_id" id="title_id" required>
                                                     <option value="">เลือกคำนำหน้า</option>
@@ -89,11 +89,11 @@
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
 											<div class="input-group date">
-												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required>
+												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required style="position: relative;">
 											</div>
 										</div>
 										<div class="col-12 col-md-6">
-											<div class="plain-select">
+											<div class="custom-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="occupation_id" required>
                                                     <option value="" >เลือกอาชีพ</option>
@@ -106,7 +106,7 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<div class="plain-select">
+											<div class="custom-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name="salary_id" required>
                                                     <option value="" >เลือกระดับเงินเดือน</option>
@@ -117,7 +117,7 @@
                                             </div>
 										</div>
 										<div class="col-12 col-md-6">
-											<div class="plain-select">
+											<div class="custom-select">
                                                 {{--FIXME edit value from db--}}
                                                 <select name ="team_id" required>
                                                     <option value="" >เลือกทีมที่ชอบ</option>

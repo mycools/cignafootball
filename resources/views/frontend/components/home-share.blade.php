@@ -12,7 +12,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-8 col-sm-3 m-auto d-block d-sm-none">
+	<div class="col-10 col-sm-8 col-sm-3 m-auto d-block d-sm-none">
 		<a class="btn btn-blue color-white w-100 pt-10 pb-10 btnShare" id="sharefbmb" href="javascript:;">
 			<i class="fa fa-share-alt mgr-5"></i> คลิกแชร์กิจกรรม
 		</a>

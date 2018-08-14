@@ -77,7 +77,7 @@
 			</div>
 
 			 <div class="row justify-content-center mb-15">
-				<div class="col-12 col-md-4 mb-sm-15">
+				<div class="col-12 col-md-4 mb-xs-15 mb-sm-0">
 					<div class="box bg-blue">
 						<div class="row justify-content-center align-items-center">
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_trophy.png') }}" /></div>
@@ -89,22 +89,22 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-8 d-md-flex">
-					<div class="box bg-green pt-25 pt-md-12">
+					<div class="box bg-green pt-25 pt-md-12 pt-sm-0 pb-sm-0">
 						<div class="row justify-content-center align-items-center">
-							<div class="col-4 col-md-2 text-center">
+							<div class="col-4 col-md-2 text-center mt-15">
 								<i class="fa fa-check-circle mgr-5" aria-hidden="true"></i> ถูก
 								<div class="text-large">{{ ($result->getRank ? $result->getRank->win_count : '' ) }}</div>
 							</div>
-							<div class="col-4 col-md-2 bdl-1 bdr-1 text-center">
+							<div class="col-4 col-md-2 bdl-1 bdr-1 text-center mt-15">
 								<i class="fa fa-times-circle mgr-5" aria-hidden="true"></i> ผิด
 								<div class="text-large">{{ ($result->getRank ? $result->getRank->lose_count : '' ) }}</div>
 							</div>
-							<div class="col-4 col-md-2 text-center">
+							<div class="col-4 col-md-2 text-center mt-15">
 								ทาย
 								<div class="text-large">{{ ($result->getRank ? $result->getRank->predict_count : '' ) }}</div>
 							</div>
-							<div class="col-12 col-md-6 text-center mt-sm-15">
-								<a class="btn btn-border green pt-10 pb-10 d-block" href="{{ url('/profile/history') }}">Full History</a>
+							<div class="col-12 col-md-6 text-center mt-10">
+								<a class="btn btn-border green pt-10 pb-10 d-block mb-xs-10 mb-sm-0" href="{{ url('/profile/history') }}">Full History</a>
 							</div>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 			</div>
 
 			<div class="row justify-content-center mb-15">
-				<div class="col-12 col-md-4 mb-sm-15">
+				<div class="col-12 col-md-4 mb-xs-15 mb-sm-0">
 					<div class="box bg-darkorange">
 						<div class="row justify-content-center align-items-center">
 							<div class="col-3 col-sm-2 col-md-3 pr-0"><img class="w-100" src="{{ url('images/icon/icon_lot.png') }}" /></div>
@@ -124,7 +124,7 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-8 d-md-flex">
-					<div class="box bg-midgray pt-25 pt-md-20">
+					<div class="box bg-midgray pt-25 pt-md-20 pt-sm-10">
 						<div class="row justify-content-center align-items-center">
 							<div class="col-3 col-md-3 col-lg-2 text-left pr-0 pr-md-15">
 								ชวนเพื่อน <br  />
@@ -143,8 +143,8 @@
 			</div>
 
 			<div class="row justify-content-center mb-45">
-				<div class="col-12 mb-sm-15">
-					<div class="box-wrapper">
+				<div class="col-12">
+					<div class="box-wrapper mb-xs-15">
 
 						<form action="{{ url('/change_password') }}" method="post">
 
