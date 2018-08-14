@@ -25,6 +25,7 @@ if ($matchInfo != []) {
 
 
 @endphp
+<div class="wrapper-page bg_match non-fullpage">
 <div class="match-page">
 	<div class="container">
 
@@ -142,6 +143,7 @@ if ($matchInfo != []) {
 		</div>
 
 	</div>
+</div>
 </div>
 
 @endsection

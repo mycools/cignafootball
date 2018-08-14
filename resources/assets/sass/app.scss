@@ -492,6 +492,7 @@ Page
 #header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -513,6 +514,12 @@ Page
 }
 .bg_prize {
 	background: url(/images/bg_prize.jpg) no-repeat bottom center / cover;
+}
+.bg_match {
+	background: url(/images/bg_match_list.jpg) no-repeat top center fixed / cover;
+}
+.bg_match_predict {
+	background: url(/images/bg_match_predict.jpg) no-repeat top center fixed / cover;
 }
 
 .ranking-list {
@@ -714,14 +721,13 @@ Page
 }
 @media (max-width: 767.98px) {
 	.non-fullpage {
-		padding-top: 40px;
+		padding-top: 60px;
 		// padding-bottom: 40px;
 	}
 	.home-page { margin-top: 0px; }
 }
 @media (max-width: 575.98px) {
 	.non-fullpage {
-		padding-top: 30px;
 		// padding-bottom: 30px;
 		min-height: calc(100vh - 50px);
 	}
@@ -882,6 +888,12 @@ Responsive
 	}
 	.bg_prize {
 		background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed / cover;
+	}
+	.bg_match {
+		background: url(/images/bg_match_list_mobile.jpg) no-repeat top center / cover !important;
+	}
+	.bg_match_predict {
+		background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center / cover !important;
 	}
 	.home-page {
 		.fp-auto-height {

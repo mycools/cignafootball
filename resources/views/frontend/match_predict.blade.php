@@ -22,6 +22,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
 
+<div class="wrapper-page bg_match_predict non-fullpage">
 <form name="match_select" id="match_select" method="post">
 	{{ csrf_field() }}
 	<input type="hidden" name="vote_team" id="vote_team">
@@ -39,13 +40,13 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamA->shirt_img_url) }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
-							<div class="time mt-3 mb-auto pl-3">
-                @if($time)
-                  <h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
-                  <div class="time-box rounded border">
-                    <span id="getting-started" data-time="{{ $time }}"></span>
-                  </div>
-                @endif
+							<div class="time mt-3 mb-auto pl-3 d-none d-md-flex">
+			                @if($time)
+			                  <h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
+			                  <div class="time-box rounded border">
+			                    <span id="getting-started" data-time="{{ $time }}"></span>
+			                  </div>
+			                @endif
 							</div>
 							<div class="away">
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
@@ -76,11 +77,23 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 								ชนะ
 							</div> -->
 						</div>
+						<div class="time mt-3 mb-auto pl-3 d-block d-md-none">
+			                @if($time)
+			                  <div class="row">
+			                  	<h4 class="times-remaining mt-4 col-12">เหลือเวลาอีก</h4>
+				              </div>
+				              <div class="row">
+				                  <div class="time-box rounded border col-10 m-auto">
+				                    <span id="getting-started-2" data-time="{{ $time }}"></span>
+				                  </div>
+				              </div>
+			                @endif
+						</div>
 
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $total_count }})</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-45 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $total_count }})</span></button>
 					</div>
 
 				</div>
@@ -89,7 +102,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 	</div>
 </form>
-
+</div>
 @endsection
 
 @section('scripts')
@@ -142,6 +155,11 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 		@if($time)
 			$(function() {
 			  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
+			    $(this).text(
+			      event.strftime('%D วัน %H:%M:%S')
+			    );
+			  });
+			  $("#getting-started-2").countdown($("#getting-started-2").data('time'), function(event) {
 			    $(this).text(
 			      event.strftime('%D วัน %H:%M:%S')
 			    );
