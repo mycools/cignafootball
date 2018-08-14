@@ -18428,7 +18428,6 @@ Register / Signin
   display: block;
   width: 100%;
   border-radius: 0px;
-  overflow: hidden;
   border: 0;
 }
 
@@ -18473,6 +18472,85 @@ Register / Signin
   padding: 6px 20px 6px 8px;
   width: 100%;
   cursor: pointer;
+}
+
+/*the container must be positioned relative:*/
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  border-radius: 0px;
+  border: 0;
+  padding: 0;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.custom-select .select-selected {
+  background-color: #fff;
+}
+
+.custom-select .select-selected:before {
+  background: #00487a;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+}
+
+.custom-select .select-selected:after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  margin: -10px 0 0 0;
+  -webkit-transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px #fff solid;
+  border-bottom: 2px #fff solid;
+  z-index: 2;
+}
+
+.custom-select .select-selected.select-arrow-active:after {
+  -webkit-transform: rotate(225deg);
+}
+
+.select-items div,
+.select-selected {
+  color: #939598;
+  padding: 3px 16px 4px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/*style items (options):*/
+
+.select-items {
+  position: absolute;
+  background-color: #fefefe;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .datepicker-days {
@@ -18536,6 +18614,11 @@ Page
 
 .bg_prize {
   background: url(/images/bg_prize.jpg) no-repeat bottom center/cover;
+}
+
+.bg_match {
+  background: url(/images/bg_match.jpg) no-repeat bottom center/cover;
+  padding-top: 80px;
 }
 
 .ranking-list {
@@ -18753,6 +18836,34 @@ Page
   color: #383838;
 }
 
+.prize-wrapper {
+  position: relative;
+}
+
+.prize-wrapper .bg img {
+  width: 100%;
+  position: relative;
+}
+
+.prize-wrapper .content {
+  position: absolute;
+  left: 0;
+  top: 51.5%;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.8em;
+  line-height: 1.25;
+  font-family: 'db_helvethaica_x65_med';
+}
+
+.prize-wrapper h1 {
+  font-size: 1.55em;
+  line-height: 1.25;
+  font-family: 'db_helvethaica_x65_med';
+}
+
 .non-fullpage {
   padding-top: 110px;
   min-height: calc(100vh - 70px);
@@ -18764,7 +18875,7 @@ Page
 
 @media (max-width: 767.98px) {
   .non-fullpage {
-    padding-top: 40px;
+    padding-top: 75px;
   }
 
   .home-page {
@@ -18774,7 +18885,6 @@ Page
 
 @media (max-width: 575.98px) {
   .non-fullpage {
-    padding-top: 30px;
     min-height: calc(100vh - 50px);
   }
 
@@ -18830,6 +18940,13 @@ Responsive
 }
 
 @media (max-width: 767.98px) {
+  #header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
   .navbar {
     padding: 0;
     position: relative;
@@ -18974,6 +19091,10 @@ Responsive
     background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed/cover;
   }
 
+  .bg_match {
+    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover;
+  }
+
   .home-page .fp-auto-height {
     margin-top: -20%;
   }
@@ -18989,14 +19110,6 @@ Responsive
   .tips-item .detail .title,
   .tips-item .detail .excerpt {
     height: auto;
-  }
-
-  .match-page {
-    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover !important;
-  }
-
-  .match-page.match-predict-page {
-    background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed/cover !important;
   }
 
   .card-match .kits {
@@ -19059,9 +19172,36 @@ Responsive
   .card-match .f-3 {
     font-size: 2.15rem;
   }
+
+  .prize-wrapper .content {
+    top: 51.5%;
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 440px) {
+  .text-large {
+    font-size: 145% !important;
+  }
+
+  .prize-wrapper .content {
+    top: 50%;
+    padding: 30px 15px;
+    font-size: 1.25em;
+    line-height: 1.1;
+  }
+
+  .prize-wrapper h1 {
+    font-size: 1.4em;
+    line-height: 1.1;
+  }
 }
 
 @media (max-width: 320px) {
+  body {
+    font-size: 18px;
+  }
+
   h1,
   .h1 {
     font-size: 1.75rem;
@@ -19097,7 +19237,8 @@ Responsive
   }
 
   .match-page {
-    padding: 40px 0;
+    padding: 0;
+    background: none;
   }
 
   .card-match .home-kits-label.f-1 {
@@ -19110,6 +19251,16 @@ Responsive
 
   #getting-started {
     padding: 0 10px !important;
+  }
+
+  .prize-wrapper .content {
+    top: 48%;
+    padding: 30px 5px;
+    font-size: 0.95em;
+  }
+
+  .prize-wrapper h1 {
+    font-size: 1.3em;
   }
 }
 
