@@ -299,7 +299,10 @@ class MemberController extends Controller
             'first_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'last_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'email'  => 'required|email',
-            'birthdate'  => 'required|date|olderThan:20',
+            // 'birthdate'  => 'required|date|olderThan:20',
+            'day' => 'required',
+            'month' => 'required',
+            'year' => 'required',
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
@@ -328,10 +331,11 @@ class MemberController extends Controller
                 if($notFinishData->count() == 1){
                     $notFinishData->delete();
                 }
+                $birthDate = $request->year."-".$request->month."-".$request->day;
                 $validator = $this->_firstValidator($request->all());
                 $dupUser = User::where('first_name', $request->first_name)
                     ->where('last_name', $request->last_name)
-                    ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
+                    ->where('birthdate', $birthDate);
 
                 $check_with_email = $dupUser->where('username',$request->email);
                 $check_no_email = $dupUser->where('username','!=',$request->email);
@@ -372,7 +376,7 @@ class MemberController extends Controller
                     $user->first_name = $request->first_name;
                     $user->last_name = $request->last_name;
                     $user->email = $request->email;
-                    $user->birthdate = date("Y-m-d", strtotime($request->birthdate));
+                    $user->birthdate = $birthDate;
                     $user->salary_id = $request->salary_id;
                     $user->occupation_id = $request->occupation_id;
                     $user->team_id = $request->team_id;
