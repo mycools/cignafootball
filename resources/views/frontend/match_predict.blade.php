@@ -42,7 +42,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 							</div>
 							<div class="time mt-3 mb-auto pl-3 d-none d-md-flex">
 			                @if($time)
-			                  <h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
+			                  <h4 class="times-remaining mt-4 pr-10">เหลือเวลาอีก</h4>
 			                  <div class="time-box rounded border">
 			                    <span id="getting-started" data-time="{{ $time }}"></span>
 			                  </div>
