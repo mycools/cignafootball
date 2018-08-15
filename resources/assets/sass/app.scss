@@ -462,6 +462,73 @@ Register / Signin
 		cursor: pointer;
 	}
 }
+/*the container must be positioned relative:*/
+.custom-select {
+  	position: relative;
+  	width: 100%;
+	border-radius: 0px;
+	border: 0;
+	padding: 0;
+  	select {
+		display: none;
+	}
+	.select-selected {
+		background-color: #fff;
+		&:before {
+			background: #00487a;
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 40px;
+			height: 100%;
+		}
+		&:after {
+			content: "";
+			width: 14px;
+			height: 14px;
+			position: absolute;
+			right: 13px;
+			top: 50%;
+			margin: -10px 0 0 0;
+			-webkit-transform: rotate(45deg);
+			border-left: none;
+			border-top: none;
+			border-right: 2px #fff solid;
+			border-bottom: 2px #fff solid;
+			z-index: 2;
+		}
+		&.select-arrow-active:after {
+			-webkit-transform: rotate(225deg);
+		}
+	}
+}
+
+.select-items div,
+.select-selected {
+  color: #939598;
+  padding: 3px 16px 4px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #fefefe;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .datepicker-days {
 	padding: 5px;
 }
@@ -710,6 +777,33 @@ Page
 .tips-item a.detail:hover .title {
 	color: $color-gray;
 }
+.prize-wrapper {
+	position: relative;
+	.bg {
+		img {
+			width: 100%;
+			position: relative;
+		}
+	}
+	.content {
+		position: absolute;
+		left: 0;
+		top: 51.5%;
+		// bottom: 0px;
+		width: 100%;
+		padding: 30px;
+		text-align: center;
+		color: #fff;
+		font-size: 1.8em;
+		line-height: 1.25;
+		font-family: 'db_helvethaica_x65_med';
+	}
+	h1 {
+		font-size: 1.55em;
+		line-height: 1.25;
+		font-family: 'db_helvethaica_x65_med';
+	}
+}
 
 
 .non-fullpage {
@@ -721,7 +815,7 @@ Page
 }
 @media (max-width: 767.98px) {
 	.non-fullpage {
-		padding-top: 60px;
+		padding-top: 75px;
 		// padding-bottom: 40px;
 	}
 	.home-page { margin-top: 0px; }
@@ -781,6 +875,13 @@ Responsive
 
 
 @media (max-width: 767.98px) {
+	#header {
+		position: fixed !important;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
 	.navbar {
 		padding: 0;
 		position: relative;
@@ -982,8 +1083,32 @@ Responsive
 
 }
 
+@media (max-width: 440px) {
+	.text-large {
+	    font-size: 145% !important;
+	}
+	.prize-wrapper {
+		.content {
+			top: 50%;
+			padding: 30px 15px;
+			font-size: 1.25em;
+			line-height: 1.1;
+		}
+		h1 {
+			font-size: 1.4em;
+			line-height: 1.1;
+		}
+	}
+
+}
+
+
 
 @media (max-width: 320px) {
+	body {
+		font-size: 18px;
+	}
+
 	h1, .h1 {
 	    font-size: 1.75rem;
 	}
@@ -1021,6 +1146,17 @@ Responsive
 	#getting-started {
 		padding: 0 10px !important;
 	}
+	.prize-wrapper {
+		.content {
+			top: 48%;
+			padding: 30px 5px;
+			font-size: 0.95em;
+		}
+		h1 {
+			font-size: 1.3em;
+		}
+	}
+
 
 }
 
