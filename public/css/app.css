@@ -19189,6 +19189,15 @@ Responsive
   .card-match .f-3 {
     font-size: 2.15rem;
   }
+
+  .prize-wrapper .content {
+    padding: 20px 15px;
+    font-size: 1.4em;
+  }
+
+  .prize-wrapper h1 {
+    font-size: 1.2em;
+  }
 }
 
 @media (max-width: 440px) {
@@ -19271,7 +19280,7 @@ Responsive
   }
 
   .prize-wrapper h1 {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 
