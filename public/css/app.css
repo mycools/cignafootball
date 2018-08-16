@@ -18530,7 +18530,7 @@ Register / Signin
 .select-items div,
 .select-selected {
   color: #939598;
-  padding: 3px 16px 4px;
+  padding: 3px 16px 0px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;

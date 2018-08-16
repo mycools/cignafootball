@@ -88,9 +88,33 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<div class="input-group date">
+											<!-- <div class="input-group date">
 												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required style="position: relative;">
+											</div> -->
+											<div class="row">
+												<div class="col-4">
+													<div class="custom-select">
+														<select name="day" required>
+		                                                    <option value="" >วัน</option>
+		                                                </select>
+		                                            </div>
+												</div>
+												<div class="col-4 pl-0">
+													<div class="custom-select">
+														<select name="month" required>
+		                                                    <option value="" >เดือน</option>
+		                                                </select>
+		                                            </div>
+												</div>
+												<div class="col-4 pl-0">
+													<div class="custom-select">
+														<select name="year" required>
+		                                                    <option value="" >ปี</option>
+		                                                </select>
+		                                            </div>
+												</div>
 											</div>
+											
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="custom-select">
