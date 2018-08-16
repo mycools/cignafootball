@@ -324,6 +324,9 @@ Register / Signin
 	padding: 80px 0;
 	background: url(/images/bg_register.jpg) no-repeat top center / cover;
 }
+.line-register-box {
+	border-right: 2px solid $color-gray;
+}
 .fp-auto-height.fp-section {
 	min-height: 100vh;
 }
@@ -804,6 +807,9 @@ Page
 		font-family: 'db_helvethaica_x65_med';
 	}
 }
+#match-predict {
+	background: none !important;
+}
 
 
 .non-fullpage {
@@ -1027,6 +1033,10 @@ Responsive
 		.kits {
 			width: 100% !important;
 		}
+	}
+	.line-register-box {
+		border-right: 0;
+		border-bottom: 2px solid $color-gray;
 	}
 
 

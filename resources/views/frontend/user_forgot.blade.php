@@ -49,6 +49,7 @@
 										<label class="col-md-3 text-md-right pr-0 col-form-label">E-mail</label>
 										<div class="col-md-9">
 											<input name="email" type="email" class="form-control" value="" required>
+											<div class="mt-15 text-small font-light">“ในกรณีไม่ได้รับอีเมล์ กรุณาตรวจสอบใน junk mail”</div>
 										</div>
 									</div>
 

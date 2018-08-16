@@ -85,7 +85,7 @@ if ($matchInfo != []) {
 						</div>
 					</div>
 					<div class="col-12 mb-10">
-						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $total_count }})</span></a>
+						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<!-- <br><span>({{ $total_count }})</span> --></a>
 					</div>
 
 				</div>
@@ -126,13 +126,13 @@ if ($matchInfo != []) {
 							<div class="col-md-2 col-sm-12 p-0 text-center c-12">
 								<div class="total-predict">
 									<div class="bg-secondary">
-										<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">{{ $match->bet_total_count }}</span></h4>
+										<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<!-- <br><span class="f-6">{{ $match->bet_total_count }}</span> --></h4>
 									</div>
 									<div class="float-left bg-success w-50 py-2">
-										ถูก {{ $match->win_total_count }}
+										ถูก <br />{{ number_format(($match->win_total_count * 100) / $match->bet_total_count ,2) }} %
 									</div>
 									<div class="float-right bg-danger w-50 py-2">
-										ผิด {{ $match->lose_total_count }}
+										ผิด <br />{{ number_format(($match->lose_total_count * 100) / $match->bet_total_count ,2) }} %
 									</div>
 								</div>
 							</div>

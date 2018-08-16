@@ -63,7 +63,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 						<div class="btn-group w-100 mt-30" role="group">
 						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}"@if($lastBet) @if($lastBet==$matchInfo->team_a) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
 						  <button type="button" id="voteDraw" data-vote="0" @if($lastBet) @if($lastBet==0) style="opacity: 1; color:#000 !important;" @else style="opacity: 0.3; !important;" @endif @endif class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
-						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
+						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 text-white">ชนะ</button>
 						</div>
 						<div class="d-flex justify-content-center vote-box w-100">
 
@@ -93,7 +93,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-45 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $total_count }})</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-45 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<!-- <br><span>({{ $total_count }})</span> --></button>
 					</div>
 
 				</div>
