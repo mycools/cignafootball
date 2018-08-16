@@ -13,7 +13,7 @@
 
 			<h1 class="h-title">ลงทะเบียน</h1>
 			<div class="row mt-20 mb-15">
-				<div class="col-12 col-sm-10 col-md-10 col-lg-8 m-auto">
+				<div class="col-12 col-sm-11 col-md-11 col-lg-8 m-auto">
 					<div class="box-wrapper pt-30 pb-30">
 
 						<div class="row">
