@@ -42,10 +42,6 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                             <ul style="padding-left: 20px; margin-bottom: 0;">
-                                            	@php
-
-// dd($errors->all());
-                                            	@endphp
                                                 @foreach ($errors->all() as $error)
                                                     <li>
                                                         {{ $error }}
@@ -96,6 +92,11 @@
 													<div class="custom-select">
 														<select name="day" required>
 		                                                    <option value="" >วัน</option>
+		                                                    @foreach(range(1,31) as $day)
+															<option value="{{strlen($day)==1 ? '0'.$day : $day}}">
+																{{strlen($day)==1 ? '0'.$day : $day}}
+															</option>
+														    @endforeach
 		                                                </select>
 		                                            </div>
 												</div>
@@ -103,6 +104,11 @@
 													<div class="custom-select">
 														<select name="month" required>
 		                                                    <option value="" >เดือน</option>
+		                                                    @foreach(range(1,12) as $month)
+															<option value="{{$month}}">
+																{{date("M", strtotime('2016-'.$month))}}
+															</option>
+															@endforeach
 		                                                </select>
 		                                            </div>
 												</div>
@@ -110,6 +116,11 @@
 													<div class="custom-select">
 														<select name="year" required>
 		                                                    <option value="" >ปี</option>
+															@for ($year = date('Y'); $year > date('Y') - 100; $year--)
+															<option value="{{$year}}">
+															    {{$year}}
+															</option>
+															@endfor
 		                                                </select>
 		                                            </div>
 												</div>
