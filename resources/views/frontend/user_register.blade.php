@@ -84,9 +84,6 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<!-- <div class="input-group date">
-												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required style="position: relative;">
-											</div> -->
 											<div class="row">
 												<div class="col-4">
 													<div class="custom-select">
@@ -102,11 +99,11 @@
 												</div>
 												<div class="col-4 pl-0">
 													<div class="custom-select">
-														<select name="month" required>
+														<select id="month" name="month" required>
 		                                                    <option value="" >เดือน</option>
 		                                                    @foreach(range(1,12) as $month)
 															<option value="{{$month}}">
-																{{date("M", strtotime('2016-'.$month))}}
+																{{date("M", strtotime('2018-'.$month))}}
 															</option>
 															@endforeach
 		                                                </select>
@@ -125,7 +122,6 @@
 		                                            </div>
 												</div>
 											</div>
-											
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="custom-select">
@@ -198,7 +194,6 @@
     <div class="modal-dialog modal-lg centered" role="document">
         <div class="modal-content">
             <div class="modal-body p-4 pl-30 pr-30">
-                <!-- <span aria-hidden="true" class="close" data-dismiss="modal">&times;</span> -->
                 <div class="head-title">
                     <h3 class="color-darkgray">เงื่อนไข เกณฑ์การตัดสิน และการแจกจ่ายสิ่งของรางวัลอย่างไร ?</h3>
                 </div>
@@ -215,6 +210,8 @@
     </div>
 </div>
 
+@endsection
+@section('pagescript')
 <script type="text/javascript">
 	function isChecked(checkbox, sub) {
 	    var button = document.getElementById(sub);
@@ -225,5 +222,6 @@
 	        button.disabled = "disabled";
 	    }
 	}
+	
 </script>
 @endsection

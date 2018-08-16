@@ -36066,6 +36066,13 @@ $(document).ready(function () {
 	/*if the user clicks anywhere outside the select box,
  then close all select boxes:*/
 	document.addEventListener("click", closeAllSelect);
+
+	// var dropdown = document.getElementById("month");
+	// dropdown.onchange = function(event){
+	// 	if(dropdown.value=="2"){
+	// 	 alert("Your message")
+	// 	}
+	// }
 });
 function share_facebook() {
 	var base_url = window.location.href;
