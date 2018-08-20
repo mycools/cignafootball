@@ -589,10 +589,10 @@ Page
 	background: url(/images/bg_prize.jpg) no-repeat bottom center / cover;
 }
 .bg_match {
-	background: url(/images/bg_match_list.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_match_list.jpg) #000 no-repeat top center fixed / 100%;
 }
 .bg_match_predict {
-	background: url(/images/bg_match_predict.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_match_predict.jpg) #000 no-repeat top center fixed / 100%;
 }
 
 .ranking-list {
