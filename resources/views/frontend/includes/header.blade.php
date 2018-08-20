@@ -65,7 +65,7 @@
 
 							@if(Auth::user())
 							<li class="nav-item">
-								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copyToCliboard()">
+								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copy('myInviteUrl')"><!-- onclick="copyToCliboard()" -->
 									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
 								</a>
 							</li>

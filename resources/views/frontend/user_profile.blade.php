@@ -135,7 +135,8 @@
 								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-0 pb-0 mt-sm-15 d-block btn-copy" onclick="copyToCliboardProfile()" href="javascript:;">Copy</a>
+								<a class="btn btn-border gray pt-0 pb-0 mt-sm-15 d-block btn-copy" onclick="copy('myInvite')" href="javascript:;">Copy</a>
+								 <!-- onclick="copyToCliboardProfile()" -->
 							</div>
 						</div>
 					</div>
