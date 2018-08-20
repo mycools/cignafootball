@@ -125,7 +125,7 @@ class MemberController extends Controller
         ]);
 
         if ($validated->fails()) {
-            $this->flash_messages($request, 'danger', 'Please check username and password again!');
+            $this->flash_messages($request, 'danger', 'กรุณาตรวจสอบ username อาจถูกใช้ไปแล้ว หรือ password ไม่ต่ำกว่า 8 ตัวอักษร');
             return redirect('register/detail')
                 ->withErrors($validated)
                 ->withInput();
@@ -139,7 +139,7 @@ class MemberController extends Controller
         $dupUsername = User::where('username', $request->username)->count();
         if ($dupUsername > 0) {
           // in case of duplicate
-          $this->flash_messages($request, 'danger', 'Duplicate username!');
+          $this->flash_messages($request, 'danger', 'username ถูกใช้ไปแล้ว');
           return redirect('register/detail')
               ->withErrors($validated)
               ->withInput();

@@ -41,7 +41,7 @@ class OneTimePassword extends Notification
     }
     public function toCorpSMS($notifiable)
     {
-        $sms = "รหัส OTP คือ ".$this->otp['otp']." (REF : ".$this->otp['refcode'].") ใช้งานได้ที่ http://matchoftheweek.com/";
+        $sms = "รหัส OTP คือ ".$this->otp['otp']." (REF : ".$this->otp['refcode'].") ใช้งานได้ที่ http://matchoftheweeks.com/";
         return CorpSMSMessage::create($sms);
 
     }

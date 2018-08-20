@@ -31,8 +31,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 			<div class="card-match mt-md-4 p-2 pb-4 mt-xs-0">
 				<div class="row">
 					<div class="col-12">
-						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">match of the weeks</h1>
-						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">matchweek {{ $matchInfo->id }}</h1>
+						<div class="p text-large font-bold text-white text-uppercase">{{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M Y') }}</div>
 					</div>
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
