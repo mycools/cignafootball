@@ -18023,6 +18023,7 @@ body {
   background: #fff;
   font-size: 20px;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .text-white {
