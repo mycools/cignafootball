@@ -64,7 +64,7 @@
 							@endif
 
 							@if(Auth::user())
-							<li class="nav-item">
+							<li class="nav-item d-none d-md-block">
 								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copy('myInviteUrl')"><!-- onclick="copyToCliboard()" -->
 									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
 								</a>
@@ -89,7 +89,7 @@
 	            </div>
 	        </nav>
 	        @if(Auth::user())
-	        <div class="container text-right" style="height: 0;">
+	        <div class="container text-right d-none d-md-block" style="height: 0;">
 	        	<input id="myInviteUrl" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
 	        </div>
 	        @endif

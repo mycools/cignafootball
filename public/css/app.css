@@ -18894,6 +18894,10 @@ Page
     padding-top: 75px;
   }
 
+  .non-fullpage.home-page {
+    padding-top: 50px;
+  }
+
   .home-page {
     margin-top: 0px;
   }
@@ -19133,11 +19137,11 @@ Responsive
   }
 
   .match-page {
-    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover !important;
+    background: none;
   }
 
   .match-page.match-predict-page {
-    background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed/cover !important;
+    background: none;
   }
 
   .card-match .kits {
