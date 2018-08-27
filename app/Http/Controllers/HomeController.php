@@ -19,7 +19,7 @@ class HomeController extends Controller
         $result = Ranks::with([
                             'getUser'
                         ])
-                        ->orderBy('ranking_no', 'asc')
+                        ->orderBy('point', 'desc')
                         ->where('ranking_no', '!=', '0')
                         ->take(10)
                         ->get();
