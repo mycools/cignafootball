@@ -92,7 +92,7 @@ if ($matchInfo != []) {
 			</div>
 		@endif
 
-		<div class="row">
+		<div class="row pb-5 pb-md-0">
 
 			@foreach ($previousMatch as $match)
 				<div class="col-12">
