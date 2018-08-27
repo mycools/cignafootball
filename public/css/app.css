@@ -18913,6 +18913,23 @@ Page
   }
 }
 
+.iframe-wrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.625%;
+  padding-top: 0;
+  height: 0;
+  margin: 0;
+}
+
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /***********************************************
 Responsive
 ***********************************************/

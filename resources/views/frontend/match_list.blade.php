@@ -148,6 +148,10 @@ if ($matchInfo != []) {
 					</div>
 				</div>
 			@endforeach
+
+			<div class="col-12 mt-3 mb-3 text-center">
+				<a href="https://www.premierleague.com/tables" target="_blank" class="btn btn-green pl-4 pr-4 pt-3 pb-3 txt-large btn-predict ">ตารางคะแนน</a>
+			</div>
 		</div>
 
 	</div>

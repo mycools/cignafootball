@@ -31,8 +31,8 @@ class RanksController extends Controller
         $result = Ranks::leftJoin('users', 'ranks.user_id', '=', 'users.id')
                         ->where('ranks.ranking_no', '!=', '0')
                         ->where('users.username', '!=', '')
-        				->orderBy('ranks.ranking_no', 'asc')
-        				->take(30)
+        				->orderBy('ranks.point', 'desc')
+        				->take(50)
 						->get();
 
         $this->_data['result']    = $result;
