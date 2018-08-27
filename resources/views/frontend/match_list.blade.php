@@ -129,10 +129,18 @@ if ($matchInfo != []) {
 										<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<!-- <br><span class="f-6">{{ $match->bet_total_count }}</span> --></h4>
 									</div>
 									<div class="float-left bg-success w-50 py-2">
+                                    @if($match->bet_total_count > 0)
 										ถูก <br />{{ number_format(($match->win_total_count * 100) / $match->bet_total_count ,2) }} %
+                                    @else
+                                    ถูก <br />0 %
+                                    @endif
 									</div>
 									<div class="float-right bg-danger w-50 py-2">
+                                    @if($match->bet_total_count > 0)
 										ผิด <br />{{ number_format(($match->lose_total_count * 100) / $match->bet_total_count ,2) }} %
+                                    @else
+                                        ผิด <br />0 %
+                                    @endif
 									</div>
 								</div>
 							</div>
