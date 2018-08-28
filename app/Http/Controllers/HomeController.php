@@ -21,6 +21,7 @@ class HomeController extends Controller
                         ])
                         ->where('ranking_no', '!=', '0')
                         ->orderBy('point', 'desc')
+                        ->orderBy('user_id', 'asc')
                         ->take(10)
                         ->get();
 
