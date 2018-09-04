@@ -18301,6 +18301,7 @@ Footer
 ***********************************************/
 
 footer {
+  position: relative;
   padding: 25px 15px 15px;
   background: #00487a;
   color: #fff;
@@ -18603,6 +18604,15 @@ Page
 
 .wrapper-page {
   padding: 80px 0;
+  position: relative;
+}
+
+.wrapper-page .bg_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .bg_home {
@@ -18610,11 +18620,11 @@ Page
 }
 
 .bg_rules {
-  background: url(/images/bg_rules.jpg) no-repeat top center fixed/cover;
+  background: url(/images/bg_rules.jpg) no-repeat center center fixed/cover;
 }
 
 .bg_profile {
-  background: url(/images/bg_profile.jpg) no-repeat top center fixed/cover;
+  background: url(/images/bg_profile.jpg) no-repeat center center fixed/cover;
 }
 
 .bg_ranking {
@@ -18849,7 +18859,13 @@ Page
 }
 
 .prize-wrapper {
+  font-size: 16px;
   position: relative;
+}
+
+.prize-wrapper .bg {
+  padding-top: 60px;
+  margin-bottom: -5%;
 }
 
 .prize-wrapper .bg img {
@@ -18858,21 +18874,19 @@ Page
 }
 
 .prize-wrapper .content {
-  position: absolute;
-  left: 0;
-  top: 51.5%;
+  background: url(/images/prize/prize_bg.jpg) no-repeat top center/100% 100%;
   width: 100%;
   padding: 30px;
   text-align: center;
   color: #fff;
   font-size: 1.8em;
-  line-height: 1.25;
+  line-height: 1.325;
   font-family: 'db_helvethaica_x65_med';
 }
 
 .prize-wrapper h1 {
   font-size: 1.55em;
-  line-height: 1.25;
+  line-height: 1;
   font-family: 'db_helvethaica_x65_med';
 }
 
@@ -18934,9 +18948,19 @@ Page
 Responsive
 ***********************************************/
 
+@media (min-width: 992px) {
+  .prize-wrapper {
+    font-size: 17px;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
   }
 }
 
@@ -18973,6 +18997,10 @@ Responsive
 
   .text-extra-large {
     font-size: 250%;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
   }
 }
 
@@ -19113,11 +19141,11 @@ Responsive
   }
 
   .bg_rules {
-    background: url(/images/bg_rules_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_rules_mobile.jpg) no-repeat top center/cover;
   }
 
   .bg_profile {
-    background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_profile_mobile.jpg) no-repeat top center/cover;
   }
 
   .bg_ranking {
@@ -19125,7 +19153,7 @@ Responsive
   }
 
   .bg_prize {
-    background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_prize_mobile.jpg) no-repeat top center/cover !important;
   }
 
   .bg_match {
@@ -19168,6 +19196,14 @@ Responsive
   .line-register-box {
     border-right: 0;
     border-bottom: 2px solid #383838;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
+  }
+
+  .prize-wrapper .bg {
+    padding-top: 0;
   }
 }
 

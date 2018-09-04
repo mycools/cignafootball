@@ -26,6 +26,7 @@ if ($matchInfo != []) {
 
 @endphp
 <div class="wrapper-page bg_match non-fullpage">
+<div class="bg_wrapper bg_match"></div>
 <div class="match-page">
 	<div class="container">
 

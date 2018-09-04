@@ -295,6 +295,7 @@ Header
 Footer
 ***********************************************/
 footer {
+	position: relative;
 	padding: 25px 15px 15px;
 	background: #00487a;
 	color: #fff;
@@ -572,15 +573,23 @@ Page
 
 .wrapper-page {
 	padding: 80px 0;
+	position: relative;
+	.bg_wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 }
 .bg_home {
 	background: #030712;
 }
 .bg_rules {
-	background: url(/images/bg_rules.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_rules.jpg) no-repeat center center fixed / cover;
 }
 .bg_profile {
-	background: url(/images/bg_profile.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_profile.jpg) no-repeat center center fixed / cover;
 }
 .bg_ranking {
 	background: url(/images/bg_ranking.jpg) no-repeat bottom center / cover;
@@ -784,29 +793,33 @@ Page
 	color: $color-gray;
 }
 .prize-wrapper {
+	font-size: 16px;
 	position: relative;
 	.bg {
+		padding-top: 60px;
 		img {
 			width: 100%;
 			position: relative;
 		}
+		margin-bottom: -5%;
 	}
 	.content {
-		position: absolute;
-		left: 0;
-		top: 51.5%;
-		// bottom: 0px;
+		// position: absolute;
+		// left: 0;
+		// top: 51.5%;
+		// bottom: 1%;
+		background: url(/images/prize/prize_bg.jpg) no-repeat top center / 100% 100%;
 		width: 100%;
 		padding: 30px;
 		text-align: center;
 		color: #fff;
 		font-size: 1.8em;
-		line-height: 1.25;
+		line-height: 1.325;
 		font-family: 'db_helvethaica_x65_med';
 	}
 	h1 {
 		font-size: 1.55em;
-		line-height: 1.25;
+		line-height: 1;
 		font-family: 'db_helvethaica_x65_med';
 	}
 }
@@ -852,9 +865,17 @@ Page
 /***********************************************
 Responsive
 ***********************************************/
+@media (min-width: 992px) {
+	.prize-wrapper {
+		font-size: 17px;
+	}
+}
 @media (min-width: 1200px) {
 	.container {
 	    max-width: 1170px;
+	}
+	.prize-wrapper {
+		font-size: 20px;
 	}
 }
 @media (max-width: 1199.98px) {
@@ -892,7 +913,9 @@ Responsive
 	}
 	.text-extra-large { font-size: 250%; }
 
-
+	.prize-wrapper {
+		font-size: 20px;
+	}
 }
 
 
@@ -1001,16 +1024,16 @@ Responsive
 		background: #000;
 	}
 	.bg_rules {
-		background: url(/images/bg_rules_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_rules_mobile.jpg) no-repeat top center / cover;
 	}
 	.bg_profile {
-		background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_profile_mobile.jpg) no-repeat top center / cover;
 	}
 	.bg_ranking {
 		background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom 6.5% center / 100% auto;
 	}
 	.bg_prize {
-		background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_prize_mobile.jpg) no-repeat top center / cover !important;
 	}
 	.bg_match {
 		background: url(/images/bg_match_list_mobile.jpg) no-repeat top center / cover !important;
@@ -1055,6 +1078,13 @@ Responsive
 	.line-register-box {
 		border-right: 0;
 		border-bottom: 2px solid $color-gray;
+	}
+
+	.prize-wrapper {
+		font-size: 20px;
+		.bg {
+			padding-top: 0;
+		}
 	}
 
 

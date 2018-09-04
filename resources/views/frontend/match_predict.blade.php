@@ -23,6 +23,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
 
 <div class="wrapper-page bg_match_predict non-fullpage">
+<div class="bg_wrapper bg_match_predict"></div>
 <form name="match_select" id="match_select" method="post">
 	{{ csrf_field() }}
 	<input type="hidden" name="vote_team" id="vote_team">
