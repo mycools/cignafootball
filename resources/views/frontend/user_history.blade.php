@@ -48,7 +48,7 @@
 	                        @endphp
                         	@foreach ($bets as $row)
                                 @php
-                                $new_date = strtotime($row->match->bet_start);
+                                $new_date = strtotime($row->match->bet_end);
                                     $new_date = date('d F', $new_date);
                                 @endphp
 							<div class="row text-center align-items-center bg-gray ml-0 mr-0 pt-0 pb-0 color-white">
