@@ -104,7 +104,7 @@ if ($matchInfo != []) {
 						<div class="row">
 							<div class="col-12">
 								<h3 class="mb-3">
-									{{ Carbon\Carbon::parse($match->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d M') }}
+									{{ Carbon\Carbon::parse($match->match_end)->format('d M Y') }}
 								</h3>
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">
