@@ -97,7 +97,7 @@ if ($matchInfo != []) {
 
 			@foreach ($previousMatch as $match)
 				<div class="col-12">
-					<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
+					<h1 class="match-page-title-lastweek font-bold">MATCH {{$match->id}} <span class="font-med">ของสัปดาห์ก่อน</span></h1>
 				</div>
 				<div class="col-12">
 					<div class="card-match-lastweek border p-4 mb-4">
