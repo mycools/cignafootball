@@ -27,7 +27,9 @@ class User extends Authenticatable
         'salary_id',
         'occupation_id',
         'team_id',
-        'active'
+        'active',
+        'hash_key',
+        'ref_code'
     ];
 
     /**
