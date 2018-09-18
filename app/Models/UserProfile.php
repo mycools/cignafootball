@@ -27,6 +27,7 @@ class UserProfile extends Authenticatable
         'salary_id',
         'occupation_id',
         'team_id',
-        'active'
+        'active',
+        'ip_address'
     ];
 }

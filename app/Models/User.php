@@ -29,7 +29,8 @@ class User extends Authenticatable
         'team_id',
         'active',
         'hash_key',
-        'ref_code'
+        'ref_code',
+        'ip_address'
     ];
 
     /**

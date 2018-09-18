@@ -147,7 +147,7 @@ class MemberController extends Controller
               ->withInput();
         }
         $hashKey = md5($user->first_name.''.$user->last_name.''.$user->birthdate);
-       
+        $ip = \Request::ip();
         //save data users
         $Newuser = new User;
         $Newuser->username = $request->username;
@@ -158,6 +158,7 @@ class MemberController extends Controller
         $Newuser->team_id = $user->team_id;
         $Newuser->ref_code = $user->ref_code;
         $Newuser->hash_key = $hashKey;
+        $Newuser->ip_address = $ip;
         $Newuser->active=1;
         $Newuser->save();
 
@@ -176,6 +177,7 @@ class MemberController extends Controller
         $userProfile->team_id = $user->team_id;
         $userProfile->ref_code = $user->ref_code;
         $userProfile->active = $Newuser->active;
+        $userProfile->ip_address = $Newuser->ip_address;
         $userProfile->save();
 
         //delete user incomplete
