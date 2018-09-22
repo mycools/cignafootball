@@ -193,7 +193,7 @@ class MemberController extends Controller
 
         // Save Log
         
-            $inInvite = Invites::select('user_id','invitee_id')->where('invitee_id',$userId)->get();
+            $inInvite = Invites::select('user_id','invitee_id')->where('invitee_id',$userId)->orderBy('id','DESC')->get();
            // return $inInvite;
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
