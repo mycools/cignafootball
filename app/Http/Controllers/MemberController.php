@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\UserIncomplete;
 use App\Models\UserProfile;
 use App\Models\Teams;
+use App\Models\Invites;
+use App\Models\PointLogs;
 use App\Entities\Invite;
 use App\Models\Bets;
 use Illuminate\Support\Facades\DB;
@@ -181,7 +183,7 @@ class MemberController extends Controller
         $userProfile->save();
 
         //delete user incomplete
-        $user_incom = $user->id;
+
         $user->delete();
 
         // update username and password
@@ -190,16 +192,21 @@ class MemberController extends Controller
             $rank->save();
 
         // Save Log
-            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$user_incom)->get();
+        
+            $inInvite = Invites::select('user_id','invitee_id')->where('invitee_id',$userId)->get();
+           // return $inInvite;
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
               $invite['point_type'] = 'inv';
               $invite['point_score'] = 1;
+              $invite['taggable_id'] = $Newuser->id;
 
-              $user = User::find($inInvite->invitee_id);
+              $user = User::find($Newuser->id);
 
               $user->pointlogs()->create($invite);
+              
+             // return 'user id ='.$inInvite->user_id;
 
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
