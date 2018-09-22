@@ -181,7 +181,7 @@ class MemberController extends Controller
         $userProfile->save();
 
         //delete user incomplete
-
+        $user_incom = $user->id;
         $user->delete();
 
         // update username and password
@@ -190,7 +190,7 @@ class MemberController extends Controller
             $rank->save();
 
         // Save Log
-            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$userId)->get();
+            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$user_incom)->get();
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
