@@ -216,6 +216,15 @@ class MemberController extends Controller
                       ]
                     );
 
+                $update_invite = $inInvite = Invites::select('id')->where('invitee_id',$userId)->orderBy('id','DESC')->first();
+                
+                Invites::where('id', $update_invite->id)
+                        ->update(
+                            [
+                                'invitee_id' => $Newuser->id
+                            ]
+                        );
+
                 // // Re Ranks
                 //     $getRanks = Ranks::orderBy('point', 'desc')
                 //                 ->take(30)
