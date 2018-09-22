@@ -437,7 +437,7 @@ class MemberController extends Controller
                 if ($request->session()->get('refCode')) {
                     // in case of invite
                     $refCode = $request->session()->get('refCode');
-                    $userInviter = UserIncomplete::where('ref_code', $refCode)->first();
+                    $userInviter = User::where('ref_code', $refCode)->first();
 
                     $inInvite = new Invite;
                     $inInvite->user_id = $userInviter->id;
