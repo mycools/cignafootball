@@ -20,8 +20,8 @@ if (env('REDIRECT_HTTPS') == 'true' || env('REDIRECT_HTTPS') == true) {
 
 Auth::routes();
 
-Route::get('/', 'MemberController@getRegister')->name('home');
-Route::get('home', 'MemberController@getRegister')->name('home');
+Route::get('/', 'MemberController@getRegister');
+Route::get('home', 'HomeController@index')->name('home');
 // Route::get('home', 'HomeController@index')->name('home');
 Route::get('ranking', 'RanksController@index')->name('ranking');
 Route::get('match', 'MatchesController@index')->name('match');
