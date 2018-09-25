@@ -397,16 +397,16 @@ class MemberController extends Controller
                         ->withInput();
                 }
 
-                $notComplete = UserIncomplete::where('first_name', $request->first_name)
-                                            ->where('last_name', $request->last_name)
-                                            ->where('birthdate', $birthDate);
+                // $notComplete = UserIncomplete::where('first_name', $request->first_name)
+                //                             ->where('last_name', $request->last_name)
+                //                             ->where('birthdate', $birthDate);
 
                 
 
                 /*case old registration un success*/
-                if($notComplete->count() > 0){
-                    $user = $notComplete->first();
-                }else{
+                // if($notComplete->count() > 0){
+                //     $user = $notComplete->first();
+                // }else{
                     /* case new registration*/
                     $validator = $this->_validator($request->all());
                     if ($validator->fails()) {
@@ -447,7 +447,7 @@ class MemberController extends Controller
                     // $rank = new Ranks;
                     // $rank->user_id = $user->id;
                     // $rank->save();
-                }
+                // }
 
                 // check has refCode(invite case)
                 if ($request->session()->get('refCode')) {
