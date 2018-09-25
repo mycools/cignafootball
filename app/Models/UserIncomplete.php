@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class UserIncomplete extends Authenticatable
 {
     use Notifiable;
 
@@ -14,11 +14,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users_incomplete';
     protected $fillable = [
-        
         'email',
-        'username',
-        'password',
         'phoneno',
         'title_id',
         'first_name',
@@ -27,19 +25,7 @@ class User extends Authenticatable
         'salary_id',
         'occupation_id',
         'team_id',
-        'active',
-        'hash_key',
-        'ref_code',
-        'ip_address'
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
+        'tc_accept'
     ];
 
     public function routeNotificationForCorpSMS()
