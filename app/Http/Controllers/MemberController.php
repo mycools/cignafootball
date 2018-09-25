@@ -94,7 +94,7 @@ class MemberController extends Controller
         $this->_data['titles'] = Title::all();
         $this->_data['teams'] = Teams::all();
 
-        return View('frontend/user_register')
+        return View('frontend/home_register')
             ->with($this->_data);
     }
 

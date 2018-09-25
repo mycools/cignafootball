@@ -856,15 +856,70 @@ Page
 .iframe-wrapper { 
 	width: 100%;
 	position: relative; 
-	padding-bottom: 56.625%; 
+	padding-bottom: 56.625%;
 	padding-top: 0; 
 	height: 0; 
 	margin: 0;
   iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 }
+
+.home-register-page {
+	margin-top: 0;
+	padding-top: 0 !important;
+	.section-home-register {
+		margin-top: 0;
+		position: relative;
+		width: 100%;
+		padding-top: 80px;
+		min-height: calc(100vh - 70px);
+	}
+	.register-box {
+		width: 100%;
+		padding: 1rem;
+		background: #e1e1e1;
+		margin-bottom: 30px;
+	}
+	.home-banner {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		a {
+			padding-top: 55px;
+			margin-bottom: 30px;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: #252525;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
 /***********************************************
 Responsive
 ***********************************************/
+@media (min-width: 768px) {
+	.home-register-page {
+		.register-box {
+
+		}
+		.home-banner {
+			position: absolute;
+			a {
+				padding-top: 80px;
+				background: url(/images/home/bg_register.jpg) #252525 no-repeat center center / cover;
+				img {
+					display: none;
+				}
+			}
+		}
+	}
+}
 @media (min-width: 992px) {
 	.prize-wrapper {
 		font-size: 17px;
@@ -1046,6 +1101,12 @@ Responsive
 			margin-top: -20%;
 		}
 	}
+	.home-register-page {
+		.section-home-register {
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
 	.ranking-list {
 		max-height: unset;
 	}
@@ -1146,6 +1207,8 @@ Responsive
 		}
 	}
 
+	
+
 }
 
 @media (max-width: 440px) {
@@ -1164,6 +1227,7 @@ Responsive
 			line-height: 1.1;
 		}
 	}
+
 
 }
 

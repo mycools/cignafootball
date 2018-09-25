@@ -18944,9 +18944,65 @@ Page
   height: 100%;
 }
 
+.home-register-page {
+  margin-top: 0;
+  padding-top: 0 !important;
+}
+
+.home-register-page .section-home-register {
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  padding-top: 80px;
+  min-height: calc(100vh - 70px);
+}
+
+.home-register-page .register-box {
+  width: 100%;
+  padding: 1rem;
+  background: #e1e1e1;
+  margin-bottom: 30px;
+}
+
+.home-register-page .home-banner {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-register-page .home-banner a {
+  padding-top: 55px;
+  margin-bottom: 30px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #252525;
+}
+
+.home-register-page .home-banner a img {
+  width: 100%;
+}
+
 /***********************************************
 Responsive
 ***********************************************/
+
+@media (min-width: 768px) {
+  .home-register-page .home-banner {
+    position: absolute;
+  }
+
+  .home-register-page .home-banner a {
+    padding-top: 80px;
+    background: url(/images/home/bg_register.jpg) #252525 no-repeat center center/cover;
+  }
+
+  .home-register-page .home-banner a img {
+    display: none;
+  }
+}
 
 @media (min-width: 992px) {
   .prize-wrapper {
@@ -19166,6 +19222,11 @@ Responsive
 
   .home-page .fp-auto-height {
     margin-top: -20%;
+  }
+
+  .home-register-page .section-home-register {
+    margin-top: 0;
+    padding-top: 0;
   }
 
   .ranking-list {
