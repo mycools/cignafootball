@@ -93,28 +93,43 @@ class MemberController extends Controller
     //FIXME validate form in client
     public function getRegister()
     {
-        $this->_data['salaries'] = Salary::all();
-        $this->_data['occupations'] = Occupation::all();
-        $this->_data['titles'] = Title::all();
-        $this->_data['teams'] = Teams::all();
+        $auth   = Auth::user();
+        if($auth)
+        {
+            return redirect('home');
+        }else{
 
-        return View('frontend/user_register')
-            ->with($this->_data);
+            $this->_data['salaries'] = Salary::all();
+            $this->_data['occupations'] = Occupation::all();
+            $this->_data['titles'] = Title::all();
+            $this->_data['teams'] = Teams::all();
+
+            return View('frontend/home_register')
+                ->with($this->_data);
+        }
+        
     }
 
     public function registerHasRefcode(Request $request, $ref)
     {
-      if ($ref) {
-        $request->session()->put('refCode', $ref);
-      }
+        $auth   = Auth::user();
+        if($auth)
+        {
+            return redirect('home');
+        }else{
 
-      $this->_data['salaries'] = Salary::all();
-      $this->_data['occupations'] = Occupation::all();
-      $this->_data['titles'] = Title::all();
-      $this->_data['teams'] = Teams::all();
+            if ($ref) {
+                $request->session()->put('refCode', $ref);
+            }
 
-      return View('frontend/user_register')
-          ->with($this->_data);
+            $this->_data['salaries'] = Salary::all();
+            $this->_data['occupations'] = Occupation::all();
+            $this->_data['titles'] = Title::all();
+            $this->_data['teams'] = Teams::all();
+
+            return View('frontend/home_register')
+                ->with($this->_data);
+        }
     }
 
     public function getRegisterDetail(Request $request)
