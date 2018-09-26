@@ -43,7 +43,7 @@
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-6 text-center mt-3">
 					<div class="iframe-wrapper">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/o2ztqL-YcgA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/EN3QXN6Qfto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 					</div>
 				</div>
 
