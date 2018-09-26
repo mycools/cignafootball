@@ -13,7 +13,7 @@
 
 			<h1 class="h-title">ลงทะเบียน</h1>
 			<div class="row mt-20 mb-15">
-				<div class="col-12 col-sm-10 col-md-10 col-lg-8 m-auto">
+				<div class="col-12 col-sm-11 col-md-11 col-lg-8 m-auto">
 					<div class="box-wrapper pt-30 pb-30">
 
 						<div class="row">
@@ -42,10 +42,6 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                             <ul style="padding-left: 20px; margin-bottom: 0;">
-                                            	@php
-
-// dd($errors->all());
-                                            	@endphp
                                                 @foreach ($errors->all() as $error)
                                                     <li>
                                                         {{ $error }}
@@ -88,8 +84,43 @@
 									</div>
 									<div class="form-group row">
 										<div class="col-12 col-md-6 mb-sm-15">
-											<div class="input-group date">
-												<input name="birthdate" type="text" class="form-control datepicker" placeholder="ว/ด/ป เกิด" required style="position: relative;">
+											<div class="row">
+												<div class="col-4">
+													<div class="custom-select">
+														<select name="day" required>
+		                                                    <option value="" >วัน</option>
+		                                                    @foreach(range(1,31) as $day)
+															<option value="{{strlen($day)==1 ? '0'.$day : $day}}">
+																{{strlen($day)==1 ? '0'.$day : $day}}
+															</option>
+														    @endforeach
+		                                                </select>
+		                                            </div>
+												</div>
+												<div class="col-4 pl-0">
+													<div class="custom-select">
+														<select id="month" name="month" required>
+		                                                    <option value="" >เดือน</option>
+		                                                    @foreach(range(1,12) as $month)
+															<option value="{{$month}}">
+																{{date("M", strtotime('2018-'.$month))}}
+															</option>
+															@endforeach
+		                                                </select>
+		                                            </div>
+												</div>
+												<div class="col-4 pl-0">
+													<div class="custom-select">
+														<select name="year" required>
+		                                                    <option value="" >ปี</option>
+															@for ($year = date('Y'); $year > date('Y') - 100; $year--)
+															<option value="{{$year}}">
+															    {{$year}}
+															</option>
+															@endfor
+		                                                </select>
+		                                            </div>
+												</div>
 											</div>
 										</div>
 										<div class="col-12 col-md-6">
@@ -163,7 +194,6 @@
     <div class="modal-dialog modal-lg centered" role="document">
         <div class="modal-content">
             <div class="modal-body p-4 pl-30 pr-30">
-                <!-- <span aria-hidden="true" class="close" data-dismiss="modal">&times;</span> -->
                 <div class="head-title">
                     <h3 class="color-darkgray">เงื่อนไข เกณฑ์การตัดสิน และการแจกจ่ายสิ่งของรางวัลอย่างไร ?</h3>
                 </div>
@@ -180,6 +210,8 @@
     </div>
 </div>
 
+@endsection
+@section('pagescript')
 <script type="text/javascript">
 	function isChecked(checkbox, sub) {
 	    var button = document.getElementById(sub);
@@ -190,5 +222,6 @@
 	        button.disabled = "disabled";
 	    }
 	}
+	
 </script>
 @endsection

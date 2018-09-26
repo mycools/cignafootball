@@ -8,7 +8,11 @@ use App\Models\Ranks;
 use App\Models\Salary;
 use App\Models\Title;
 use App\Models\User;
+use App\Models\UserIncomplete;
+use App\Models\UserProfile;
 use App\Models\Teams;
+use App\Models\Invites;
+use App\Models\PointLogs;
 use App\Entities\Invite;
 use App\Models\Bets;
 use Illuminate\Support\Facades\DB;
@@ -125,7 +129,7 @@ class MemberController extends Controller
         ]);
 
         if ($validated->fails()) {
-            $this->flash_messages($request, 'danger', 'Please check username and password again!');
+            $this->flash_messages($request, 'danger', 'กรุณาตรวจสอบ username อาจถูกใช้ไปแล้ว หรือ password ไม่ต่ำกว่า 8 ตัวอักษร');
             return redirect('register/detail')
                 ->withErrors($validated)
                 ->withInput();
@@ -133,35 +137,76 @@ class MemberController extends Controller
 
         // get user from session and find by user_id
         $userId = $request->session()->get('user_id');
-        $user = User::find($userId);
+        $user = UserIncomplete::find($userId);
 
         // check duplicate username
         $dupUsername = User::where('username', $request->username)->count();
         if ($dupUsername > 0) {
           // in case of duplicate
-          $this->flash_messages($request, 'danger', 'Duplicate username!');
+          $this->flash_messages($request, 'danger', 'username ถูกใช้ไปแล้ว');
           return redirect('register/detail')
               ->withErrors($validated)
               ->withInput();
         }
+        $hashKey = md5($user->first_name.''.$user->last_name.''.$user->birthdate);
+        $ip = \Request::ip();
+        //save data users
+        $Newuser = new User;
+        $Newuser->username = $request->username;
+        $Newuser->password = bcrypt($request->password);
+        $Newuser->first_name = $user->first_name;
+        $Newuser->email = $user->email;
+        $Newuser->phoneno = $user->phoneno;
+        $Newuser->team_id = $user->team_id;
+        $Newuser->ref_code = $user->ref_code;
+        $Newuser->hash_key = $hashKey;
+        $Newuser->ip_address = $ip;
+        $Newuser->active=1;
+        $Newuser->save();
+
+        //save data users profile
+        $userProfile = new UserProfile;
+        $userProfile->user_id = $Newuser->id;
+        $userProfile->title_id = $user->title_id;
+        $userProfile->first_name = $user->first_name;
+        $userProfile->last_name = $user->last_name;
+        $userProfile->email = $user->email;
+        $userProfile->phoneno = $user->phoneno;
+        $userProfile->birthdate = $user->birthdate;
+        $userProfile->username = $Newuser->username;
+        $userProfile->salary_id = $user->salary_id;
+        $userProfile->occupation_id = $user->occupation_id;
+        $userProfile->team_id = $user->team_id;
+        $userProfile->ref_code = $user->ref_code;
+        $userProfile->active = $Newuser->active;
+        $userProfile->ip_address = $Newuser->ip_address;
+        $userProfile->save();
+
+        //delete user incomplete
+
+        $user->delete();
 
         // update username and password
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->active=1;
-        $user->save();
+            $rank = new Ranks;
+            $rank->user_id = $Newuser->id;
+            $rank->save();
 
         // Save Log
-            $inInvite = Invite::select('user_id','invitee_id')->where('invitee_id',$user->id)->get();
+        
+            $inInvite = Invites::select('user_id','invitee_id')->where('invitee_id',$userId)->orderBy('id','DESC')->get();
+           // return $inInvite;
             if($inInvite->count() > 0) {
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
               $invite['point_type'] = 'inv';
               $invite['point_score'] = 1;
+              $invite['taggable_id'] = $Newuser->id;
 
-              $user = User::find($inInvite->invitee_id);
+              $user = User::find($Newuser->id);
 
               $user->pointlogs()->create($invite);
+              
+             // return 'user id ='.$inInvite->user_id;
 
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
@@ -171,21 +216,30 @@ class MemberController extends Controller
                       ]
                     );
 
-                // Re Ranks
-                    $getRanks = Ranks::orderBy('point', 'desc')
-                                ->take(30)
-                                ->pluck('id')->toArray();
+                $update_invite = $inInvite = Invites::select('id')->where('invitee_id',$userId)->orderBy('id','DESC')->first();
+                
+                Invites::where('id', $update_invite->id)
+                        ->update(
+                            [
+                                'invitee_id' => $Newuser->id
+                            ]
+                        );
 
-                    foreach ($getRanks as $key => $value) {
+                // // Re Ranks
+                //     $getRanks = Ranks::orderBy('point', 'desc')
+                //                 ->take(30)
+                //                 ->pluck('id')->toArray();
 
-                      $ranks = Ranks::find($value);
-                      $ranks->ranking_no = ($key+1);
-                      $ranks->save();
-                    }
+                //     foreach ($getRanks as $key => $value) {
+
+                //       $ranks = Ranks::find($value);
+                //       $ranks->ranking_no = ($key+1);
+                //       $ranks->save();
+                //     }
             }
 
         // FIXME redirect to where?
-            $usr = User::find($user->id);
+            $usr = User::find($Newuser->id);
             Auth::login($usr,true);
 
             if(Auth::check($usr)) {
@@ -208,26 +262,26 @@ class MemberController extends Controller
     {
       if($request->isMethod('post')) {
         // in case of submit form
+        //comment otp off
+        // // validate request
+        // $rules = [
+        //   "otp" => "required|min:6|max:6"
+        // ];
+        // $validated = Validator::make($request->all(), $rules);
 
-        // validate request
-        $rules = [
-          "otp" => "required|min:6|max:6"
-        ];
-        $validated = Validator::make($request->all(), $rules);
-
-        if ($validated->fails()) {
-            //FIXME redirect if validator fail
-            $this->flash_messages($request, 'danger', 'Invalid OTP!');
-            return redirect('register/otp')
-                ->withErrors($validated)
-                ->withInput();
-        }
+        // if ($validated->fails()) {
+        //     //FIXME redirect if validator fail
+        //     $this->flash_messages($request, 'danger', 'Invalid OTP!');
+        //     return redirect('register/otp')
+        //         ->withErrors($validated)
+        //         ->withInput();
+        // }
 
         //get user_id from session
         $userId = $request->session()->get('user_id');
 
         // Check Valid OTP
-        $user = User::find($userId);
+        $user = UserIncomplete::find($userId);
         $otp = UserOtp::checkValidOtp($user,$request->otp,$request->refcode);
 
         if ($otp > 0) {
@@ -245,7 +299,7 @@ class MemberController extends Controller
 
         // get user_id form session
         $userId = $request->session()->get('user_id');
-        $user = User::find($userId);
+        $user = UserIncomplete::find($userId);
 
         // Generate OTP
         $otp = UserOtp::getOtp($user);
@@ -299,7 +353,10 @@ class MemberController extends Controller
             'first_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'last_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'email'  => 'required|email',
-            'birthdate'  => 'required|date|olderThan:20',
+            // 'birthdate'  => 'required|date|olderThan:20',
+            'day' => 'required',
+            'month' => 'required',
+            'year' => 'required',
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',
@@ -322,29 +379,34 @@ class MemberController extends Controller
     public function registration(Request $request){
         try{
             if($request->isMethod('post')) {
-                $notFinishData = User::where('phoneno', $request->phoneno)
-                    ->where('email', $request->email)
-                    ->where('active',0);
-                if($notFinishData->count() == 1){
-                    $notFinishData->delete();
-                }
+                //check not finish
+                // $notFinishData = User::where('phoneno', $request->phoneno)
+                //     ->where('email', $request->email)
+                //     ->where('active',0);
+                // if($notFinishData->count() == 1){
+                //     $notFinishData->delete();
+                // }
+                $birthDate = $request->year."-".$request->month."-".$request->day;
                 $validator = $this->_firstValidator($request->all());
-                $dupUser = User::where('first_name', $request->first_name)
-                    ->where('last_name', $request->last_name)
-                    ->where('birthdate', date("Y-m-d", strtotime($request->birthdate)));
-
-                $check_with_email = $dupUser->where('username',$request->email);
-                $check_no_email = $dupUser->where('username','!=',$request->email);
-
-                if ($check_no_email->count() > 0) {
+                $hashKey = md5($request->first_name.''.$request->last_name.''.$birthDate);
+                $dupUser = User::where('hash_key', $hashKey);
+                    
+                if ($dupUser->count() > 0) {
                     return redirect('register')
                         ->withErrors($validator)
                         ->withInput();
                 }
+
+                // $notComplete = UserIncomplete::where('first_name', $request->first_name)
+                //                             ->where('last_name', $request->last_name)
+                //                             ->where('birthdate', $birthDate);
+
+                
+
                 /*case old registration un success*/
-                if($check_with_email->count() > 0){
-                    $user = $check_with_email->first();
-                }else{
+                // if($notComplete->count() > 0){
+                //     $user = $notComplete->first();
+                // }else{
                     /* case new registration*/
                     $validator = $this->_validator($request->all());
                     if ($validator->fails()) {
@@ -359,7 +421,7 @@ class MemberController extends Controller
                     /*gen ref code*/
                     for ($i=0; $i<1;){
                         $ref_code = $this->_generateRandomString();
-                        $query = User::where('ref_code',$ref_code);
+                        $query = UserIncomplete::where('ref_code',$ref_code);
                         if($query->count()==0){
                             $i++;
                         }else{
@@ -367,27 +429,25 @@ class MemberController extends Controller
                         }
                     }
                     /*insert user*/
-                    $user = new User;
+                    $user = new UserIncomplete;
                     $user->title_id = $request->title_id;
                     $user->first_name = $request->first_name;
                     $user->last_name = $request->last_name;
                     $user->email = $request->email;
-                    $user->birthdate = date("Y-m-d", strtotime($request->birthdate));
+                    $user->birthdate = $birthDate;
                     $user->salary_id = $request->salary_id;
                     $user->occupation_id = $request->occupation_id;
                     $user->team_id = $request->team_id;
                     $user->phoneno = $request->phoneno;
-                    //FIXME default username, password
-                    $user->username = $request->email;
-                    $user->password = bcrypt($ref_code); // password not null
+                    
                     $user->ref_code = $ref_code;
-                    $user->active=0;
+                    
                     $user->save();
 
-                    $rank = new Ranks;
-                    $rank->user_id = $user->id;
-                    $rank->save();
-                }
+                    // $rank = new Ranks;
+                    // $rank->user_id = $user->id;
+                    // $rank->save();
+                // }
 
                 // check has refCode(invite case)
                 if ($request->session()->get('refCode')) {
@@ -432,7 +492,10 @@ class MemberController extends Controller
             'first_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'last_name'  => 'required|String|max:150|regex:/^[ก-๙เ]+$/',
             'email'  => 'required|email|unique:users,email',
-            'birthdate'  => 'required|date|olderThan:20',
+            // 'birthdate'  => 'required|date|olderThan:20',
+            'day' => 'required',
+            'month' => 'required',
+            'year' => 'required',
             'salary_id'  => 'required|integer',
             'occupation_id'  => 'required|integer',
             'team_id'  => 'required|integer',

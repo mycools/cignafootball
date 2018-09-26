@@ -14,6 +14,24 @@
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-KBKPVL2');</script>
 		<!-- End Google Tag Manager -->
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		  !function(f,b,e,v,n,t,s)
+		  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		  n.queue=[];t=b.createElement(e);t.async=!0;
+		  t.src=v;s=b.getElementsByTagName(e)[0];
+		  s.parentNode.insertBefore(t,s)}(window, document,'script',
+		  'https://connect.facebook.net/en_US/fbevents.js');
+		  fbq('init', '1859281150798406');
+		  fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		  src="https://www.facebook.com/tr?id=1859281150798406&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- End Facebook Pixel Code -->
 	</head>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
@@ -64,8 +82,8 @@
 							@endif
 
 							@if(Auth::user())
-							<li class="nav-item">
-								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copyToCliboard()">
+							<li class="nav-item d-none d-md-block">
+								<a class="nav-link special btn-copy {{ Request::is('invite') ? 'active' : '' }}" href="javascript:;" onclick="copy('myInviteUrl')"><!-- onclick="copyToCliboard()" -->
 									<span class="d-flex d-md-none">Invite</span><img src="{{ url('images/icon/icon_invite_menu.png') }}" />
 								</a>
 							</li>
@@ -89,7 +107,7 @@
 	            </div>
 	        </nav>
 	        @if(Auth::user())
-	        <div class="container text-right" style="height: 0;">
+	        <div class="container text-right d-none d-md-block" style="height: 0;">
 	        	<input id="myInviteUrl" type="text" value="{{ url('register/'. Auth::user()->ref_code) }}" />
 	        </div>
 	        @endif

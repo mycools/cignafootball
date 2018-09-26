@@ -86,6 +86,7 @@ body {
 	background: #fff;
 	font-size: 20px;
 	position: relative;
+	-webkit-overflow-scrolling: touch;
 }
 
 .text-white { color: #fff; }
@@ -294,6 +295,7 @@ Header
 Footer
 ***********************************************/
 footer {
+	position: relative;
 	padding: 25px 15px 15px;
 	background: #00487a;
 	color: #fff;
@@ -323,6 +325,9 @@ Register / Signin
 .register-page {
 	padding: 80px 0;
 	background: url(/images/bg_register.jpg) no-repeat top center / cover;
+}
+.line-register-box {
+	border-right: 2px solid $color-gray;
 }
 .fp-auto-height.fp-section {
 	min-height: 100vh;
@@ -419,8 +424,8 @@ Register / Signin
 	display: block;
 	width: 100%;
 	border-radius: 0px;
+	overflow: hidden;
 	border: 0;
-	// overflow: hidden;
 	&:before {
 		background: #00487a;
 		content: "";
@@ -507,7 +512,7 @@ Register / Signin
 .select-items div,
 .select-selected {
   color: #939598;
-  padding: 3px 16px 4px;
+  padding: 3px 16px 0px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
@@ -520,6 +525,8 @@ Register / Signin
   left: 0;
   right: 0;
   z-index: 99;
+  max-height: 200px;
+  overflow-y: auto;
 }
 /*hide the items when the select box is closed:*/
 .select-hide {
@@ -559,21 +566,30 @@ Page
 #header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
 }
 
 
 .wrapper-page {
 	padding: 80px 0;
+	position: relative;
+	.bg_wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 }
 .bg_home {
 	background: #030712;
 }
 .bg_rules {
-	background: url(/images/bg_rules.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_rules.jpg) no-repeat center center fixed / cover;
 }
 .bg_profile {
-	background: url(/images/bg_profile.jpg) no-repeat top center fixed / cover;
+	background: url(/images/bg_profile.jpg) no-repeat center center fixed / cover;
 }
 .bg_ranking {
 	background: url(/images/bg_ranking.jpg) no-repeat bottom center / cover;
@@ -582,8 +598,10 @@ Page
 	background: url(/images/bg_prize.jpg) no-repeat bottom center / cover;
 }
 .bg_match {
-	background: url(/images/bg_match.jpg) no-repeat bottom center / cover;
-	padding-top: 80px;
+	background: url(/images/bg_match_list.jpg) #000 no-repeat top center fixed / 100%;
+}
+.bg_match_predict {
+	background: url(/images/bg_match_predict.jpg) #000 no-repeat top center fixed / 100%;
 }
 
 .ranking-list {
@@ -774,34 +792,41 @@ Page
 .tips-item a.detail:hover .title {
 	color: $color-gray;
 }
-
 .prize-wrapper {
+	font-size: 16px;
 	position: relative;
 	.bg {
+		padding-top: 60px;
 		img {
 			width: 100%;
 			position: relative;
 		}
+		margin-bottom: -5%;
 	}
 	.content {
-		position: absolute;
-		left: 0;
-		top: 51.5%;
-		// bottom: 0px;
+		// position: absolute;
+		// left: 0;
+		// top: 51.5%;
+		// bottom: 1%;
+		background: url(/images/prize/prize_bg.jpg) no-repeat top center / 100% 100%;
 		width: 100%;
 		padding: 30px;
 		text-align: center;
 		color: #fff;
 		font-size: 1.8em;
-		line-height: 1.25;
+		line-height: 1.325;
 		font-family: 'db_helvethaica_x65_med';
 	}
 	h1 {
 		font-size: 1.55em;
-		line-height: 1.25;
+		line-height: 1;
 		font-family: 'db_helvethaica_x65_med';
 	}
 }
+#match-predict {
+	background: none !important;
+}
+
 
 .non-fullpage {
 	padding-top: 110px;
@@ -815,6 +840,9 @@ Page
 		padding-top: 75px;
 		// padding-bottom: 40px;
 	}
+	.non-fullpage.home-page {
+		padding-top: 50px;
+	}
 	.home-page { margin-top: 0px; }
 }
 @media (max-width: 575.98px) {
@@ -824,12 +852,30 @@ Page
 	}
 	.home-page { margin-top: 0px; }
 }
+
+.iframe-wrapper { 
+	width: 100%;
+	position: relative; 
+	padding-bottom: 56.625%; 
+	padding-top: 0; 
+	height: 0; 
+	margin: 0;
+  iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+}
 /***********************************************
 Responsive
 ***********************************************/
+@media (min-width: 992px) {
+	.prize-wrapper {
+		font-size: 17px;
+	}
+}
 @media (min-width: 1200px) {
 	.container {
 	    max-width: 1170px;
+	}
+	.prize-wrapper {
+		font-size: 20px;
 	}
 }
 @media (max-width: 1199.98px) {
@@ -867,7 +913,9 @@ Responsive
 	}
 	.text-extra-large { font-size: 250%; }
 
-
+	.prize-wrapper {
+		font-size: 20px;
+	}
 }
 
 
@@ -878,6 +926,7 @@ Responsive
 		left: 0;
 		width: 100%;
 	}
+
 	.navbar {
 		padding: 0;
 		position: relative;
@@ -975,19 +1024,22 @@ Responsive
 		background: #000;
 	}
 	.bg_rules {
-		background: url(/images/bg_rules_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_rules_mobile.jpg) no-repeat top center / cover;
 	}
 	.bg_profile {
-		background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_profile_mobile.jpg) no-repeat top center / cover;
 	}
 	.bg_ranking {
 		background: url(/images/bg_ranking_mobile.jpg) #000 no-repeat bottom 6.5% center / 100% auto;
 	}
 	.bg_prize {
-		background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_prize_mobile.jpg) no-repeat top center / cover !important;
 	}
 	.bg_match {
-		background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed / cover;
+		background: url(/images/bg_match_list_mobile.jpg) no-repeat top center / cover !important;
+	}
+	.bg_match_predict {
+		background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center / cover !important;
 	}
 	.home-page {
 		.fp-auto-height {
@@ -1010,19 +1062,28 @@ Responsive
 			}
 		}
 	}
-	// .match-page {
-	// 	padding: 0;
-	// 	background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed / cover !important;
-	// 	background-attachment: fixed !important;
-	// 	background-size: cover !important;
-	// 	transform: none !important;
-	// 	&.match-predict-page {
-	// 		background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed / cover !important;
-	// 	}
-	// }
+	.match-page {
+		background: none;
+		// background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed / cover !important;
+		&.match-predict-page {
+			background: none;
+			// background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center fixed / cover !important;
+		}
+	}
 	.card-match {
 		.kits {
 			width: 100% !important;
+		}
+	}
+	.line-register-box {
+		border-right: 0;
+		border-bottom: 2px solid $color-gray;
+	}
+
+	.prize-wrapper {
+		font-size: 20px;
+		.bg {
+			padding-top: 0;
 		}
 	}
 
@@ -1074,16 +1135,16 @@ Responsive
 		.f-3 {
 		    font-size: 2.15rem;
 		}
-
-
 	}
 	.prize-wrapper {
 		.content {
-			top: 51.5%;
+			padding: 20px 15px;
 			font-size: 1.4em;
 		}
+		h1 {
+			font-size: 1.2em;
+		}
 	}
-
 
 }
 
@@ -1095,7 +1156,7 @@ Responsive
 		.content {
 			top: 50%;
 			padding: 30px 15px;
-			font-size: 1.25em;
+			font-size: 1.15em;
 			line-height: 1.1;
 		}
 		h1 {
@@ -1105,10 +1166,14 @@ Responsive
 	}
 
 }
+
+
+
 @media (max-width: 320px) {
 	body {
 		font-size: 18px;
 	}
+
 	h1, .h1 {
 	    font-size: 1.75rem;
 	}
@@ -1128,8 +1193,7 @@ Responsive
 	.f-3 { font-size: 2.5rem; }
 
 	.match-page {
-		padding: 0;
-		background: none;
+		padding: 40px 0;
 	}
 	.card-match {
 		// .kits {
@@ -1154,9 +1218,10 @@ Responsive
 			font-size: 0.95em;
 		}
 		h1 {
-			font-size: 1.3em;
+			font-size: 1.2em;
 		}
 	}
+
 
 }
 

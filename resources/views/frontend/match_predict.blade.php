@@ -22,6 +22,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 <link rel="stylesheet" type="text/css" href="/css/match.css" />
 
+<div class="wrapper-page bg_match_predict non-fullpage">
+<div class="bg_wrapper bg_match_predict"></div>
 <form name="match_select" id="match_select" method="post">
 	{{ csrf_field() }}
 	<input type="hidden" name="vote_team" id="vote_team">
@@ -30,8 +32,8 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 			<div class="card-match mt-md-4 p-2 pb-4 mt-xs-0">
 				<div class="row">
 					<div class="col-12">
-						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">match of the weeks</h1>
-						<div class="p text-large font-bold text-white">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0" style="line-height: 0.85">matchweek {{ $matchInfo->id }}</h1>
+						<div class="p text-large font-bold text-white text-uppercase">{{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M Y') }}</div>
 					</div>
 					<div class="col-12">
 						<div class="d-flex justify-content-around block-vote">
@@ -39,13 +41,13 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamA->shirt_img_url) }}" />
 								<h1 class="pb-4 pt-3">{{ $matchInfo->teamA->team_name }}</h1>
 							</div>
-							<div class="time mt-3 mb-auto pl-3">
-                @if($time)
-                  <h4 class="times-remaining mt-4">เหลือเวลาอีก</h4>
-                  <div class="time-box rounded border">
-                    <span id="getting-started" data-time="{{ $time }}"></span>
-                  </div>
-                @endif
+							<div class="time mt-3 mb-auto pl-3 d-none d-md-flex">
+			                @if($time)
+			                  <h4 class="times-remaining mt-4 pr-10">เหลือเวลาอีก</h4>
+			                  <div class="time-box rounded border">
+			                    <span id="getting-started" data-time="{{ $time }}"></span>
+			                  </div>
+			                @endif
 							</div>
 							<div class="away">
 								<img class="kits" src="{{ \Storage::url($matchInfo->teamB->shirt_img_url) }}" />
@@ -62,7 +64,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 						<div class="btn-group w-100 mt-30" role="group">
 						  <button type="button" id="voteHome" data-vote="{{ $matchInfo->team_a }}"@if($lastBet) @if($lastBet==$matchInfo->team_a) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 py-4 text-white">ชนะ</button>
 						  <button type="button" id="voteDraw" data-vote="0" @if($lastBet) @if($lastBet==0) style="opacity: 1; color:#000 !important;" @else style="opacity: 0.3; !important;" @endif @endif class="vote_match btn bg-white w-100 text-dark">เสมอ</button>
-						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-primary w-100 text-white">ชนะ</button>
+						  <button type="button" id="voteAway" data-vote="{{ $matchInfo->team_b }}" @if($lastBet) @if($lastBet==$matchInfo->team_b) style="opacity: 1;" @else style="opacity: 0.3;" @endif @endif class="vote_match btn bg-danger w-100 text-white">ชนะ</button>
 						</div>
 						<div class="d-flex justify-content-center vote-box w-100">
 
@@ -76,11 +78,23 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 								ชนะ
 							</div> -->
 						</div>
+						<div class="time mt-3 mb-auto pl-3 d-block d-md-none">
+			                @if($time)
+			                  <div class="row">
+			                  	<h4 class="times-remaining mt-4 col-12">เหลือเวลาอีก</h4>
+				              </div>
+				              <div class="row">
+				                  <div class="time-box rounded border col-10 m-auto">
+				                    <span id="getting-started-2" data-time="{{ $time }}"></span>
+				                  </div>
+				              </div>
+			                @endif
+						</div>
 
 					</div>
 
 					<div class="col-12">
-						<button type="submit" id="onVote" class="btn btn-green mt-4 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<br><span>({{ $total_count }})</span></button>
+						<button type="submit" id="onVote" class="btn btn-green mt-45 btn-predict" disabled>@if(!$lastBet) ทายผล @else ทายผลอีกครั้ง @endif<!-- <br><span>({{ $total_count }})</span> --></button>
 					</div>
 
 				</div>
@@ -89,7 +103,7 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 
 	</div>
 </form>
-
+</div>
 @endsection
 
 @section('scripts')
@@ -142,6 +156,11 @@ if(strtotime($matchInfo['match_start']) <= strtotime($now) && strtotime($matchIn
 		@if($time)
 			$(function() {
 			  $("#getting-started").countdown($("#getting-started").data('time'), function(event) {
+			    $(this).text(
+			      event.strftime('%D วัน %H:%M:%S')
+			    );
+			  });
+			  $("#getting-started-2").countdown($("#getting-started-2").data('time'), function(event) {
 			    $(this).text(
 			      event.strftime('%D วัน %H:%M:%S')
 			    );

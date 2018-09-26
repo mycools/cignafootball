@@ -40,6 +40,14 @@
 					</a>
 				</div>
 			</div>
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 text-center mt-3">
+					<div class="iframe-wrapper">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/EN3QXN6Qfto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					</div>
+				</div>
+
+			</div>
 
 			@include('frontend.components.home-share')
 
@@ -60,7 +68,7 @@
                 @endphp
             	@foreach ($result as $row)
             	<div class="row-item">
-					<div class="number">{{ ($row ? $row->ranking_no : '' ) }}</div>
+					<div class="number">{{ $i }}</div>
 					{{ ($row->getUser ? $row->getUser->username : '' ) }} 
 				</div>
 				@php

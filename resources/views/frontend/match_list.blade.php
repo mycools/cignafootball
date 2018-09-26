@@ -25,6 +25,8 @@ if ($matchInfo != []) {
 
 
 @endphp
+<div class="wrapper-page bg_match non-fullpage">
+<div class="bg_wrapper bg_match"></div>
 <div class="match-page">
 	<div class="container">
 
@@ -40,8 +42,8 @@ if ($matchInfo != []) {
 			<div class="card-match border mt-md-4 p-2 pb-4 mt-xs-0">
 				<div class="row">
 					<div class="col-12">
-						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">match of the weeks</h1>
-						<div class="p text-large font-bold text-white mb-10">{{ Carbon\Carbon::parse($matchInfo->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M') }}</div>
+						<h1 class="text-extra-large font-bold color-yellow text-uppercase mb-0 mt-15" style="line-height: 0.85">matchweek {{ $matchInfo->id }}</h1>
+						<div class="p text-large font-bold text-white mb-10 text-uppercase">{{ Carbon\Carbon::parse($matchInfo->match_end)->format('d M Y') }}</div>
 					</div>
 
 					<div class="col-12 dispay-match mb-4">
@@ -84,25 +86,25 @@ if ($matchInfo != []) {
 						</div>
 					</div>
 					<div class="col-12 mb-10">
-						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<br><span>({{ $total_count }})</span></a>
+						<a href="{{ 'match/predict/'.$matchInfo->id }}" class="btn btn-green py-3 mt-4 btn-predict f-3">ทายผล<!-- <br><span>({{ $total_count }})</span> --></a>
 					</div>
 
 				</div>
 			</div>
 		@endif
 
-		<div class="row">
+		<div class="row pb-5 pb-md-0">
 
 			@foreach ($previousMatch as $match)
 				<div class="col-12">
-					<h1 class="match-page-title-lastweek font-bold">MATCH <span class="font-med">ของสัปดาห์ก่อน</span></h1>
+					<h1 class="match-page-title-lastweek font-bold">MATCH {{$match->id}} <span class="font-med">ของสัปดาห์ก่อน</span></h1>
 				</div>
 				<div class="col-12">
 					<div class="card-match-lastweek border p-4 mb-4">
 						<div class="row">
 							<div class="col-12">
 								<h3 class="mb-3">
-									{{ Carbon\Carbon::parse($match->match_start)->format('d M') }} - {{ Carbon\Carbon::parse($match->match_end)->format('d M') }}
+									{{ Carbon\Carbon::parse($match->match_end)->format('d M Y') }}
 								</h3>
 							</div>
 							<div class="col-5 col-md-4 col-sm-5 c-5">
@@ -125,13 +127,21 @@ if ($matchInfo != []) {
 							<div class="col-md-2 col-sm-12 p-0 text-center c-12">
 								<div class="total-predict">
 									<div class="bg-secondary">
-										<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<br><span class="f-6">{{ $match->bet_total_count }}</span></h4>
+										<h4 class="mb-0 pt-2 pb-2 lh-1">ทายผลทั้งหมด<!-- <br><span class="f-6">{{ $match->bet_total_count }}</span> --></h4>
 									</div>
 									<div class="float-left bg-success w-50 py-2">
-										ถูก {{ $match->win_total_count }}
+                                    @if($match->bet_total_count > 0)
+										ถูก <br />{{ number_format(($match->win_total_count * 100) / $match->bet_total_count ,2) }} %
+                                    @else
+                                    ถูก <br />0 %
+                                    @endif
 									</div>
 									<div class="float-right bg-danger w-50 py-2">
-										ผิด {{ $match->lose_total_count }}
+                                    @if($match->bet_total_count > 0)
+										ผิด <br />{{ number_format(($match->lose_total_count * 100) / $match->bet_total_count ,2) }} %
+                                    @else
+                                        ผิด <br />0 %
+                                    @endif
 									</div>
 								</div>
 							</div>
@@ -139,9 +149,14 @@ if ($matchInfo != []) {
 					</div>
 				</div>
 			@endforeach
+
+			<div class="col-12 mt-3 mb-3 text-center">
+				<a href="https://www.premierleague.com/tables" target="_blank" class="btn btn-green pl-4 pr-4 pt-3 pb-3 txt-large btn-predict ">ตารางคะแนน</a>
+			</div>
 		</div>
 
 	</div>
+</div>
 </div>
 
 @endsection

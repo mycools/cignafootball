@@ -6,7 +6,14 @@
 
 
 			<footer>
-				Copyright © 2018 Match Of The Weeks
+				<div class="row justify-content-between">
+					<div class="col-12 col-md-auto mb-3 mb-md-0 text-center text-md-left">
+						Copyright © 2018 Match Of The Weeks
+					</div>
+					<div class="col-12 col-md-auto mb-3 mb-md-0 text-center text-md-right">
+					Powered by 
+					<img style="height: 30px;" src="{{ url('images/logo/woody_world.png') }}" />
+				</div>
 			</footer>
 
 		</div>
@@ -53,6 +60,8 @@
 		<script src="{{ url('/vendors/fullpage-js/vendors/jquery.slimscroll.min.js') }}"></script>
 		<script src="{{ url('/vendors/fullpage-js/dist/jquery.fullpage.min.js') }}"></script>
 
+		@yield('pagescript')
+
 		<script>
 			function copyToCliboardProfile() {
 			  var copyUrl = document.getElementById("myInvite");
@@ -65,6 +74,36 @@
 			  copyText.select();
 			  document.execCommand("copy");
 			  alert("\tก็อปปี้ URL ชวนเพื่อนแล้ว คุณสามารถ paste url ในการชวนเพื่อนในช่องทางต่างๆ เช่น Line, Facebook หรืออื่น ๆ \n\n\t" + copyText.value);
+			}
+
+			var copy = function(elementId) {
+				var input = document.getElementById(elementId);
+				var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+				if (isiOSDevice) {
+				  
+					var editable = input.contentEditable;
+					var readOnly = input.readOnly;
+
+					input.contentEditable = true;
+					input.readOnly = false;
+
+					var range = document.createRange();
+					range.selectNodeContents(input);
+
+					var selection = window.getSelection();
+					selection.removeAllRanges();
+					selection.addRange(range);
+
+					input.setSelectionRange(0, 999999);
+					input.contentEditable = editable;
+					input.readOnly = readOnly;
+
+
+				} else {
+				 	input.select();
+					alert("\tก็อปปี้ URL ชวนเพื่อนแล้ว คุณสามารถ paste url ในการชวนเพื่อนในช่องทางต่างๆ เช่น Line, Facebook หรืออื่น ๆ \n\n\t" + input.value);
+				}
+				document.execCommand('copy');
 			}
 		</script>
 		<script type="text/javascript">

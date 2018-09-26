@@ -1,4 +1,4 @@
-<div class="row justify-content-center mt-45 mt-sm-30 pb-45 pb-sm-30 padding-mobile">
+<div class="row justify-content-center mt-45 mt-sm-30 pb-30 pb-sm-30 padding-mobile">
 	<div class="col-12 mb-30 mb-sm-15 p-sm-0 d-none d-sm-block">
 		<div class="box-bg-img">
 			<div class="content color-white">

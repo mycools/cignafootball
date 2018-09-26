@@ -18023,6 +18023,7 @@ body {
   background: #fff;
   font-size: 20px;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .text-white {
@@ -18300,6 +18301,7 @@ Footer
 ***********************************************/
 
 footer {
+  position: relative;
   padding: 25px 15px 15px;
   background: #00487a;
   color: #fff;
@@ -18323,6 +18325,10 @@ Register / Signin
 .register-page {
   padding: 80px 0;
   background: url(/images/bg_register.jpg) no-repeat top center/cover;
+}
+
+.line-register-box {
+  border-right: 2px solid #383838;
 }
 
 .fp-auto-height.fp-section {
@@ -18428,6 +18434,7 @@ Register / Signin
   display: block;
   width: 100%;
   border-radius: 0px;
+  overflow: hidden;
   border: 0;
 }
 
@@ -18525,7 +18532,7 @@ Register / Signin
 .select-items div,
 .select-selected {
   color: #939598;
-  padding: 3px 16px 4px;
+  padding: 3px 16px 0px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
@@ -18540,6 +18547,8 @@ Register / Signin
   left: 0;
   right: 0;
   z-index: 99;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 /*hide the items when the select box is closed:*/
@@ -18589,11 +18598,21 @@ Page
 #header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
 }
 
 .wrapper-page {
   padding: 80px 0;
+  position: relative;
+}
+
+.wrapper-page .bg_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .bg_home {
@@ -18601,11 +18620,11 @@ Page
 }
 
 .bg_rules {
-  background: url(/images/bg_rules.jpg) no-repeat top center fixed/cover;
+  background: url(/images/bg_rules.jpg) no-repeat center center fixed/cover;
 }
 
 .bg_profile {
-  background: url(/images/bg_profile.jpg) no-repeat top center fixed/cover;
+  background: url(/images/bg_profile.jpg) no-repeat center center fixed/cover;
 }
 
 .bg_ranking {
@@ -18617,8 +18636,11 @@ Page
 }
 
 .bg_match {
-  background: url(/images/bg_match.jpg) no-repeat bottom center/cover;
-  padding-top: 80px;
+  background: url(/images/bg_match_list.jpg) #000 no-repeat top center fixed/100%;
+}
+
+.bg_match_predict {
+  background: url(/images/bg_match_predict.jpg) #000 no-repeat top center fixed/100%;
 }
 
 .ranking-list {
@@ -18837,7 +18859,13 @@ Page
 }
 
 .prize-wrapper {
+  font-size: 16px;
   position: relative;
+}
+
+.prize-wrapper .bg {
+  padding-top: 60px;
+  margin-bottom: -5%;
 }
 
 .prize-wrapper .bg img {
@@ -18846,22 +18874,24 @@ Page
 }
 
 .prize-wrapper .content {
-  position: absolute;
-  left: 0;
-  top: 51.5%;
+  background: url(/images/prize/prize_bg.jpg) no-repeat top center/100% 100%;
   width: 100%;
   padding: 30px;
   text-align: center;
   color: #fff;
   font-size: 1.8em;
-  line-height: 1.25;
+  line-height: 1.325;
   font-family: 'db_helvethaica_x65_med';
 }
 
 .prize-wrapper h1 {
   font-size: 1.55em;
-  line-height: 1.25;
+  line-height: 1;
   font-family: 'db_helvethaica_x65_med';
+}
+
+#match-predict {
+  background: none !important;
 }
 
 .non-fullpage {
@@ -18876,6 +18906,10 @@ Page
 @media (max-width: 767.98px) {
   .non-fullpage {
     padding-top: 75px;
+  }
+
+  .non-fullpage.home-page {
+    padding-top: 50px;
   }
 
   .home-page {
@@ -18893,13 +18927,40 @@ Page
   }
 }
 
+.iframe-wrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.625%;
+  padding-top: 0;
+  height: 0;
+  margin: 0;
+}
+
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /***********************************************
 Responsive
 ***********************************************/
 
+@media (min-width: 992px) {
+  .prize-wrapper {
+    font-size: 17px;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
   }
 }
 
@@ -18936,6 +18997,10 @@ Responsive
 
   .text-extra-large {
     font-size: 250%;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
   }
 }
 
@@ -19076,11 +19141,11 @@ Responsive
   }
 
   .bg_rules {
-    background: url(/images/bg_rules_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_rules_mobile.jpg) no-repeat top center/cover;
   }
 
   .bg_profile {
-    background: url(/images/bg_profile_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_profile_mobile.jpg) no-repeat top center/cover;
   }
 
   .bg_ranking {
@@ -19088,11 +19153,15 @@ Responsive
   }
 
   .bg_prize {
-    background: url(/images/bg_prize_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_prize_mobile.jpg) no-repeat top center/cover !important;
   }
 
   .bg_match {
-    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center fixed/cover;
+    background: url(/images/bg_match_list_mobile.jpg) no-repeat top center/cover !important;
+  }
+
+  .bg_match_predict {
+    background: url(/images/bg_match_predict_mobile.jpg) no-repeat top center/cover !important;
   }
 
   .home-page .fp-auto-height {
@@ -19112,8 +19181,29 @@ Responsive
     height: auto;
   }
 
+  .match-page {
+    background: none;
+  }
+
+  .match-page.match-predict-page {
+    background: none;
+  }
+
   .card-match .kits {
     width: 100% !important;
+  }
+
+  .line-register-box {
+    border-right: 0;
+    border-bottom: 2px solid #383838;
+  }
+
+  .prize-wrapper {
+    font-size: 20px;
+  }
+
+  .prize-wrapper .bg {
+    padding-top: 0;
   }
 }
 
@@ -19174,8 +19264,12 @@ Responsive
   }
 
   .prize-wrapper .content {
-    top: 51.5%;
+    padding: 20px 15px;
     font-size: 1.4em;
+  }
+
+  .prize-wrapper h1 {
+    font-size: 1.2em;
   }
 }
 
@@ -19187,7 +19281,7 @@ Responsive
   .prize-wrapper .content {
     top: 50%;
     padding: 30px 15px;
-    font-size: 1.25em;
+    font-size: 1.15em;
     line-height: 1.1;
   }
 
@@ -19237,8 +19331,7 @@ Responsive
   }
 
   .match-page {
-    padding: 0;
-    background: none;
+    padding: 40px 0;
   }
 
   .card-match .home-kits-label.f-1 {
@@ -19260,7 +19353,7 @@ Responsive
   }
 
   .prize-wrapper h1 {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 
