@@ -62,7 +62,7 @@ class MemberController extends Controller
             $result = User::with([
                                 'getRank'
                             ])->find($id);
-            $this->_data['allrank'] = Ranks::all()->count();
+            $this->_data['allrank'] = Ranks::join('users', 'users.id', '=', 'ranks.user_id')->count();
             $this->_data['result']    = $result;
 
             $this->_data['team']     = Teams::where('id', $user->team_id)->first();
@@ -401,9 +401,13 @@ class MemberController extends Controller
                 // if($notFinishData->count() == 1){
                 //     $notFinishData->delete();
                 // }
-                $birthDate = $request->year."-".$request->month."-".$request->day;
+                $month = sprintf('%02d',$request->month);
+                $birthDate = $request->year."-".$month."-".$request->day;
                 $validator = $this->_firstValidator($request->all());
+                
                 $hashKey = md5($request->first_name.''.$request->last_name.''.$birthDate);
+                
+                
                 $dupUser = User::where('hash_key', $hashKey);
                     
                 if ($dupUser->count() > 0) {

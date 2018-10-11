@@ -7,7 +7,14 @@
 @section('content')
 
 <div class="wrappage-page bg_home non-fullpage home-page">
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog">
 
+			
+					<img src="{{ url('images/winner_week1.jpg') }}" class="img-fluid" style="max-height:800px;"/>
+			
+	</div>
+</div>
 	<div class="home-slider">
 		<div class="item slider-video">
 			<a href="{{ url('match') }}">
@@ -80,3 +87,11 @@
 	</div>
 </div>
 @endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+@stop

@@ -72,9 +72,21 @@ class MatchesController extends Controller
 
     public function predict(Request $request, $id)
     {
+        $now = Carbon::now();
+        $now = $now->toDateTimeString();
+
+        $checkmatch = Matchs::where('id', $id)
+                            ->where('bet_start', '<=', $now)
+                            ->where('bet_end', '>=', $now);
+        
+        if($checkmatch->count() == 0)
+        {
+            return redirect()->route('home');
+        }
 
         $auth   = Auth::user();
         $match  = Match::find($id);
+
 
         $this->_data['total_count'] = Bets::where('match_id', $id)->count();
 
