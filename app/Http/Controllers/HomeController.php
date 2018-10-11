@@ -16,11 +16,11 @@ class HomeController extends Controller
    
     public function index()
     {
-        // $auth   = Auth::user();
-        // if(!$auth)
-        // {
-        //     return redirect('/');
-        // }
+        $auth   = Auth::user();
+        if(!$auth)
+        {
+            return redirect('/');
+        }
         $result = Ranks::with([
                             'getUser'
                         ])
