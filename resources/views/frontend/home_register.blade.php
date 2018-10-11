@@ -6,6 +6,7 @@
 
 @section('content')
 
+
 <div class="wrappage-page bg_home non-fullpage home-page home-register-page">
 
 	<div class="section fp-auto-height active section-home-register">
