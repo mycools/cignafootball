@@ -115,7 +115,7 @@
 											<div class="custom-select">
 												<select name="year" required>
                                                     <option value="" >ปี</option>
-													@for ($year = date('Y'); $year > date('Y') - 100; $year--)
+													@for ($year = date('Y') - 19; $year > date('Y') - 100; $year--)
 													<option value="{{$year}}">
 													    {{$year}}
 													</option>
