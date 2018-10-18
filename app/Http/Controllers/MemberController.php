@@ -62,7 +62,7 @@ class MemberController extends Controller
             $result = User::with([
                                 'getRank'
                             ])->find($id);
-            $this->_data['allrank'] = Ranks::join('users', 'users.id', '=', 'ranks.user_id')->count();
+            $this->_data['allrank'] = Ranks::join('users', 'users.id', '=', 'ranks.user_id')->where('active', 1)->count();
             $this->_data['result']    = $result;
 
             $this->_data['team']     = Teams::where('id', $user->team_id)->first();
@@ -167,9 +167,9 @@ class MemberController extends Controller
         $ip = \Request::ip();
         //save data users
         $Newuser = new User;
+        $Newuser->first_name = $user->first_name;
         $Newuser->username = $request->username;
         $Newuser->password = bcrypt($request->password);
-        $Newuser->first_name = $user->first_name;
         $Newuser->email = $user->email;
         $Newuser->phoneno = $user->phoneno;
         $Newuser->team_id = $user->team_id;
