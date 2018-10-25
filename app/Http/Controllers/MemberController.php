@@ -167,7 +167,6 @@ class MemberController extends Controller
         $ip = \Request::ip();
         //save data users
         $Newuser = new User;
-        $Newuser->first_name = $user->first_name;
         $Newuser->username = $request->username;
         $Newuser->password = bcrypt($request->password);
         $Newuser->email = $user->email;
@@ -214,7 +213,7 @@ class MemberController extends Controller
               $inInvite = $inInvite->first();
               $invite = $inInvite->toArray();
               $invite['point_type'] = 'inv';
-              $invite['point_score'] = 1;
+              $invite['point_score'] = 5;
               $invite['taggable_id'] = $Newuser->id;
 
               $user = User::find($Newuser->id);
@@ -226,7 +225,7 @@ class MemberController extends Controller
                 Ranks::where('user_id', $inInvite->user_id)
                     ->update(
                       [
-                        'point' => DB::raw('point+1'),
+                        'point' => DB::raw('point+5'),
                         'invitee_count' => DB::raw('invitee_count+1')
                       ]
                     );
