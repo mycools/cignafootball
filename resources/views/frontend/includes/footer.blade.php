@@ -5,6 +5,7 @@
 				</div>
 				<div class="col-12 col-md-auto mb-3 mb-md-0 text-center text-md-right">
 					Powered by 
+					<img style="height: 30px;" src="{{ url('images/logo/ari_football.png') }}" />
 					<img style="height: 30px;" src="{{ url('images/logo/woody_world.png') }}" />
 				</div>
 		</footer>

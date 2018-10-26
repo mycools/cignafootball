@@ -40,7 +40,7 @@
 							</div>
 						</div> -->
 						<div class="row justify-content-md-center pl-15 pr-15">
-							<div class="col-12 col-md-4">
+							<!-- <div class="col-12 col-md-4">
 								<div class="form-group row mb-sm-10">
 									<label class="col-md-12 pr-0 col-form-label font-med">ชื่อ</label>
 									<div class="col-md-12">
@@ -49,7 +49,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<div class="col-12 col-md-4">
 								<div class="form-group row mb-sm-10">
 									<label class="col-md-12 pr-0 col-form-label font-med">Username</label>
