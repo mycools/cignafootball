@@ -18302,9 +18302,9 @@ Footer
 
 footer {
   position: relative;
-  padding: 25px 15px 15px;
-  background: #00487a;
-  color: #fff;
+  padding: 5px 15px 0px;
+  background: #fff;
+  color: #000;
   text-align: center;
 }
 
@@ -19274,7 +19274,7 @@ Responsive
   }
 
   footer {
-    padding: 15px 10px 10px;
+    padding: 0px 0px 0px;
   }
 
   footer img {

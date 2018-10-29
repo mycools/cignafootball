@@ -1,9 +1,9 @@
-		<footer class="fixed-bottom">  
+		<footer class="footer-group fixed-bottom">  
 			<div class="row justify-content-between">
-				<div class="col-12 col-md-auto mb-3 mb-md-0 text-center text-md-left">
+				<div class="col-12 col-md-auto mb-1 mb-md-0 text-center text-md-left">
 					Copyright © 2018 Match Of The Weeks
 				</div>
-				<div class="col-12 col-md-auto mb-3 mb-md-0 text-center text-md-right">
+				<div class="col-12 col-md-auto mb-1 mb-md-0 text-center text-md-right">
 					Powered by
 					<img style="height: 30px;" src="{{ url('images/logo/CignaLogo.jpg') }}" />
 					<img style="height: 30px;" src="{{ url('images/logo/ari_football.png') }}" />
@@ -19,7 +19,21 @@
 
 		<script type="text/javascript">
 		let value = 0;
+		function window_resize()
+		{
+			let fiterHeight = $(".footer-group").height();
+			
+			if($(window).width() > 480){
+				//$(".footer-group").addClass('fixed-bottom');
+				$(".home-page").css("margin-bottom",0)
+			}else{
+				$(".home-page").css("margin-bottom",fiterHeight)
+				//$(".footer-group").removeClass('fixed-bottom');
+			}
+		}
+		$(window).resize(window_resize);
 		$(document).ready(function() {
+			window_resize();
 			$("#voteHome").click(function() {
 				$("#voteHome").css('opacity', 1);
 				$("#voteDraw").css('opacity', 0.65);
