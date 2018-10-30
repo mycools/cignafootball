@@ -58,6 +58,12 @@ class MemberController extends Controller
             $id = $id->id;
             $user = User::find($id);
 
+            $query = Bets::with(['team','match'])->where('user_id', $user->id)->orderBy('created_at','ASC')
+                            ->limit(38);
+            $this->_data['bets'] = $query->get();
+            $this->_data['win'] = $this->_data['bets']->where('bet','win')->count();
+            $this->_data['lose'] = $this->_data['bets']->where('bet','lose')->count();
+
             // $this->_data['result']    = $user;
             $result = User::with([
                                 'getRank'

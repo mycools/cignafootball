@@ -93,15 +93,15 @@
 						<div class="row justify-content-center align-items-center">
 							<div class="col-4 col-md-2 text-center mt-15">
 								<i class="fa fa-check-circle mgr-5" aria-hidden="true"></i> ถูก
-								<div class="text-large">{{ ($result->getRank ? $result->getRank->win_count : '' ) }}</div>
+								<div class="text-large">{{ $win }}</div>
 							</div>
 							<div class="col-4 col-md-2 bdl-1 bdr-1 text-center mt-15">
 								<i class="fa fa-times-circle mgr-5" aria-hidden="true"></i> ผิด
-								<div class="text-large">{{ ($result->getRank ? $result->getRank->lose_count : '' ) }}</div>
+								<div class="text-large">{{ $lose }}</div>
 							</div>
 							<div class="col-4 col-md-2 text-center mt-15">
 								ทาย
-								<div class="text-large">{{ ($result->getRank ? $result->getRank->predict_count : '' ) }}</div>
+								<div class="text-large">{{ count($bets) }}</div>
 							</div>
 							<div class="col-12 col-md-6 text-center mt-10">
 								<a class="btn btn-border green pt-10 pb-10 d-block mb-xs-10 mb-sm-0" href="{{ url('/profile/history') }}">Full History</a>
