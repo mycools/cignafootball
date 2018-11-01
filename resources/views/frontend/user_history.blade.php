@@ -60,23 +60,17 @@
                                     <div class="col-3 pdt-5 text-large color-green">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                     </div>
-                                    <div class="col-3 pdt-5 text-large color-red">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </div>
+                                    
                                 @elseif($row->bet == 'lose')
                                     <div class="col-3 pdt-5 text-large color-red">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </div>
-                                    <div class="col-3 pdt-5 text-large color-green">
-                                         <i class="fa fa-check" aria-hidden="true"></i>
-                                    </div>
+                                    
                                 @else
                                     <div class="col-3 pdt-5 text-large color-yellow">
                                         <i class="fa fa-minus" aria-hidden="true"></i>
                                     </div>
-                                    <div class="col-3 pdt-5 text-large color-yellow">
-                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </div>
+                                   
                                 @endif
 							</div>
 							<!-- <div class="row text-center align-items-center bg-darkgray ml-0 mr-0 pt-0 pb-0 color-white">
