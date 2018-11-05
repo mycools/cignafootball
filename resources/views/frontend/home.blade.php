@@ -11,7 +11,7 @@
 	<div class="modal-dialog">
 
 			
-					<img src="{{ url('images/motw.png') }}" class="img-fluid" style="max-height:800px;"/>
+					<img src="{{ url('images/winner_week2.jpg') }}" class="img-fluid" style="max-height:800px;"/>
 			
 	</div>
 </div>
