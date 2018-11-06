@@ -18,7 +18,7 @@
 	<div class="home-slider">
 		<div class="item slider-video">
 			<a href="{{ url('match') }}">
-  				<img class="d-none d-sm-block" src="{{ url('images/home/banner.jpg') }}" />
+  				<img class="d-none d-sm-block" style='padding-bottom: 120px' src="{{ url('images/home/banner.jpg') }}" />
   				<img class="d-block d-sm-none" src="{{ url('images/home/banner_mobile.jpg') }}" />
 	  		</a>
 		</div>
@@ -26,14 +26,7 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<div class="row justify-content-center mb-30 mb-sm-15">
-				<div class="col-12">
-					<a class="btn-img" href="{{ url('match') }}">
-						<img class="d-none d-sm-block w-100" src="{{ url('images/home/predict_banner_desktop.jpg') }}" />
-						<img class="d-block d-sm-none w-100" src="{{ url('images/home/predict_banner_mobile.jpg') }}" />
-					</a>
-				</div>
-			</div>
+			
 
 			<div class="row justify-content-center">
 				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
