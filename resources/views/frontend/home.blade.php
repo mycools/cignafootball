@@ -18,7 +18,7 @@
 	<div class="home-slider">
 		<div class="item slider-video">
 			<a href="{{ url('match') }}">
-  				<img class="d-none d-sm-block" style='padding-bottom: 120px' src="{{ url('images/home/banner.jpg') }}" />
+  				<img class="d-none d-sm-block" style='padding-bottom: 140px' src="{{ url('images/home/banner.jpg') }}" />
   				<img class="d-block d-sm-none" src="{{ url('images/home/banner_mobile.jpg') }}" />
 	  		</a>
 		</div>
