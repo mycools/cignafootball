@@ -11,6 +11,7 @@ use App\Models\Bets;
 use App\Models\PointLogs;
 use App\Models\User;
 use App\Models\BetLogs;
+use App\Models\PredictLogs;
 use App\Models\Ranks;
 use Carbon\Carbon;
 
@@ -106,9 +107,15 @@ class MatchesController extends Controller
                     } else {
                       // in case of not duplicate(insert)
                       $bets = new Bets;
-                      $rank = Ranks::where('user_id', $auth->id)->first();
+                      $rank = Ranks::where('user_id', $user->id)->first();
                       $rank->predict_count = (int)$rank->predict_count + 1;
                       $rank->save();
+
+                      $predictLog = new PredictLogs;
+                      $predictLog->user_id = $user->id;
+                      $predictLog->match_id = $id;
+                      $predictLog->point = 1;
+                      $predictLog->save();
                     }
                     $bets->user_id = $user->id;
                     $bets->match_id = $id;
