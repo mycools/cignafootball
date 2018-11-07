@@ -11,7 +11,8 @@ class PredictLogs extends Model
         'id',
        'user_id',
        'match_id',
-       'point'
+       'point',
+       'predicted_team'
    ];
 
    protected $table = "predict_logs";

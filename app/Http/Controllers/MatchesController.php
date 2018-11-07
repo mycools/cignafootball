@@ -114,6 +114,7 @@ class MatchesController extends Controller
                       $predictLog = new PredictLogs;
                       $predictLog->user_id = $user->id;
                       $predictLog->match_id = $id;
+                      $predictLog->predicted_team = $request->vote_team;
                       $predictLog->point = 1;
                       $predictLog->save();
                     }
