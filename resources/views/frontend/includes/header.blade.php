@@ -68,9 +68,9 @@
 							<li class="nav-item">
 								<a class="nav-link {{ Request::is('ranking') ? 'active' : '' }}" href="{{ url('ranking') }}">อันดับผู้เล่น</a>
 							</li>
-							<!-- <li class="nav-item">
-								<a class="nav-link {{ Request::is('healthtips') ? 'active' : '' }}" href="{{ url('healthtips') }}">Health Tips</a>
-							</li> -->
+							<li class="nav-item">
+								<a class="nav-link {{ Request::is('healthtips') ? 'active' : '' }}" href="{{ url('tips') }}">สาระน่ารู้</a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link {{ Request::is('prize') ? 'active' : '' }}" href="{{ url('prize') }}">รางวัล</a>
 							</li>

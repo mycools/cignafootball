@@ -11,7 +11,7 @@
 	<div class="section fp-auto-height active">
 		<div class="container">
 
-			<h1 class="h-title mb-30 mb-sm-15 mb-xs-0">HEALTH TIPS</h1>
+			<h1 class="h-title mb-30 mb-sm-15 mb-xs-0">สาระน่ารู้</h1>
 
 			<div class="row justify-content-center mb-45 mb-sm-15">
 				<div class="col-12 m-auto">

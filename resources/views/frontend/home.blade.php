@@ -29,16 +29,33 @@
 			
 
 			<div class="row justify-content-center">
+				@foreach($rs as $health)
 				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
-					<a class="btn-img" href="{{ url('ranking') }}">
-						<img class="w-100" src="{{ url('images/home/user_ranking.jpg') }}" />
-					</a>
+				<div class="tips-item row pin mr-sm-0 ml-sm-0">
+									<div class="col-12 col-md-9 pr-0 pl-sm-0">
+									@php
+                                    if($health->image_thumb){
+                                        $img = Storage::url($health->image_thumb);
+                                    }else{
+                                        $img = '';
+                                    }
+                                        
+                                    @endphp
+										<img class="w-100" src="{{ $img }}" />
+									</div>
+									<div class="col-12 col-md-3 d-flex pl-0 pr-sm-0">
+										<div class="detail">
+											<div class="title">{{ $health->title }}</div>
+											<div class="excerpt">
+												{{ $health->description }}
+											</div>
+											<a class="btn btn-lightblue d-block font-med" href="{{ url('/tips/detail/'.$health->id) }}">อ่านเพิ่มเติม</a>
+										</div>
+									</div>
+								</div>
 				</div>
-				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
-					<a class="btn-img" href="{{ url('rules') }}">
-						<img class="w-100" src="{{ url('images/home/rules_fun.jpg') }}" />
-					</a>
-				</div>
+				@endforeach
+				
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-6 text-center mt-3">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ranks;
 use App\Models\Users;
-
+use App\Models\Tips;
 use Illuminate\Http\Request;
 use App\Notifications\OneTimePassword;
 use App\Models\UserOtp;
@@ -16,11 +16,9 @@ class HomeController extends Controller
    
     public function index()
     {
-        // $auth   = Auth::user();
-        // if(!$auth)
-        // {
-        //     return redirect('/');
-        // }
+        $health = Tips::limit(1)->orderBy('seq', 'ASC')->get();
+        //$football = Tips::where('category', 2)->orderBy('id', 'DESC')->first();
+        
         $result = Ranks::with([
                             'getUser'
                         ])
@@ -31,6 +29,8 @@ class HomeController extends Controller
                         ->get();
 
         $this->_data['result']    = $result;
+        $this->_data['rs']    = $health;
+        //$this->_data['football']    = $football;
 
         return view('frontend.home')->with($this->_data);
     }

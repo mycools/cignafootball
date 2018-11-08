@@ -34,9 +34,10 @@
 								{{ Carbon\Carbon::parse($detail->created_at)->format('M d, Y') }}
 								</div>
 								<div class="excerpt mb-45">
-									{{ $detail->detail}}
+									
+								@php echo $detail->detail @endphp
 								</div>
-								<a class="btn btn-lightblue font-med pr-25" href="{{ url('/tips') }}"><i class="fa fa-angle-left mgr-5"></i> BACK</a>
+								<a class="btn btn-lightblue font-med pr-25" href="{{ url('/tips') }}"><i class="fa fa-angle-left mgr-5"></i> ย้อนกลับ</a>
 							</div>
 						</div>
 					</div>
@@ -45,7 +46,7 @@
 				<div class="col-12 col-md-3">
 					<div class="tips-list">
 						<div class="tips-head bg-lightblue p-15 pdt-5 pdb-5">
-							<h2 class="color-white font-bold m-0">LASTED POST</h2>
+							<h2 class="color-white font-bold m-0">โพสล่าสุด</h2>
 						</div>
 						<div class="row justify-content-center align-items-center p-15 pt-20 bg-white ml-0 mr-0">
 							@foreach ($lastest as $ls)
