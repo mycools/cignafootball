@@ -16,7 +16,7 @@ class HomeController extends Controller
    
     public function index()
     {
-        $health = Tips::limit(1)->orderBy('seq', 'ASC')->get();
+        $health = Tips::limit(2)->orderBy('seq', 'ASC')->get();
         //$football = Tips::where('category', 2)->orderBy('id', 'DESC')->first();
         
         $result = Ranks::with([
