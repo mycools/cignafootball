@@ -34,6 +34,8 @@ class RanksController extends Controller
         $result = Ranks::leftJoin('users', 'ranks.user_id', '=', 'users.id')
                         ->where('ranks.ranking_no', '!=', '0')
                         ->where('users.username', '!=', '')
+                        ->where('users.id', '!=', '3')
+                        ->where('users.id', '!=', '16594')
         				->orderBy('ranks.point', 'desc')
                         ->orderBy('ranks.user_id', 'asc')
         				->take(50)

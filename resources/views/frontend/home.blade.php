@@ -29,6 +29,12 @@
 			
 
 			<div class="row justify-content-center">
+			<div class="col-12 col-sm-6 mb-30 mb-sm-15">
+					<a class="btn-img" href="{{ url('rules') }}">
+						<img class="w-100" src="{{ url('images/home/rules_fun.jpg') }}" />
+					</a>
+			</div>
+
 				@foreach($rs as $health)
 				<div class="col-12 col-sm-6 mb-30 mb-sm-15">
 				<div class="tips-item row pin mr-sm-0 ml-sm-0">
