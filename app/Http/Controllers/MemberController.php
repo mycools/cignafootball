@@ -227,14 +227,19 @@ class MemberController extends Controller
               $user->pointlogs()->create($invite);
               
              // return 'user id ='.$inInvite->user_id;
+                $ban_list = array(3,4,23,13956,16594);
+                if(in_array($inInvite->user_id,$ban_list)){
 
-                Ranks::where('user_id', $inInvite->user_id)
+                    Ranks::where('user_id', $inInvite->user_id)
                     ->update(
                       [
                         'point' => DB::raw('point+1'),
                         'invitee_count' => DB::raw('invitee_count+1')
                       ]
                     );
+
+                }
+                
 
                 $update_invite = $inInvite = Invites::select('id')->where('invitee_id',$userId)->orderBy('id','DESC')->first();
                 
