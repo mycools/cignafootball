@@ -228,7 +228,7 @@ class MemberController extends Controller
               
              // return 'user id ='.$inInvite->user_id;
                 $ban_list = array(3,4,23,13956,16594);
-                if(in_array($inInvite->user_id,$ban_list)){
+                if(!in_array($inInvite->user_id,$ban_list)){
 
                     Ranks::where('user_id', $inInvite->user_id)
                     ->update(
