@@ -25,7 +25,7 @@ class HomeController extends Controller
                         ->where('ranking_no', '!=', '0')
                         ->where('id', '!=', '3')
                         ->where('id', '!=', '16594')
-                        ->orderBy('point', 'desc')
+                        ->orderBy('invitee_count', 'desc')
                         ->orderBy('user_id', 'asc')
                         ->take(10)
                         ->get();

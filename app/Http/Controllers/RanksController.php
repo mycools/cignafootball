@@ -36,7 +36,7 @@ class RanksController extends Controller
                         ->where('users.username', '!=', '')
                         ->where('users.id', '!=', '3')
                         ->where('users.id', '!=', '16594')
-        				->orderBy('ranks.point', 'desc')
+        				->orderBy('ranks.invitee_count', 'desc')
                         ->orderBy('ranks.user_id', 'asc')
         				->take(50)
 						->get();

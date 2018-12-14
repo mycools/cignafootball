@@ -125,17 +125,20 @@
 				</div>
 				<div class="col-12 col-md-8 d-md-flex">
 					<div class="box bg-midgray pt-25 pt-md-20 pt-sm-10">
-						<div class="row justify-content-center align-items-center">
-							<div class="col-3 col-md-3 col-lg-2 text-left pr-0 pr-md-15">
-								ชวนเพื่อน <br  />
-								เพื่อเพิ่มสิทธิ์
+					<div class="row justify-content-center align-items-center">
+							<div class="col-12 col-md-12 col-lg-12 text-left pr-0 pr-md-15">
+								ชวนเพื่อนเพื่อเพิ่มสิทธิ์ ชวนมากมีสิทธิ์มาก
 							</div>
-							<div class="col-9 col-md-6 col-lg-8 text-center">
+						</div>
+						<div class="row justify-content-center align-items-center">
+							
+							<div class="col-12 col-md-9 col-lg-10 text-center">
 								<input id="myInvite" type="text" class="form-control pt-10 pb-10" value="{{ url('register/'.$inviteUrl) }}">
 								{{-- <input type="text" class="form-control pt-10 pb-10" value="http://matchoftheweek.com/register/{{ $inviteUrl }}"> --}}
 							</div>
 							<div class="col-12 col-md-3 col-lg-2 text-center">
-								<a class="btn btn-border gray pt-0 pb-0 mt-sm-15 d-block btn-copy" onclick="copy('myInvite')" href="javascript:;">Copy</a>
+								<a class="btn btn-border gray pt-0 pb-0 mt-sm-15 d-block btn-copy" style="font-size:20px; padding-left:5px" onclick="copy('myInvite')" href="javascript:;">Copy&Share
+</a>
 								 <!-- onclick="copyToCliboardProfile()" -->
 							</div>
 						</div>
