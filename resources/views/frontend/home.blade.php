@@ -7,14 +7,14 @@
 @section('content')
 
 <div class="wrappage-page bg_home non-fullpage home-page">
-<div id="myModal" class="modal fade">
+<!-- <div id="myModal" class="modal fade">
 	<div class="modal-dialog">
 
 			
 					<img src="{{ url('images/new_cigna_popup.png') }}" class="img-fluid" style="max-height:800px;"/>
 			
 	</div>
-</div>
+</div> -->
 	<div class="home-slider">
 		<div class="item slider-video">
 			<a href="{{ url('match') }}">
