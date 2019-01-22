@@ -220,4 +220,23 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="popup" tabindex="-1">
+    <div class="modal-dialog modal-lg centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-4 pl-30 pr-30">
+                <div class="head-title">
+                    <h3 class="color-darkgray">เงื่อนไข เกณฑ์การตัดสิน และการแจกจ่ายสิ่งของรางวัลอย่างไร ?</h3>
+                </div>
+                <div class="detail">
+					<div class="p mb-30 text-small">
+						@include('frontend.components.condition')
+					</div>
+                </div>
+                <div class="footer text-center">
+                    <a class="btn btn-blue color-white" data-dismiss="modal">ปิด</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

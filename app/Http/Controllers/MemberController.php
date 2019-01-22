@@ -110,6 +110,19 @@ class MemberController extends Controller
             $this->_data['titles'] = Title::all();
             $this->_data['teams'] = Teams::all();
 
+            $result = Ranks::with([
+                'getUser'
+            ])
+            ->where('ranking_no', '!=', '0')
+            ->where('id', '!=', '3')
+            ->where('id', '!=', '16594')
+            ->orderBy('invitee_count', 'desc')
+            ->orderBy('user_id', 'asc')
+            ->take(10)
+            ->get();
+
+            $this->_data['result']    = $result;
+
             return View('frontend/home_register')
                 ->with($this->_data);
         }
